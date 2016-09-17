@@ -1,0 +1,46 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 15/09/2016, 04:28:55 PM
+    Author     : Kevin
+*/
+
+#IniciarC{
+    width: 30%; 
+    margin:0 auto;
+    margin-top: 30px;
+    padding: 10px;
+    border: 1px solid grey;
+    box-sizing: border-box;
+}
+
+#IniciarC label{
+    width: 100%;
+}
+#IniciarC input{
+    width: 100%;
+    margin-bottom: 50px;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+#IniciarC input:focus{
+    border: 1px solid #56CAAD;
+}
+
+#IniciarC input[type="submit"]{
+    margin-bottom: 0px;
+    background: #56CAAD;
+    color: white;
+    border: none;
+    font-size: 15px;
+}
+
+#IniciarC input[type="submit"]:hover{
+    background: #81D9C3;
+}
+
+

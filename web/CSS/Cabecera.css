@@ -1,0 +1,200 @@
+body,header{
+  margin: 0;
+  font-family: helvetica, tahoma, sans;
+}
+header{
+   background-color: #9AF399;
+   width: 100%;
+   overflow: hidden;
+}
+
+/*Logo H4T*/
+header > .cuatro.columnas > img{
+  margin:15px;
+}
+
+.botones{
+    box-shadow: 3px 3px 3px grey;
+    font-family: helvetica, tahoma, sans;
+    padding: 5px;
+    background: #2EADD7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    text-align: center;
+}
+.botones:hover{
+    background: #50C9F2;
+    box-shadow: 3px 3px 8px grey;
+}
+.botones:active{
+    background: #219CC4;
+    box-shadow:none;
+}
+
+ a.botones{
+  text-decoration: none; 
+  margin-bottom: 10px;
+}
+
+header > div{
+    display: inline-block;
+    float:left; 
+    box-sizing: border-box;
+}
+
+header > #SesionUsuario>div > *{
+    float:right;
+}
+
+header > #SesionUsuario > div{
+  display: inline-block;
+  box-sizing: border-box;
+  float:right;
+}
+
+header >#SesionUsuario >.imagenYcarrito{
+  width : 30%;
+}
+
+header > #SesionUsuario > div > *{
+  clear: both;
+}
+
+#ImagenUsuario{
+  margin: 15px;
+    display: block;
+    background: white;
+    border-radius: 50%;
+    width:100px;
+}
+
+#formBuscar{
+    width: 60%;
+    color: white;
+    margin:auto;
+    margin-top: 100px;
+    box-sizing: border-box;
+}
+
+#formBuscar > input{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;    
+}
+
+header > .doce.columnas{
+    background: #2EADD7;
+    margin-bottom:0px;
+    box-sizing: border-box;
+    color: white;  
+    padding: 5px
+}
+
+ul.clase{
+  background:aqua;
+  width: 85%;
+}
+li, a, div{
+  box-sizing: border-box;
+}
+li{
+  list-style: none;
+  display: inline-block;
+  /*width:100px;
+  text-align: center;*/
+  margin-right: 1px;
+}
+li > a{
+  /*modelo de caja*/
+  width:250px;
+  display: block;
+  text-align: center;
+  padding: 5px;
+  
+  /*Estilo del link*/
+  text-decoration: none;
+  color: rgb(255,255,255);
+  background:rgba(0,0,0,0.5);
+  font-family: helvetica, tahoma, sans;
+  
+  /*otros estilos*/
+  border-radius: 6px;
+}
+li > a:hover{
+  color: blueviolet;
+  background: white;
+  box-shadow: 0 3px 3px #333;
+}
+/*layout*/
+#colUno{
+  background: black;
+  color: white;
+}
+#colDos{
+  background: blue;
+}
+#colTres{
+  background: greenyellow;
+}
+
+.columna, .columnas{
+  display: inline-block;
+  float:left;
+  margin: 0;
+}
+.una.columna, .una.columnas{
+  width: 8.33%;
+}
+.dos.columna, .dos.columnas{
+  width: 16.66%;
+}
+.tres.columna, .tres.columnas{
+  width: 24.99%;
+}
+.cuatro.columna, .cuatro.columnas{
+  width: 33.32%;
+}
+.cinco.columna, .cinco.columnas{
+  width: 41.65%;
+}
+.seis.columna, .seis.columnas {
+  width: 49.98%;
+}
+.siete.columna, .siete.columnas{
+  width: 58.31%;
+}
+.ocho.columna, ocho.columnas{
+  width: 66.64%;
+}
+.nueve.columna, nueve.columnas{
+  width: 74.97;
+}
+.diez.columna, diez.columnas{
+  width: 83.3;
+}
+.once.columna, once.columnas{
+  width: 91.63%;
+}
+.doce.columna, .doce.columnas{
+  width: 100%;
+}
+.principal{
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.fila{
+  clear: both;
+}
+
+td{
+  min-width: 200px;
+  text-align: center;
+}
+
+th{
+    background: aquamarine;
+}
