@@ -5,8 +5,13 @@
  */
 package Servlets;
 
+import Logica.Factory;
+import Logica.IcontClientes;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,19 +34,34 @@ public class ServletUsuarios extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
+                
+        //Iniciar Sesión
         String nomUsuario = (String)request.getParameter("nomUsuario");
-        if(request.getSession().getAttribute("nomUsuario").equals("Anonimo"))
-            request.getSession().setAttribute("nomUsuario", nomUsuario); 
+        if(request.getSession().getAttribute("nomUsuario").equals("Anonimo")&&nomUsuario!=null){
+            request.getSession().setAttribute("nomUsuario", nomUsuario);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            dispatcher.forward(request, response);
+        }
         
-        
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        dispatcher.forward(request, response);
+        //Verificar que el nickname sea valido
+        if(request.getParameter("verificarNick")!=null){
+            //especifica que el tipo de respuesta va a ser texto
+            //response.setContentType("text/plain");
+            String nickname=request.getParameter("verificarNick");
+            //response.getWriter().println("verificar en servlet "+nickname);
+            IcontClientes cont = Factory.getInstance().crearContCliente();
+            if(cont.verificarNickname(nickname)==false){
+                response.getWriter().write("false");
+            }
+            else
+                response.getWriter().write("true");
+        }
                 
     }
 
@@ -57,7 +77,16 @@ public class ServletUsuarios extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //Ir a la pagina de Iniciar Sesión
+        if(request.getParameter("Sesion").equals("Iniciar")){
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Vistas/IniciarSesion.jsp");
+            dispatcher.forward(request, response);
+        }/*
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServletUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
     }
 
     /**
@@ -71,7 +100,11 @@ public class ServletUsuarios extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ServletUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

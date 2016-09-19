@@ -23,14 +23,14 @@ public class listarServProm extends HttpServlet {
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         
-        IcontProveedores cont = Factory.getInstance().crearContProveedores();
+        /*IcontProveedores cont = Factory.getInstance().crearContProveedores();
         
         ArrayList<DtServicio> lista = cont.listarServiciosBuscados(request.getParameter("busqueda"));
         
         request.setAttribute("listaServicios", lista);
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/servProm.jsp");
-        dispatcher.forward(request, response);
+        dispatcher.forward(request, response);*/
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
