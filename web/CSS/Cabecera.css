@@ -15,6 +15,7 @@ header > .cuatro.columnas > img{
 
 .botones{
     box-shadow: 3px 3px 3px grey;
+    box-sizing: border-box;
     font-family: helvetica, tahoma, sans;
     padding: 5px;
     background: #2EADD7;
@@ -54,10 +55,6 @@ header > #SesionUsuario > div{
   float:right;
 }
 
-header >#SesionUsuario >.imagenYcarrito{
-  width : 30%;
-}
-
 header > #SesionUsuario > div > *{
   clear: both;
 }
@@ -78,7 +75,7 @@ header > #SesionUsuario > div > *{
     box-sizing: border-box;
 }
 
-#formBuscar > input{
+#formBuscar > input[type="text"]{
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 15px;

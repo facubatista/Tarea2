@@ -35,7 +35,7 @@
                                   
             </div> 
             <div class="doce columnas">
-                Vuelos>Empresas>Iberia
+                Vuelos > Empresas > Iberia
             </div>
         </header>
         <!--<div>
