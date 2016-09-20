@@ -16,7 +16,7 @@
             <input oninput="verificarNick(this,nickInvalido,botonIngresar,botonIngresarDis)" id="nom" name="nomUsuario" placeholder="Escriba su nickname" required="" type="text"> 
             <label for="contra">Contraseña: </label> 
             <input id="contra" name="contra" placeholder="Escriba su contraseña" required="" type="password">
-            <input id="botonIngresar" value="Ingresar" type="submit">
+            <input id="botonIngresar" class="botones" value="Ingresar" type="submit">
             <input id="botonIngresarDis" hidden="" disabled="" value="Ingresar" type="submit">
         </form>
     </body>
