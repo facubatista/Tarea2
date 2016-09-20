@@ -1,0 +1,104 @@
+#colUno{
+  background: #2EADD7;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+#colDos{
+  background: #2EADD7;
+  color: #2E2E2E;
+  
+  margin-top: 20px;
+  padding-top: 20px;
+  
+  /*para que quede del tamaño de las imagenes de col1*/
+  padding-bottom: 220px;
+  margin-bottom: -220px;
+}
+#colTres{
+  background: #2EADD7;
+  padding-bottom: 50px;
+  
+  margin-bottom: 20px;
+}
+#colCuatro{
+  background: #2EADD7;
+  color: #2E2E2E;
+  
+  /*para que quede del tamaño de las imagenes de col3*/
+  padding-bottom: 103px;
+  margin-bottom: -52px;
+}
+/*imagenes*/
+.imagen{
+  height: 320px;
+  width: 320px;
+}
+#imgChicas{
+  width: 380px;
+}
+.chica{
+  height: 70px;
+  width: 70px;
+}
+.chica:hover{
+  box-shadow: 4px 4px 4px #9AF399;
+}
+/*tabla*/
+thead{
+  float: left;
+  color: #2E2E2E;
+}
+th{
+  display: block;
+  background: #2EADD7;
+  text-align: right;
+}
+tbody {
+  float: right;
+  color: #2E2E2E;
+}
+td{
+  background: #9AF399;
+  border-radius: 7px;
+}
+
+/*form agregar carrito*/
+#txtCantidad{
+  width: 30px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 7px;
+}
+#agregar{
+  /*background:rgba(0,0,0,0);*/
+  background:rgba(255, 255, 255,0.5);
+  color: #2E2E2E;
+  border-radius: 7px;
+}
+#agregar:hover{
+  color: black;
+  background: rgba(255,255,255,0.5);
+  box-shadow: 0 3px 3px #333;
+  cursor: pointer;
+}
+
+/*Categorias*/
+ul{
+  max-width: 400px;
+}
+li{
+  background: #9AF399;
+  
+  display: inline-block;
+  
+  /*modelo de caja*/
+  text-align: center;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  
+  padding-right: 5px;
+  padding-left: 5px;
+  
+  /*otros estilos*/
+  border-radius: 7px;
+  
+}
