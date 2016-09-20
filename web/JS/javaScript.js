@@ -44,14 +44,15 @@ function calcularPrecio(objeto, precioS){
     }
 }
 
-function verificarNick(nickIngresado,mostrarMensaje,botonIngresar,botonIngresarDis){
-    var nickname = nickIngresado.value;
+function verificarUsuario(claveIngresada,mostrarMensaje,botonIngresar,botonIngresarDis){
+    var claveUsuario = claveIngresada.value;
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         //Los status 200 y 4 indican que no hubo ningun problema
         if(this.status===200 && this.readyState ===4){
-           //var xmlDoc = this.responseXML;
+           //var json = JSON.parse(this.responseText);
            if(this.responseText === 'false'){
+           //if(json.verificacion[0].respuesta === 'false'){
                 mostrarMensaje.hidden = false;
                 botonIngresar.hidden = true;
                 botonIngresarDis.hidden = false;
@@ -59,14 +60,28 @@ function verificarNick(nickIngresado,mostrarMensaje,botonIngresar,botonIngresarD
                mostrarMensaje.hidden = true;
                botonIngresar.hidden = false;
                botonIngresarDis.hidden = true;
-               
            }
-            console.log(this);
         }
+        console.log(this);
     };
     request.open("POST","ServUsuarios",true );
     request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    request.send("verificarNick="+nickname);
+    request.send("verificarUsuario="+claveUsuario);
     //alert(nickname);
     return false;
 }
+
+/*
+function verificarPassword(form){
+    var password = form.querySelector("contra").value;
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function(){
+        if(sha1(password)===sha1(this.responseText)){
+            return true;
+        }else
+            return false;
+    };
+    request.open("POST","ServUsuarios",true );
+    request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    request.send("verificarPassword=verificar");
+}*/

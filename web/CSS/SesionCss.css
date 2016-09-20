@@ -53,11 +53,11 @@ and open the template in the editor.
 }
     
 #IniciarC #botonIngresarDis{
-    margin-bottom: 0px;
     background: #739F94;
-    color: white;
-    border: none;
-    font-size: 15px;
+}
+#IniciarC #botonIngresarDis:hover{
+    background: #739F94;
+    box-shadow: 3px 3px 3px grey;
 }
 
 #nickInvalido{

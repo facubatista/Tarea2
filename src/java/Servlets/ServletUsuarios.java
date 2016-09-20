@@ -7,6 +7,7 @@ package Servlets;
 
 import Logica.Factory;
 import Logica.IcontClientes;
+import Logica.contCliente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -18,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -40,27 +42,37 @@ public class ServletUsuarios extends HttpServlet {
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        
+        IcontClientes cont = Factory.getInstance().crearContCliente();
+        HttpSession sesion = request.getSession();
                 
         //Iniciar Sesión
-        String nomUsuario = (String)request.getParameter("nomUsuario");
-        if(request.getSession().getAttribute("nomUsuario").equals("Anonimo")&&nomUsuario!=null){
-            request.getSession().setAttribute("nomUsuario", nomUsuario);
+        String nomUsuario = request.getParameter("nomUsuario");
+        if(sesion.getAttribute("nomUsuario").equals("Anonimo") && nomUsuario!=null){
+            nomUsuario=cont.verificarUsuario(nomUsuario);//Retorna el nickname
+            //Se toman el nombre y el apellido del usuario para mostrarlo en la cabecera
+            nomUsuario = cont.seleccionarClienteAListar(nomUsuario).getNombre()+" "+cont.seleccionarClienteAListar(nomUsuario).getApellido();
+            //Se setea el nombre de usuario en la sesion
+            sesion.setAttribute("nomUsuario", nomUsuario);
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
         }
         
         //Verificar que el nickname sea valido
-        if(request.getParameter("verificarNick")!=null){
+        if(request.getParameter("verificarUsuario")!=null){
             //especifica que el tipo de respuesta va a ser texto
-            //response.setContentType("text/plain");
-            String nickname=request.getParameter("verificarNick");
-            //response.getWriter().println("verificar en servlet "+nickname);
-            IcontClientes cont = Factory.getInstance().crearContCliente();
-            if(cont.verificarNickname(nickname)==false){
+            response.setContentType("text/plain");
+            String claveUsuario=request.getParameter("verificarUsuario");
+            if(cont.verificarUsuario(claveUsuario).equals("false")){
                 response.getWriter().write("false");
+                /*response.getWriter().write("{\"verificacion\" : [" +
+                        "{ \"respuesta\":\"false\"}]}");*/
             }
-            else
+            else{//Se crea el texto correspondiente a un objeto jason de nombre verificacion, con el atributo booleano
+                /*response.getWriter().write("{\"verificacion\" : [" +
+                        "{ \"respuesta\":\""+cont.verificarUsuario(claveUsuario)+"\"}]}");*/
                 response.getWriter().write("true");
+            }
         }
                 
     }
@@ -77,16 +89,21 @@ public class ServletUsuarios extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession sesion = request.getSession();
+        
         //Ir a la pagina de Iniciar Sesión
         if(request.getParameter("Sesion").equals("Iniciar")){
             RequestDispatcher dispatcher = request.getRequestDispatcher("Vistas/IniciarSesion.jsp");
             dispatcher.forward(request, response);
-        }/*
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(ServletUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
+        
+        //Cerrar Sesión
+        if(request.getParameter("Sesion").equals("Cerrar") /*&& sesion.getAttribute("nomUsuario").equals("Anonimo")==false*/){
+            sesion.setAttribute("nomUsuario", "Anonimo");
+            
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            dispatcher.forward(request, response);
+        }
     }
 
     /**

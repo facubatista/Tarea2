@@ -35,7 +35,7 @@
                 <%if(session.getAttribute("nomUsuario").equals("Anonimo")){%>                
                 <a id="IniC" class="botones" href="<%= request.getContextPath()%>/ServUsuarios?Sesion=Iniciar">Iniciar Sesión</a><!Vistas/IniciarSesion.jsp>
                 <%}else{%>
-                <a id="IniC" class="botones" href="http://www.google.com.uy">Cerrar Sesión</a>
+                <a id="IniC" class="botones" href="<%= request.getContextPath()%>/ServUsuarios?Sesion=Cerrar">Cerrar Sesión</a>
                 <%}%>
                 </div>     
                                   
