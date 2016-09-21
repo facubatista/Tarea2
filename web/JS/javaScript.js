@@ -51,7 +51,7 @@ function verificarUsuario(claveIngresada,mostrarMensaje,botonIngresar,botonIngre
         //Los status 200 y 4 indican que no hubo ningun problema
         if(this.status===200 && this.readyState ===4){
            //var json = JSON.parse(this.responseText);
-           if(this.responseText === 'false'){
+           if(this.responseText === 'false' && claveUsuario.length!==0){
            //if(json.verificacion[0].respuesta === 'false'){
                 mostrarMensaje.hidden = false;
                 botonIngresar.hidden = true;
