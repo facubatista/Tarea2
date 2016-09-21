@@ -1,5 +1,5 @@
-<%@page import="java.awt.image.BufferedImage"%>
 <%@page import="javax.imageio.ImageIO"%>
+
 <%@page import="org.apache.tomcat.util.http.fileupload.IOUtils"%>
 <%@page import="java.util.Base64"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.Url"%>
@@ -95,16 +95,17 @@
                                 Iterator<String> it = s.getCategorias().iterator();
                                 while(it.hasNext()){
                                     String cat = it.next();
-                                    if(!cat.contains("Tipo"))
+                                    if(!cat.contains("Tipo") && !cat.equals("Empresas") && !cat.equals("Ubicacion") && !cat.equals("Habitaciones") && !cat.equals("Tarifa") && !cat.equals("Marca")){
                             %>
                             <label><%= cat %></label>
-                            <%}%>
+                            <%}
+                            }%>
                         </center>
                     </div>
                 </div>
             </div>
                             
         </div>
-                        <jsp:include page="Pie.jsp" />
+        <jsp:include page="Pie.jsp" />
     </body>
 </html>

@@ -144,9 +144,6 @@ li > a:hover{
 #colDos{
   background: blue;
 }
-#colTres{
-  background: greenyellow;
-}
 
 .columna, .columnas{
   display: inline-block;
