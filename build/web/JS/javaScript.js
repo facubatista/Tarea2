@@ -88,13 +88,13 @@ function verificarPassword(form){
 
 function cambiarImagen(numero){
     
-    if(parseInt(numero) == 1)
+    if(parseInt(numero) === 1)
         document.getElementById("imgGrande").src = "Imag/prueba2.jpg";
     
-    if(parseInt(numero) == 2)
+    if(parseInt(numero) === 2)
         document.getElementById("imgGrande").src = "Imag/prueba3.jpg";
     
-    if(parseInt(numero) == 3)
+    if(parseInt(numero) === 3)
         document.getElementById("imgGrande").src = "Imag/prueba4.jpg";
     
     

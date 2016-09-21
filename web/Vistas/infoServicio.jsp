@@ -82,7 +82,7 @@
                                 <input type="hidden" id ="nombreServicio" value="<%= s.getNombre() %>" name="nombreServicio">
                                 <input type="hidden" id ="nombreProveedor" value="<%= s.getProveedor() %>" name="nombreProveedor">
                                 <input type="text" name="cantidad" id="txtCantidad" class="cantidad" onkeyup="calcularPrecio(this.parentElement.parentElement, <%= s.getPrecio() %>)">
-                                <input id ="agregar" type="submit" value="agregar al carrito" >
+                                <input id ="agregar" type="submit" value="Agregar al carrito" >
                             </form>
                         </div>
                         <div class="aMostrar" hidden="">
