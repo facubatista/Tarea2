@@ -67,6 +67,17 @@ header > #SesionUsuario > div > *{
     width:100px;
 }
 
+#BotonCarrito{
+    background:url(../Imag/carrito.png) no-repeat;
+    background-color: #2EADD7;
+    background-position: center left;
+    padding-left: 30px;    
+}
+
+#BotonCarrito:hover{
+    background-color: #50C9F2;
+}
+
 #formBuscar{
     width: 60%;
     color: white;

@@ -10,7 +10,7 @@
     </head>
     <body>
         <jsp:include page="Cabecera.jsp" /> 
-        <form id="IniciarC" name="IniciarC" action="ServUsuarios" method="post" <!onsubmit="verificarPassword(this)>">
+        <form id="IniciarC" name="IniciarC" action="ServUsuarios" method="post"> <!onsubmit="verificarPassword(this)">
             <label id="nomUsuario" for="nom"> Usuario: </label>
             <label id="nickInvalido" hidden="">Nickname o email inválido</label>
             <input oninput="verificarUsuario(this,nickInvalido,botonIngresar,botonIngresarDis)" id="nom" name="nomUsuario" placeholder="Escriba su nickname o email" required="" type="text"> 
@@ -19,6 +19,10 @@
             <input id="contra" name="contra" placeholder="Escriba su contraseña" required="" type="password">
             <input id="botonIngresar" class="botones" hidden="" value="Ingresar" type="submit">
             <input id="botonIngresarDis" class="botones"  disabled="" value="Ingresar" type="submit">
+        </form>
+        <form id="RegistrarC" name="Registrarse" action="http://www.google.com.uy" method="get">
+            <label for="botonReg" style="text-align: center" style="width: 100%">¿No tienes cuenta?</label> 
+            <input id="botonReg" class="botones" value="Registrarse" type="submit">
         </form>
     </body>
 </html>
