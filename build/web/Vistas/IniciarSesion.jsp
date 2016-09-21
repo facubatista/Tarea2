@@ -21,7 +21,7 @@
             <input id="botonIngresarDis" class="botones"  disabled="" value="Ingresar" type="submit">
         </form>
         <form id="RegistrarC" name="Registrarse" action="http://www.google.com.uy" method="get">
-            <label for="botonReg" style="text-align: center" style="width: 100%">¿No tienes cuenta?</label> 
+            <label for="botonReg" >¿No tienes cuenta?</label> 
             <input id="botonReg" class="botones" value="Registrarse" type="submit">
         </form>
     </body>
