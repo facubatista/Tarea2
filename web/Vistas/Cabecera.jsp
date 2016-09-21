@@ -16,7 +16,7 @@
             <div class="imagenYcarrito"> 
                 <img id="ImagenUsuario" src="Imag/IconoUsuario.png" alt="imagen de usuario" width="80">
 
-                <a class="botones" id="BotonCarrito" class="botones AlinearIzq" href="http://www.google.com.uy">Carrito de compras</a>
+                <a id="BotonCarrito" class="botones AlinearIzq" href="http://www.google.com.uy">Carrito de compras</a>
             </div>
             <div >
                 <h4><%=session.getAttribute("nomUsuario")%></h4>

@@ -7,8 +7,18 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <% DtPromocion p = (DtPromocion)request.getAttribute("promocion");
-        %>
-        <h1><%= p.getNombre() %></h1>
+        <div class="principal">
+            
+            <div class="fila">
+                <div class="doce columnas" id="colUno">
+                    
+                </div>
+            </div>
+            <div class="fila">
+                <div class="doce columnas" id="colDos">
+                    
+                </div>
+            </div>
+        </div>
     </body>
 </html>

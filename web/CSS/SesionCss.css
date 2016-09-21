@@ -8,7 +8,7 @@ and open the template in the editor.
     Author     : Kevin
 */
 
-#IniciarC{
+#IniciarC,#RegistrarC{
     width: 30%; 
     margin:0 auto;
     margin-top: 30px;
@@ -20,19 +20,26 @@ and open the template in the editor.
 #IniciarC label{
     width: 100%;
 }
-#IniciarC input{
+
+#RegistrarC label{
+    display:block;
+    width: 100%;
+    text-align: center;
+}
+
+#IniciarC input,#botonReg{
     width: 100%;
     margin-bottom: 50px;
     box-sizing: border-box;
     padding: 5px;
-    
+    margin-top: 5px;
 }
 
 #IniciarC input:focus{
     border: 1px solid #56CAAD;
 }
 
-#IniciarC input[type="submit"]{
+#IniciarC input[type="submit"],#botonReg{
     margin-bottom: 0px;
     background: #56CAAD;
     color: white;
@@ -42,7 +49,7 @@ and open the template in the editor.
     box-shadow: 3px 3px 3px grey;
 }
 
-#IniciarC input[type="submit"]:hover{
+#IniciarC input[type="submit"]:hover,#botonReg:hover{
     background: #81D9C3;
     box-shadow: 3px 3px 8px grey;
 }
