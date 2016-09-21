@@ -24,7 +24,6 @@ li > a{
   
   /*Estilo del link*/
   text-decoration: none;
-  color: rgb(255,255,255);
   background:rgba(0,0,0,0.5);
   font-family: helvetica, tahoma, sans;
   
@@ -33,7 +32,6 @@ li > a{
   
 }
 li > a:hover{
-  color: blueviolet;
   background: white;
   box-shadow: 0 3px 3px #333;
 }
@@ -62,8 +60,8 @@ table td > a{
   display: block;
   text-decoration: none;
   border-radius: 7px;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding-top: 8px;
+  padding-bottom: 10px;
 }
 table td > a:hover{
   box-shadow: 0 3px 3px #333;
@@ -84,6 +82,9 @@ table td > a:hover{
   background: rgba(255,255,255,0.5);
   box-shadow: 0 3px 3px #333;
   cursor: pointer;
+}
+.izquierda{
+  text-align: left;
 }
 
 /*layout*/

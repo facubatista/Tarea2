@@ -1,38 +1,38 @@
 package Servlets;
 
 import Logica.DtPromocion;
-import Logica.DtServicio;
 import Logica.Factory;
 import Logica.IcontProveedores;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet(name = "listarServProm", urlPatterns = {"/ServProm"})
-public class listarServProm extends HttpServlet {
+/**
+ *
+ * @author Facu
+ */
+public class verInfoPromocion extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
-        response.setContentType("text/html;charset=UTF-8");
         
         IcontProveedores cont = Factory.getInstance().crearContProveedores();
         
-        ArrayList<DtServicio> listaServicios = cont.listarServiciosBuscados(request.getParameter("busqueda"));
-        ArrayList<DtPromocion> listaPromociones = cont.listarPromocionesBuscadas(request.getParameter("busqueda"));
+        String nombre = request.getParameter("nombrePromocion");
+        String proveedor = request.getParameter("nombreProveedor");
         
-        request.setAttribute("listaServicios", listaServicios);
-        request.setAttribute("listaPromociones", listaPromociones);
+        DtPromocion p = cont.seleccionarPromocionAListar(proveedor, nombre);
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/servProm.jsp");
+        request.setAttribute("promocion", p);
+//        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/infoPromocion.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -51,7 +51,7 @@ public class listarServProm extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(listarServProm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(verInfoPromocion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -69,7 +69,7 @@ public class listarServProm extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(listarServProm.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(verInfoPromocion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

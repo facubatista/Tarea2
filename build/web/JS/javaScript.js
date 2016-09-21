@@ -69,7 +69,7 @@ function verificarUsuario(claveIngresada,mostrarMensaje,botonIngresar,botonIngre
     request.send("verificarUsuario="+claveUsuario);
     //alert(nickname);
     return false;
-}
+    }
 
 /*
 function verificarPassword(form){
@@ -85,3 +85,20 @@ function verificarPassword(form){
     request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     request.send("verificarPassword=verificar");
 }*/
+
+function cambiarImagen(numero){
+    
+    if(parseInt(numero) == 1)
+        document.getElementById("imgGrande").src = "Imag/prueba2.jpg";
+    
+    if(parseInt(numero) == 2)
+        document.getElementById("imgGrande").src = "Imag/prueba3.jpg";
+    
+    if(parseInt(numero) == 3)
+        document.getElementById("imgGrande").src = "Imag/prueba4.jpg";
+    
+    
+}
+function volverImagen(){
+    document.getElementById("imgGrande").src = "Imag/prueba.jpg";
+}

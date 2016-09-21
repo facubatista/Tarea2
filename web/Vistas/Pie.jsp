@@ -1,14 +1,16 @@
-<%@page import="Logica.DtPromocion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Pie</title>
+        <link rel ="stylesheet" href="CSS/Pie.css">
     </head>
     <body>
-        <% DtPromocion p = (DtPromocion)request.getAttribute("promocion");
-        %>
-        <h1><%= p.getNombre() %></h1>
+        <div class="fila">
+            <div id="Pie">
+                Pie
+            </div>
+        </div>
     </body>
 </html>
