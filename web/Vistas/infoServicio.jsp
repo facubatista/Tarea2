@@ -1,3 +1,8 @@
+<%@page import="java.io.ByteArrayOutputStream"%>
+<%@page import="java.awt.Graphics"%>
+<%@page import="java.awt.image.BufferedImage"%>
+<%@page import="java.io.File"%>
+<%@page import="java.io.File"%>
 <%@page import="javax.imageio.ImageIO"%>
 
 <%@page import="org.apache.tomcat.util.http.fileupload.IOUtils"%>
@@ -24,6 +29,21 @@
         <%
             DtServicio s = (DtServicio)request.getAttribute("servicio");
             
+            /*BufferedImage bi = new BufferedImage ( s.getImagenes().get(0).getImage().getWidth ( null ), s.getImagenes().get(0).getImage().getHeight ( null ), BufferedImage.TYPE_INT_ARGB );
+            Graphics bg = bi.getGraphics ();
+            bg.drawImage ( s.getImagenes().get(0).getImage(), 0, 0, null );
+            bg.dispose ();*/
+            BufferedImage bi = (BufferedImage)s.getImagenes().get(0).getImage();
+            
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            
+            ImageIO.write( bi, "jpg", baos );
+            baos.flush();
+            byte[] imageInByteArray = baos.toByteArray();
+            baos.close();
+            String b64 = javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray);
+            
+
         %>  
         
         <div class="principal">
@@ -31,7 +51,8 @@
             <div class="fila">
                 <div class="cinco columnas" id="colUno">
                     <center>
-                        <img id="imgGrande" src="Imag/prueba.jpg">
+                        <img id="imgGrande" src="data:image/jpg;base64, <%=b64%>" alt="Visruth.jpg not found">
+                        <%--<img id="imgGrande" src="imagen.jpg">--%>
                     </center>
                     <center>
                         <div id="imgChicas">
@@ -82,7 +103,7 @@
                                 <input type="hidden" id ="nombreServicio" value="<%= s.getNombre() %>" name="nombreServicio">
                                 <input type="hidden" id ="nombreProveedor" value="<%= s.getProveedor() %>" name="nombreProveedor">
                                 <input type="text" name="cantidad" id="txtCantidad" class="cantidad" onkeyup="calcularPrecio(this.parentElement.parentElement, <%= s.getPrecio() %>)">
-                                <input id ="agregar" type="submit" value="agregar al carrito" >
+                                <input id ="agregar" type="submit" value="Agregar al carrito" >
                             </form>
                         </div>
                         <div class="aMostrar" hidden="">

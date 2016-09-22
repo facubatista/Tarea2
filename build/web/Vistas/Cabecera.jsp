@@ -16,7 +16,7 @@
             <div class="imagenYcarrito"> 
                 <img id="ImagenUsuario" src="Imag/IconoUsuario.png" alt="imagen de usuario" width="80">
 
-                <a id="BotonCarrito" class="botones AlinearIzq" href="http://www.google.com.uy">Carrito de compras</a>
+                <a id="BotonCarrito" class="botones AlinearIzq" href="ServletCarrito?verCarrito=true">Carrito de compras</a>
             </div>
             <div >
                 <h4><%=session.getAttribute("nomUsuario")%></h4>
@@ -28,6 +28,6 @@
             </div>                                  
         </div>  
        <div class="doce columnas">
-           Vuelos > Empresas > Iberia
+           <label id="categorias">Vuelos > Empresas > Iberia</label>
        </div>
    </header>

@@ -6,6 +6,7 @@ header{
    background-color: #9AF399;
    width: 100%;
    overflow: hidden;
+  margin-bottom: 10px;
 }
 
 /*Logo H4T*/
@@ -18,7 +19,7 @@ header > .cuatro.columnas > img{
     box-sizing: border-box;
     font-family: helvetica, tahoma, sans;
     padding: 5px;
-    background: #2EADD7;
+    background: #3FACD3;
     color: white;
     border: none;
     border-radius: 6px;
@@ -94,11 +95,11 @@ header > #SesionUsuario > div > *{
 }
 
 header > .doce.columnas{
-    background: #2EADD7;
+    background: #3FACD3;
     margin-bottom:0px;
     box-sizing: border-box;
     color: white;  
-    padding: 5px
+    padding: 5px;
 }
 
 ul.clase{
@@ -135,71 +136,4 @@ li > a:hover{
   color: blueviolet;
   background: white;
   box-shadow: 0 3px 3px #333;
-}
-/*layout*/
-#colUno{
-  background: black;
-  color: white;
-}
-#colDos{
-  background: blue;
-}
-
-.columna, .columnas{
-  display: inline-block;
-  float:left;
-  margin: 0;
-}
-.una.columna, .una.columnas{
-  width: 8.33%;
-}
-.dos.columna, .dos.columnas{
-  width: 16.66%;
-}
-.tres.columna, .tres.columnas{
-  width: 24.99%;
-}
-.cuatro.columna, .cuatro.columnas{
-  width: 33.32%;
-}
-.cinco.columna, .cinco.columnas{
-  width: 41.65%;
-}
-.seis.columna, .seis.columnas {
-  width: 49.98%;
-}
-.siete.columna, .siete.columnas{
-  width: 58.31%;
-}
-.ocho.columna, ocho.columnas{
-  width: 66.64%;
-}
-.nueve.columna, nueve.columnas{
-  width: 74.97;
-}
-.diez.columna, diez.columnas{
-  width: 83.3;
-}
-.once.columna, once.columnas{
-  width: 91.63%;
-}
-.doce.columna, .doce.columnas{
-  width: 100%;
-}
-.principal{
-  width: 100%;
-  max-width: 960px;
-  margin: 0 auto;
-}
-.fila{
-  clear: both;
-}
-
-td{
-  min-width: 200px;
-  text-align: center;
-}
-
-th{
-    background: aquamarine;
 }

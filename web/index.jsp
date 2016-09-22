@@ -4,6 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Help4Traveling</title>
+        <link rel="stylesheet" href="CSS/Layout.css">
         <link rel="stylesheet" href="CSS/Cabecera.css">
         <link type="image/x-icon" rel="shortcut icon"  href="Imag/IconoH4T.ico">
     </head>
@@ -28,7 +29,7 @@
                 <div class="imagenYcarrito"> 
                     <img id="ImagenUsuario" src="Imag/IconoUsuario.png" alt="imagen de usuario" width="80">
                     
-                    <a class="botones" id="BotonCarrito" class="botones AlinearIzq" href="http://www.google.com.uy">Carrito de compras</a>
+                    <a class="botones" id="BotonCarrito" class="botones AlinearIzq" href="ServletCarrito?verCarrito=true">Carrito de compras</a>
                 </div>
                 <div >
                     <h4><%=session.getAttribute("nomUsuario")%></h4>

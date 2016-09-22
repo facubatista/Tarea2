@@ -4,6 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Iniciar Sesión</title>
+        <link rel="stylesheet" type="text/css" href="CSS/Layout.css"/>
         <link rel="stylesheet" type="text/css" href="CSS/Cabecera.css"/>
         <link rel="stylesheet" type="text/css" href="CSS/SesionCss.css"/>
         <script src="JS/javaScript.js"></script>

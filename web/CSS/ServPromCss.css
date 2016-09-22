@@ -1,10 +1,12 @@
 body{
   background: white;
 }
+
 ul.clase{
   background:#A4A4A4;
   width: 100%;
 }
+
 li, a{
   box-sizing: border-box;
 }

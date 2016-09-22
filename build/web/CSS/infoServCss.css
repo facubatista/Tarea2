@@ -6,20 +6,22 @@ body{
   height: 100%;
 }
 #colUno{
-  background: #2EADD7;
+  background: #C6EEFC;
   height: 315px;
 }
 #colDos{
-  background: #2EADD7;
+  background: #C6EEFC;
   height: 315px;
 }
 #colTres{
-  background: #2EADD7;
+  background: #C6EEFC;
   height: 180px;
+  margin-bottom: 10px;
 }
 #colCuatro{
-  background: #2EADD7;
+  background: #C6EEFC;
   height: 180px;
+  margin-bottom: 10px;
 }
 #imgGrande{
   max-width: 340px;
@@ -70,15 +72,19 @@ td{
 }
 #agregar{
   /*background:rgba(0,0,0,0);*/
-  background: rgba(255,255,255,0.5);
-  color: #2E2E2E;
+  background: #2EADD7;
+  color: white;
   border-radius: 7px
 }
 #agregar:hover{
-  color: black;
-  background: rgba(255,255,255,0.5);
+  color: white; 
+  background: #50C9F2;
   box-shadow: 0 3px 3px #333;
   cursor: pointer;
+}
+
+#agregar:active{
+  background: #219CC4;
 }
 
 
@@ -89,10 +95,11 @@ td{
 }
 
 #categorias > center > label{
-  background: #9AF399;
+  background: #2EADD7;
+  color:white;
   border-radius: 7px;
-  padding: 3px;
-  margin-right: 8px;
+  padding: 3px 8px;
+  margin-right: 5px;
 }
 
 .fila{

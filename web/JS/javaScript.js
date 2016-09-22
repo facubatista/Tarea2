@@ -51,7 +51,7 @@ function verificarUsuario(claveIngresada,mostrarMensaje,botonIngresar,botonIngre
         //Los status 200 y 4 indican que no hubo ningun problema
         if(this.status===200 && this.readyState ===4){
            //var json = JSON.parse(this.responseText);
-           if(this.responseText === 'false'){
+           if(this.responseText === 'false' && claveUsuario.length!==0){
            //if(json.verificacion[0].respuesta === 'false'){
                 mostrarMensaje.hidden = false;
                 botonIngresar.hidden = true;
@@ -88,13 +88,13 @@ function verificarPassword(form){
 
 function cambiarImagen(numero){
     
-    if(parseInt(numero) == 1)
+    if(parseInt(numero) === 1)
         document.getElementById("imgGrande").src = "Imag/prueba2.jpg";
     
-    if(parseInt(numero) == 2)
+    if(parseInt(numero) === 2)
         document.getElementById("imgGrande").src = "Imag/prueba3.jpg";
     
-    if(parseInt(numero) == 3)
+    if(parseInt(numero) === 3)
         document.getElementById("imgGrande").src = "Imag/prueba4.jpg";
     
     

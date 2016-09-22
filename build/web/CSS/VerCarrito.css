@@ -1,0 +1,61 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21/09/2016, 12:23:21 PM
+    Author     : Kevin
+*/
+
+.principal > #CarritoyTitulo{
+    background: #9AF399;
+    padding: 10px;
+    color:white;
+    font-weight: bold;
+}
+
+.principal > #CarritoyTitulo > *{
+    display: inline-block;
+}
+
+.principal > #CarritoyTitulo >img{
+    width:7%;
+    margin-left: 10%;
+}
+.principal > #CarritoyTitulo >p{
+    font-size: 45px;
+    margin:auto;
+}
+
+table *{
+    box-sizing: border-box;
+}
+
+thead.doce.columnas{
+    margin-bottom: 4px;
+    background: #3FACD3;
+    color: white;
+    padding:5px;
+}
+
+tbody td.nueve.columnas>img{
+    display: inline-block;
+    float: left;
+    margin-right: 5px;
+}
+
+tbody td.una.columnas{
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 6%
+}
+
+tbody tr{
+    background: #C6EEFC;
+    padding: 5px;
+    border-bottom: 5px white solid;
+}
+
+
