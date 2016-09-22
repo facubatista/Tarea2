@@ -59,7 +59,7 @@
                             }%>
                         </tbody>
                     </table>
-                        <table class="doce columnas" style="margin-top: 10px;">
+                        <table class="doce columnas">
                         <thead class="doce columnas">
                             <tr class="doce columnas">
                               <th class="nueve columnas" style="text-align: left">Promociones</th>

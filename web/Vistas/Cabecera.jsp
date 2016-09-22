@@ -8,7 +8,7 @@
        </div>
        <div class="cuatro columnas">
            <form id="formBuscar" action="ServProm" method="POST">
-               <input id="buscar" name="busqueda" placeholder="Servicio o Promoción" type="text">
+               <input id="buscar" name="busqueda" placeholder="Buscar servicio o promoción" type="text">
                <input value="Buscar" class="botones" type="submit">
            </form>
        </div>

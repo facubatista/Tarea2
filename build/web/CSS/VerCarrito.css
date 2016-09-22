@@ -28,12 +28,16 @@ and open the template in the editor.
     margin:auto;
 }
 
+table{
+    margin-top: 10px;
+}
+
 table *{
     box-sizing: border-box;
 }
 
 thead.doce.columnas{
-    margin-bottom: 4px;
+    margin-bottom: 2px;
     background: #3FACD3;
     color: white;
     padding:5px;
@@ -55,7 +59,7 @@ tbody td.una.columnas{
 tbody tr{
     background: #C6EEFC;
     padding: 5px;
-    border-bottom: 5px white solid;
+    border-bottom: 10px white solid;
 }
 
 
