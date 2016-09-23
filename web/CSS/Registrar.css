@@ -1,0 +1,99 @@
+#RegistrarC{
+    width: 60%; 
+    margin:0 auto;
+    margin-top: 30px;
+    padding: 10px;
+    border: 1px solid grey;
+    box-sizing: border-box;
+    background: skyblue;
+    border-radius: 6px;
+    box-shadow: 3px 3px 5px gray;
+}
+
+#RegistrarC .Principal{
+    display: block;
+    width: 90%;
+    height: 40px;
+    text-align: center;
+    background: blue;
+    font: 150% extra-expanded;
+    margin-left: 30px;
+    border-radius: 6px;
+    box-shadow: 2px 1px 3px gray;
+}
+
+#RegistrarC .label{
+    display: -moz-deck;
+    width: 35%;
+    text-align: center;
+    background:  steelblue;
+    font: 115% extra-expanded;
+    font-family: unset;
+    margin-inline-end: 10px;
+    margin-inline-start: 13px;
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+}
+
+#RegistrarC input{
+    width: 55%;
+    text-align: center;
+    border: repeating-radial-gradient;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#RegistrarC #dia{
+    width: 9%;
+    text-align: center;
+    border: -moz-repeating-radial-gradient;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+}
+#RegistrarC #anio{
+    width: 15%;
+    text-align: center;
+    border: -moz-repeating-radial-gradient;
+}
+#mes{
+    border: -moz-repeating-radial-gradient;
+}
+#RegistrarC #imagen{
+    text-align: left;
+}
+
+#RegistrarC .label2{
+    font: 110% all-petite-caps;
+    margin-inline-end: 6px;
+    margin-inline-start: 6px;
+}
+
+#RegistrarC #botonRegistrar{
+    background: red;
+    color: white;
+    border-style: hidden;
+    width: 90%;
+    font: 130% all-small-caps;
+    margin-inline-start: 25px;
+    height: 35px;
+    border-radius: 6px;
+}
+
+#RegistrarC #botonRegistrar:hover{
+    background: orangered;
+    box-shadow: 3px 3px 5px orange;
+}
+
+#RegistrarC #botonRegistrar:active{
+    background: brown;
+}
+
+#RegistrarC .labelerr{
+    background: red;
+    text-align: center;
+    margin-left: 230px;
+    margin-right: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+

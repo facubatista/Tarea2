@@ -21,7 +21,7 @@
             <input id="botonIngresar" class="botones" hidden="" value="Ingresar" type="submit">
             <input id="botonIngresarDis" class="botones"  disabled="" value="Ingresar" type="submit">
         </form>
-        <form id="RegistrarC" name="Registrarse" action="http://www.google.com.uy" method="get">
+        <form id="RegistrarC" name="Registrarse" action="/Tarea2/Vistas/AltaUsuario.jsp" method="get">
             <label for="botonReg" >¿No tienes cuenta?</label> 
             <input id="botonReg" class="botones" value="Registrarse" type="submit">
         </form>

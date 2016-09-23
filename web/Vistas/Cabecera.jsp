@@ -4,7 +4,7 @@
                session.setAttribute("nomUsuario", "Anonimo");
            %>
        <div class="cuatro columnas">
-           <img src="Imag/H4T.jpg" alt="imagen de header" width="250">
+           <img src="/Tarea2/Imag/H4T.jpg" alt="imagen de header" width="250">
        </div>
        <div class="cuatro columnas">
            <form id="formBuscar" action="ServProm" method="POST">
@@ -14,7 +14,7 @@
        </div>
        <div id="SesionUsuario" class="cuatro columnas">                
             <div class="imagenYcarrito"> 
-                <img id="ImagenUsuario" src="Imag/IconoUsuario.png" alt="imagen de usuario" width="80">
+                <img id="ImagenUsuario" src="/Tarea2/Imag/IconoUsuario.png" alt="imagen de usuario" width="80">
 
                 <a id="BotonCarrito" class="botones AlinearIzq" href="ServletCarrito?verCarrito=true">Carrito de compras</a>
             </div>
