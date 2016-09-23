@@ -29,6 +29,9 @@ header > .cuatro.columnas > img{
 .botones:hover{
     background: #50C9F2;
     box-shadow: 3px 3px 8px grey;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.5s;
 }
 .botones:active{
     background: #219CC4;
@@ -69,10 +72,11 @@ header > #SesionUsuario > div > *{
 }
 
 #BotonCarrito{
-    background:url(../Imag/carrito.png) no-repeat;
+    background:url(../Imag/imagenCarrito.png) no-repeat;
+    background-size: 14%;
     background-color: #2EADD7;
     background-position: center left;
-    padding-left: 30px;    
+    padding-left: 30px;   
 }
 
 #BotonCarrito:hover{
@@ -80,7 +84,7 @@ header > #SesionUsuario > div > *{
 }
 
 #formBuscar{
-    width: 60%;
+    width: 100%;
     color: white;
     margin:auto;
     margin-top: 100px;
@@ -91,7 +95,12 @@ header > #SesionUsuario > div > *{
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 15px;
-  padding-right: 15px;    
+  padding-right: 15px;
+  width:70%;
+}
+
+#formBuscar > input[type="text"]:focus{
+    border: 1px solid #3FACD3;
 }
 
 header > .doce.columnas{

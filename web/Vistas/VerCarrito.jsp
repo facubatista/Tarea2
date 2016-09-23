@@ -4,6 +4,7 @@
     Author     : Kevin
 --%>
 
+<%@page import="Logica.DtPromocion"%>
 <%@page import="Logica.DtServicio"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="Clases.carrito"%>
@@ -48,7 +49,7 @@
                             <tr class="doce columnas">
                                 <td class="nueve columnas">
                                     <img src="Imag/prueba2.jpg" style="width:25%;">
-                                    <h3><%= s.getNombre() %></h3>
+                                    <a href="<%= request.getContextPath()%>/InfoServicio?nombreServicio=<%= s.getNombre() %>&nombreProveedor=<%= s.getProveedor() %>"><%= s.getNombre() %></a>
                                     <p><%= s.getDescripcion() %></p>
                                 </td>
                                 <td class="una columnas">$<%= s.getPrecio() %></td>
@@ -59,36 +60,39 @@
                             }%>
                         </tbody>
                     </table>
-                        <table class="doce columnas" style="margin-top: 10px;">
+                        <table class="doce columnas">
                         <thead class="doce columnas">
                             <tr class="doce columnas">
                               <th class="nueve columnas" style="text-align: left">Promociones</th>
-                              <th class="una columnas">Precio</th>
-                              <th class="una columnas">Cantidad</th>
+                              <th class="una columnas">Proveedor</th>
+                              <th class="una columnas">Descuento</th>
                               <th class="una columnas">Total</th>
                             </tr>
                         </thead>
                         <tbody class="doce columnas">
                             <%if(car!=null){
-                                Iterator<DtServicio> it = car.getServicios().iterator();
+                                Iterator<DtPromocion> it = car.getPromociones().iterator();
                                 
                                 while(it.hasNext()){
-                                    DtServicio s = it.next();
+                                    DtPromocion p = it.next();
                             %>
                             <tr class="doce columnas">
                                 <td class="nueve columnas">
                                     <img src="Imag/prueba3.jpg" style="width:25%;">
-                                    <h3><%= s.getNombre() %></h3>
-                                    <p><%= s.getDescripcion() %></p>
+                                    <a href="<%= request.getContextPath()%>/InfoPromocion?nombrePromocion=<%= p.getNombre() %>&nombreProveedor=<%= p.getProveedor() %>"><%= p.getNombre() %></a>
+                                    <p>laskaskdmklasmdlskdmlkasdmlaksmdlaksmdlkasmdlam</p>
                                 </td>
-                                <td class="una columnas">$<%= s.getPrecio() %></td>
-                                <td class="una columnas"><%= s.getPrecio() %></td>
-                                <td class="una columnas">$<%= s.getPrecio() %></td>
+                                <td class="una columnas"><%= p.getProveedor() %></td>
+                                <td class="una columnas"><%= p.getPorcentaje() %></td>
+                                <td class="una columnas">$<%= p.getTotal() %></td>
                             </tr>
                             <%  }
                             }%>
                         </tbody>
                     </table>    
+            </div>
+            <div class="fila">
+                <a class="botones" href="http://i.imgur.com/TUcQR.jpg">Confirmar Reserva</a>
             </div>
         </div>
     </body>

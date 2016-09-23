@@ -26,6 +26,11 @@ and open the template in the editor.
 .principal > #CarritoyTitulo >p{
     font-size: 45px;
     margin:auto;
+    margin-left: 1%;
+}
+
+table{
+    margin-top: 10px;
 }
 
 table *{
@@ -33,7 +38,7 @@ table *{
 }
 
 thead.doce.columnas{
-    margin-bottom: 4px;
+    margin-bottom: 2px;
     background: #3FACD3;
     color: white;
     padding:5px;
@@ -55,7 +60,30 @@ tbody td.una.columnas{
 tbody tr{
     background: #C6EEFC;
     padding: 5px;
-    border-bottom: 5px white solid;
+    border-bottom: 10px white solid;
 }
 
+td > a{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 19px;
+    color: black;    
+    padding: 5px;
+}
 
+td > a:hover{
+    text-decoration: underline;
+}
+
+td > a:active{
+    background: #3FACD3;
+    color:white;
+}
+
+.principal > div >  a {
+    margin-top: 10px;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
