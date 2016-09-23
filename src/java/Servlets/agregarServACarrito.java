@@ -46,6 +46,8 @@ public class agregarServACarrito extends HttpServlet {
             }
             sesion.setAttribute("carrito", car);
             response.getWriter().println("{respuesta:'ok', facu:'puto'}");
+            //response.getOutputStream();
+            
         }
     }
 
