@@ -1,4 +1,4 @@
-function agregarACarrito(o){
+function agregarSACarrito(o){
     
     var servicio = o.querySelector("input[name=nombreServicio]").value;
     var proveedor = o.querySelector("input[name=nombreProveedor]").value;

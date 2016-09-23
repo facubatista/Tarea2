@@ -55,7 +55,7 @@
                                     <td><%= s.getProveedor() %></td>
                                     <td>
                                         <div class="aOcultar">
-                                            <form <%--action="agregarSCarrito--%> onsubmit="return agregarACarrito(this.parentElement.parentElement)" name="formAgregar">
+                                            <form <%--action="agregarSCarrito--%> onsubmit="return agregarSACarrito(this.parentElement.parentElement)" name="formAgregar">
                                                 <input type="hidden" id ="nombreServicio" value="<%= s.getNombre() %>" name="nombreServicio">
                                                 <input type="hidden" id ="nombreProveedor" value="<%= s.getProveedor() %>" name="nombreProveedor">
                                                 <input type="text" name="cantidad" id="txtCantidad" class="cantidad" onkeyup="calcularPrecio(this.parentElement.parentElement, <%= s.getPrecio() %>)">
@@ -91,7 +91,7 @@
                                                 <input type="hidden" id ="nombrePromocion" value="<%= p.getNombre() %>" name="nombrePromocion">
                                                 <input type="hidden" id ="nombreProveedor" value="<%= p.getProveedor() %>" name="nombreProveedor">
                                                 <input type="text" name="cantidad" id="txtCantidad" class="cantidad" onkeyup="calcularPrecio(this.parentElement.parentElement, <%= p.getTotal() %>)">
-                                                <input id ="agregar" type="submit" value="agregar al carrito" >
+                                                <input id ="agregar" type="submit" value="agregar al carrito" ><!-- cambiar esto!-->
                                             </form>
                                                 <label class="precio">Precio: <%= p.getTotal() %></label>
                                         </div>

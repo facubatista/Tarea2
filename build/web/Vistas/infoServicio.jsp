@@ -38,7 +38,7 @@
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             
             ImageIO.write( bi, "jpg", baos );
-            baos.flush();
+            //baos.flush();
             byte[] imageInByteArray = baos.toByteArray();
             baos.close();
             String b64 = javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray);
@@ -51,6 +51,7 @@
             <div class="fila">
                 <div class="cinco columnas" id="colUno">
                     <center>
+                        <p><%= s.getImagenes().get(0).toString() %></p>
                         <img id="imgGrande" src="data:image/jpg;base64, <%=b64%>" alt="Visruth.jpg not found">
                         <%--<img id="imgGrande" src="imagen.jpg">--%>
                     </center>
