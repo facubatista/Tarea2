@@ -72,10 +72,11 @@ header > #SesionUsuario > div > *{
 }
 
 #BotonCarrito{
-    background:url(../Imag/carrito.png) no-repeat;
+    background:url(../Imag/imagenCarrito.png) no-repeat;
+    background-size: 14%;
     background-color: #2EADD7;
     background-position: center left;
-    padding-left: 30px;    
+    padding-left: 30px;   
 }
 
 #BotonCarrito:hover{

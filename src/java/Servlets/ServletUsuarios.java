@@ -7,7 +7,6 @@ package Servlets;
 
 import Logica.Factory;
 import Logica.IcontClientes;
-import Logica.contCliente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -48,12 +47,13 @@ public class ServletUsuarios extends HttpServlet {
                 
         //Iniciar Sesión
         String nomUsuario = request.getParameter("nomUsuario");
-        if(sesion.getAttribute("nomUsuario").equals("Anonimo") && nomUsuario!=null){
+        if(sesion.getAttribute("nickUsuario")==null && nomUsuario!=null){
             nomUsuario=cont.verificarUsuario(nomUsuario);//Retorna el nickname
+            sesion.setAttribute("nickUsuario", nomUsuario);
             //Se toman el nombre y el apellido del usuario para mostrarlo en la cabecera
             nomUsuario = cont.seleccionarClienteAListar(nomUsuario).getNombre()+" "+cont.seleccionarClienteAListar(nomUsuario).getApellido();
             //Se setea el nombre de usuario en la sesion
-            sesion.setAttribute("nomUsuario", nomUsuario);
+            sesion.setAttribute("nomUsuario", nomUsuario);//Es el nombre para mostrar en el header
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
         }
@@ -92,15 +92,10 @@ public class ServletUsuarios extends HttpServlet {
             throws ServletException, IOException {
         HttpSession sesion = request.getSession();
         
-        //Ir a la pagina de Iniciar Sesión
-        if(request.getParameter("Sesion").equals("Iniciar")){
-            RequestDispatcher dispatcher = request.getRequestDispatcher("Vistas/IniciarSesion.jsp");
-            dispatcher.forward(request, response);
-        }
-        
         //Cerrar Sesión
         if(request.getParameter("Sesion").equals("Cerrar") /*&& sesion.getAttribute("nomUsuario").equals("Anonimo")==false*/){
             sesion.setAttribute("nomUsuario", "Anonimo");
+            sesion.removeAttribute("nickUsuario");
             
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);

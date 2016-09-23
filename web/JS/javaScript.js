@@ -44,7 +44,7 @@ function calcularPrecio(objeto, precioS){
     }
 }
 
-function verificarUsuario(claveIngresada,mostrarMensaje,botonIngresar,botonIngresarDis){
+function verificarUsuario(claveIngresada){
     var claveUsuario = claveIngresada.value;
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
@@ -53,18 +53,18 @@ function verificarUsuario(claveIngresada,mostrarMensaje,botonIngresar,botonIngre
            //var json = JSON.parse(this.responseText);
            if(this.responseText === 'false' && claveUsuario.length!==0){
            //if(json.verificacion[0].respuesta === 'false'){
-                mostrarMensaje.hidden = false;
-                botonIngresar.hidden = true;
-                botonIngresarDis.hidden = false;
+                document.getElementById("nickInvalido").hidden = false;
+                document.getElementById("botonIngresar").hidden = true;
+                document.getElementById("botonIngresarDis").hidden = false;
            }else{
-               mostrarMensaje.hidden = true;
-               botonIngresar.hidden = false;
-               botonIngresarDis.hidden = true;
+               document.getElementById("nickInvalido").hidden = true;
+               document.getElementById("botonIngresar").hidden = false;
+               document.getElementById("botonIngresarDis").hidden = true;
            }
         }
         console.log(this);
     };
-    request.open("POST","ServUsuarios",true );
+    request.open("POST","../ServUsuarios",true );
     request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     request.send("verificarUsuario="+claveUsuario);
     //alert(nickname);
