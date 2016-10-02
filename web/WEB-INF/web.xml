@@ -20,6 +20,10 @@
         <servlet-name>verInfoPromocion</servlet-name>
         <servlet-class>Servlets.verInfoPromocion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>agregarPromACarrito</servlet-name>
+        <servlet-class>Servlets.agregarPromACarrito</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>verInfoServProm</servlet-name>
         <url-pattern>/infoSerProm</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>verInfoPromocion</servlet-name>
         <url-pattern>/InfoPromocion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>agregarPromACarrito</servlet-name>
+        <url-pattern>/agregarPCarrito</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

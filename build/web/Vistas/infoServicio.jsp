@@ -72,29 +72,29 @@
             
             <div class="fila">
                 <div class="seis columnas" id="colTres">
-                    <table>
-                        <thead>
-                            <tr>
-                              <th>Proveedor</th>
-                              <th>Origen</th>
-                              <th>Destino</th>
-                              <th>Precio</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><%= s.getProveedor() %></td>
-                                <td><%= s.getOrigen() %></td>
-                                <%if(s.getDestino() == null){%>
-                                    <td>-------------</td>
-                                <%}else{%>
-                                    <td><%= s.getDestino() %></td>
-                                <%}%>
-                                
-                                <td><%= s.getPrecio() %></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <table>
+                            <thead>
+                                <tr>
+                                  <th>Proveedor</th>
+                                  <th>Origen</th>
+                                  <th>Destino</th>
+                                  <th>Precio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><%= s.getProveedor() %></td>
+                                    <td><%= s.getOrigen() %></td>
+                                    <%if(s.getDestino() == null){%>
+                                        <td>-------------</td>
+                                    <%}else{%>
+                                        <td><%= s.getDestino() %></td>
+                                    <%}%>
+                                    
+                                    <td><%= s.getPrecio() %></td>
+                                </tr>
+                            </tbody>
+                        </table>
                 </div>
                 
                 <div class="seis columnas" id="colCuatro">
