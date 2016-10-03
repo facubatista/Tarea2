@@ -14,9 +14,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Carrito de compras</title>
-        <link rel="stylesheet" type="text/css" href="CSS/Layout.css"/>
-        <link rel="stylesheet" type="text/css" href="CSS/Cabecera.css"/>
-        <link rel="stylesheet" type="text/css" href="CSS/VerCarrito.css"/>
+        <link rel="stylesheet" type="text/css" href="/Tarea2/CSS/Layout.css"/>
+        <link rel="stylesheet" type="text/css" href="/Tarea2/CSS/Cabecera.css"/>
+        <link rel="stylesheet" type="text/css" href="/Tarea2/CSS/VerCarrito.css"/>
     </head>
     <body>
         <jsp:include page="Cabecera.jsp" />
@@ -26,7 +26,7 @@
         %>
         <div class="principal">
             <div class="fila" id="CarritoyTitulo">
-                <img src="Imag/imagenCarrito.png" alt="imagen de carrito">
+                <img src="/Tarea2/Imag/imagenCarrito.png" alt="imagen de carrito">
                 <p>Carrito de compras</p>
             </div>
             <div class="fila">
@@ -48,7 +48,7 @@
                             %>
                             <tr class="doce columnas">
                                 <td class="nueve columnas">
-                                    <img src="Imag/prueba2.jpg" style="width:25%;">
+                                    <img src="/Tarea2/Imag/prueba2.jpg" style="width:25%;">
                                     <a href="<%= request.getContextPath()%>/InfoServicio?nombreServicio=<%= s.getNombre() %>&nombreProveedor=<%= s.getProveedor() %>"><%= s.getNombre() %></a>
                                     <p><%= s.getDescripcion() %></p>
                                 </td>
@@ -78,7 +78,7 @@
                             %>
                             <tr class="doce columnas">
                                 <td class="nueve columnas">
-                                    <img src="Imag/prueba3.jpg" style="width:25%;">
+                                    <img src="/Tarea2/Imag/prueba3.jpg" style="width:25%;">
                                     <a href="<%= request.getContextPath()%>/InfoPromocion?nombrePromocion=<%= p.getNombre() %>&nombreProveedor=<%= p.getProveedor() %>"><%= p.getNombre() %></a>
                                     <p>laskaskdmklasmdlskdmlkasdmlaksmdlaksmdlkasmdlam</p>
                                 </td>

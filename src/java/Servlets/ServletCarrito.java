@@ -5,9 +5,8 @@
  */
 package Servlets;
 
+import Clases.carrito;
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +31,8 @@ public class ServletCarrito extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");            
+        response.setContentType("text/html;charset=UTF-8");
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -47,10 +47,6 @@ public class ServletCarrito extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if(request.getParameter("verCarrito")!=null){
-            RequestDispatcher dispatcher = request.getRequestDispatcher("Vistas/VerCarrito.jsp");
-            dispatcher.forward(request, response);
-        }
     }
 
     /**
