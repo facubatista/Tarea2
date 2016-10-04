@@ -51,6 +51,8 @@ public class ServletUsuarios extends HttpServlet {
             nomUsuario=cont.verificarUsuario(nomUsuario);//Retorna el nickname
             sesion.setAttribute("nickUsuario", nomUsuario);
             sesion.setAttribute("DtCliente", cont.seleccionarClienteAListar(nomUsuario));//DtCliente para Ver Perfil
+            sesion.setAttribute("ReservasCli", cont.listarResDeCli(nomUsuario));
+            
             //Se toman el nombre y el apellido del usuario para mostrarlo en la cabecera
             nomUsuario = cont.seleccionarClienteAListar(nomUsuario).getNombre()+" "+cont.seleccionarClienteAListar(nomUsuario).getApellido();
             //Se setea el nombre de usuario en la sesion

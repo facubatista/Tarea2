@@ -73,7 +73,6 @@ header > #SesionUsuario > div > *{
     width:100px;
 }
 
-
 #VerPerfil{
     margin-top: 40px;
     text-decoration: none;
@@ -84,6 +83,11 @@ header > #SesionUsuario > div > *{
 
 #VerPerfil:hover{
     text-decoration: underline;    
+}
+
+header h4{
+   margin-top: 40px; 
+   margin-bottom: 15px;
 }
 
 #BotonCarrito{
@@ -128,40 +132,4 @@ header > .doce.columnas{
     box-sizing: border-box;
     color: white;  
     padding: 5px;
-}
-
-ul.clase{
-  background:aqua;
-  width: 85%;
-}
-li, a, div{
-  box-sizing: border-box;
-}
-li{
-  list-style: none;
-  display: inline-block;
-  /*width:100px;
-  text-align: center;*/
-  margin-right: 1px;
-}
-li > a{
-  /*modelo de caja*/
-  width:250px;
-  display: block;
-  text-align: center;
-  padding: 5px;
-  
-  /*Estilo del link*/
-  text-decoration: none;
-  color: rgb(255,255,255);
-  background:rgba(0,0,0,0.5);
-  font-family: helvetica, tahoma, sans;
-  
-  /*otros estilos*/
-  border-radius: 6px;
-}
-li > a:hover{
-  color: blueviolet;
-  background: white;
-  box-shadow: 0 3px 3px #333;
 }

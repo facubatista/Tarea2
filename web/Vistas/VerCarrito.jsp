@@ -17,6 +17,7 @@
         <link rel="stylesheet" type="text/css" href="/Tarea2/CSS/Layout.css"/>
         <link rel="stylesheet" type="text/css" href="/Tarea2/CSS/Cabecera.css"/>
         <link rel="stylesheet" type="text/css" href="/Tarea2/CSS/VerCarrito.css"/>
+        <script src="/Tarea2/JS/javaScript.js"></script>
     </head>
     <body>
         <jsp:include page="Cabecera.jsp" />

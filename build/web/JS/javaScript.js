@@ -69,7 +69,7 @@ function verificarUsuario(claveIngresada){
     request.send("verificarUsuario="+claveUsuario);
     //alert(nickname);
     return false;
-    }
+}
 
 /*
 function verificarPassword(form){
@@ -101,4 +101,19 @@ function cambiarImagen(numero){
 }
 function volverImagen(){
     document.getElementById("imgGrande").src = "Imag/prueba.jpg";
+}
+
+function cambiarPestania(pestania) {
+    
+    if(pestania.id==="mostrarRes"){
+        document.getElementById("infoCliente").hidden = true;
+        document.getElementById("resCliente").hidden = false;              
+    }else{
+        document.getElementById("infoCliente").hidden = false;
+        document.getElementById("resCliente").hidden = true;
+    }
+    
+    /*Cambia el borde de la pestanña seleccionada y la otra*/
+    document.querySelector("a[class=selec]").className = "NOselec";
+    pestania.className = "selec";
 }
