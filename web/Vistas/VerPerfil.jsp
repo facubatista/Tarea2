@@ -32,7 +32,11 @@
         <div class="principal">
             
             <div class="fila" id="FotoyNombre">
-                <img src="/Tarea2/Imag/prueba3.jpg" alt="foto del usuario">
+                <%if(cliente.getImagen()!=null){%>
+                <img src="/Tarea2/Imag/prueba3.jpg" alt="foto del usuario"><!--Cambiar por imagen del usuario-->
+                <%}else{%>
+                <img src="/Tarea2/Imag/IconoUsuario.png" alt="imagen alternativa del usuario" class="Alternativa"> 
+                <%}%>                
                 <p><%= cliente.getNombre()+" "+cliente.getApellido()%></p>
             </div>
             
@@ -45,7 +49,11 @@
             
             <div id="infoCliente" class="fila">
                 <div class="fila">
+                    <%if(cliente.getImagen()!=null){%>
                     <img src="/Tarea2/Imag/prueba3.jpg" style="width:25%;">
+                    <%}else{%>
+                    <img src="/Tarea2/Imag/IconoUsuario.png" alt="imagen alternativa del usuario" class="Alternativa"> 
+                    <%}%> 
                     <h4>Nickname: <%= cliente.getNickname() %><h4>
                     <h4>Nombre: <%= cliente.getNombre() %><h4>
                     <h4>Apellido: <%= cliente.getApellido() %><h4>

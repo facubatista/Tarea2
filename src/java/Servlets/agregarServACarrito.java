@@ -43,6 +43,7 @@ public class agregarServACarrito extends HttpServlet {
             for(int i = 0; i<cantidad; i++){
                 DtServicio s = cont.seleccionarServicioAListar(proveedor, nombre);
                 car.setServicio(s);
+                car.setTotal(s.getPrecio());
             }
             sesion.setAttribute("carrito", car);
             response.getWriter().println("{respuesta:'ok', facu:'puto'}");

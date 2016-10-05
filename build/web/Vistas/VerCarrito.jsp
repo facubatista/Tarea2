@@ -30,7 +30,20 @@
                 <img src="/Tarea2/Imag/imagenCarrito.png" alt="imagen de carrito">
                 <p>Carrito de compras</p>
             </div>
+            <%if(car!=null){ %>
             <div class="fila">
+                <%
+                Iterator<DtServicio> it = car.getServicios().iterator();
+
+                //Si no hay servicios ni promociones no se muestran el total y el confirmar reserva
+                boolean hayServicios=false;
+                if(it.hasNext()){
+                    hayServicios=true;
+                }                                
+
+                while(it.hasNext()){
+                    DtServicio s = it.next();
+                 %>
                 <table class="doce columnas" style="margin-top: 10px">
                     <thead class="doce columnas">
                             <tr class="doce columnas">
@@ -41,12 +54,6 @@
                             </tr>
                         </thead>
                         <tbody class="doce columnas">
-                            <%if(car!=null){
-                                Iterator<DtServicio> it = car.getServicios().iterator();
-                                
-                                while(it.hasNext()){
-                                    DtServicio s = it.next();
-                            %>
                             <tr class="doce columnas">
                                 <td class="nueve columnas">
                                     <img src="/Tarea2/Imag/prueba2.jpg" style="width:25%;">
@@ -57,9 +64,20 @@
                                 <td class="una columnas"><%= s.getPrecio() %></td>
                                 <td class="una columnas">$<%= s.getPrecio() %></td>
                             </tr>
-                            <%  }
-                            }%>
+                <%}%>
                         </tbody>
+                    <%
+                            Iterator<DtPromocion> itP = car.getPromociones().iterator();
+                            
+                            //Si no hay servicios ni promociones no se muestran el total y el confirmar reserva
+                            boolean hayPromos=false;
+                            if(itP.hasNext()){
+                                hayPromos=true;
+                            }
+                            
+                            while(itP.hasNext()){
+                                DtPromocion p = itP.next();
+                        %>
                     </table>
                         <table class="doce columnas">
                         <thead class="doce columnas">
@@ -71,12 +89,6 @@
                             </tr>
                         </thead>
                         <tbody class="doce columnas">
-                            <%if(car!=null){
-                                Iterator<DtPromocion> it = car.getPromociones().iterator();
-                                
-                                while(it.hasNext()){
-                                    DtPromocion p = it.next();
-                            %>
                             <tr class="doce columnas">
                                 <td class="nueve columnas">
                                     <img src="/Tarea2/Imag/prueba3.jpg" style="width:25%;">
@@ -87,14 +99,25 @@
                                 <td class="una columnas"><%= p.getPorcentaje() %></td>
                                 <td class="una columnas">$<%= p.getTotal() %></td>
                             </tr>
-                            <%  }
-                            }%>
+                            <%  }%>
+                           
                         </tbody>
                     </table>    
             </div>
+             
+                <%if(hayPromos || hayServicios){%>
+            <table class="doce columnas">
+                <thead class="doce columnas">
+                    <tr class="doce columnas">
+                      <th class="doce columnas" style="text-align: left;">Total de reserva: $<%= car.getTotal() %></th>
+                    </tr>
+                </thead>
+            </table> 
             <div class="fila">
                 <a class="botones" href="http://i.imgur.com/TUcQR.jpg">Confirmar Reserva</a>
             </div>
+                <%}
+            }%>
         </div>
     </body>
 </html>
