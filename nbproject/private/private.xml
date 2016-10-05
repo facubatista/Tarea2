@@ -5,7 +5,9 @@
         <group>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/Cabecera.jsp</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/CSS/Cabecera.css</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/verInfoPromocion.java</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/infoPromocion.jsp</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/ServletUsuarios.java</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/agregarPromACarrito.java</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/agregarServACarrito.java</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/servProm.jsp</file>
@@ -15,6 +17,7 @@
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/infoServicio.jsp</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/Pie.jsp</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/ServletCarrito.java</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/verInfoServicio.java</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/IniciarSesion.jsp</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/JS/javaScript.js</file>
         </group>

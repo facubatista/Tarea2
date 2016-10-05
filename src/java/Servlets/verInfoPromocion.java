@@ -1,11 +1,13 @@
 package Servlets;
 
 import Logica.DtPromocion;
+import Logica.DtServicio;
 import Logica.Factory;
 import Logica.IcontProveedores;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -29,6 +31,16 @@ public class verInfoPromocion extends HttpServlet {
         String proveedor = request.getParameter("nombreProveedor");
         
         DtPromocion p = cont.seleccionarPromocionAListar(proveedor, nombre);
+        
+        Iterator<String> it = p.getServicios().iterator();
+        
+        ArrayList<DtServicio> listaServ = new ArrayList<>();
+        while(it.hasNext()){
+            listaServ.add(cont.seleccionarServicioAListar(proveedor, it.next()));
+        }
+        
+        if(!listaServ.isEmpty())
+            request.setAttribute("listaServicios", listaServ);
         
         request.setAttribute("promocion", p);
 //        

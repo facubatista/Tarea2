@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.io.ByteArrayOutputStream"%>
 <%@page import="java.awt.Graphics"%>
 <%@page import="java.awt.image.BufferedImage"%>
@@ -29,19 +30,27 @@
         <%
             DtServicio s = (DtServicio)request.getAttribute("servicio");
             
+            ArrayList<byte[]> listaImagenes = (ArrayList)request.getAttribute("listaImagenes");
+            
             /*BufferedImage bi = new BufferedImage ( s.getImagenes().get(0).getImage().getWidth ( null ), s.getImagenes().get(0).getImage().getHeight ( null ), BufferedImage.TYPE_INT_ARGB );
             Graphics bg = bi.getGraphics ();
             bg.drawImage ( s.getImagenes().get(0).getImage(), 0, 0, null );
-            bg.dispose ();*/
-            BufferedImage bi = (BufferedImage)s.getImagenes().get(0).getImage();
+            bg.dispose ();
+            */
+            /*BufferedImage bi = (BufferedImage)s.getImagenes().get(0).getImage();
             
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            
+            
             
             ImageIO.write( bi, "jpg", baos );
             //baos.flush();
             byte[] imageInByteArray = baos.toByteArray();
-            baos.close();
-            String b64 = javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray);
+            baos.close();*/
+            Iterator<byte[]> iterator = listaImagenes.iterator();
+            String b64 = javax.xml.bind.DatatypeConverter.printBase64Binary(iterator.next());
+            
+            //byte[] encoded = Base64.getEncoder().encode(listaImagenes.get(0));
             
 
         %>  
