@@ -16,6 +16,7 @@ header > .cuatro.columnas > img{
 
 .botones{
     box-shadow: 3px 3px 3px grey;
+    font-weight: bold;
     box-sizing: border-box;
     font-family: helvetica, tahoma, sans;
     padding: 5px;
@@ -64,15 +65,33 @@ header > #SesionUsuario > div > *{
 }
 
 #ImagenUsuario{
-  margin: 15px;
+    margin: 15px;
+    margin-right: 30px;
     display: block;
     background: white;
     border-radius: 50%;
     width:100px;
 }
 
+#VerPerfil{
+    margin-top: 40px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: black;
+}
+
+#VerPerfil:hover{
+    text-decoration: underline;    
+}
+
+header h4{
+   margin-top: 40px; 
+   margin-bottom: 15px;
+}
+
 #BotonCarrito{
-    background:url(../Imag/imagenCarrito.png) no-repeat;
+    background:url(/Tarea2/Imag/imagenCarrito.png) no-repeat;
     background-size: 14%;
     background-color: #2EADD7;
     background-position: center left;
@@ -81,6 +100,10 @@ header > #SesionUsuario > div > *{
 
 #BotonCarrito:hover{
     background-color: #50C9F2;
+}
+
+#BotonCarrito:active{
+    background-color: #219CC4;
 }
 
 #formBuscar{
@@ -109,40 +132,4 @@ header > .doce.columnas{
     box-sizing: border-box;
     color: white;  
     padding: 5px;
-}
-
-ul.clase{
-  background:aqua;
-  width: 85%;
-}
-li, a, div{
-  box-sizing: border-box;
-}
-li{
-  list-style: none;
-  display: inline-block;
-  /*width:100px;
-  text-align: center;*/
-  margin-right: 1px;
-}
-li > a{
-  /*modelo de caja*/
-  width:250px;
-  display: block;
-  text-align: center;
-  padding: 5px;
-  
-  /*Estilo del link*/
-  text-decoration: none;
-  color: rgb(255,255,255);
-  background:rgba(0,0,0,0.5);
-  font-family: helvetica, tahoma, sans;
-  
-  /*otros estilos*/
-  border-radius: 6px;
-}
-li > a:hover{
-  color: blueviolet;
-  background: white;
-  box-shadow: 0 3px 3px #333;
 }

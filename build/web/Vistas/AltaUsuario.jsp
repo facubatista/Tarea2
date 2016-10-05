@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="../CSS/Registrar.css"/>
         <script src="../JS/jQuery.js"></script>
         <script src="../JS/jreserva.js"></script>
+        <script src="/Tarea2/JS/javaScript.js"></script>
     </head>
     <body>
         <jsp:include page="Cabecera.jsp" /> 

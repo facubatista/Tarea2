@@ -50,10 +50,13 @@ public class ServletUsuarios extends HttpServlet {
         if(sesion.getAttribute("nickUsuario")==null && nomUsuario!=null){
             nomUsuario=cont.verificarUsuario(nomUsuario);//Retorna el nickname
             sesion.setAttribute("nickUsuario", nomUsuario);
+            sesion.setAttribute("DtCliente", cont.seleccionarClienteAListar(nomUsuario));//DtCliente para Ver Perfil
+            sesion.setAttribute("ReservasCli", cont.listarResDeCli(nomUsuario));
+            
             //Se toman el nombre y el apellido del usuario para mostrarlo en la cabecera
             nomUsuario = cont.seleccionarClienteAListar(nomUsuario).getNombre()+" "+cont.seleccionarClienteAListar(nomUsuario).getApellido();
             //Se setea el nombre de usuario en la sesion
-            sesion.setAttribute("nomUsuario", nomUsuario);//Es el nombre para mostrar en el header
+            sesion.setAttribute("nomUsuario", nomUsuario);//Es el nombre para mostrar en el header            
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
         }
@@ -90,15 +93,22 @@ public class ServletUsuarios extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession sesion = request.getSession();
         
-        //Cerrar Sesión
-        if(request.getParameter("Sesion").equals("Cerrar") /*&& sesion.getAttribute("nomUsuario").equals("Anonimo")==false*/){
-            sesion.setAttribute("nomUsuario", "Anonimo");
-            sesion.removeAttribute("nickUsuario");
+        try {
+            IcontClientes cont = Factory.getInstance().crearContCliente();
+            HttpSession sesion = request.getSession();
             
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.forward(request, response);
+            //Cerrar Sesión
+            if(request.getParameter("Sesion").equals("Cerrar") /*&& sesion.getAttribute("nomUsuario").equals("Anonimo")==false*/){
+                sesion.setAttribute("nomUsuario", "Anonimo");
+                sesion.removeAttribute("nickUsuario");
+                
+                RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+                dispatcher.forward(request, response);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServletUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
