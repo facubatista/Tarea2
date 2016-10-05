@@ -1,51 +1,51 @@
 package Servlets;
 
+import Clases.carrito;
 import Logica.DtPromocion;
 import Logica.DtServicio;
 import Logica.Factory;
 import Logica.IcontProveedores;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Facu
- */
-public class verInfoPromocion extends HttpServlet {
+public class agregarPromACarrito extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
-        
-        IcontProveedores cont = Factory.getInstance().crearContProveedores();
-        
-        String nombre = request.getParameter("nombrePromocion");
-        String proveedor = request.getParameter("nombreProveedor");
-        
-        DtPromocion p = cont.seleccionarPromocionAListar(proveedor, nombre);
-        
-        Iterator<String> it = p.getServicios().iterator();
-        
-        ArrayList<DtServicio> listaServ = new ArrayList<>();
-        while(it.hasNext()){
-            listaServ.add(cont.seleccionarServicioAListar(proveedor, it.next()));
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            
+            String nombre = request.getParameter("nombrePromocion");
+            String proveedor = request.getParameter("nombreProveedor");
+            int cantidad = Integer.parseInt(request.getParameter("cantidad"));
+            
+            IcontProveedores cont = Factory.getInstance().crearContProveedores();
+            
+            HttpSession sesion = request.getSession();
+            
+            carrito car;
+            
+            if(sesion.getAttribute("carrito")==null){
+                car = new carrito();
+                sesion.setAttribute("carrito", car);
+            }else
+                car = (carrito) sesion.getAttribute("carrito");
+            
+            for(int i = 0; i<cantidad; i++){
+                DtPromocion p = cont.seleccionarPromocionAListar(proveedor, nombre);
+                car.setPromocion(p);
+            }
+            sesion.setAttribute("carrito", car);
+            response.getWriter().println("{respuesta:'ok', facu:'hola'}");
         }
-        
-        if(!listaServ.isEmpty())
-            request.setAttribute("listaServicios", listaServ);
-        
-        request.setAttribute("promocion", p);
-//        
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/infoPromocion.jsp");
-        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -63,7 +63,7 @@ public class verInfoPromocion extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(verInfoPromocion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(agregarPromACarrito.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -81,7 +81,7 @@ public class verInfoPromocion extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(verInfoPromocion.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(agregarPromACarrito.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

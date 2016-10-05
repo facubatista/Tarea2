@@ -1,9 +1,3 @@
-<%-- 
-    Document   : VerCarrito
-    Created on : 21/09/2016, 12:03:57 PM
-    Author     : Kevin
---%>
-
 <%@page import="Logica.DtPromocion"%>
 <%@page import="Logica.DtServicio"%>
 <%@page import="java.util.Iterator"%>

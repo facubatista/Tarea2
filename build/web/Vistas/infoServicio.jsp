@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.io.ByteArrayOutputStream"%>
 <%@page import="java.awt.Graphics"%>
 <%@page import="java.awt.image.BufferedImage"%>
@@ -29,19 +30,27 @@
         <%
             DtServicio s = (DtServicio)request.getAttribute("servicio");
             
+            ArrayList<byte[]> listaImagenes = (ArrayList)request.getAttribute("listaImagenes");
+            
             /*BufferedImage bi = new BufferedImage ( s.getImagenes().get(0).getImage().getWidth ( null ), s.getImagenes().get(0).getImage().getHeight ( null ), BufferedImage.TYPE_INT_ARGB );
             Graphics bg = bi.getGraphics ();
             bg.drawImage ( s.getImagenes().get(0).getImage(), 0, 0, null );
-            bg.dispose ();*/
-            BufferedImage bi = (BufferedImage)s.getImagenes().get(0).getImage();
+            bg.dispose ();
+            */
+            /*BufferedImage bi = (BufferedImage)s.getImagenes().get(0).getImage();
             
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             
+            
+            
             ImageIO.write( bi, "jpg", baos );
-            baos.flush();
+            //baos.flush();
             byte[] imageInByteArray = baos.toByteArray();
-            baos.close();
-            String b64 = javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray);
+            baos.close();*/
+            Iterator<byte[]> iterator = listaImagenes.iterator();
+            String b64 = javax.xml.bind.DatatypeConverter.printBase64Binary(iterator.next());
+            
+            //byte[] encoded = Base64.getEncoder().encode(listaImagenes.get(0));
             
 
         %>  
@@ -51,6 +60,7 @@
             <div class="fila">
                 <div class="cinco columnas" id="colUno">
                     <center>
+                        <p><%= s.getImagenes().get(0).toString() %></p>
                         <img id="imgGrande" src="data:image/jpg;base64, <%=b64%>" alt="Visruth.jpg not found">
                         <%--<img id="imgGrande" src="imagen.jpg">--%>
                     </center>
@@ -71,29 +81,29 @@
             
             <div class="fila">
                 <div class="seis columnas" id="colTres">
-                    <table>
-                        <thead>
-                            <tr>
-                              <th>Proveedor</th>
-                              <th>Origen</th>
-                              <th>Destino</th>
-                              <th>Precio</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><%= s.getProveedor() %></td>
-                                <td><%= s.getOrigen() %></td>
-                                <%if(s.getDestino() == null){%>
-                                    <td>-------------</td>
-                                <%}else{%>
-                                    <td><%= s.getDestino() %></td>
-                                <%}%>
-                                
-                                <td><%= s.getPrecio() %></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <table>
+                            <thead>
+                                <tr>
+                                  <th>Proveedor</th>
+                                  <th>Origen</th>
+                                  <th>Destino</th>
+                                  <th>Precio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><%= s.getProveedor() %></td>
+                                    <td><%= s.getOrigen() %></td>
+                                    <%if(s.getDestino() == null){%>
+                                        <td>-------------</td>
+                                    <%}else{%>
+                                        <td><%= s.getDestino() %></td>
+                                    <%}%>
+                                    
+                                    <td><%= s.getPrecio() %></td>
+                                </tr>
+                            </tbody>
+                        </table>
                 </div>
                 
                 <div class="seis columnas" id="colCuatro">
