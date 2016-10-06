@@ -10,7 +10,7 @@ header{
 }
 
 /*Logo H4T*/
-header > .cuatro.columnas > img{
+header > .cuatro.columnas > a > img{
   margin:15px;
 }
 
@@ -64,10 +64,13 @@ header > #SesionUsuario > div > *{
   clear: both;
 }
 
-#ImagenUsuario{
+img.ImagenUsuario{
     margin: 15px;
     margin-right: 30px;
     display: block;
+    width:115px;
+}
+img.ImagenUsuario.Altern{
     background: white;
     border-radius: 50%;
     width:100px;

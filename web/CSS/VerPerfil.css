@@ -24,6 +24,12 @@ and open the template in the editor.
     width:10%;
     vertical-align: middle;
 }
+
+img.Alternativa{
+    background: white;
+    border-radius: 50%;
+}
+
 .principal > #FotoyNombre >p{
     font-size: 45px;
     margin:auto;
@@ -85,6 +91,10 @@ and open the template in the editor.
 #infoCliente{
     padding: 10px;
     background: #C6EEFC;
+}
+
+#infoCliente img{
+   width:20%; 
 }
 
 table{

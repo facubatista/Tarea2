@@ -6,6 +6,7 @@ public class carrito {
     public carrito(){
         servicios = new ArrayList<>();
         promociones = new ArrayList<>();
+        total = 0;
     }
     
     public void setServicio(DtResServ serv){this.servicios.add(serv);}
@@ -14,6 +15,10 @@ public class carrito {
     public ArrayList<DtResServ> getServicios(){return servicios;}
     public ArrayList<DtResProm> getPromociones(){return promociones;}
     
+    public void setTotal(float total){this.total+=total;}
+    public float getTotal(){return this.total;}
+    
     private ArrayList<DtResServ> servicios;
     private ArrayList<DtResProm> promociones;
+    float total;
 }
