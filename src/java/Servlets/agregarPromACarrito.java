@@ -1,8 +1,8 @@
 package Servlets;
 
+import Clases.DtResProm;
 import Clases.carrito;
 import Logica.DtPromocion;
-import Logica.DtServicio;
 import Logica.Factory;
 import Logica.IcontProveedores;
 import java.io.IOException;
@@ -39,10 +39,11 @@ public class agregarPromACarrito extends HttpServlet {
             }else
                 car = (carrito) sesion.getAttribute("carrito");
             
-            for(int i = 0; i<cantidad; i++){
-                DtPromocion p = cont.seleccionarPromocionAListar(proveedor, nombre);
-                car.setPromocion(p);
-            }
+            DtPromocion p = cont.seleccionarPromocionAListar(proveedor, nombre);
+            DtResProm dt = new DtResProm(p, cantidad);
+            
+            car.setPromocion(dt);
+            
             sesion.setAttribute("carrito", car);
             response.getWriter().println("{respuesta:'ok', facu:'hola'}");
         }

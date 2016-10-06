@@ -121,8 +121,8 @@ function verificarPassword(form){
     request.send("verificarPassword=verificar");
 }*/
 
-function cambiarImagen(numero){
-    
+function cambiarImagen(b64){
+    /*
     if(parseInt(numero) === 1)
         document.getElementById("imgGrande").src = "Imag/prueba2.jpg";
     
@@ -131,11 +131,15 @@ function cambiarImagen(numero){
     
     if(parseInt(numero) === 3)
         document.getElementById("imgGrande").src = "Imag/prueba4.jpg";
-    
+    */
+   
+    var str = String(b64);
+    document.getElementById("imgGrande").src = str;
     
 }
-function volverImagen(){
-    document.getElementById("imgGrande").src = "Imag/prueba.jpg";
+function volverImagen(b64){
+    var str = String(b64);
+    document.getElementById("imgGrande").src = str;
 }
 
 function cambiarPestania(pestania) {
