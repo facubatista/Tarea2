@@ -2,7 +2,8 @@
     <header>
         <%if(session.getAttribute("nomUsuario")==null)
                session.setAttribute("nomUsuario", "Anonimo");
-           %>
+        %>
+           
        <div class="cuatro columnas">
            <a href="/Tarea2/index.jsp">
             <img src="/Tarea2/Imag/H4T.jpg" alt="imagen de header" width="250" onclick="">
