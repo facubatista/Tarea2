@@ -1,14 +1,21 @@
 body{
     background: white;
+   color: #2E2E2E;
 }
 
 #colUno{
   background: black;
-  color: white;
+  border-radius: 10px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  background: #C6EEFC;
 }
 #colDos{
   background: blue;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: #C6EEFC;
 }
-#colTres{
-  background: greenyellow;
+#colDos h2{
+  margin-left: 50px;
 }

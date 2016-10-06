@@ -43,6 +43,7 @@
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
+  margin-bottom: 10px;
 }
 .fila{
   clear: both;

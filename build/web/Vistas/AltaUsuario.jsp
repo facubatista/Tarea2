@@ -10,6 +10,7 @@
         <script src="../JS/jQuery.js"></script>
         <script src="../JS/sha1.js"></script>
 	<script src="../JS/jreserva.js"></script>
+        <script src="../JS/javaScript.js"></script>
     </head>
     <body>
         <jsp:include page="Cabecera.jsp" /> 

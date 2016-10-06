@@ -5,6 +5,7 @@ import Logica.Factory;
 import Logica.IcontProveedores;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -27,9 +28,12 @@ public class verInfoServicio extends HttpServlet {
         String nombre = request.getParameter("nombreServicio");
         String proveedor = request.getParameter("nombreProveedor");
         
+        ArrayList<byte[]> lista = cont.getBufferedImageServicio(proveedor, nombre);
+
         DtServicio s = cont.seleccionarServicioAListar(proveedor, nombre);
         
         request.setAttribute("servicio", s);
+        request.setAttribute("listaImagenes", lista);
 //        
         RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/infoServicio.jsp");
         dispatcher.forward(request, response);

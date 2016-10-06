@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.io.ByteArrayOutputStream"%>
 <%@page import="java.awt.Graphics"%>
 <%@page import="java.awt.image.BufferedImage"%>
@@ -29,36 +30,68 @@
         <%
             DtServicio s = (DtServicio)request.getAttribute("servicio");
             
+            ArrayList<byte[]> listaImagenes = (ArrayList)request.getAttribute("listaImagenes");
+            
             /*BufferedImage bi = new BufferedImage ( s.getImagenes().get(0).getImage().getWidth ( null ), s.getImagenes().get(0).getImage().getHeight ( null ), BufferedImage.TYPE_INT_ARGB );
             Graphics bg = bi.getGraphics ();
             bg.drawImage ( s.getImagenes().get(0).getImage(), 0, 0, null );
-            bg.dispose ();*/
-            BufferedImage bi = (BufferedImage)s.getImagenes().get(0).getImage();
+            bg.dispose ();
+            */
+            /*BufferedImage bi = (BufferedImage)s.getImagenes().get(0).getImage();
             
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             
+            
+            
             ImageIO.write( bi, "jpg", baos );
-            baos.flush();
+            //baos.flush();
             byte[] imageInByteArray = baos.toByteArray();
-            baos.close();
-            String b64 = javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray);
+            baos.close();*/
+            Iterator<byte[]> iterador = listaImagenes.iterator();
+            String b64 = null;
+            String b64Chica1 = null;
+            String b64Chica2 = null;
+            String b64Chica3 = null;
+            
+            if(iterador.hasNext())
+                b64 = javax.xml.bind.DatatypeConverter.printBase64Binary(iterador.next());
             
 
         %>  
         
         <div class="principal">
-            
             <div class="fila">
                 <div class="cinco columnas" id="colUno">
                     <center>
-                        <img id="imgGrande" src="data:image/jpg;base64, <%=b64%>" alt="Visruth.jpg not found">
-                        <%--<img id="imgGrande" src="imagen.jpg">--%>
+                        <%if(b64 != null){%>
+                            <img id="imgGrande" src="data:image/jpg;base64, <%=b64%>" alt="Visruth.jpg not found">
+                        <%}%>
                     </center>
                     <center>
                         <div id="imgChicas">
-                            <img id="chica1" class="chica" src="Imag/prueba2.jpg" onMouseOver="cambiarImagen(1)" onmouseout="volverImagen()">
-                            <img id="chica2" class="chica" src="Imag/prueba3.jpg" onMouseOver="cambiarImagen(2)" onmouseout="volverImagen()">
-                            <img id="chica3" class="chica" src="Imag/prueba4.jpg" onMouseOver="cambiarImagen(3)" onmouseout="volverImagen()">
+                            <%
+                                if(iterador.hasNext()){
+                                b64Chica1 = javax.xml.bind.DatatypeConverter.printBase64Binary(iterador.next());
+                                String paraFuncion = "data:image/jpg;base64, " + b64Chica1;
+                            %>
+                                <img id="chica1" class="chica" src="data:image/jpg;base64, <%=b64Chica1%>" onMouseOver="cambiarImagen(<%= b64Chica1 %>)" onmouseout="volverImagen(<%= paraFuncion %>)">
+                            <%}%>
+                            
+                            <%
+                                if(iterador.hasNext()){
+                                b64Chica2 = javax.xml.bind.DatatypeConverter.printBase64Binary(iterador.next());
+                                String paraFuncion2 = "data:image/jpg;base64, " + b64Chica2;
+                            %>
+                                <img id="chica2" class="chica" src="data:image/jpg;base64, <%=b64Chica2%>" onMouseOver="cambiarImagen(<%= b64Chica2 %>)" onmouseout="volverImagen(<%= paraFuncion2 %>)">
+                            <%}%>
+                            
+                            <%
+                                if(iterador.hasNext()){
+                                b64Chica3 = javax.xml.bind.DatatypeConverter.printBase64Binary(iterador.next());
+                                String paraFuncion3 = "data:image/jpg;base64, " + b64Chica3;
+                            %>
+                                <img id="chica3" class="chica" src="data:image/jpg;base64, <%=b64Chica3%>" onMouseOver="cambiarImagen(<%= b64Chica3 %>)" onmouseout="volverImagen(<%= paraFuncion3 %>)">
+                            <%}%>
                         </div>
                     </center>
                 </div>
@@ -71,29 +104,29 @@
             
             <div class="fila">
                 <div class="seis columnas" id="colTres">
-                    <table>
-                        <thead>
-                            <tr>
-                              <th>Proveedor</th>
-                              <th>Origen</th>
-                              <th>Destino</th>
-                              <th>Precio</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><%= s.getProveedor() %></td>
-                                <td><%= s.getOrigen() %></td>
-                                <%if(s.getDestino() == null){%>
-                                    <td>-------------</td>
-                                <%}else{%>
-                                    <td><%= s.getDestino() %></td>
-                                <%}%>
-                                
-                                <td><%= s.getPrecio() %></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <table>
+                            <thead>
+                                <tr>
+                                  <th>Proveedor</th>
+                                  <th>Origen</th>
+                                  <th>Destino</th>
+                                  <th>Precio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><%= s.getProveedor() %></td>
+                                    <td><%= s.getOrigen() %></td>
+                                    <%if(s.getDestino() == null){%>
+                                        <td>-------------</td>
+                                    <%}else{%>
+                                        <td><%= s.getDestino() %></td>
+                                    <%}%>
+                                    
+                                    <td><%= s.getPrecio() %></td>
+                                </tr>
+                            </tbody>
+                        </table>
                 </div>
                 
                 <div class="seis columnas" id="colCuatro">

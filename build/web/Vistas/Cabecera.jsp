@@ -4,7 +4,9 @@
                session.setAttribute("nomUsuario", "Anonimo");
            %>
        <div class="cuatro columnas">
-           <img src="/Tarea2/Imag/H4T.jpg" alt="imagen de header" width="250">
+           <a href="/Tarea2/index.jsp">
+            <img src="/Tarea2/Imag/H4T.jpg" alt="imagen de header" width="250" onclick="">
+           </a>
        </div>
        <div class="cuatro columnas">
            <form id="formBuscar" action="/Tarea2/ServProm" method="POST">
@@ -13,16 +15,22 @@
            </form>
        </div>
        <div id="SesionUsuario" class="cuatro columnas">                
-            <div class="imagenYcarrito"> 
-                <img id="ImagenUsuario" src="/Tarea2/Imag/IconoUsuario.png" alt="imagen de usuario" width="80">
-
-                <a id="BotonCarrito" class="botones AlinearIzq" href="/Tarea2/ServletCarrito?verCarrito=true">Carrito de compras</a>
+            <div class="imagenYcarrito">
+                <%if(session.getAttribute("imagenUsuario")!=null){%>
+                <img class="ImagenUsuario" src="/Tarea2/Imag/prueba3.jpg" alt="imagen de usuario">
+                <%}else{%>
+                <img class="ImagenUsuario Altern" src="/Tarea2/Imag/IconoUsuario.png" alt="imagen de usuario alternativa">
+                <%}%>
+                <% if(session.getAttribute("nomUsuario").equals("Anonimo")==false){ %>
+                    <a id="BotonCarrito" class="botones AlinearIzq" href="/Tarea2/Vistas/VerCarrito.jsp">Carrito de compras</a>
+                <% } %>    
             </div>
-            <div >
-                <h4><%=session.getAttribute("nomUsuario")%></h4>
+            <div >                
                 <%if(session.getAttribute("nomUsuario").equals("Anonimo")){%>
+                <h4><%=session.getAttribute("nomUsuario")%></h4>
                 <a id="IniC" class="botones" href="/Tarea2/Vistas/IniciarSesion.jsp">Iniciar Sesión</a>
                 <%}else{%>
+                <a id="VerPerfil" href="/Tarea2/Vistas/VerPerfil.jsp"><%=session.getAttribute("nomUsuario")%></a>
                 <a id="IniC" class="botones" href="<%= request.getContextPath()%>/ServUsuarios?Sesion=Cerrar">Cerrar Sesión</a>
                 <%}%>
             </div>                                  

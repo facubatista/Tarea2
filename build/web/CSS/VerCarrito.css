@@ -30,7 +30,7 @@ and open the template in the editor.
 }
 
 table{
-    margin-top: 10px;
+    border-bottom: 10px solid white;
 }
 
 table *{
@@ -60,7 +60,7 @@ tbody td.una.columnas{
 tbody tr{
     background: #C6EEFC;
     padding: 5px;
-    border-bottom: 10px white solid;
+    border-bottom: 2px white solid;
 }
 
 td > a{
