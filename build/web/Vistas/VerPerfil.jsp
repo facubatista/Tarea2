@@ -74,7 +74,7 @@
                         </thead>
                         <tbody class="doce columnas">
                             <%
-                                List<DtReserva> listaReservas = (List)session.getAttribute("ReservasCli");
+                                List<DtReserva> listaReservas = (List)request.getAttribute("ReservasCli");
                                 Iterator<DtReserva> it = listaReservas.iterator();
 
                                 while(it.hasNext()){

@@ -45,6 +45,7 @@ public class agregarServACarrito extends HttpServlet {
             DtResServ dt = new DtResServ(s, cantidad);
             
             car.setServicio(dt);
+            car.setTotal(s.getPrecio()*cantidad);
             
             sesion.setAttribute("carrito", car);
             response.getWriter().println("{respuesta:'ok', facu:'hola'}");

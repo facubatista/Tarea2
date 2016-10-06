@@ -53,7 +53,6 @@ public class ServletUsuarios extends HttpServlet {
             nomUsuario=cont.verificarUsuario(nomUsuario);//Retorna el nickname
             sesion.setAttribute("nickUsuario", nomUsuario);
             sesion.setAttribute("DtCliente", cont.seleccionarClienteAListar(nomUsuario));//DtCliente para Ver Perfil
-            sesion.setAttribute("ReservasCli", cont.listarResDeCli(nomUsuario));
             
             DtCliente cliente = cont.seleccionarClienteAListar(nomUsuario);
             
@@ -105,13 +104,24 @@ public class ServletUsuarios extends HttpServlet {
             HttpSession sesion = request.getSession();
             
             //Cerrar Sesión
-            if(request.getParameter("Sesion").equals("Cerrar") /*&& sesion.getAttribute("nomUsuario").equals("Anonimo")==false*/){
+            if(request.getParameter("Sesion")!=null){
                 sesion.setAttribute("nomUsuario", "Anonimo");
                 sesion.removeAttribute("nickUsuario");
                 sesion.removeAttribute("imagenUsuario");
+                sesion.removeAttribute("carrito");
                 
                 
                 RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+                dispatcher.forward(request, response);
+            }
+            
+            //Ver Perfil
+            if(request.getParameter("VerPerfil").equals("true")){
+                String nickUsuario = (String) sesion.getAttribute("nickUsuario");
+                DtCliente cliente = cont.seleccionarClienteAListar(nickUsuario);
+                request.setAttribute("ReservasCli", cont.listarResDeCli(nickUsuario));
+                
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/VerPerfil.jsp");
                 dispatcher.forward(request, response);
             }
             
