@@ -1,5 +1,6 @@
 package Servlets;
 
+import Clases.DtResServ;
 import Clases.carrito;
 import Logica.DtServicio;
 import Logica.Factory;
@@ -40,13 +41,13 @@ public class agregarServACarrito extends HttpServlet {
             }else
                 car = (carrito) sesion.getAttribute("carrito");
             
-            for(int i = 0; i<cantidad; i++){
-                DtServicio s = cont.seleccionarServicioAListar(proveedor, nombre);
-                car.setServicio(s);
-                car.setTotal(s.getPrecio());
-            }
+            DtServicio s = cont.seleccionarServicioAListar(proveedor, nombre);
+            DtResServ dt = new DtResServ(s, cantidad);
+            
+            car.setServicio(dt);
+            
             sesion.setAttribute("carrito", car);
-            response.getWriter().println("{respuesta:'ok', facu:'puto'}");
+            response.getWriter().println("{respuesta:'ok', facu:'hola'}");
             //response.getOutputStream();
             
         }
