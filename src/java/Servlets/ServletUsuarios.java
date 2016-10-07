@@ -53,6 +53,7 @@ public class ServletUsuarios extends HttpServlet {
             nomUsuario=cont.verificarUsuario(nomUsuario);//Retorna el nickname
             sesion.setAttribute("nickUsuario", nomUsuario);
             sesion.setAttribute("DtCliente", cont.seleccionarClienteAListar(nomUsuario));//DtCliente para Ver Perfil
+            sesion.setAttribute("imagenUsuario", cont.geImagenUsuarioEnArrayBytes(nomUsuario));
             
             DtCliente cliente = cont.seleccionarClienteAListar(nomUsuario);
             
@@ -60,11 +61,12 @@ public class ServletUsuarios extends HttpServlet {
             nomUsuario = cliente.getNombre()+" "+cliente.getApellido();
             //Se setea el nombre de usuario en la sesion
             sesion.setAttribute("nomUsuario", nomUsuario);//Es el nombre para mostrar en el header 
-            sesion.setAttribute("imagenUsuario", cliente.getImagen());//imagen para la cabecera
             
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
         }
+        
+        
         
         //Verificar que el nickname sea valido
         if(request.getParameter("verificarUsuario")!=null){
@@ -82,8 +84,6 @@ public class ServletUsuarios extends HttpServlet {
                 response.getWriter().write("true");
             }
         }
-        
-                
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -116,7 +116,7 @@ public class ServletUsuarios extends HttpServlet {
             }
             
             //Ver Perfil
-            if(request.getParameter("VerPerfil").equals("true")){
+            if(request.getParameter("VerPerfil")!=null){
                 String nickUsuario = (String) sesion.getAttribute("nickUsuario");
                 DtCliente cliente = cont.seleccionarClienteAListar(nickUsuario);
                 request.setAttribute("ReservasCli", cont.listarResDeCli(nickUsuario));
