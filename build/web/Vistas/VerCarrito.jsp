@@ -61,7 +61,7 @@
                             </td>
                             <td class="una columnas">$<%= s.getPrecio() %></td>
                             <td class="una columnas"><%= rs.getCantidad() %></td>
-                            <td class="una columnas">$<%= s.getPrecio()*rs.getCantidad() %></td>
+                            <td class="una columnas">$<%= s.getPrecio() * rs.getCantidad() %></td>
                         </tr>
                         <%}%>
                     </tbody>
@@ -100,7 +100,7 @@
                             </td>
                             <td class="una columnas">%<%= p.getPorcentaje() %></td>
                             <td class="una columnas"><%= rp.getCantidad()  %></td>
-                            <td class="una columnas">$<%= p.getTotal()*rp.getCantidad() %></td>
+                            <td class="una columnas">$<%= p.getTotal() * rp.getCantidad() %></td>
                         </tr>
                             <%  }%>
                     </tbody>

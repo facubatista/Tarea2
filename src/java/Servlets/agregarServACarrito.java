@@ -44,6 +44,7 @@ public class agregarServACarrito extends HttpServlet {
             DtServicio s = cont.seleccionarServicioAListar(proveedor, nombre);
             DtResServ dt = new DtResServ(s, cantidad);
             
+            float total = s.getPrecio() * cantidad;
             car.setServicio(dt);
             car.setTotal(s.getPrecio()*cantidad);
             

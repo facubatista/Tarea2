@@ -15,7 +15,7 @@ public class carrito {
     public ArrayList<DtResServ> getServicios(){return servicios;}
     public ArrayList<DtResProm> getPromociones(){return promociones;}
     
-    public void setTotal(float total){this.total+=total;}
+    public void setTotal(float tot){this.total+=tot;}
     public float getTotal(){return this.total;}
     
     private ArrayList<DtResServ> servicios;
