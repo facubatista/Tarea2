@@ -8,6 +8,8 @@ import Logica.IcontProveedores;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -19,15 +21,26 @@ import javax.servlet.http.HttpSession;
 
 public class agregarServACarrito extends HttpServlet {
 
+    SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException, SQLException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             
             String nombre = request.getParameter("nombreServicio");
             String proveedor = request.getParameter("nombreProveedor");
             int cantidad = Integer.parseInt(request.getParameter("cantidad"));
+            
+            Integer diaIni = Integer.parseInt(request.getParameter("diaIni"));
+            Integer mesIni = Integer.parseInt(request.getParameter("mesIni"));
+            Integer anioIni = Integer.parseInt(request.getParameter("anioIni"));
+            String fechaIni = diaIni.toString() + "/" + mesIni.toString() + "/" + anioIni.toString();
+            
+            Integer diaFin = Integer.parseInt(request.getParameter("diaFin"));
+            Integer mesFin = Integer.parseInt(request.getParameter("mesFin"));
+            Integer anioFin = Integer.parseInt(request.getParameter("anioFin"));
+            String fechaFin = diaFin.toString() + "/" + mesFin.toString() + "/" + anioFin.toString();
             
             IcontProveedores cont = Factory.getInstance().crearContProveedores();
             
@@ -42,7 +55,7 @@ public class agregarServACarrito extends HttpServlet {
                 car = (carrito) sesion.getAttribute("carrito");
             
             DtServicio s = cont.seleccionarServicioAListar(proveedor, nombre);
-            DtResServ dt = new DtResServ(s, cantidad);
+            DtResServ dt = new DtResServ(s, cantidad, dateformat.parse(fechaIni), dateformat.parse(fechaFin));
             
             car.setServicio(dt);
             
@@ -69,6 +82,8 @@ public class agregarServACarrito extends HttpServlet {
             processRequest(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(agregarServACarrito.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(agregarServACarrito.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -86,6 +101,8 @@ public class agregarServACarrito extends HttpServlet {
         try {
              processRequest(request, response);
         } catch (SQLException ex) {
+            Logger.getLogger(agregarServACarrito.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(agregarServACarrito.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -2,7 +2,7 @@ body{
   background: white;
 }
 
-ul.clase{
+/*ul.clase{
   background:#A4A4A4;
   width: 100%;
 }
@@ -15,28 +15,28 @@ li{
   display: inline-block;
   /*width:100px;
   text-align: center;*/
-  margin-right: 5px;
+  /*margin-right: 5px;
 }
 li > a{
   /*modelo de caja*/
-  width:250px;
+ /* width:250px;
   display: block;
   text-align: center;
   padding: 5px;
   
   /*Estilo del link*/
-  text-decoration: none;
+ /* text-decoration: none;
   background:rgba(0,0,0,0.5);
   font-family: helvetica, tahoma, sans;
   
   /*otros estilos*/
-  border-radius: 7px;
+ /* border-radius: 7px;
   
-}
+}/*
 li > a:hover{
   background: white;
   box-shadow: 0 3px 3px #333;
-}
+}*/
 
 /*tabla*/
 table{
@@ -53,7 +53,6 @@ table th{
 }
 table td{
   border-radius: 5px;
-  min-width: 200px;
   text-align: center;
   background:#9AF399/*rgba(0,0,0,0.3);*/
 }
@@ -62,7 +61,7 @@ table td > a{
   display: block;
   text-decoration: none;
   border-radius: 7px;
-  padding-top: 8px;
+  padding-top: 10px;
   padding-bottom: 10px;
 }
 table td > a:hover{
@@ -88,15 +87,42 @@ table td > a:hover{
 .izquierda{
   text-align: left;
 }
+.TdAgregarACarrito{
+  width: 35%;
+}
+
+/*Imagenes en miniatura*/
+.imgMini{
+  width: 65px;
+  height: 40px;
+  float: left;
+}
+/*fecha*/
+#diaIni, #diaFin{
+  width: 20px;
+  border-radius: 7px;
+}
+#mesIni, #mesFin{
+  width: 85px;
+  border-radius: 7px;
+}
+#anioIni, #anioFin{
+  width: 30px;
+  border-radius: 7px;
+}
+.labelIni, .labelFin{
+  float: left;
+}
+
 
 /*layout*/
-#colUno{
+#colDos{
   background:#A4A4A4;
   color: white;
   border-radius: 10px;
 }
-#colDos{
-  background: blue;
+#colUno{
+  background:  #2EADD7;
 }
 #colTres{
   background: greenyellow;
