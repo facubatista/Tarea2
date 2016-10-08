@@ -23,14 +23,17 @@
 }
 
 #RegistrarC .label{
+    display: -webkit-inline-box;
     display: -moz-deck;
     width: 35%;
     text-align: center;
+    text-align: -webkit-center;
     background:  steelblue;
     font: 115% extra-expanded;
-    font-family: unset;
     margin-inline-end: 10px;
+    margin-right: 10px;
     margin-inline-start: 13px;
+    margin-left: 13px;
     border-bottom-left-radius: 6px;
     border-top-left-radius: 6px;
 }
@@ -74,7 +77,7 @@
     border-style: hidden;
     width: 90%;
     font: 130% all-small-caps;
-    margin-inline-start: 25px;
+    margin-left: 25px;
     height: 35px;
     border-radius: 6px;
 }

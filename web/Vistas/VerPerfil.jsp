@@ -23,17 +23,22 @@
     </head>
     <body>
         <%
+           SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
+           
            DtCliente cliente = (DtCliente) session.getAttribute("DtCliente");
            
-           SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
-    
+           String imagenUsuarioB64=null;           
+           if(session.getAttribute("imagenUsuario")!=null){           
+                byte[] imagenUsuario = (byte[])session.getAttribute("imagenUsuario");
+                imagenUsuarioB64 = javax.xml.bind.DatatypeConverter.printBase64Binary(imagenUsuario);
+           }
         %>
         <jsp:include page="Cabecera.jsp" />
         <div class="principal">
             
             <div class="fila" id="FotoyNombre">
-                <%if(cliente.getImagen()!=null){%>
-                <img src="/Tarea2/Imag/prueba3.jpg" alt="foto del usuario"><!--Cambiar por imagen del usuario-->
+                <%if(imagenUsuarioB64!=null){%>
+                <img src="data:image/jpg;base64, <%=imagenUsuarioB64%>" alt="foto del usuario"><!--Cambiar por imagen del usuario-->
                 <%}else{%>
                 <img src="/Tarea2/Imag/IconoUsuario.png" alt="imagen alternativa del usuario" class="Alternativa"> 
                 <%}%>                
@@ -49,8 +54,8 @@
             
             <div id="infoCliente" class="fila">
                 <div class="fila">
-                    <%if(cliente.getImagen()!=null){%>
-                    <img src="/Tarea2/Imag/prueba3.jpg" style="width:25%;">
+                    <%if(imagenUsuarioB64!=null){%>
+                    <img src="data:image/jpg;base64, <%=imagenUsuarioB64%>" style="width:25%;">
                     <%}else{%>
                     <img src="/Tarea2/Imag/IconoUsuario.png" alt="imagen alternativa del usuario" class="Alternativa"> 
                     <%}%> 
@@ -74,7 +79,7 @@
                         </thead>
                         <tbody class="doce columnas">
                             <%
-                                List<DtReserva> listaReservas = (List)session.getAttribute("ReservasCli");
+                                List<DtReserva> listaReservas = (List)request.getAttribute("ReservasCli");
                                 Iterator<DtReserva> it = listaReservas.iterator();
 
                                 while(it.hasNext()){

@@ -40,9 +40,11 @@ public class agregarPromACarrito extends HttpServlet {
                 car = (carrito) sesion.getAttribute("carrito");
             
             DtPromocion p = cont.seleccionarPromocionAListar(proveedor, nombre);
-            DtResProm dt = new DtResProm(p, cantidad);
+            DtResProm dt = new DtResProm(p, cantidad, p.getProveedor());
             
+            float total = p.getTotal() * cantidad;
             car.setPromocion(dt);
+            car.setTotal(total);
             
             sesion.setAttribute("carrito", car);
             response.getWriter().println("{respuesta:'ok', facu:'hola'}");

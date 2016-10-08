@@ -65,6 +65,7 @@ and open the template in the editor.
 #IniciarC #botonIngresarDis:hover{
     background: #739F94;
     box-shadow: 3px 3px 3px grey;
+    cursor: default;
 }
 
 #nickInvalido{

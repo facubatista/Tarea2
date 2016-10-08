@@ -57,7 +57,9 @@ public class agregarServACarrito extends HttpServlet {
             DtServicio s = cont.seleccionarServicioAListar(proveedor, nombre);
             DtResServ dt = new DtResServ(s, cantidad, dateformat.parse(fechaIni), dateformat.parse(fechaFin));
             
+            float total = s.getPrecio() * cantidad;
             car.setServicio(dt);
+            car.setTotal(s.getPrecio()*cantidad);
             
             sesion.setAttribute("carrito", car);
             response.getWriter().println("{respuesta:'ok', facu:'hola'}");

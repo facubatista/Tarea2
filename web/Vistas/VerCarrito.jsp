@@ -1,3 +1,5 @@
+<%@page import="Clases.DtResProm"%>
+<%@page import="Clases.DtResServ"%>
 <%@page import="Logica.DtPromocion"%>
 <%@page import="Logica.DtServicio"%>
 <%@page import="java.util.Iterator"%>
@@ -27,7 +29,7 @@
             <%if(car!=null){ %>
             <div class="fila">
                 <%
-                Iterator<DtServicio> it = car.getServicios().iterator();
+                Iterator<DtResServ> it = car.getServicios().iterator();
 
                 //Si no hay servicios ni promociones no se muestran el total y el confirmar reserva
                 boolean hayServicios=false;
@@ -48,7 +50,8 @@
                     </thead>
                     <tbody class="doce columnas">
                         <%while(it.hasNext()){
-                            DtServicio s = it.next();
+                            DtResServ rs = it.next();
+                            DtServicio s = rs.getServicio();
                         %>
                         <tr class="doce columnas">
                             <td class="nueve columnas">
@@ -57,15 +60,15 @@
                                 <p><%= s.getDescripcion() %></p>
                             </td>
                             <td class="una columnas">$<%= s.getPrecio() %></td>
-                            <td class="una columnas"><%= s.getPrecio() %></td>
-                            <td class="una columnas">$<%= s.getPrecio() %></td>
+                            <td class="una columnas"><%= rs.getCantidad() %></td>
+                            <td class="una columnas">$<%= s.getPrecio() * rs.getCantidad() %></td>
                         </tr>
                         <%}%>
                     </tbody>
                 </table>
                     <%}%>
                 <%
-                        Iterator<DtPromocion> itP = car.getPromociones().iterator();
+                        Iterator<DtResProm> itP = car.getPromociones().iterator();
 
                         //Si no hay servicios ni promociones no se muestran el total y el confirmar reserva
                         boolean hayPromos=false;
@@ -79,14 +82,15 @@
                     <thead class="doce columnas">
                         <tr class="doce columnas">
                           <th class="nueve columnas" style="text-align: left">Promociones</th>
-                          <th class="una columnas">Proveedor</th>
                           <th class="una columnas">Descuento</th>
+                          <th class="una columnas">Cantidad</th>
                           <th class="una columnas">Total</th>
                         </tr>
                     </thead>
                     <tbody class="doce columnas">
                         <%    while(itP.hasNext()){
-                            DtPromocion p = itP.next();
+                            DtResProm rp = itP.next();
+                            DtPromocion p = rp.getPromocion();
                     %>
                         <tr class="doce columnas">
                             <td class="nueve columnas">
@@ -94,9 +98,9 @@
                                 <a href="<%= request.getContextPath()%>/InfoPromocion?nombrePromocion=<%= p.getNombre() %>&nombreProveedor=<%= p.getProveedor() %>"><%= p.getNombre() %></a>
                                 <p>laskaskdmklasmdlskdmlkasdmlaksmdlaksmdlkasmdlam</p>
                             </td>
-                            <td class="una columnas"><%= p.getProveedor() %></td>
-                            <td class="una columnas"><%= p.getPorcentaje() %></td>
-                            <td class="una columnas">$<%= p.getTotal() %></td>
+                            <td class="una columnas">%<%= p.getPorcentaje() %></td>
+                            <td class="una columnas"><%= rp.getCantidad()  %></td>
+                            <td class="una columnas">$<%= p.getTotal() * rp.getCantidad() %></td>
                         </tr>
                             <%  }%>
                     </tbody>
@@ -113,7 +117,7 @@
                 </thead>
             </table> 
             <div class="fila">
-                <a class="botones" href="http://i.imgur.com/TUcQR.jpg">Confirmar Reserva</a>
+                <a class="botones" href="/Tarea2/ServletCarrito?confirmarReserva=true">Confirmar Reserva</a>
             </div>
                 <%}
             }%>
