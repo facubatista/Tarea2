@@ -28,8 +28,9 @@ public class verInfoServicio extends HttpServlet {
         String nombre = request.getParameter("nombreServicio");
         String proveedor = request.getParameter("nombreProveedor");
         
+        
         ArrayList<byte[]> lista = cont.getBufferedImageServicio(proveedor, nombre);
-
+        
         DtServicio s = cont.seleccionarServicioAListar(proveedor, nombre);
         
         request.setAttribute("servicio", s);

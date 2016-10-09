@@ -16,7 +16,8 @@
         <link rel="stylesheet" type="text/css" href="CSS/Cabecera.css"/>
         <link rel ="stylesheet" href="CSS/ServPromCss.css">
         <!link rel ="stylesheet" href="../CSS/Cabecera.css">
-        <script src="JS/javaScript.js"></script>
+        <script src="JS/jQuery.js"></script>
+        <script src="JS/ServProm.js"></script>
         <jsp:include page="Cabecera.jsp" />
     </head>
     
@@ -29,74 +30,86 @@
         </ul>--%>
         <br>
         <div class="principal">
-            
             <div class="fila">
-                <div class="dos columna" id="colUno">
+                <div class="tres columnas" id="colUno">
                     <ul id="menu_arbol">
-                        <li id="Raiz" title="Todos">Todos</li>
+                        <li id="Raiz" title="Todos"><a onclick="busqueda('');" href="#">Todos</a></li>
                         <li class="primero"><a href="#" title="Vuelos">Vuelos</a>
-                             <ul>
-                                <li class="hijo">Empresas</li>
-                                    <li class="nieto" title="Iberia"><a href="#">Iberia</a></li>
-                                    <li class="nieto" title="American Airlines"><a href="#">American Airlines</a></li>
-                                    <li class="nieto" title="Air France"><a href="#">Air France</a></li>
-                                    <li class="nieto" title="TAM"><a href="#">TAM</a></li>
-                                <li class="hijo">Tipo Vuelo</li>
-                                    <li class="nieto" title="LowCost"><a href="#">LowCost</a></li>
-                                    <li class="nieto" title="Standard"><a href="#">Standard</a></li>
-                                    <li class="nieto" title="First Class"><a href="#">First Class</a></li>
-                             </ul>
+                            <ul>
+                                <li class="nieto" title="Iberia"><a href="#" onclick="busqueda('Iberia');">Iberia</a></li>
+                                <li class="nieto" title="American Airlines"><a onclick="busqueda('American Airlines');" href="#">American Airlines</a></li>
+                                <li class="nieto" title="Air France"><a onclick="busqueda('Air France');" href="#">Air France</a></li>
+                                <li class="nieto" title="TAM"><a onclick="busqueda('TAM');" href="#">TAM</a></li>
+                            </ul>
+                            <br>
+                            <ul>
+                                <li class="nieto" title="LowCost"><a onclick="busqueda('LowCost');" href="#">LowCost</a></li>
+                                <li class="nieto" title="Standard"><a onclick="busqueda('Standard');" href="#">Standard</a></li>
+                                <li class="nieto" title="First Class"><a onclick="busqueda('First Class');" href="#">First Class</a></li>
+                            </ul>
+                        <br>
                         </li>
-                        <li class="primero"><a href="#" title="Alojamientos">Alojamientos</a>
-                             <ul>
-                                <li class="hijo">Tipo Alojamiento</li>
-                                    <li class="nieto" title="Hotel"><a href="#">Hotel</a></li>
-                                    <li class="nieto" title="Hostal"><a href="#">Hostal</a></li>
-                                    <li class="nieto" title="Apartamento"><a href="#">Apartamento</a></li>
-                                    <li class="nieto" title="Casa"><a href="#">Casa</a></li>
-                                <li class="hijo">Ubicacion</li>
-                                    <li class="nieto" title="Playa"><a href="#">Playa</a></li>
-                                    <li class="nieto" title="Rural"><a href="#">Rural</a></li>
-                                    <li class="nieto" title="Montaña"><a href="#">Montaña</a></li>
-                                <li class="hijo">Habitaciones</li>
-                                    <li class="nieto" title="Monoambiente"><a href="#">Monoambiente</a></li>
-                                    <li class="nieto" title="Un dormitorio"><a href="#">Un dormitorio</a></li>
-                                    <li class="nieto" title="Dos dormitorios"><a href="#">Dos dormitorios</a></li>
-                             </ul>
+                        <li class="primero"><a onclick="busqueda('Alojamientos');" href="#">Alojamientos</a>
+                            <ul>
+                                <li class="nieto" title="Hotel"><a onclick="busqueda('Hotel');" href="#">Hotel</a></li>
+                                <li class="nieto" title="Hostal"><a onclick="busqueda('Hostal');" href="#">Hostal</a></li>
+                                <li class="nieto" title="Apartamento"><a onclick="busqueda('Apartamento');" href="#">Apartamento</a></li>
+                                <li class="nieto" title="Casa"><a onclick="busqueda('Casa');" href="#">Casa</a></li>
+                            </ul>
+                            <br>
+                            <ul>
+                                <li class="nieto" title="Playa"><a onclick="busqueda('Playa');" href="#">Playa</a></li>
+                                <li class="nieto" title="Rural"><a onclick="busqueda('Rural');" href="#">Rural</a></li>
+                                <li class="nieto" title="Montaña"><a onclick="busqueda('Montaña');" href="#">Montaña</a></li>
+                            </ul>
+                            <br>
+                            <ul>
+                                <li class="nieto" title="Monoambiente"><a onclick="busqueda('Monoambiente');" href="#">Monoambiente</a></li>
+                                <li class="nieto" title="Un dormitorio"><a onclick="busqueda('Un dormitorio');" href="#">Un dormitorio</a></li>
+                                <li class="nieto" title="Dos dormitorios"><a onclick="busqueda('Dos dormitorios');" href="#">Dos dormitorios</a></li>
+                            </ul>
+                        <br>
                         </li>
-                        <li class="primero"><a href="#" title="Automoviles">Automoviles</a>
-                             <ul>
-                                  <li class="hijo">Tarifa</li>
-                                    <li class="nieto" title="Mini"><a href="#">Mini</a></li>
-                                    <li class="nieto" title="Economico"><a href="#">Economico</a></li>
-                                    <li class="nieto" title="Full"><a href="#">Full</a></li>
-                                <li class="hijo">Tipo vehiculo</li>
-                                    <li class="nieto" title="Auto"><a href="#">Auto</a></li>
-                                    <li class="nieto" title="Camioneta"><a href="#">Camioneta</a></li>
-                                    <li class="nieto" title="Camion"><a href="#">Camion</a></li>
-                                    <li class="nieto" title="Moto"><a href="#">Moto</a></li>
-                                <li class="hijo">Marca</li>
-                                    <li class="nieto" title="Chevrolet"><a href="#">Chevrolet</a></li>
-                                    <li class="nieto" title="Peugeot"><a href="#">Peugeot</a></li>
-                                    <li class="nieto" title="Daihatsu"><a href="#">Daihatsu</a></li>
-                                    <li class="nieto" title="Fiat"><a href="#">Fiat</a></li>
-                             </ul>
+                        <li class="primero"><a onclick="busqueda('Automoviles');" href="#" title="Automoviles">Automoviles</a>
+                            <ul>
+                                <%--<li class="hijo">Tarifa</li>--%>
+                                <li class="nieto" title="Mini"><a onclick="busqueda('Mini');" href="#">Mini</a></li>
+                                <li class="nieto" title="Economico"><a onclick="busqueda('Economico');" href="#">Economico</a></li>
+                                <li class="nieto" title="Full"><a onclick="busqueda('Full');" href="#">Full</a></li>
+                            </ul>
+                                <br>
+                            <ul>
+                                <%--<li class="hijo">Tipo vehiculo</li>--%>
+                                <li class="nieto" title="Auto"><a onclick="busqueda('Auto');" href="#">Auto</a></li>
+                                <li class="nieto" title="Camioneta"><a onclick="busqueda('Camioneta');" href="#">Camioneta</a></li>
+                                <li class="nieto" title="Camion"><a onclick="busqueda('Camion');" href="#">Camion</a></li>
+                                <li class="nieto" title="Moto"><a onclick="busqueda('Moto');" href="#">Moto</a></li>
+                            </ul>
+                                <br>
+                            <ul>
+                                <%--<li class="hijo">Marca</li>--%>
+                                <li class="nieto" title="Chevrolet"><a onclick="busqueda('Chevrolet');" href="#">Chevrolet</a></li>
+                                <li class="nieto" title="Peugeot"><a onclick="busqueda('Peugeot');" href="#">Peugeot</a></li>
+                                <li class="nieto" title="Daihatsu"><a onclick="busqueda('Daihatsu');" href="#">Daihatsu</a></li>
+                                <li class="nieto" title="Fiat"><a onclick="busqueda('Fiat');" href="#">Fiat</a></li>
+                            </ul>
+                            <br>
                         </li>
-                        <li class="primero"><a href="#" title="Cruceros">Cruceros</a>
+                        <li class="primero"><a onclick="busqueda('Cruceros');" href="#" title="Cruceros">Cruceros</a>
                              <ul>
-                                  <li><a href="#" title="Mediterraneo">Mediterraneo</a></li>
-                                  <li><a href="#" title="Mar Negro">Mar Negro</a></li>
-                                  <li><a href="#" title="Caribe">Caribe</a></li>
-                                  <li><a href="#" title="Nilo">Nilo</a></li>
-                                  <li><a href="#" title="Alaska">Alaska</a></li>
+                                  <li><a onclick="busqueda('Mediterraneo');" href="#" title="Mediterraneo">Mediterraneo</a></li>
+                                  <li><a onclick="busqueda('Mar Negro');" href="#" title="Mar Negro">Mar Negro</a></li>
+                                  <li><a onclick="busqueda('Caribe');" href="#" title="Caribe">Caribe</a></li>
+                                  <li><a onclick="busqueda('Nilo');" href="#" title="Nilo">Nilo</a></li>
+                                  <li><a onclick="busqueda('Alaska');" href="#" title="Alaska">Alaska</a></li>
                              </ul>
                         </li>
                    </ul>
                 </div>
-                <div class="diez columnas" id="colDos">
+                <div class="nueve columnas" id="colDos">
                     
                     <div>
-                        <table>
+                        <table id="tabla">
                             <thead>
                                 <tr>
                                   <th style="text-decoration: underline"><b>Tipo</b></th>
@@ -117,7 +130,7 @@
                                 %>
                                 <tr>
                                     <td class="TdTipo">Servicio</td>
-                                    <td>
+                                    <td class="TdNombreS">
                                         <%
                                             if(!s.getImagenes().isEmpty()){
                                             BufferedImage originalImage=(BufferedImage) s.getImagenes().get(0).getImage();
@@ -133,7 +146,7 @@
                                         </a>
                                     </td>
                                     <td class="TdProveedor"><%= s.getProveedor() %></td>
-                                    <%if(session.getAttribute("nickUsuario") != null){%>
+                                    <%if(session.getAttribute("nickUsuario") != null){  %>
                                         <td class="TdAgregarACarrito">
                                             <div class="aOcultar">
                                                 <label class="precio">Precio: <%= s.getPrecio() %></label>

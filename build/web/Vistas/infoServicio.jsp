@@ -23,7 +23,7 @@
         <link rel="stylesheet" type="text/css" href="CSS/Cabecera.css"/>
         <link rel ="stylesheet" href="CSS/infoServCss.css">
         <link rel ="stylesheet" href="CSS/Layout.css">
-        <script src="JS/javaScript.js"></script>
+        <script src="JS/ServProm.js"></script>
         <jsp:include page="Cabecera.jsp" />
     </head>
     <body>

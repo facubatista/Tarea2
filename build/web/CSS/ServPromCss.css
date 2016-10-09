@@ -38,16 +38,27 @@ li > a:hover{
   box-shadow: 0 3px 3px #333;
 }*/
 
+/*Arbol*/
+li > a{
+  color: black;
+}
+li > a:hover{
+  color: #2EADD7;
+}
+li{
+  color: #2EADD7;
+}
+
 /*tabla*/
 table{
   color: #2E2E2E;
   width: 100%;
   margin: auto;
   background:#2EADD7/*#9AF399/*#A4A4A4*/;
-  border-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 table th{
-  background: aquamarine;
   background: #2EADD7/*rgba(0,0,0,0.3)*/;
   border-radius: 5px;
 }
@@ -56,13 +67,16 @@ table td{
   text-align: center;
   background:#9AF399/*rgba(0,0,0,0.3);*/
 }
+.TdNombreS{
+  width: 300px;
+}
 table td > a{
   color: #2E2E2E;
   display: block;
   text-decoration: none;
   border-radius: 7px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 37px;
+  padding-bottom: 37px;
 }
 table td > a:hover{
   box-shadow: 0 3px 3px #333;
@@ -76,7 +90,8 @@ table td > a:hover{
   /*background:rgba(0,0,0,0);*/
   background:rgba(0,0,0,0);
   color: #2E2E2E;
-  border-radius: 7px
+  border-radius: 7px;
+  margin-top: 5px;
 }
 #agregar:hover{
   color: black;
@@ -93,9 +108,11 @@ table td > a:hover{
 
 /*Imagenes en miniatura*/
 .imgMini{
-  width: 65px;
-  height: 40px;
+  width: 105px;
+  height: 70px;
   float: left;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 /*fecha*/
 #diaIni, #diaFin{
@@ -110,6 +127,9 @@ table td > a:hover{
   width: 30px;
   border-radius: 7px;
 }
+#diaFin, #mesFin, #anioFin, .labelFin{
+  margin-top: 5px;
+}
 .labelIni, .labelFin{
   float: left;
 }
@@ -117,12 +137,13 @@ table td > a:hover{
 
 /*layout*/
 #colDos{
-  background:#A4A4A4;
-  color: white;
-  border-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
 }
 #colUno{
-  background:  #2EADD7;
+  background: #9AF399;
+  /*background:  #2EADD7;*/
 }
 #colTres{
   background: greenyellow;
