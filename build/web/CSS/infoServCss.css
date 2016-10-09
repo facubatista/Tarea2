@@ -7,7 +7,8 @@ body{
 }
 #colUno{
   background: #C6EEFC;
-  height: 315px;
+  height: 285px;
+  padding-top: 30px;
 }
 #colDos{
   background: #C6EEFC;
@@ -16,16 +17,27 @@ body{
 #colTres{
   background: #C6EEFC;
   height: 180px;
-  margin-bottom: 10px;
 }
 #colCuatro{
   background: #C6EEFC;
   height: 180px;
+}
+#colCinco{
+  background: #C6EEFC;
+  height: 200px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+#colSeis{
+  background: #C6EEFC;
+  height: 200px;
   margin-bottom: 10px;
 }
 #imgGrande{
   max-width: 340px;
-  margin-bottom: 8px;
+  max-height: 255px;
+}
+#imgChicas{
 }
 .chica{
   width: 60px;
@@ -35,7 +47,31 @@ body{
 .chica:hover{
   box-shadow: 3px 3px 3px #9AF399;
 }
-
+/*Agregar al carrito*/
+#colCuatro h2{
+  margin-left: 100px;
+}
+#fechaFin{
+  margin-left: 20px;
+  margin-top: 5px;
+}
+#fechaIni{
+  margin-top: 5px;
+}
+#diaIni, #diaFin, #anioFin, #anioIni{
+  width: 70px;
+}
+.agregarACarrito{
+  margin-top: 10px;
+  margin-left: 110px;
+}
+.precio{
+  margin-left: 140px;
+}
+.aMostrar{
+  margin-left: 130px;
+  margin-top: 30px;
+}
 
 /*tabla*/
 table{
