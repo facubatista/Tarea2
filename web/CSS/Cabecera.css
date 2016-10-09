@@ -65,15 +65,20 @@ header > #SesionUsuario > div > *{
 }
 
 img.ImagenUsuario{
-    margin: 15px;
-    margin-right: 30px;
+    box-sizing: border-box;
+    margin: 10px;
+    margin-right: 25px;
     display: block;
     width: 130px;
     height: 130px;
+    border-radius: 50%;
 }
+img.ImagenUsuario.Real{
+    border: 3px solid white
+}
+
 img.ImagenUsuario.Altern{
     background: white;
-    border-radius: 50%;
     width: 100px;
     height: 100px;
 }

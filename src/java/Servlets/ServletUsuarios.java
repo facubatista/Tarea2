@@ -54,7 +54,7 @@ public class ServletUsuarios extends HttpServlet {
             sesion.setAttribute("nickUsuario", nomUsuario);
             sesion.setAttribute("DtCliente", cont.seleccionarClienteAListar(nomUsuario));//DtCliente para Ver Perfil
             sesion.setAttribute("imagenUsuario", cont.geImagenUsuarioEnArrayBytes(nomUsuario));
-            
+                        
             DtCliente cliente = cont.seleccionarClienteAListar(nomUsuario);
             
             //Se toman el nombre y el apellido del usuario para mostrarlo en la cabecera
