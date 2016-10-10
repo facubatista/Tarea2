@@ -57,6 +57,7 @@ table{
   background:#2EADD7/*#9AF399/*#A4A4A4*/;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 table th{
   background: #2EADD7/*rgba(0,0,0,0.3)*/;
@@ -140,9 +141,12 @@ table td > a:hover{
   border-bottom-right-radius: 10px;
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
+  background: #9AF399;
 }
 #colUno{
   background: #9AF399;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
   /*background:  #2EADD7;*/
 }
 #colTres{

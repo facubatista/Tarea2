@@ -161,20 +161,38 @@ jQuery(document).ready(function () {
                 }
             }
         }
-        
-            
-        var x = document.getElementById("botonRegistrar");
-        x.addEventListener("click", arreglos);
-//arreglar
-        function arreglos() {
-            var contrasena = document.getElementById("contraseña").value;
-            contrasena.value = sha1(contrasena);
-//            var imgVal = document.getElementById("imagen").value;
-//            if (imgVal !== ""){
-//                alert(imgVal);
-//            }
-            
-        }
     });
+
+    var x = document.getElementById("botonRegistrar");
+    x.addEventListener("click", arreglos);
+//arreglar
+    function arreglos() {
+        var contrasena = document.getElementById("contraseña").value;
+        contrasena = sha1(contrasena);
+        var nickname = document.getElementById("nickname").value;
+        var nombre = document.getElementById("nombre").value;
+        var apellido = document.getElementById("apellido").value;
+        var email = document.getElementById("email").value;
+        var dia = document.getElementById("dia").value;
+        var anio = document.getElementById("anio").value;
+        var mes = document.getElementById("mes").value;
+        var x = new XMLHttpRequest();
+        x.open("POST", "ServUsuarios", true);
+        x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        x.send("user=" + nickname + "&name=" + nombre + "&surname=" + apellido + "&email=" + email + "&pass=" + contrasena + "&day=" + dia + "&month=" + mes + "&year=" + anio);
+        var imagenValor = document.getElementById("imagen").value;
+        if (imagenValor !== "") {
+            var inputFileImage = document.getElementById("imagen");
+            var file = inputFileImage.files[0];
+            var fr = new FileReader();
+            fr.onload = function (e) {
+                x.open("POST", "ServUsuarios", true);
+                x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                x.send("nickname=" + nickname + "&archivo=" + e.target.result);
+            };
+            fr.readAsDataURL(file);            
+        }
+    }
+    ;
 });
        

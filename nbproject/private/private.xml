@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Kevin/Desktop/ProgApli/Tarea2/Tarea2/src/java/Clases/carrito.java</file>
             <file>file:/C:/Users/Kevin/Desktop/ProgApli/Tarea2/Tarea2/web/Vistas/servProm.jsp</file>
             <file>file:/C:/Users/Kevin/Desktop/ProgApli/Tarea2/Tarea2/src/java/Servlets/ServletCarrito.java</file>
@@ -12,6 +13,10 @@
             <file>file:/C:/Users/Kevin/Desktop/ProgApli/Tarea2/Tarea2/web/Vistas/VerPerfil.jsp</file>
             <file>file:/C:/Users/Kevin/Desktop/ProgApli/Tarea2/Tarea2/src/java/Servlets/ServletUsuarios.java</file>
             <file>file:/C:/Users/Kevin/Desktop/ProgApli/Tarea2/Tarea2/web/index.jsp</file>
+=======
+            <file>file:/media/pc/4d20b39e-fc85-404a-9328-c63c96e33ddd/Laboratorio/Tarea2/src/java/Servlets/ServletUsuarios.java</file>
+            <file>file:/media/pc/4d20b39e-fc85-404a-9328-c63c96e33ddd/Laboratorio/Tarea2/web/Vistas/VerPerfil.jsp</file>
+>>>>>>> 3ccf2a34a3d1389c6474be0a50975c35c0771845
         </group>
     </open-files>
 </project-private>
