@@ -1,7 +1,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
     <header>
-        <%if(session.getAttribute("nomUsuario")==null)
-               session.setAttribute("nomUsuario", "Anonimo");
+        <%
+        if(session.getAttribute("nomUsuario")==null){
+            session.setAttribute("nomUsuario", "Anonimo");
+        }
+        
+        String imagenUsuarioB64=null;           
+        if(session.getAttribute("imagenUsuario")!=null){           
+             byte[] imagenUsuario = (byte[])session.getAttribute("imagenUsuario");
+             imagenUsuarioB64 = javax.xml.bind.DatatypeConverter.printBase64Binary(imagenUsuario);
+        }
         %>
            
        <div class="cuatro columnas">
@@ -17,10 +25,10 @@
        </div>
        <div id="SesionUsuario" class="cuatro columnas">                
             <div class="imagenYcarrito">
-                <%if(session.getAttribute("imagenUsuario")!=null){%>
-                <img class="ImagenUsuario" src="/Tarea2/Imag/prueba3.jpg" alt="imagen de usuario">
+                <%if(imagenUsuarioB64!=null){%>
+                <img src="data:image/jpg;base64, <%=imagenUsuarioB64%>" alt="foto del usuario" class="ImagenUsuario"><!--Cambiar por imagen del usuario-->
                 <%}else{%>
-                <img class="ImagenUsuario Altern" src="/Tarea2/Imag/IconoUsuario.png" alt="imagen de usuario alternativa">
+                <img src="/Tarea2/Imag/IconoUsuario.png" alt="imagen alternativa del usuario" class="ImagenUsuario Altern"> 
                 <%}%>
                 <% if(session.getAttribute("nomUsuario").equals("Anonimo")==false){ %>
                     <a id="BotonCarrito" class="botones AlinearIzq" href="/Tarea2/Vistas/VerCarrito.jsp">Carrito de compras</a>

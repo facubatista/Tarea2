@@ -8,6 +8,8 @@ import Logica.IcontProveedores;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -18,14 +20,26 @@ import javax.servlet.http.HttpSession;
 
 public class agregarPromACarrito extends HttpServlet {
 
+    SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException, SQLException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
             String nombre = request.getParameter("nombrePromocion");
             String proveedor = request.getParameter("nombreProveedor");
             int cantidad = Integer.parseInt(request.getParameter("cantidad"));
+            
+            Integer diaIni = Integer.parseInt(request.getParameter("diaIni"));
+            Integer mesIni = Integer.parseInt(request.getParameter("mesIni"));
+            Integer anioIni = Integer.parseInt(request.getParameter("anioIni"));
+            String fechaIni = diaIni.toString() + "/" + mesIni.toString() + "/" + anioIni.toString();
+            
+            Integer diaFin = Integer.parseInt(request.getParameter("diaFin"));
+            Integer mesFin = Integer.parseInt(request.getParameter("mesFin"));
+            Integer anioFin = Integer.parseInt(request.getParameter("anioFin"));
+            String fechaFin = diaFin.toString() + "/" + mesFin.toString() + "/" + anioFin.toString();
             
             IcontProveedores cont = Factory.getInstance().crearContProveedores();
             
@@ -40,7 +54,7 @@ public class agregarPromACarrito extends HttpServlet {
                 car = (carrito) sesion.getAttribute("carrito");
             
             DtPromocion p = cont.seleccionarPromocionAListar(proveedor, nombre);
-            DtResProm dt = new DtResProm(p, cantidad, p.getProveedor());
+            DtResProm dt = new DtResProm(p, cantidad, dateformat.parse(fechaIni), dateformat.parse(fechaFin));
             
             float total = p.getTotal() * cantidad;
             car.setPromocion(dt);
@@ -67,6 +81,8 @@ public class agregarPromACarrito extends HttpServlet {
             processRequest(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(agregarPromACarrito.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(agregarPromACarrito.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -84,6 +100,8 @@ public class agregarPromACarrito extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
+            Logger.getLogger(agregarPromACarrito.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(agregarPromACarrito.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
