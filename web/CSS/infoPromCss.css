@@ -9,13 +9,84 @@ body{
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
   background: #C6EEFC;
+  padding-bottom: 10px;
 }
 #colDos{
+  margin-top: 3px;
+  background: black;
+  border-radius: 10px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  background: #C6EEFC;
+  padding-bottom: 10px;
+}
+#colTres{
   background: blue;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   background: #C6EEFC;
+  margin-bottom: 10px;
+  padding-bottom: 15px;
 }
-#colDos h2{
-  margin-left: 50px;
+#colTres h2{
+  margin-top: 50px;
+  width:250px;
+}
+
+#agregar{
+  width: 120px;
+  margin-top: 5px;
+}
+input, select{
+  border-radius: 7px;
+  margin-top: 5px;
+}
+input{
+  width: 50px;
+}
+#diaIni, #diaFin{
+  width: 20px;
+}
+#anioIni, #anioFin, #txtCantidad{
+  width: 30px;
+}
+
+/*Tabla*/
+table{
+  text-align: center;
+}
+#colTres table{
+  margin-top: 50px;
+}
+table td{
+  background:#2EADD7;
+  border-radius: 7px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+table td > a{
+  color: #2E2E2E;
+  display: block;
+  text-decoration: none;
+  border-radius: 7px;
+  padding-top: 30px;
+  padding-bottom: 38px;
+  
+}
+table td > a:hover{
+  box-shadow: 0 3px 3px #333;
+}
+#TdNombre{
+  min-width: 300px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.imgMini{
+  width: 105px;
+  height: 70px;
+  float: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
 }

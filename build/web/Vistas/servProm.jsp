@@ -296,5 +296,6 @@
                 </div>
             </div>
         </div>
+        <jsp:include page="Pie.jsp" />
     </body>
 </html>
