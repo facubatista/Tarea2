@@ -34,7 +34,7 @@
                 <div class="tres columnas" id="colUno">
                     <ul id="menu_arbol">
                         <li id="Raiz" title="Todos"><a onclick="busqueda('');" href="#">Todos</a></li>
-                        <li class="primero"><a href="#" title="Vuelos">Vuelos</a>
+                        <li class="primero"><a href="#" onclick="busqueda('Vuelos');" title="Vuelos">Vuelos</a>
                             <ul>
                                 <li class="nieto" title="Iberia"><a href="#" onclick="busqueda('Iberia');">Iberia</a></li>
                                 <li class="nieto" title="American Airlines"><a onclick="busqueda('American Airlines');" href="#">American Airlines</a></li>
@@ -141,7 +141,8 @@
                                         %>
                                             <img class="imgMini" src="data:image/jpg;base64, <%=b64%>">
                                         <%}%>
-                                        <a href="<%= request.getContextPath()%>/InfoServicio?nombreServicio=<%= s.getNombre() %>&nombreProveedor=<%= s.getProveedor() %>">
+                                        <% String nomServ = s.getNombre().replace(" ", "+"); %>
+                                        <a href="<%= request.getContextPath()%>/InfoServicio?nombreServicio=<%= nomServ %>&nombreProveedor=<%= s.getProveedor() %>">
                                             <%= s.getNombre() %>
                                         </a>
                                     </td>
@@ -220,7 +221,8 @@
                                 <tr>
                                     <td class="TdTipo">Promocion</td>
                                     <td>
-                                        <a href="<%= request.getContextPath()%>/InfoPromocion?nombrePromocion=<%= p.getNombre() %>&nombreProveedor=<%= p.getProveedor() %>">
+                                        <% String nomProm = p.getNombre().replace(" ", "+"); %>
+                                        <a href="<%= request.getContextPath()%>/InfoPromocion?nombrePromocion=<%= nomProm %>&nombreProveedor=<%= p.getProveedor() %>">
                                             <%= p.getNombre() %>
                                         </a>
                                     </td>
@@ -228,13 +230,58 @@
                                     <%if(session.getAttribute("nickUsuario") != null){%>
                                         <td>
                                             <div class="aOcultar">
+                                                <label class="precio">Precio: <%= p.getTotal() %></label>
+                                                <%--Fecha de inicio del Promocion--%>
+                                                <div id="fechaIni">
+                                                    <label class="labelIni" >Inicio:</label>
+                                                    <input id="diaIni" name="diaIni" maxlength="2" placeholder="dd" type="text"/>
+                                                    <label class="label2" >/</label>
+                                                    <select id="mesIni" name="mesIni">
+                                                        <option name="01">Enero</option>
+                                                        <option name="02">Febrero</option>
+                                                        <option name="03">Marzo</option>
+                                                        <option name="04">Abril</option>
+                                                        <option name="05">Mayo</option>
+                                                        <option name="06">Junio</option>
+                                                        <option name="07">Julio</option>
+                                                        <option name="08">Agosto</option>
+                                                        <option name="09">Setiembre</option>
+                                                        <option name="10">Octubre</option>
+                                                        <option name="11">Noviembre</option>
+                                                        <option name="12">Diciembre</option>
+                                                    </select>
+                                                    <label class="label2" >/</label>
+                                                    <input id="anioIni" name="anioIni" maxlength="4" placeholder="aaaa" type="text"/>
+                                                </div>
+
+                                                <%--Fecha de Fin del servicio--%>
+                                                <div id="fechaFin">
+                                                    <label class="labelFin" >Fin:</label>
+                                                    <input id="diaFin" name="diaFin" maxlength="2" placeholder="dd" type="text"/>
+                                                    <label class="label2" >/</label>
+                                                    <select id="mesFin" name="mesFin">
+                                                        <option name="01">Enero</option>
+                                                        <option name="02">Febrero</option>
+                                                        <option name="03">Marzo</option>
+                                                        <option name="04">Abril</option>
+                                                        <option name="05">Mayo</option>
+                                                        <option name="06">Junio</option>
+                                                        <option name="07">Julio</option>
+                                                        <option name="08">Agosto</option>
+                                                        <option name="09">Setiembre</option>
+                                                        <option name="10">Octubre</option>
+                                                        <option name="11">Noviembre</option>
+                                                        <option name="12">Diciembre</option>
+                                                    </select>
+                                                    <label class="label2" >/</label>
+                                                    <input id="anioFin" name="anioFin" maxlength="4" placeholder="aaaa" type="text"/>
+                                                </div>
                                                 <form <%--action="agregarSCarrito--%> onsubmit="return agregarPACarrito(this.parentElement.parentElement)" name="formAgregar">
                                                     <input type="hidden" id ="nombrePromocion" value="<%= p.getNombre() %>" name="nombrePromocion">
                                                     <input type="hidden" id ="nombreProveedor" value="<%= p.getProveedor() %>" name="nombreProveedor">
-                                                    <input type="text" name="cantidad" id="txtCantidad" class="cantidad" onkeyup="calcularPrecio(this.parentElement.parentElement, <%= p.getTotal() %>)">
-                                                    <input id ="agregar" type="submit" value="agregar al carrito" ><!-- cambiar esto!-->
+                                                    <label>Cantidad:</label><input type="text" name="cantidad" id="txtCantidad" class="cantidad" onkeyup="calcularPrecio(this.parentElement.parentElement, <%= p.getTotal() %>)">
+                                                    <input id ="agregar" type="submit" value="agregar al carrito" >
                                                 </form>
-                                                    <label class="precio">Precio: <%= p.getTotal() %></label>
                                             </div>
                                             <div class="aMostrar" hidden="">
                                                 <img src="Imag/carrito.png" alt="imagen de carrito"> En carrito
