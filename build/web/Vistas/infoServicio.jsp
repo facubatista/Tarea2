@@ -97,6 +97,7 @@
                     </center>
                 </div>
                 <div class="siete columnas" id="colCuatro">
+                    <%if(session.getAttribute("nickUsuario") != null){%>
                     <div class="aOcultar">
                         <h2> Agregar a Carrito</h2>
                         <label class="precio">Precio: <%= s.getPrecio() %></label>
@@ -157,6 +158,7 @@
                     <div class="aMostrar" hidden="">
                         <img src="Imag/carrito.png" alt="imagen de carrito"> En carrito
                     </div>
+                    <%}%>
                 </div>
             </div>
             <div class="fila">

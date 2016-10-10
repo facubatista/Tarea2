@@ -1,5 +1,6 @@
 package Servlets;
 
+import Logica.DtPromocion;
 import Logica.DtServicio;
 import Logica.Factory;
 import Logica.IcontProveedores;
@@ -13,6 +14,7 @@ import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -61,7 +63,8 @@ public class nuevaBusquedaServProm extends HttpServlet {
 
                                 out.println("<img class=\"imgMini\" src=\"data:image/jpg;base64,"+b64+"\">");
                             }
-                            out.println("<a href="+ request.getContextPath()+"/InfoServicio?nombreServicio="+ s.getNombre() +"&nombreProveedor="+ s.getProveedor() +"\">\n" +
+                            String nomServ = s.getNombre().replace(" ", "+");
+                            out.println("<a href="+ request.getContextPath() +"/InfoServicio?nombreServicio="+ nomServ +"&nombreProveedor="+ s.getProveedor() +">\n" +
 "                                            "+ s.getNombre() +"\n" +
 "                                        </a>");
                         out.println("</td>");
@@ -130,44 +133,44 @@ public class nuevaBusquedaServProm extends HttpServlet {
                     }
                     out.println("</tbody>");
                 out.println("</table>");
-                                                    
-                                                        
-                                                       /* 
-                                <%
-                                    ArrayList<DtPromocion> listaPromociones = (ArrayList)request.getAttribute("listaPromociones");
-                                    Iterator<DtPromocion> iterador = listaPromociones.iterator();
+                
+                ArrayList<DtPromocion> listaPromociones = cont.listarPromocionesBuscadas(categoria);
+                Iterator<DtPromocion> iterador = listaPromociones.iterator();
 
-                                    while(iterador.hasNext()){
-                                        DtPromocion p = iterador.next();
-                                %>
-                                <tr>
-                                    <td class="TdTipo">Promocion</td>
-                                    <td>
-                                        <a href="<%= request.getContextPath()%>/InfoPromocion?nombrePromocion=<%= p.getNombre() %>&nombreProveedor=<%= p.getProveedor() %>">
-                                            <%= p.getNombre() %>
-                                        </a>
-                                    </td>
-                                    <td class="TdProveedor"><%= p.getProveedor() %></td>
-                                    <%if(session.getAttribute("nickUsuario") != null){%>
-                                        <td>
-                                            <div class="aOcultar">
-                                                <form <%--action="agregarSCarrito--%> onsubmit="return agregarPACarrito(this.parentElement.parentElement)" name="formAgregar">
-                                                    <input type="hidden" id ="nombrePromocion" value="<%= p.getNombre() %>" name="nombrePromocion">
-                                                    <input type="hidden" id ="nombreProveedor" value="<%= p.getProveedor() %>" name="nombreProveedor">
-                                                    <input type="text" name="cantidad" id="txtCantidad" class="cantidad" onkeyup="calcularPrecio(this.parentElement.parentElement, <%= p.getTotal() %>)">
-                                                    <input id ="agregar" type="submit" value="agregar al carrito" ><!-- cambiar esto!-->
-                                                </form>
-                                                    <label class="precio">Precio: <%= p.getTotal() %></label>
-                                            </div>
-                                            <div class="aMostrar" hidden="">
-                                                <img src="Imag/carrito.png" alt="imagen de carrito"> En carrito
-                                            </div>
-                                        </td>
-                                    <%}%>
-                                </tr>
-                                <%}%>
-                            </body>
-                        </table>
+                while(iterador.hasNext()){
+                    DtPromocion p = iterador.next();
+                    out.println("<tr>");
+                        out.println("<td class=\"TdTipo\">Promocion</td>");
+                        out.println("<td>");
+                            out.println("<a href="+ request.getContextPath() +"/InfoPromocion?nombrePromocion="+ p.getNombre() +"&nombreProveedor="+ p.getProveedor() +">\n" +
+"                                            "+ p.getNombre() +"\n" +
+"                                        </a>");
+                    out.println("</td>");
+                    out.println("<td class=\"TdProveedor\">"+ p.getProveedor() +"</td>");
+                    if(session.getAttribute("nickUsuario") != null){
+                        out.println("<td>");
+                            out.println("<div class=\"aOcultar\">\n" +
+"                                                <form onsubmit=\"return agregarPACarrito(this.parentElement.parentElement)\" name=\"formAgregar\">\n" +
+"                                                    <input type=\"hidden\" id =\"nombrePromocion\" value="+ p.getNombre() +" name=\"nombrePromocion\">\n" +
+"                                                    <input type=\"hidden\" id =\"nombreProveedor\" value="+ p.getProveedor() +" name=\"nombreProveedor\">\n" +
+"                                                    <input type=\"text\" name=\"cantidad\" id=\"txtCantidad\" class=\"cantidad\" onkeyup=\"calcularPrecio(this.parentElement.parentElement, "+ p.getTotal() +")>\n" +
+"                                                    <input id =\"agregar\" type=\"submit\" value=\"agregar al carrito\" ><!-- cambiar esto!-->\n" +
+"                                                </form>\n" +
+"                                                    <label class=\"precio\">Precio: "+ p.getTotal() +"</label>\n" +
+"                                            </div>\n" +
+"                                            <div class=\"aMostrar\" hidden=\"\">\n" +
+"                                                <img src=\"Imag/carrito.png\" alt=\"imagen de carrito\"> En carrito\n" +
+"                                            </div>");
+                        out.println("</td>");
+                    }
+                    out.println("</tr>");
+                }
+                out.println("</body>");
+            out.println("</table>");
+                                
+                                
+                            
+                        
             
             
             /*out.println("<table>");

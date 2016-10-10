@@ -30,7 +30,9 @@ public class verInfoPromocion extends HttpServlet {
         String nombre = request.getParameter("nombrePromocion");
         String proveedor = request.getParameter("nombreProveedor");
         
-        DtPromocion p = cont.seleccionarPromocionAListar(proveedor, nombre);
+        String nomProm = nombre.replace("+", " ");
+        
+        DtPromocion p = cont.seleccionarPromocionAListar(proveedor, nomProm);
         
         Iterator<String> it = p.getServicios().iterator();
         
