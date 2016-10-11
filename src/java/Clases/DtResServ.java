@@ -18,8 +18,8 @@ public class DtResServ {
 
     public DtServicio getServicio() {return servicio;}
     public int getCantidad() {return cantidad;}
-    public String getFechaIni() {return fechaIni.toString();}
-    public String getFechaFin() {return fechaFin.toString();}
+    public Date getFechaIni() {return fechaIni;}
+    public Date getFechaFin() {return fechaFin;}
     
     
 }

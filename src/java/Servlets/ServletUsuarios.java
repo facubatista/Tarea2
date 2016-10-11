@@ -69,7 +69,6 @@ public class ServletUsuarios extends HttpServlet {
             nomUsuario = cliente.getNombre() + " " + cliente.getApellido();
             //Se setea el nombre de usuario en la sesion
             sesion.setAttribute("nomUsuario", nomUsuario);//Es el nombre para mostrar en el header 
-            sesion.setAttribute("imagenUsuario", cliente.getImagen());//imagen para la cabecera
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
