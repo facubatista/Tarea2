@@ -1,3 +1,7 @@
+<%@page import="javax.imageio.ImageIO"%>
+<%@page import="java.io.ByteArrayOutputStream"%>
+<%@page import="java.awt.image.BufferedImage"%>
+<%@page import="java.util.Base64"%>
 <%@page import="Clases.DtResProm"%>
 <%@page import="Clases.DtResServ"%>
 <%@page import="Logica.DtPromocion"%>
@@ -34,7 +38,7 @@
                 if(it.hasNext()){
                     hayServicios=true;
                  %>
-                <table class="doce columnas" style="margin-top: 10px">
+                <table class="doce columnas">
                 <thead class="doce columnas">
                         <tr class="doce columnas">
                           <th class="nueve columnas" style="text-align: left;">Servicios</th>
@@ -47,36 +51,48 @@
                         <%while(it.hasNext()){
                             DtResServ rs = it.next();
                             DtServicio s = rs.getServicio();
+                            
+                            String imagenServBase64=null;                            
+                            if(s.getImagenes().isEmpty()==false){
+                                BufferedImage originalImage=(BufferedImage) s.getImagenes().get(0).getImage();
+                                ByteArrayOutputStream baos=new ByteArrayOutputStream();
+                                ImageIO.write(originalImage, "jpg", baos );
+                                byte[] arrayBytes = baos.toByteArray();
+                                imagenServBase64 = javax.xml.bind.DatatypeConverter.printBase64Binary(arrayBytes);
+                            }
                         %>
                         <tr class="doce columnas">
                             <td class="nueve columnas">
+                                <%if(imagenServBase64!=null){%>
+                                <img src="data:image/jpg;base64, <%=imagenServBase64%>" alt="foto de usuario" style="width:25%;">
+                                <%}else{%>
                                 <img src="/Tarea2/Imag/prueba2.jpg" style="width:25%;">
+                                <%}%> 
                                 <a href="<%= request.getContextPath()%>/InfoServicio?nombreServicio=<%= s.getNombre() %>&nombreProveedor=<%= s.getProveedor() %>"><%= s.getNombre() %></a>
                                 <p><%= s.getDescripcion() %></p>
                             </td>
-                            <td class="una columnas">$<%= s.getPrecio() %></td>
+                            <td class="una columnas">$<%= Math.round(s.getPrecio()) %></td>
                             <td class="una columnas"><%= rs.getCantidad() %></td>
-                            <td class="una columnas">$<%= s.getPrecio() * rs.getCantidad() %></td>
+                            <td class="una columnas">$<%= Math.round(s.getPrecio() * rs.getCantidad()) %></td>
                         </tr>
                         <%}%>
                     </tbody>
                 </table>
                     <%}%>
-                <%
+                    <%
                         Iterator<DtResProm> itP = car.getPromociones().iterator();
 
                         //Si no hay servicios ni promociones no se muestran el total y el confirmar reserva
                         boolean hayPromos=false;
-                        if(itP.hasNext()){
-                            hayPromos=true;
-                        }
 
                         if(itP.hasNext()){
+                            hayPromos=true;
                     %>
-                <table class="doce columnas">
+                <table id="Promociones" class="doce columnas">
                     <thead class="doce columnas">
                         <tr class="doce columnas">
-                          <th class="nueve columnas" style="text-align: left">Promociones</th>
+                          <th class="ocho columnas" style="text-align: left">Promociones</th>
+                          <th class="una columnas">Precio</th>
                           <th class="una columnas">Descuento</th>
                           <th class="una columnas">Cantidad</th>
                           <th class="una columnas">Total</th>
@@ -88,14 +104,13 @@
                             DtPromocion p = rp.getPromocion();
                     %>
                         <tr class="doce columnas">
-                            <td class="nueve columnas">
-                                <img src="/Tarea2/Imag/prueba3.jpg" style="width:25%;">
+                            <td class="ocho columnas">
                                 <a href="<%= request.getContextPath()%>/InfoPromocion?nombrePromocion=<%= p.getNombre() %>&nombreProveedor=<%= p.getProveedor() %>"><%= p.getNombre() %></a>
-                                <p>laskaskdmklasmdlskdmlkasdmlaksmdlaksmdlkasmdlam</p>
                             </td>
-                            <td class="una columnas">%<%= p.getPorcentaje() %></td>
+                            <td class="una columnas">$<%= Math.round(p.getTotal()) %></td>
+                            <td class="una columnas">%<%= Math.round(p.getPorcentaje()) %></td>
                             <td class="una columnas"><%= rp.getCantidad()  %></td>
-                            <td class="una columnas">$<%= p.getTotal() * rp.getCantidad() %></td>
+                            <td class="una columnas">$<%= Math.round(p.getTotal() * rp.getCantidad()) %></td>
                         </tr>
                             <%  }%>
                     </tbody>
@@ -107,16 +122,17 @@
             <table class="doce columnas">
                 <thead class="doce columnas">
                     <tr class="doce columnas">
-                      <th class="doce columnas" style="text-align: left;">Total de reserva: $<%= car.getTotal() %></th>
+                      <th class="doce columnas" style="text-align: left;">Total de reserva: $<%= Math.round(car.getTotal()) %></th>
                     </tr>
                 </thead>
             </table> 
-            <div class="fila">
-                <a class="botones" href="/Tarea2/ServletCarrito?confirmarReserva=true">Confirmar Reserva</a>
+            <div id="confirmarBorrarRes" class="fila">
+                <a class="botones" href="/Tarea2/ServletCarrito?borrarCarrito=true">Borrar Carrito</a>
+                <a class="botones" href="/Tarea2/ServletCarrito?confirmarReserva=true">Confirmar Reserva</a>                
             </div>
                 <%}
-            }else%>
-            <p style="font-size: 15px;">No existe el carrito</p>
+            }%>
+            
         </div>
     </body>
 </html>
