@@ -42,6 +42,8 @@ public class agregarServACarrito extends HttpServlet {
             Integer anioFin = Integer.parseInt(request.getParameter("anioFin"));
             String fechaFin = diaFin.toString() + "/" + mesFin.toString() + "/" + anioFin.toString();
             
+            //response.getWriter().println("{fechaIni:'"+fechaIni+"', fechaFin:'"+fechaFin+"'}");
+            
             IcontProveedores cont = Factory.getInstance().crearContProveedores();
             
             HttpSession sesion = request.getSession();
@@ -62,9 +64,9 @@ public class agregarServACarrito extends HttpServlet {
             car.setTotal(s.getPrecio()*cantidad);
             
             sesion.setAttribute("carrito", car);
-            response.getWriter().println("{respuesta:'ok', facu:'hola'}");
+            response.getWriter().println("{respuesta:'ok'}");
             //response.getOutputStream();
-            
+
         }
     }
 

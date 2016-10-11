@@ -13,6 +13,7 @@ function agregarSACarrito(o){
     var mesFin = o.querySelector("select[name=mesFin]").value;
     var anioFin = o.querySelector("input[id=anioFin]").value;
     
+    
     switch(mesIni){
         case 'Enero': mesIni = 1; break;
         case 'Febrero': mesIni = 2; break;
@@ -85,6 +86,7 @@ function agregarSACarrito(o){
             console.log(this);
             o.querySelector(".aOcultar").hidden = true;
             o.querySelector(".aMostrar").hidden = false;
+            
             //if(this.responseText)
             //document.getElementById("aOcultar").hidden = true;
             ///document.getElementById("aMostrar").hidden = false;
@@ -94,8 +96,10 @@ function agregarSACarrito(o){
     x.open("POST","agregarSCarrito",true );
     x.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     //x.setRequestHeader("responseType","json");
-    x.send("nombreServicio="+servicio+"&nombreProveedor="+proveedor+"&cantidad="+cantidad+"&diaIni"+diaIni+"&mesIni"+mesIni+"&anioIni"+anioIni+"&diaFin"+diaFin+"&mesFin"+mesFin+"&anioFin"+anioFin);
+    x.send("nombreServicio="+servicio+"&nombreProveedor="+proveedor+"&cantidad="+cantidad+"&diaIni="+diaIni+"&mesIni="+mesIni+"&anioIni="+anioIni+"&diaFin="+diaFin+"&mesFin="+mesFin+"&anioFin="+anioFin);
+    
     return false;
+    
 }
 
 function agregarPACarrito(o){
@@ -188,7 +192,7 @@ function agregarPACarrito(o){
     x.open("POST","agregarPCarrito",true );
     x.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     //x.setRequestHeader("responseType","json");
-    x.send("nombrePromocion="+promocion+"&nombreProveedor="+proveedor+"&cantidad="+cantidad+"&diaIni"+diaIni+"&mesIni"+mesIni+"&anioIni"+anioIni+"&diaFin"+diaFin+"&mesFin"+mesFin+"&anioFin"+anioFin);
+    x.send("nombrePromocion="+promocion+"&nombreProveedor="+proveedor+"&cantidad="+cantidad+"&diaIni="+diaIni+"&mesIni="+mesIni+"&anioIni="+anioIni+"&diaFin="+diaFin+"&mesFin="+mesFin+"&anioFin="+anioFin);
     return false;
 }
 
