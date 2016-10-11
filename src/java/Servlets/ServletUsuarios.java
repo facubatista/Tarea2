@@ -61,7 +61,7 @@ public class ServletUsuarios extends HttpServlet {
             nomUsuario = cont.verificarUsuario(nomUsuario);//Retorna el nickname
             sesion.setAttribute("nickUsuario", nomUsuario);
             sesion.setAttribute("DtCliente", cont.seleccionarClienteAListar(nomUsuario));//DtCliente para Ver Perfil
-            sesion.setAttribute("imagenUsuario", cont.geImagenUsuarioEnArrayBytes(nomUsuario));
+            sesion.setAttribute("imagenUsuario", cont.getImagenUsuarioEnArrayBytes(nomUsuario));
 
             DtCliente cliente = cont.seleccionarClienteAListar(nomUsuario);
 
