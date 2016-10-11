@@ -40,14 +40,14 @@ public class ServletCarrito extends HttpServlet {
                 for(int i=0;i<car.getPromociones().size();i++){
                     DtResProm rp = car.getPromociones().get(i);
                     cont.seleccionarProveedor(rp.getProveedor());//selecciona el proveedor para buscar la promocion en la logica
-                    cont.agregarPromoAreserva(rp.getPromocion().getNombre(), rp.getCantidad(), fechaAux, fechaAux);
+                    cont.agregarPromoAreserva(rp.getPromocion().getNombre(), rp.getCantidad(), rp.getFechaIni(), rp.getFechaFin());
                 }
             }
             if(car.getServicios()!=null){
                 for(int i=0;i<car.getServicios().size();i++){
                     DtResServ rs = car.getServicios().get(i);
                     cont.seleccionarProveedor(rs.getServicio().getProveedor());//selecciona el proveedor para buscar el servicio en la logica
-                    cont.agregarServicioAreserva(rs.getServicio().getNombre(), rs.getCantidad(), fechaAux, fechaAux);
+                    cont.agregarServicioAreserva(rs.getServicio().getNombre(), rs.getCantidad(), rs.getFechaIni(), rs.getFechaFin());
                 }
             }
             

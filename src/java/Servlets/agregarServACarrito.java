@@ -26,11 +26,11 @@ public class agregarServACarrito extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        //try (PrintWriter out = response.getWriter()) {
             
             String nombre = request.getParameter("nombreServicio");
             String proveedor = request.getParameter("nombreProveedor");
-            int cantidad = Integer.parseInt(request.getParameter("cantidad"));
+            Integer cantidad = Integer.parseInt(request.getParameter("cantidad"));
             
             Integer diaIni = Integer.parseInt(request.getParameter("diaIni"));
             Integer mesIni = Integer.parseInt(request.getParameter("mesIni"));
@@ -64,11 +64,11 @@ public class agregarServACarrito extends HttpServlet {
             car.setTotal(s.getPrecio()*cantidad);
             
             sesion.setAttribute("carrito", car);
+            
             response.getWriter().println("{respuesta:'ok'}");
             //response.getOutputStream();
 
         }
-    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

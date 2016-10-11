@@ -26,7 +26,7 @@
        <div id="SesionUsuario" class="cuatro columnas">                
             <div class="imagenYcarrito">
                 <%if(imagenUsuarioB64!=null){%>
-                <img src="data:image/jpg;base64, <%=imagenUsuarioB64%>" alt="foto del usuario" class="ImagenUsuario"><!--Cambiar por imagen del usuario-->
+                <img src="data:image/jpg;base64, <%=imagenUsuarioB64%>" alt="foto del usuario" class="ImagenUsuario Real"><!--Cambiar por imagen del usuario-->
                 <%}else{%>
                 <img src="/Tarea2/Imag/IconoUsuario.png" alt="imagen alternativa del usuario" class="ImagenUsuario Altern"> 
                 <%}%>

@@ -17,27 +17,22 @@
     </head>
     <body>
         <jsp:include page="Cabecera.jsp" />
-        <%
-            carrito car = (carrito)session.getAttribute("carrito");
-            
-        %>
         <div class="principal">
             <div class="fila" id="CarritoyTitulo">
                 <img src="/Tarea2/Imag/imagenCarrito.png" alt="imagen de carrito">
                 <p>Carrito de compras</p>
             </div>
-            <%if(car!=null){ %>
+            <%if(session.getAttribute("carrito")!=null){ %>
             <div class="fila">
                 <%
+                carrito car = (carrito)session.getAttribute("carrito");
                 Iterator<DtResServ> it = car.getServicios().iterator();
 
                 //Si no hay servicios ni promociones no se muestran el total y el confirmar reserva
                 boolean hayServicios=false;
+                
                 if(it.hasNext()){
                     hayServicios=true;
-                }                                
-
-                if(it.hasNext()){
                  %>
                 <table class="doce columnas" style="margin-top: 10px">
                 <thead class="doce columnas">
@@ -120,7 +115,8 @@
                 <a class="botones" href="/Tarea2/ServletCarrito?confirmarReserva=true">Confirmar Reserva</a>
             </div>
                 <%}
-            }%>
+            }else%>
+            <p style="font-size: 15px;">No existe el carrito</p>
         </div>
     </body>
 </html>
