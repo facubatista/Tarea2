@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="../CSS/Registrar.css"/>
         <link rel="stylesheet" type="text/css" href="../CSS/Pie.css"/>
         <script src="../JS/jQuery.js"></script>
+        <script src="../JS/jquerysession.js"></script>
         <script src="../JS/sha1.js"></script>
 	<script src="../JS/user.js"></script>
         <script src="../JS/javaScript.js"></script>

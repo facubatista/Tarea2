@@ -149,31 +149,7 @@ public class ServletUsuarios extends HttpServlet {
             }
 
         }
-
-        if (request.getParameter("RImagen") != null) {
-            response.setContentType("text/plain");
-                String base64 = (String) request.getParameter("archivo");
-                base64=base64.substring(base64.indexOf(",")+1);
-                BufferedImage image = null;
-                String nickname = (String) request.getParameter("nickname");
-                byte[] imageByte;
-                try {
-                    BASE64Decoder decoder = new BASE64Decoder();
-                    imageByte = decoder.decodeBuffer(base64);
-                    ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
-                    image = ImageIO.read(bis);
-                    bis.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                if (cont.agregarImagen(nickname, image)) {
-                    response.getWriter().write(base64);
-                } else {
-                   
-                    response.getWriter().write("false");
-                }
-            }
-        
+        //falta imagen
 
     }
 
@@ -200,9 +176,9 @@ public class ServletUsuarios extends HttpServlet {
                 sesion.removeAttribute("nickUsuario");
                 sesion.removeAttribute("imagenUsuario");
                 sesion.removeAttribute("carrito");
-
                 RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-                dispatcher.forward(request, response);
+                dispatcher.forward(request, response); 
+                
             }
 
             //Ver Perfil
