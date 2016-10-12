@@ -7,9 +7,10 @@
         <link rel="stylesheet" type="text/css" href="../CSS/Layout.css"/>
         <link rel="stylesheet" type="text/css" href="../CSS/Cabecera.css"/>
         <link rel="stylesheet" type="text/css" href="../CSS/Registrar.css"/>
+        <link rel="stylesheet" type="text/css" href="../CSS/Pie.css"/>
         <script src="../JS/jQuery.js"></script>
         <script src="../JS/sha1.js"></script>
-	<script src="../JS/jreserva.js"></script>
+	<script src="../JS/user.js"></script>
         <script src="../JS/javaScript.js"></script>
     </head>
     <body>
@@ -74,5 +75,6 @@
                 <input id="botonRegistrar" name="botonRegistrar" value="Registrar" type="SUBMIT"/>
             </div>
         </form>
+        <jsp:include page="Cabecera.jsp" /> 
     </body>
 </html>

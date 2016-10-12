@@ -7,6 +7,7 @@ package Servlets;
 
 import Clases.carrito;
 import Logica.DtCliente;
+import Logica.DtReserva;
 import Logica.Factory;
 import Logica.IcontClientes;
 import java.awt.image.BufferedImage;
@@ -94,6 +95,7 @@ public class ServletUsuarios extends HttpServlet {
 
 
         if (request.getParameter("pass") != null && request.getParameter("user") != null) {
+            response.setContentType("text/plain");
             String nick = request.getParameter("user");
             String nombre = request.getParameter("name");
             String apellido = request.getParameter("surname");
@@ -142,11 +144,13 @@ public class ServletUsuarios extends HttpServlet {
             DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
             String day = dia + "/" + String.valueOf(numMes) + "/" + anio;
             Date fecha = format.parse(day);
-            cont.creaCliente(nick, nombre, apellido, email, fecha, pass);
-
+            if(cont.crearUserWeb(nick, pass, nombre, apellido, email, fecha, null))
+            response.getWriter().write("true");
+            else response.getWriter().write("false");
         }
 
         if (request.getParameter("archivo") != null && request.getParameter("nickname") != null) {
+            response.setContentType("text/plain");
             String nickname = request.getParameter("nickname");
             String base64 = request.getParameter("archivo");
             BufferedImage image = null;
@@ -160,7 +164,9 @@ public class ServletUsuarios extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            cont.setImagen(image, nickname);
+            if(cont.agregarImagen(nickname, image))
+            response.getWriter().write("true");
+            else response.getWriter().write("false");
         }
 
     }
@@ -201,6 +207,15 @@ public class ServletUsuarios extends HttpServlet {
                 request.setAttribute("ReservasCli", cont.listarResDeCli(nickUsuario));
 
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/VerPerfil.jsp");
+                dispatcher.forward(request, response);
+            }
+            
+            if(request.getParameter("VerReserva")!=null){
+                String nickUsuario = (String) sesion.getAttribute("nickUsuario");
+                int num = Integer.valueOf((String) request.getParameter("numero"));
+                DtReserva res = cont.mostrarReserva(num, nickUsuario);
+                request.setAttribute("Reserva", res);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("./Vistas/VerReserva.jsp");
                 dispatcher.forward(request, response);
             }
 
