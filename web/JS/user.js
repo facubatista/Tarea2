@@ -185,14 +185,19 @@ jQuery(document).ready(function () {
             var file = inputFileImage.files[0];
             var fr = new FileReader();
             fr.onload = function (e) {
-                 x.open("POST", "../ServUsuarios", true);
-                 x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                 Session["imagen"] = e.target.result;
-                 x.send("RImagen=true&nickname=" + nickname);
+                var archivo = e.target.result.toString();
+                x.open("POST", "../ServUsuarios", true);
+                x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                x.send("RImagen=true&nickname="+nickname+"&archivo=" + archivo);
+                request.onreadystatechange = function () {
+                    if (this.status === 200 && this.readyState === 4) {
+                        alert(this.responseText);
+                    }
+                };
             };
             fr.readAsDataURL(file);
         }
-        
+
         return false;
     }
     ;

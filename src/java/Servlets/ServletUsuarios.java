@@ -38,8 +38,7 @@ import sun.misc.BASE64Decoder;
  */
 @WebServlet(name = "ServletUsuarios", urlPatterns = {"/ServUsuarios"})
 public class ServletUsuarios extends HttpServlet {
-
-    /**
+     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
@@ -53,7 +52,7 @@ public class ServletUsuarios extends HttpServlet {
             throws ServletException, IOException, SQLException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-
+        
         IcontClientes cont = Factory.getInstance().crearContCliente();
         HttpSession sesion = request.getSession();
 
@@ -76,8 +75,6 @@ public class ServletUsuarios extends HttpServlet {
             dispatcher.forward(request, response);
         }
 
-            
-       
         //Verificar que el nickname sea valido
         if (request.getParameter("verificarUsuario") != null) {
             //especifica que el tipo de respuesta va a ser texto
@@ -93,18 +90,18 @@ public class ServletUsuarios extends HttpServlet {
                 response.getWriter().write("true");
             }
         }
-        
+
         //Alta de usuario
         if (request.getParameter("Registrar") != null) {
             response.setContentType("text/plain");
-            String nick = (String)request.getParameter("user");
-            String nombre = (String)request.getParameter("name");
-            String apellido = (String)request.getParameter("surname");
-            String email = (String)request.getParameter("email");
-            String pass = (String)request.getParameter("pass");
-            String mes = (String)request.getParameter("month");
-            String dia = (String)request.getParameter("day");
-            String anio = (String)request.getParameter("year");
+            String nick = (String) request.getParameter("user");
+            String nombre = (String) request.getParameter("name");
+            String apellido = (String) request.getParameter("surname");
+            String email = (String) request.getParameter("email");
+            String pass = (String) request.getParameter("pass");
+            String mes = (String) request.getParameter("month");
+            String dia = (String) request.getParameter("day");
+            String anio = (String) request.getParameter("year");
             int numMes = 0;
             if (mes.equals("Enero")) {
                 numMes = 1;
@@ -145,34 +142,41 @@ public class ServletUsuarios extends HttpServlet {
             DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
             String day = dia + "/" + String.valueOf(numMes) + "/" + anio;
             Date fecha = format.parse(day);
-            if(cont.crearUserWeb(nick, pass, nombre, apellido, email, fecha, null))
-            response.getWriter().write("true");
-            else response.getWriter().write("false");
+            if (cont.crearUserWeb(nick, pass, nombre, apellido, email, fecha, null)) {
+                response.getWriter().write("true");
+            } else {
+                response.getWriter().write("false");
+            }
 
         }
 
         if (request.getParameter("RImagen") != null) {
             response.setContentType("text/plain");
-            String nickname = (String)request.getParameter("nickname");
-            String base64 = (String)sesion.getAttribute("imagen");
-            BufferedImage image = null;
-            byte[] imageByte;
-            try {
-                BASE64Decoder decoder = new BASE64Decoder();
-                imageByte = decoder.decodeBuffer(base64.substring(base64.indexOf(",")+1));
-                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
-                image = ImageIO.read(bis);
-                bis.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-
+                String base64 = (String) request.getParameter("archivo");
+                base64=base64.substring(base64.indexOf(",")+1);
+                BufferedImage image = null;
+                String nickname = (String) request.getParameter("nickname");
+                byte[] imageByte;
+                try {
+                    BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64);
+                    ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                    image = ImageIO.read(bis);
+                    bis.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                if (cont.agregarImagen(nickname, image)) {
+                    response.getWriter().write(base64);
+                } else {
+                   
+                    response.getWriter().write("false");
+                }
             }
-            if(cont.agregarImagen(nickname, image))
-            response.getWriter().write("true");
-            else response.getWriter().write("false");
-        }
+        
 
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -202,8 +206,7 @@ public class ServletUsuarios extends HttpServlet {
             }
 
             //Ver Perfil
-
-            if(request.getParameter("VerPerfil")!=null){
+            if (request.getParameter("VerPerfil") != null) {
 
                 String nickUsuario = (String) sesion.getAttribute("nickUsuario");
                 DtCliente cliente = cont.seleccionarClienteAListar(nickUsuario);
@@ -212,8 +215,8 @@ public class ServletUsuarios extends HttpServlet {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/VerPerfil.jsp");
                 dispatcher.forward(request, response);
             }
-            
-            if(request.getParameter("VerReserva")!=null){
+
+            if (request.getParameter("VerReserva") != null) {
                 String nickUsuario = (String) sesion.getAttribute("nickUsuario");
                 int num = Integer.valueOf((String) request.getParameter("numero"));
                 DtReserva res = cont.mostrarReserva(num, nickUsuario);
@@ -252,6 +255,5 @@ public class ServletUsuarios extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    } 
+    }
 }
-
