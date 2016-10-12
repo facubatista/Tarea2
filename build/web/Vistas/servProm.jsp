@@ -140,6 +140,8 @@
                                             String b64 = javax.xml.bind.DatatypeConverter.printBase64Binary(arrayBytes);
                                         %>
                                             <img class="imgMini" src="data:image/jpg;base64, <%=b64%>">
+                                        <%}else{%>
+                                        <img class="imgMini" src="/Tarea2/Imag/SinImagen.jpg">
                                         <%}%>
                                         <% String nomServ = s.getNombre().replace(" ", "+"); %>
                                         <a href="<%= request.getContextPath()%>/InfoServicio?nombreServicio=<%= nomServ %>&nombreProveedor=<%= s.getProveedor() %>">
@@ -150,7 +152,7 @@
                                     <%if(session.getAttribute("nickUsuario") != null){  %>
                                         <td class="TdAgregarACarrito">
                                             <div class="aOcultar">
-                                                <label class="precio">Precio: <%= s.getPrecio() %></label>
+                                                <label class="precio">Precio: $<%= Math.round(s.getPrecio()) %></label>
                                                 <%--Fecha de inicio del servicio--%>
                                                 <div id="fechaIni">
                                                     <label class="labelIni" >Inicio:</label>
@@ -199,7 +201,7 @@
                                                 <form <%--action="agregarSCarrito--%> onsubmit="return agregarSACarrito(this.parentElement.parentElement)" name="formAgregar">
                                                     <input type="hidden" id ="nombreServicio" value="<%= s.getNombre() %>" name="nombreServicio">
                                                     <input type="hidden" id ="nombreProveedor" value="<%= s.getProveedor() %>" name="nombreProveedor">
-                                                    <label>Cantidad:</label><input type="text" name="cantidad" id="txtCantidad" class="cantidad" onkeyup="calcularPrecio(this.parentElement.parentElement, <%= s.getPrecio() %>)">
+                                                    <label>Cantidad:</label><input type="text" name="cantidad" id="txtCantidad" class="cantidad" onkeyup="calcularPrecio(this.parentElement.parentElement, <%= Math.round(s.getPrecio()) %>)">
                                                     <input id ="agregar" type="submit" value="agregar al carrito" >
                                                 </form>
                                             </div>
@@ -230,7 +232,7 @@
                                     <%if(session.getAttribute("nickUsuario") != null){%>
                                         <td>
                                             <div class="aOcultar">
-                                                <label class="precio">Precio: <%= p.getTotal() %></label>
+                                                <label class="precio">Precio: $<%= Math.round(p.getTotal()) %></label>
                                                 <%--Fecha de inicio del Promocion--%>
                                                 <div id="fechaIni">
                                                     <label class="labelIni" >Inicio:</label>
@@ -279,7 +281,7 @@
                                                 <form <%--action="agregarSCarrito--%> onsubmit="return agregarPACarrito(this.parentElement.parentElement)" name="formAgregar">
                                                     <input type="hidden" id ="nombrePromocion" value="<%= p.getNombre() %>" name="nombrePromocion">
                                                     <input type="hidden" id ="nombreProveedor" value="<%= p.getProveedor() %>" name="nombreProveedor">
-                                                    <label>Cantidad:</label><input type="text" name="cantidad" id="txtCantidad" class="cantidad" onkeyup="calcularPrecio(this.parentElement.parentElement, <%= p.getTotal() %>)">
+                                                    <label>Cantidad:</label><input type="text" name="cantidad" id="txtCantidad" class="cantidad" onkeyup="calcularPrecio(this.parentElement.parentElement, <%= Math.round(p.getTotal()) %>)">
                                                     <input id ="agregar" type="submit" value="agregar al carrito" >
                                                 </form>
                                             </div>

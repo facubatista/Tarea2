@@ -32,22 +32,21 @@ public class ServletCarrito extends HttpServlet {
         IcontClientes cont = Factory.getInstance().crearContCliente();
         HttpSession sesion = request.getSession();
         
-        if(request.getParameter("confirmarReserva").equals("true") && sesion.getAttribute("carrito")!=null){
-            Date fechaAux = new Date(2016, 07, 03);
+        if(request.getParameter("confirmarReserva")!=null && sesion.getAttribute("carrito")!=null){
             carrito car = (carrito) sesion.getAttribute("carrito");
             cont.crearReserva((String)sesion.getAttribute("nickUsuario"),car.getTotal());
             if(car.getPromociones().size()>0){
                 for(int i=0;i<car.getPromociones().size();i++){
                     DtResProm rp = car.getPromociones().get(i);
                     cont.seleccionarProveedor(rp.getProveedor());//selecciona el proveedor para buscar la promocion en la logica
-                    cont.agregarPromoAreserva(rp.getPromocion().getNombre(), rp.getCantidad(), fechaAux, fechaAux);
+                    cont.agregarPromoAreserva(rp.getPromocion().getNombre(), rp.getCantidad(), rp.getFechaIni(), rp.getFechaFin());
                 }
             }
             if(car.getServicios()!=null){
                 for(int i=0;i<car.getServicios().size();i++){
                     DtResServ rs = car.getServicios().get(i);
                     cont.seleccionarProveedor(rs.getServicio().getProveedor());//selecciona el proveedor para buscar el servicio en la logica
-                    cont.agregarServicioAreserva(rs.getServicio().getNombre(), rs.getCantidad(), fechaAux, fechaAux);
+                    cont.agregarServicioAreserva(rs.getServicio().getNombre(), rs.getCantidad(), rs.getFechaIni(), rs.getFechaFin());
                 }
             }
             
@@ -57,6 +56,13 @@ public class ServletCarrito extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
             
+        }
+        
+        if(request.getParameter("borrarCarrito")!=null && sesion.getAttribute("carrito")!=null){
+            sesion.removeAttribute("carrito");
+            
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            dispatcher.forward(request, response);
         }
         
     }

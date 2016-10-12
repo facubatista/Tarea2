@@ -16,9 +16,19 @@ public class DtResProm {
         this.cantidad = cantidad;
         this.fechaIni = fechaIni;
         this.fechaFin = fechaFin;
+        this.proveedor = promocion.getProveedor();
     }
 
     public DtPromocion getPromocion() {return promocion;}
     public int getCantidad() {return cantidad;}
     public String getProveedor(){ return proveedor;}
+
+    public Date getFechaIni() {
+        return fechaIni;
+    }
+
+    public Date getFechaFin() {
+        return fechaFin;
+    }
+    
 }

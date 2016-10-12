@@ -3,7 +3,7 @@
     Created on : 03/10/2016, 02:39:24 PM
     Author     : Kevin
 --%>
-
+<%@page import="java.util.Base64"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="Logica.DtReserva"%>
@@ -30,18 +30,14 @@
            String imagenUsuarioB64=null;           
            if(session.getAttribute("imagenUsuario")!=null){           
                 byte[] imagenUsuario = (byte[])session.getAttribute("imagenUsuario");
-                imagenUsuarioB64 = javax.xml.bind.DatatypeConverter.printBase64Binary(imagenUsuario);
+                //imagenUsuarioB64 = javax.xml.bind.DatatypeConverter.printBase64Binary(imagenUsuario);
+                imagenUsuarioB64 = Base64.getEncoder().encodeToString(imagenUsuario);
            }
         %>
         <jsp:include page="Cabecera.jsp" />
         <div class="principal">
             
             <div class="fila" id="FotoyNombre">
-                <%if(imagenUsuarioB64!=null){%>
-                <img src="data:image/jpg;base64, <%=imagenUsuarioB64%>" alt="foto del usuario"><!--Cambiar por imagen del usuario-->
-                <%}else{%>
-                <img src="/Tarea2/Imag/IconoUsuario.png" alt="imagen alternativa del usuario" class="Alternativa"> 
-                <%}%>                
                 <p><%= cliente.getNombre()+" "+cliente.getApellido()%></p>
             </div>
             
@@ -55,7 +51,7 @@
             <div id="infoCliente" class="fila">
                 <div class="fila">
                     <%if(imagenUsuarioB64!=null){%>
-                    <img src="data:image/jpg;base64, <%=imagenUsuarioB64%>" style="width:25%;">
+                    <img src="data:image/jpg;base64, <%=imagenUsuarioB64%>" alt="foto de usuario">
                     <%}else{%>
                     <img src="/Tarea2/Imag/IconoUsuario.png" alt="imagen alternativa del usuario" class="Alternativa"> 
                     <%}%> 

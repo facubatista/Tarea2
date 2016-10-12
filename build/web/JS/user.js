@@ -202,7 +202,6 @@ jQuery(document).ready(function () {
             fr.readAsDataURL(file);            
         }
         return false;
-    }
-    ;
+        };
 });
        

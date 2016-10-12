@@ -62,14 +62,14 @@ public class ServletUsuarios extends HttpServlet {
             nomUsuario = cont.verificarUsuario(nomUsuario);//Retorna el nickname
             sesion.setAttribute("nickUsuario", nomUsuario);
             sesion.setAttribute("DtCliente", cont.seleccionarClienteAListar(nomUsuario));//DtCliente para Ver Perfil
-            sesion.setAttribute("imagenUsuario", cont.geImagenUsuarioEnArrayBytes(nomUsuario));
+            sesion.setAttribute("imagenUsuario", cont.getImagenUsuarioEnArrayBytes(nomUsuario));
+
             DtCliente cliente = cont.seleccionarClienteAListar(nomUsuario);
 
             //Se toman el nombre y el apellido del usuario para mostrarlo en la cabecera
             nomUsuario = cliente.getNombre() + " " + cliente.getApellido();
             //Se setea el nombre de usuario en la sesion
             sesion.setAttribute("nomUsuario", nomUsuario);//Es el nombre para mostrar en el header 
-            sesion.setAttribute("imagenUsuario", cliente.getImagen());//imagen para la cabecera
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
@@ -92,8 +92,8 @@ public class ServletUsuarios extends HttpServlet {
                 response.getWriter().write("true");
             }
         }
-
-
+        
+        //Alta de usuario
         if (request.getParameter("pass") != null && request.getParameter("user") != null) {
             response.setContentType("text/plain");
             String nick = request.getParameter("user");
@@ -147,6 +147,7 @@ public class ServletUsuarios extends HttpServlet {
             if(cont.crearUserWeb(nick, pass, nombre, apellido, email, fecha, null))
             response.getWriter().write("true");
             else response.getWriter().write("false");
+
         }
 
         if (request.getParameter("archivo") != null && request.getParameter("nickname") != null) {
@@ -163,6 +164,7 @@ public class ServletUsuarios extends HttpServlet {
                 bis.close();
             } catch (Exception e) {
                 e.printStackTrace();
+
             }
             if(cont.agregarImagen(nickname, image))
             response.getWriter().write("true");
