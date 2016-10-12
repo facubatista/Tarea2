@@ -176,32 +176,25 @@ jQuery(document).ready(function () {
         var anio = document.getElementById("anio").value;
         var mes = document.getElementById("mes").value;
         var x = new XMLHttpRequest();
-        x.onreadystatechange = function () {
-            if (this.status === 200 && this.readyState === 4) {
-                if (this.responseText === 'true') {
-                    alert("ok");
-                } else {
-                    alert("nop");
-                }
-            }
-        };
-        x.open("POST", "ServUsuarios", true);
+        x.open("POST", "../ServUsuarios", true);
         x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        x.send("user=" + nickname + "&name=" + nombre + "&surname=" + apellido + "&email=" + email + "&pass=" + contrasena + "&day=" + dia + "&month=" + mes + "&year=" + anio);
+        x.send("Registrar=true&user=" + nickname + "&name=" + nombre + "&surname=" + apellido + "&email=" + email + "&pass=" + contrasena + "&day=" + dia + "&month=" + mes + "&year=" + anio);
         var imagenValor = document.getElementById("imagen").value;
         if (imagenValor !== "") {
             var inputFileImage = document.getElementById("imagen");
             var file = inputFileImage.files[0];
             var fr = new FileReader();
             fr.onload = function (e) {
-                
-                x.open("POST", "ServUsuarios", true);
-                x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                x.send("nickname=" + nickname + "&archivo=" + e.target.result);
+                 x.open("POST", "../ServUsuarios", true);
+                 x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                 Session["imagen"] = e.target.result;
+                 x.send("RImagen=true&nickname=" + nickname);
             };
-            fr.readAsDataURL(file);            
+            fr.readAsDataURL(file);
         }
+        
         return false;
-        };
+    }
+    ;
 });
        

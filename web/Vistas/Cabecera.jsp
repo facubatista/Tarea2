@@ -10,6 +10,9 @@
              byte[] imagenUsuario = (byte[])session.getAttribute("imagenUsuario");
              imagenUsuarioB64 = javax.xml.bind.DatatypeConverter.printBase64Binary(imagenUsuario);
         }
+        if(session.getAttribute("imagenUsuarioB64")!=null){           
+             imagenUsuarioB64 = (String)session.getAttribute("imagenUsuarioB64");
+        }
         %>
            
        <div class="cuatro columnas">

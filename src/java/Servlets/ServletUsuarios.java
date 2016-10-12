@@ -29,6 +29,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.ImageIcon;
 import sun.misc.BASE64Decoder;
 
 /**
@@ -94,16 +95,16 @@ public class ServletUsuarios extends HttpServlet {
         }
         
         //Alta de usuario
-        if (request.getParameter("pass") != null && request.getParameter("user") != null) {
+        if (request.getParameter("Registrar") != null) {
             response.setContentType("text/plain");
-            String nick = request.getParameter("user");
-            String nombre = request.getParameter("name");
-            String apellido = request.getParameter("surname");
-            String email = request.getParameter("email");
-            String pass = request.getParameter("pass");
-            String mes = request.getParameter("month");
-            String dia = request.getParameter("day");
-            String anio = request.getParameter("year");
+            String nick = (String)request.getParameter("user");
+            String nombre = (String)request.getParameter("name");
+            String apellido = (String)request.getParameter("surname");
+            String email = (String)request.getParameter("email");
+            String pass = (String)request.getParameter("pass");
+            String mes = (String)request.getParameter("month");
+            String dia = (String)request.getParameter("day");
+            String anio = (String)request.getParameter("year");
             int numMes = 0;
             if (mes.equals("Enero")) {
                 numMes = 1;
@@ -150,10 +151,10 @@ public class ServletUsuarios extends HttpServlet {
 
         }
 
-        if (request.getParameter("archivo") != null && request.getParameter("nickname") != null) {
+        if (request.getParameter("RImagen") != null) {
             response.setContentType("text/plain");
-            String nickname = request.getParameter("nickname");
-            String base64 = request.getParameter("archivo");
+            String nickname = (String)request.getParameter("nickname");
+            String base64 = (String)sesion.getAttribute("imagen");
             BufferedImage image = null;
             byte[] imageByte;
             try {
@@ -238,6 +239,8 @@ public class ServletUsuarios extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            IcontClientes cont = Factory.getInstance().crearContCliente();
+            HttpSession sesion = request.getSession();
             processRequest(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(ServletUsuarios.class.getName()).log(Level.SEVERE, null, ex);

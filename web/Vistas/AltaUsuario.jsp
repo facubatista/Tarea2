@@ -15,7 +15,7 @@
     </head>
     <body>
         <jsp:include page="Cabecera.jsp" /> 
-        <form id="RegistrarC" name="RegistrarC" action="" method="POST">
+        <form id="RegistrarC" name="RegistrarC" action="../index.jsp" method="POST">
             <label class="Principal" >Registrar Usuario</label>
             <br/>
             <div>
@@ -75,6 +75,6 @@
                 <input id="botonRegistrar" name="botonRegistrar" value="Registrar" type="SUBMIT"/>
             </div>
         </form>
-        <jsp:include page="Cabecera.jsp" /> 
+        <jsp:include page="Pie.jsp" /> 
     </body>
 </html>
