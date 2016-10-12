@@ -201,9 +201,9 @@ function calcularPrecio(objeto, precioS){
     var precio = parseInt(precioS);
      
     if(isNaN(parseInt(cantidad))){
-        objeto.querySelector(".precio").innerHTML = 'precio: ' + precio;
+        objeto.querySelector(".precio").innerHTML = 'Precio: $' + precio;
     }else{
-        objeto.querySelector(".precio").innerHTML = 'precio: ' + parseInt(cantidad)*precio;
+        objeto.querySelector(".precio").innerHTML = 'Precio: $' + parseInt(cantidad)*precio;
     }
 }
 

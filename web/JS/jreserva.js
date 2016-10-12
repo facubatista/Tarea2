@@ -180,7 +180,7 @@ jQuery(document).ready(function () {
         x.open("POST", "ServUsuarios", true);
         x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         x.send("user=" + nickname + "&name=" + nombre + "&surname=" + apellido + "&email=" + email + "&pass=" + contrasena + "&day=" + dia + "&month=" + mes + "&year=" + anio);
-        var imagenValor = document.getElementById("imagen").value;
+        /*var imagenValor = document.getElementById("imagen").value;
         if (imagenValor !== "") {
             var inputFileImage = document.getElementById("imagen");
             var file = inputFileImage.files[0];
@@ -191,7 +191,7 @@ jQuery(document).ready(function () {
                 x.send("nickname=" + nickname + "&archivo=" + e.target.result);
             };
             fr.readAsDataURL(file);            
-        }
+        }*/
     }
     ;
 });

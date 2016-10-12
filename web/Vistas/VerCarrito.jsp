@@ -66,7 +66,7 @@
                                 <%if(imagenServBase64!=null){%>
                                 <img src="data:image/jpg;base64, <%=imagenServBase64%>" alt="foto de usuario" style="width:25%;">
                                 <%}else{%>
-                                <img src="/Tarea2/Imag/prueba2.jpg" style="width:25%;">
+                                <img src="/Tarea2/Imag/SinImagen.jpg" style="width:25%;">
                                 <%}%> 
                                 <a href="<%= request.getContextPath()%>/InfoServicio?nombreServicio=<%= s.getNombre() %>&nombreProveedor=<%= s.getProveedor() %>"><%= s.getNombre() %></a>
                                 <p><%= s.getDescripcion() %></p>

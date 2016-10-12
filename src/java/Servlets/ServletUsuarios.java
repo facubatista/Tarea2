@@ -91,8 +91,8 @@ public class ServletUsuarios extends HttpServlet {
                 response.getWriter().write("true");
             }
         }
-
-
+        
+        //Alta de usuario
         if (request.getParameter("pass") != null && request.getParameter("user") != null) {
             String nick = request.getParameter("user");
             String nombre = request.getParameter("name");
@@ -143,14 +143,14 @@ public class ServletUsuarios extends HttpServlet {
             String day = dia + "/" + String.valueOf(numMes) + "/" + anio;
             Date fecha = format.parse(day);
             cont.crearCliente(nick, nombre, apellido, email, fecha, pass);
-
+            cont.crearUserWeb(nick, pass, nombre, apellido, email, fecha, null);
         }
 
         if (request.getParameter("archivo") != null && request.getParameter("nickname") != null) {
             String nickname = request.getParameter("nickname");
             String base64 = request.getParameter("archivo");
             BufferedImage image = null;
-            byte[] imageByte;
+            /*byte[] imageByte;
             try {
                 BASE64Decoder decoder = new BASE64Decoder();
                 imageByte = decoder.decodeBuffer(base64.substring(base64.indexOf(",")+1));
@@ -159,7 +159,8 @@ public class ServletUsuarios extends HttpServlet {
                 bis.close();
             } catch (Exception e) {
                 e.printStackTrace();
-            }
+            }*/
+            cont.agregarImagen(nickname, image);
             //cont.setImagen(image, nickname);//Da error, no reconoce la funcion setImagen
         }
 
