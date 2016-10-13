@@ -5,15 +5,15 @@ jQuery(document).ready(function () {
         request.onreadystatechange = function () {
             if (this.status === 200 && this.readyState === 4) {
                 if (this.responseText === 'true' && mail.length !== 0) {
-                    document.getElementById("errEmail").style.display = 'block';
-                    document.getElementById("botonRegistrar").disabled = true;
+                    document.getElementById("errNick").style.display = 'block';
+                    document.getElementById("botonRegistrar").style.display = 'none';
                 } else {
-                    document.getElementById("errEmail").style.display = 'none';
-                    document.getElementById("botonRegistrar").disabled = false;
+                    document.getElementById("errNick").style.display = 'none';
+                    document.getElementById("botonRegistrar").style.display = 'block';
                 }
             }
         };
-        request.open("POST", "../ServUsuarios", true);
+        request.open("POST", "/Tarea2/ServUsuarios", true);
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         request.send("verificarUsuario=" + mail);
         return false;
@@ -25,14 +25,14 @@ jQuery(document).ready(function () {
             if (this.status === 200 && this.readyState === 4) {
                 if (this.responseText === 'true' && nick.length !== 0) {
                     document.getElementById("errNick").style.display = 'block';
-                    document.getElementById("botonRegistrar").disabled = true;
+                    document.getElementById("botonRegistrar").style.display = 'none';
                 } else {
                     document.getElementById("errNick").style.display = 'none';
-                    document.getElementById("botonRegistrar").disabled = false;
+                    document.getElementById("botonRegistrar").style.display = 'block';
                 }
             }
         };
-        request.open("POST", "../ServUsuarios", true);
+        request.open("POST", "/Tarea2/ServUsuarios", true);
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         request.send("verificarUsuario=" + nick);
         return false;
@@ -163,9 +163,8 @@ jQuery(document).ready(function () {
         }
     });
 
-    var x = document.getElementById("botonRegistrar");
+    /*var x = document.getElementById("botonRegistrar");
     x.addEventListener("click", arreglos);
-//arreglar
     function arreglos() {
         var contrasena = document.getElementById("contraseña").value;
         contrasena = sha1(contrasena);
@@ -177,22 +176,64 @@ jQuery(document).ready(function () {
         var anio = document.getElementById("anio").value;
         var mes = document.getElementById("mes").value;
         var x = new XMLHttpRequest();
-        x.open("POST", "ServUsuarios", true);
+        x.open("POST", "/Tarea2/ServUsuarios", true);
         x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        x.send("user=" + nickname + "&name=" + nombre + "&surname=" + apellido + "&email=" + email + "&pass=" + contrasena + "&day=" + dia + "&month=" + mes + "&year=" + anio);
+        x.send("Registrar=true&user=" + nickname + "&name=" + nombre + "&surname=" + apellido + "&email=" + email + "&pass=" + contrasena + "&day=" + dia + "&month=" + mes + "&year=" + anio);
         var imagenValor = document.getElementById("imagen").value;
         if (imagenValor !== "") {
             var inputFileImage = document.getElementById("imagen");
             var file = inputFileImage.files[0];
             var fr = new FileReader();
             fr.onload = function (e) {
-                x.open("POST", "ServUsuarios", true);
+                var archivo = e.target.result.toString();
+                x.open("POST", "/Tarea2/ServUsuarios", true);
                 x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                x.send("nickname=" + nickname + "&archivo=" + e.target.result);
+                x.send("RImagen=true&nickname="+nickname+"&archivo=" + archivo);
+                request.onreadystatechange = function () {
+                    if (this.status === 200 && this.readyState === 4) {
+                        alert(this.responseText);
+                    }
+                };
             };
-            fr.readAsDataURL(file);            
+            fr.readAsDataURL(file);
         }
+
+        return false;
     }
-    ;
+    ;*/
+    
 });
        
+       
+function pruebaServlet(){
+    
+    var contrasena = document.getElementById("contraseña").value;
+    contrasena = sha1(contrasena);
+    var nickname = document.getElementById("nickname").value;
+    var nombre = document.getElementById("nombre").value;
+    var apellido = document.getElementById("apellido").value;
+    var email = document.getElementById("email").value;
+    var dia = document.getElementById("dia").value;
+    var anio = document.getElementById("anio").value;
+    var mes = document.getElementById("mes").value;
+    
+    alert(contrasena.length);
+    
+    
+    var x = new XMLHttpRequest();
+    x.onreadystatechange = function(){
+        //Los status 200 y 4 indican que no hubo ningun problema
+        if(this.status===200 && this.readyState ===4){
+            console.log(this);
+        }
+    };
+    
+    x.open("POST","/Tarea2/ServUsuarios",true );
+    
+    x.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    
+    //x.setRequestHeader("responseType","json");
+    
+    x.send("Registrar=true&user=" + nickname + "&name=" + nombre + "&surname=" + apellido + "&email=" + email + "&pass=" + contrasena + "&day=" + dia + "&month=" + mes + "&year=" + anio);
+    return false;
+}

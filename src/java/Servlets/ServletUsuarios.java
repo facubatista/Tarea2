@@ -7,6 +7,7 @@ package Servlets;
 
 import Clases.carrito;
 import Logica.DtCliente;
+import Logica.DtReserva;
 import Logica.Factory;
 import Logica.IcontClientes;
 import java.awt.image.BufferedImage;
@@ -28,6 +29,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.ImageIcon;
 import sun.misc.BASE64Decoder;
 
 /**
@@ -36,8 +38,7 @@ import sun.misc.BASE64Decoder;
  */
 @WebServlet(name = "ServletUsuarios", urlPatterns = {"/ServUsuarios"})
 public class ServletUsuarios extends HttpServlet {
-
-    /**
+     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
@@ -48,10 +49,12 @@ public class ServletUsuarios extends HttpServlet {
      * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            
             throws ServletException, IOException, SQLException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-
+        
+        
         IcontClientes cont = Factory.getInstance().crearContCliente();
         HttpSession sesion = request.getSession();
 
@@ -74,8 +77,6 @@ public class ServletUsuarios extends HttpServlet {
             dispatcher.forward(request, response);
         }
 
-            
-       
         //Verificar que el nickname sea valido
         if (request.getParameter("verificarUsuario") != null) {
             //especifica que el tipo de respuesta va a ser texto
@@ -92,16 +93,17 @@ public class ServletUsuarios extends HttpServlet {
             }
         }
 
-
-        if (request.getParameter("pass") != null && request.getParameter("user") != null) {
-            String nick = request.getParameter("user");
-            String nombre = request.getParameter("name");
-            String apellido = request.getParameter("surname");
-            String email = request.getParameter("email");
-            String pass = request.getParameter("pass");
-            String mes = request.getParameter("month");
-            String dia = request.getParameter("day");
-            String anio = request.getParameter("year");
+        //Alta de usuario
+        if (request.getParameter("Registrar") != null) {
+            response.setContentType("text/plain");
+            String nick = (String) request.getParameter("user");
+            String nombre = (String) request.getParameter("name");
+            String apellido = (String) request.getParameter("surname");
+            String email = (String) request.getParameter("email");
+            String pass = (String) request.getParameter("pass");
+            String mes = (String) request.getParameter("month");
+            String dia = (String) request.getParameter("day");
+            String anio = (String) request.getParameter("year");
             int numMes = 0;
             if (mes.equals("Enero")) {
                 numMes = 1;
@@ -142,28 +144,40 @@ public class ServletUsuarios extends HttpServlet {
             DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
             String day = dia + "/" + String.valueOf(numMes) + "/" + anio;
             Date fecha = format.parse(day);
-            cont.crearCliente(nick, nombre, apellido, email, fecha, pass);
-
-        }
-
-        if (request.getParameter("archivo") != null && request.getParameter("nickname") != null) {
-            String nickname = request.getParameter("nickname");
-            String base64 = request.getParameter("archivo");
-            BufferedImage image = null;
-            byte[] imageByte;
-            try {
-                BASE64Decoder decoder = new BASE64Decoder();
-                imageByte = decoder.decodeBuffer(base64.substring(base64.indexOf(",")+1));
-                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
-                image = ImageIO.read(bis);
-                bis.close();
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (cont.crearUserWeb(nick, pass, nombre, apellido, email, fecha, null)) {
+                response.getWriter().write("true");
+            } else {
+                response.getWriter().write("false");
             }
-            //cont.setImagen(image, nickname);//Da error, no reconoce la funcion setImagen
+
         }
+
+        if (request.getParameter("RImagen") != null) {
+            response.setContentType("text/plain");
+                String base64 = (String) request.getParameter("archivo");
+                base64=base64.substring(base64.indexOf(",")+1);
+                BufferedImage image = null;
+                String nickname = (String) request.getParameter("nickname");
+                byte[] imageByte;
+                try {
+                    BASE64Decoder decoder = new BASE64Decoder();
+                    imageByte = decoder.decodeBuffer(base64);
+                    ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                    image = ImageIO.read(bis);
+                    bis.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                if (cont.agregarImagen(nickname, image)) {
+                    response.getWriter().write(base64);
+                } else {
+                   
+                    response.getWriter().write("false");
+                }
+            }
 
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -193,14 +207,22 @@ public class ServletUsuarios extends HttpServlet {
             }
 
             //Ver Perfil
-
-            if(request.getParameter("VerPerfil")!=null){
+            if (request.getParameter("VerPerfil") != null) {
 
                 String nickUsuario = (String) sesion.getAttribute("nickUsuario");
                 DtCliente cliente = cont.seleccionarClienteAListar(nickUsuario);
                 request.setAttribute("ReservasCli", cont.listarResDeCli(nickUsuario));
 
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/VerPerfil.jsp");
+                dispatcher.forward(request, response);
+            }
+
+            if (request.getParameter("VerReserva") != null) {
+                String nickUsuario = (String) sesion.getAttribute("nickUsuario");
+                int num = Integer.valueOf((String) request.getParameter("numero"));
+                DtReserva res = cont.mostrarReserva(num, nickUsuario);
+                request.setAttribute("Reserva", res);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("./Vistas/VerReserva.jsp");
                 dispatcher.forward(request, response);
             }
 
@@ -221,6 +243,8 @@ public class ServletUsuarios extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            IcontClientes cont = Factory.getInstance().crearContCliente();
+            HttpSession sesion = request.getSession();
             processRequest(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(ServletUsuarios.class.getName()).log(Level.SEVERE, null, ex);
@@ -232,6 +256,5 @@ public class ServletUsuarios extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    } 
+    }
 }
-

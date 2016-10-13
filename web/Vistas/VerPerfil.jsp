@@ -82,7 +82,7 @@
                                     DtReserva r = it.next();
                             %>
                             <tr class="doce columnas">
-                                <td class="tres columnas"><a action=""><%= r.getNumero() %></a></td>
+                                <td class="tres columnas"><a href="./ServUsuarios?VerReserva=true&numero=<%=r.getNumero() %>"><%= r.getNumero() %></a></td>
                                 <td class="tres columnas"><%= r.getEstado() %></td>
                                 <td class="tres columnas"><%= dateformat.format(r.getFechaCreacion()) %></td>
                                 <td class="tres columnas">$<%= r.getPrecioTotal() %></td>
