@@ -1,6 +1,9 @@
 jQuery(document).ready(function () {
     jQuery("#email").blur(function () {
         var mail = jQuery("#email").val();
+        if (mail.indexOf("@") === -1 && mail.indexOf(".com") === -1)
+            document.getElementById("email").value = "";
+        var mail = jQuery("#email").val();
         var request = new XMLHttpRequest();
         request.onreadystatechange = function () {
             if (this.status === 200 && this.readyState === 4) {
@@ -175,6 +178,8 @@ jQuery(document).ready(function () {
         var dia = document.getElementById("dia").value;
         var anio = document.getElementById("anio").value;
         var mes = document.getElementById("mes").value;
+        document.getElementById("contraseña").value = contrasena;
+        document.getElementById("recontraseña").value = contrasena;
         var x = new XMLHttpRequest();
         x.open("POST", "/Tarea2/ServUsuarios", true);
         x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -185,6 +190,7 @@ jQuery(document).ready(function () {
             var file = inputFileImage.files[0];
             var fr = new FileReader();
             fr.onload = function (e) {
+    
                 var archivo = e.target.result.toString();
                 x.open("POST", "/Tarea2/ServUsuarios", true);
                 x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -194,11 +200,22 @@ jQuery(document).ready(function () {
                         alert(this.responseText);
                     }
                 };
+                /*
+                 x.open("POST", "/Tarea2/ServUsuarios", true);
+                 x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                 x.send("RImagen=true&user="+ nickname +"&archivo=" + e.target.result);
+                
             };
             fr.readAsDataURL(file);
         }
-
-        return false;
+        x.onreadystatechange = function () {
+            if (this.status === 200 && this.readyState === 4) {
+                x.close();
+            }
+        };
+        
+        
+        
     }
     ;*/
     

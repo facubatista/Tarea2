@@ -175,7 +175,7 @@ public class ServletUsuarios extends HttpServlet {
                     response.getWriter().write("false");
                 }
             }
-
+        //falta imagen
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -201,9 +201,9 @@ public class ServletUsuarios extends HttpServlet {
                 sesion.removeAttribute("nickUsuario");
                 sesion.removeAttribute("imagenUsuario");
                 sesion.removeAttribute("carrito");
-
                 RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-                dispatcher.forward(request, response);
+                dispatcher.forward(request, response); 
+                
             }
 
             //Ver Perfil
