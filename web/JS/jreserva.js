@@ -12,6 +12,7 @@ jQuery(document).ready(function () {
                     document.getElementById("botonRegistrar").disabled = false;
                 }
             }
+            console.log(this);            
         };
         request.open("POST", "../ServUsuarios", true);
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

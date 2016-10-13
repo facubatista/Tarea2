@@ -14,7 +14,7 @@
     </head>
     <body>
         <jsp:include page="Cabecera.jsp" /> 
-        <form id="RegistrarC" name="RegistrarC" action="" method="POST">
+        <form id="RegistrarC" name="RegistrarC" method="POST" enctype="multipart/form-data">
             <label class="Principal" >Registrar Usuario</label>
             <br/>
             <div>
