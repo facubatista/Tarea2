@@ -119,12 +119,12 @@ public class nuevaBusquedaServProm extends HttpServlet {
                                         out.println("<label class=\"label2\" >/</label>");
                                         out.println("<input id=\"anioFin\" name=\"anioFin\" maxlength=\"4\" placeholder=\"aaaa\" type=\"text\"/>");
                                         out.println("</div>");
-                                            out.println("<form <%--action=\"agregarSCarrito--%> onsubmit=\"return agregarSACarrito(this.parentElement.parentElement)\" name=\"formAgregar\">\n" +
-"                                                    <input type=\"hidden\" id =\"nombreServicio\" value=\"<%= s.getNombre() %>\" name=\"nombreServicio\">\n" +
-"                                                    <input type=\"hidden\" id =\"nombreProveedor\" value=\"<%= s.getProveedor() %>\" name=\"nombreProveedor\">\n" +
-"                                                    <label>Cantidad:</label><input type=\"text\" name=\"cantidad\" id=\"txtCantidad\" class=\"cantidad\" onkeyup=\"calcularPrecio(this.parentElement.parentElement, <%= s.getPrecio() %>)\">\n" +
-"                                                    <input id =\"agregar\" type=\"submit\" value=\"agregar al carrito\" >\n" +
-"                                                </form>");
+                                            out.println("<form <%--action=\"agregarSCarrito--%> onsubmit=\"return agregarSACarrito(this.parentElement.parentElement)\" name=\"formAgregar\">");
+                                            out.println("<input type=\"hidden\" id =\"nombreServicio\" value="+ s.getNombre() +" name=\"nombreServicio\">");
+                                            out.println("<input type=\"hidden\" id =\"nombreProveedor\" value="+ s.getProveedor() +" name=\"nombreProveedor\">");
+                                            out.println("<label>Cantidad:</label><input type=\"text\" name=\"cantidad\" id=\"txtCantidad\" class=\"cantidad\" onkeyup=\"calcularPrecio(this.parentElement.parentElement, "+ Math.round(s.getPrecio()) +")\">");
+                                            out.println("<input id =\"agregar\" type=\"submit\" value=\"agregar al carrito\" >");
+                                            out.println("</form>");
                                         out.println("</div>");
                                         out.println("<div class=\"aMostrar\" hidden=\"\">\n" +
 "                                                       <img src=\"Imag/carrito.png\" alt=\"imagen de carrito\"> En carrito\n" +
@@ -155,7 +155,7 @@ public class nuevaBusquedaServProm extends HttpServlet {
 "                                                <form onsubmit=\"return agregarPACarrito(this.parentElement.parentElement)\" name=\"formAgregar\">\n" +
 "                                                    <input type=\"hidden\" id =\"nombrePromocion\" value="+ p.getNombre() +" name=\"nombrePromocion\">\n" +
 "                                                    <input type=\"hidden\" id =\"nombreProveedor\" value="+ p.getProveedor() +" name=\"nombreProveedor\">\n" +
-"                                                    <input type=\"text\" name=\"cantidad\" id=\"txtCantidad\" class=\"cantidad\" onkeyup=\"calcularPrecio(this.parentElement.parentElement, "+ p.getTotal() +")>\n" +
+"                                                    <input type=\"text\" name=\"cantidad\" id=\"txtCantidad\" class=\"cantidad\" onkeyup=\"calcularPrecio(this.parentElement.parentElement, "+ p.getTotal() +")\">\n" +
 "                                                    <input id =\"agregar\" type=\"submit\" value=\"agregar al carrito\" ><!-- cambiar esto!-->\n" +
 "                                                </form>\n" +
 "                                                    <label class=\"precio\">Precio: $"+ Math.round(p.getTotal()) +"</label>\n" +

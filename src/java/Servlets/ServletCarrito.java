@@ -65,6 +65,24 @@ public class ServletCarrito extends HttpServlet {
             dispatcher.forward(request, response);
         }
         
+        //Eliminar servicio del carrito
+        if(request.getParameter("eliminarServicioCar")!=null){
+            carrito car = (carrito)sesion.getAttribute("carrito");
+            car.eliminarServ(request.getParameter("eliminarServicioCar"));
+            
+            response.setContentType("text/plain");
+            response.getWriter().write(String.valueOf(Math.round(car.getTotal())));
+        }
+        
+        //Eliminar promocion del carrito
+        if(request.getParameter("eliminarPromoCar")!=null){
+            carrito car = (carrito)sesion.getAttribute("carrito");
+            car.eliminarPromo(request.getParameter("eliminarPromoCar"));
+            
+            response.setContentType("text/plain");
+            response.getWriter().write(String.valueOf(Math.round(car.getTotal())));
+        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

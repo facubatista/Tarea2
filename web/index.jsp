@@ -18,19 +18,5 @@
             List<DtCategoria> listaCat = contCat.listarCategorias();
         %>
         <jsp:include page="Vistas/Cabecera.jsp" />
-        <div class="principal">
-            <div class="cuatro columnas">
-                <ul>
-                <%  
-                for(int i=0;i<listaCat.size();i++){
-                %>    
-                <li class="categoria"><%=listaCat.get(i).getNombre()%></li>
-                <%}%>
-                </ul>
-            </div>
-            <div class="ocho columnas">
-                
-            </div>
-        </div>
     </body>
 </html>

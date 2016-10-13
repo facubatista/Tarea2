@@ -7,14 +7,16 @@
         <link rel="stylesheet" type="text/css" href="../CSS/Layout.css"/>
         <link rel="stylesheet" type="text/css" href="../CSS/Cabecera.css"/>
         <link rel="stylesheet" type="text/css" href="../CSS/Registrar.css"/>
+        <link rel="stylesheet" type="text/css" href="../CSS/Pie.css"/>
         <script src="../JS/jQuery.js"></script>
+        <script src="../JS/jquerysession.js"></script>
         <script src="../JS/sha1.js"></script>
-	<script src="../JS/jreserva.js"></script>
+	<script src="../JS/user.js"></script>
         <script src="../JS/javaScript.js"></script>
     </head>
     <body>
         <jsp:include page="Cabecera.jsp" /> 
-        <form id="RegistrarC" name="RegistrarC" method="POST" enctype="multipart/form-data">
+        <form id="RegistrarC" name="RegistrarC" onsubmit="return pruebaServlet()" action="../index.jsp" method="POST">
             <label class="Principal" >Registrar Usuario</label>
             <br/>
             <div>
@@ -42,7 +44,7 @@
             <div>
                 <label class="label" >Verificar contraseña :</label>
                 <input id="recontraseña" name="recontraseña" type="password" required/>
-                <label class="labelerr" name="errContra" id="errContra" hidden="">Las contraseñas no coinciden</label>
+                <label class="labelerr" id="errContra" hidden="">Las contraseñas no coinciden</label>
             </div>
             <div>
                 <label class="label" >Fecha de nacimiento :</label>
@@ -74,5 +76,6 @@
                 <input id="botonRegistrar" name="botonRegistrar" value="Registrar" type="SUBMIT"/>
             </div>
         </form>
+        <jsp:include page="Pie.jsp" /> 
     </body>
 </html>

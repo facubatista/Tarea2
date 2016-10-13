@@ -1,0 +1,136 @@
+.principal{
+  width: 80%;
+  background: #477257;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 6px;
+}
+.lblRes{
+  width: 80%;
+  display: block;
+  background: #F5AD50;
+  text-align: center;
+  border-radius: 6px;
+  margin-inline-start: 80px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  block-size: 22px;
+}
+.nro{
+  width: 30%;
+  display: inline-block;
+  background: #33E568;
+  text-align: center;
+  border-radius: 6px;
+  margin-inline-start: 5px;
+  margin-top: 5px;
+  block-size: 22px;
+}
+.nro1{
+  width: 10%;
+  display: inline-block;
+  background: #27A634;
+  text-align: center;
+  border-radius: 6px;
+  margin-inline-start: 5px;
+  block-size: 22px;
+}
+.fech{
+  width: 30%;
+  display: inline-block;
+  background: #33E568;
+  text-align: center;
+  border-radius: 6px;
+  margin-inline-start: 5px;
+  block-size: 22px;
+}
+.fech1{
+  width: 25%;
+  display: inline-block;
+  background: #27A634;
+  text-align: center;
+  border-radius: 6px;
+  margin-inline-start: 5px;
+  block-size: 22px;
+}
+
+.est{
+  width: 30%;
+  display: inline-block;
+  background: #33E568;
+  text-align: center;
+  border-radius: 6px;
+  margin-inline-start: 5px;
+  margin-top: 5px;
+  block-size: 22px;
+}
+.est1{
+  width: 30%;
+  display: inline-block;
+  background: #27A634;
+  text-align: center;
+  border-radius: 6px;
+  margin-inline-start: 5px;
+  margin-top: 5px;
+  block-size: 22px;
+}
+.tot{
+  width: 30%;
+  display: inline-block;
+  background: #55D461;
+  text-align: center;
+  border-radius: 6px;
+  margin-inline-start: 55px;
+  margin-top: 5px;
+  block-size: 22px;
+}
+.lbln {
+  width: 50%;
+  display: inline-block;
+  background: #E9D25C;
+  text-align: center;
+  border-radius: 6px;
+  margin-inline-start: 5px;
+  margin-top: 5px;
+  block-size: 22px;
+}
+.nomP,.nomS{
+  width: 47%;
+  display: inline-block;
+  background: #F0EACC;
+  text-align: center;
+  border-radius: 6px;
+  margin-inline-start: 5px;
+  margin-top: 5px;
+  block-size: 22px;
+}
+.lblf{
+  width: 22%;
+  display: inline-block;
+  background: #33E568;
+  text-align: center;
+  border-radius: 6px;
+  margin-inline-start: 5px;
+  margin-top: 5px;
+  block-size: 22px;
+}
+.fechIniP, .fechFinP, .fechFinS, .fechIniS{
+  width: 15%;
+  display: inline-block;
+  background: #27A634;
+  text-align: center;
+  border-radius: 6px;
+  margin-inline-start: 4px;
+  margin-top: 5px;
+  block-size: 22px;
+}
+.cantP, .cantS{
+  width: 20%;
+  display: inline-block;
+  background: #91BF28;
+  text-align: center;
+  border-radius: 6px;
+  margin-inline-start: 4px;
+  margin-top: 5px;
+  block-size: 22px;
+}

@@ -41,10 +41,11 @@
                 <table class="doce columnas">
                 <thead class="doce columnas">
                         <tr class="doce columnas">
-                          <th class="nueve columnas" style="text-align: left;">Servicios</th>
+                          <th class="ocho columnas" style="text-align: left;">Servicios</th>
                           <th class="una columnas">Precio</th>
                           <th class="una columnas">Cantidad</th>
                           <th class="una columnas">Total</th>
+                          <th class="una columnas"></th>
                         </tr>
                     </thead>
                     <tbody class="doce columnas">
@@ -62,18 +63,19 @@
                             }
                         %>
                         <tr class="doce columnas">
-                            <td class="nueve columnas">
+                            <td class="ocho columnas">
                                 <%if(imagenServBase64!=null){%>
                                 <img src="data:image/jpg;base64, <%=imagenServBase64%>" alt="foto de usuario" style="width:25%;">
                                 <%}else{%>
                                 <img src="/Tarea2/Imag/SinImagen.jpg" style="width:25%;">
                                 <%}%> 
-                                <a href="<%= request.getContextPath()%>/InfoServicio?nombreServicio=<%= s.getNombre() %>&nombreProveedor=<%= s.getProveedor() %>"><%= s.getNombre() %></a>
+                                <a id="nomServ" href="<%= request.getContextPath()%>/InfoServicio?nombreServicio=<%= s.getNombre() %>&nombreProveedor=<%= s.getProveedor() %>"><%= s.getNombre() %></a>
                                 <p><%= s.getDescripcion() %></p>
                             </td>
                             <td class="una columnas">$<%= Math.round(s.getPrecio()) %></td>
                             <td class="una columnas"><%= rs.getCantidad() %></td>
                             <td class="una columnas">$<%= Math.round(s.getPrecio() * rs.getCantidad()) %></td>
+                            <td class="una columnas"><img src="/Tarea2/Imag/imagenCancelar.png" onclick="eliminarServicioCar(this.parentElement.parentElement)"></td>
                         </tr>
                         <%}%>
                     </tbody>
@@ -91,11 +93,12 @@
                 <table id="Promociones" class="doce columnas">
                     <thead class="doce columnas">
                         <tr class="doce columnas">
-                          <th class="ocho columnas" style="text-align: left">Promociones</th>
+                          <th class="siete columnas" style="text-align: left">Promociones</th>
                           <th class="una columnas">Precio</th>
                           <th class="una columnas">Descuento</th>
                           <th class="una columnas">Cantidad</th>
                           <th class="una columnas">Total</th>
+                          <th class="una columnas"></th>
                         </tr>
                     </thead>
                     <tbody class="doce columnas">
@@ -104,13 +107,14 @@
                             DtPromocion p = rp.getPromocion();
                     %>
                         <tr class="doce columnas">
-                            <td class="ocho columnas">
-                                <a href="<%= request.getContextPath()%>/InfoPromocion?nombrePromocion=<%= p.getNombre() %>&nombreProveedor=<%= p.getProveedor() %>"><%= p.getNombre() %></a>
+                            <td class="siete columnas">
+                                <a id="nomPromo" href="<%= request.getContextPath()%>/InfoPromocion?nombrePromocion=<%= p.getNombre() %>&nombreProveedor=<%= p.getProveedor() %>"><%= p.getNombre() %></a>
                             </td>
                             <td class="una columnas">$<%= Math.round(p.getTotal()) %></td>
                             <td class="una columnas">%<%= Math.round(p.getPorcentaje()) %></td>
                             <td class="una columnas"><%= rp.getCantidad()  %></td>
                             <td class="una columnas">$<%= Math.round(p.getTotal() * rp.getCantidad()) %></td>
+                            <td class="una columnas"><img src="/Tarea2/Imag/imagenCancelar.png" onclick="eliminarPromoCar(this.parentElement.parentElement)"></td>
                         </tr>
                             <%  }%>
                     </tbody>
@@ -122,16 +126,24 @@
             <table class="doce columnas">
                 <thead class="doce columnas">
                     <tr class="doce columnas">
-                      <th class="doce columnas" style="text-align: left;">Total de reserva: $<%= Math.round(car.getTotal()) %></th>
+                      <th id="totalReserva" class="doce columnas" style="text-align: left;">Total de reserva: $<%= Math.round(car.getTotal()) %></th>
                     </tr>
                 </thead>
-            </table> 
+            </table>
             <div id="confirmarBorrarRes" class="fila">
                 <a class="botones" href="/Tarea2/ServletCarrito?borrarCarrito=true">Borrar Carrito</a>
                 <a class="botones" href="/Tarea2/ServletCarrito?confirmarReserva=true">Confirmar Reserva</a>                
             </div>
-                <%}
-            }%>
+                <%}else{%>
+            <div class="CarritoVacio">
+                <p>No hay elementos en el carrito.</p>
+            </div>
+                <%}%>
+            <%}else{%>
+            <div class="CarritoVacio">
+                <p>No hay elementos en el carrito</p>
+            </div>
+            <%}%>
             
         </div>
     </body>
