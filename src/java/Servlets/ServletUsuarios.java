@@ -99,9 +99,9 @@ public class ServletUsuarios extends HttpServlet {
            String nickname = (String)request.getParameter("passUser");
            String claveUsuario = (String)request.getParameter("verificarPassword");
             if (cont.userPassValido(nickname, claveUsuario)==true){
-                response.getWriter().write("true");
+                response.getWriter().write("passOK");
             } else {
-                response.getWriter().write("false");
+                response.getWriter().write("passMAL");
             }
         }
 

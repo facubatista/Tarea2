@@ -65,18 +65,60 @@ function verificarPassword(form){
     password = sha1(password);
     var nickname = form.querySelector("input[id=nomUsr]").value;
     var request = new XMLHttpRequest();
-    request.onreadystatechange = function(){
-        if(this.responseText === 'true'){
-            console.log("Contraseña correcta");
-            return true;
-        }else{
-            console.log("Contraseña incorrecta");
-            return false;
-        }
-    };
     request.open("POST","/Tarea2/ServUsuarios",true );
     request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     request.send("verificarPassword="+password+"&passUser="+nickname);
+    request.onreadystatechange = function(){
+        //console.log(this)
+        if(this.status===200 && this.readyState ===4){
+            if(this.responseText === 'passOK'){
+                return true;
+            }else{
+                alert("Contraseña incorrecta");
+                return false;
+            }
+        }
+    };
+    
+}
+
+function ocultarMsjPassInc(form, nickOpass){
+    if(nickOpass.id==='nomUsr'){
+        form.querySelector("label[id=nickInvalido]").hidden = true;
+    }else{
+        form.querySelector("label[id=passwordIncorrecta]").hidden = true;        
+    }
+    return false;
+}
+
+function iniciarSesion(form){
+    var password = form.querySelector("input[id=contra]").value;
+    password = sha1(password);
+    var nickname = form.querySelector("input[id=nomUsr]").value;
+    var request = new XMLHttpRequest();
+    request.open("POST","/Tarea2/ServUsuarios",true );
+    request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    request.send("verificarPassword="+password+"&passUser="+nickname);
+    request.onreadystatechange = function(){
+        //console.log(this);
+        if(this.status===200 && this.readyState ===4){
+            if(this.responseText === 'passOK'){
+                var request2 = new XMLHttpRequest();
+                request2.open("POST","/Tarea2/ServUsuarios",true );
+                request2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                request2.send("nomUsuario="+nickname);
+                request2.onreadystatechange = function(){
+                    if(this.status===200 && this.readyState ===4){
+                        window.location = "/Tarea2/index.jsp";
+                        return true;
+                    }
+                };
+            }else{
+                document.getElementById("passwordIncorrecta").hidden = false;
+                return false;
+            }
+        }
+    };    
 }
 
 //function volverImagen(b64){
@@ -130,6 +172,52 @@ function eliminarPromoCar(trPromo){
         console.log(this);
     };
     request.open("GET","/Tarea2/ServletCarrito?eliminarPromoCar="+nomPromo,true );
+    request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    request.send();
+    
+    return false;
+}
+//
+
+
+//Funciones Usadas en Ver Carrito
+function confirmarReserva(div){
+     var request = new XMLHttpRequest();
+    request.onreadystatechange = function(){
+        //Los status 200 y 4 indican que no hubo ningun problema
+        if(this.status===200 && this.readyState ===4){
+            div.querySelector("p").hidden = false;
+            div.querySelector("a[id=confirmarRes]").hidden = true;
+            div.querySelector("a[id=borrarCar]").hidden = true;
+            var imgsCancelar = document.getElementsByClassName("imgCancelar");
+            for(var i = 0; i < imgsCancelar.length; i++){
+                imgsCancelar[i].hidden = true;
+            }
+        }
+        console.log(this);
+    };
+    request.open("GET","/Tarea2/ServletCarrito?confirmarReserva=true",true );
+    request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    request.send();
+    
+    return false;
+}
+
+function borrarCarrito(div){
+     var request = new XMLHttpRequest();
+    request.onreadystatechange = function(){
+        //Los status 200 y 4 indican que no hubo ningun problema
+        if(this.status===200 && this.readyState ===4){
+            div.querySelector("p").innerHTML = 'El Carrito ha sido borrado correctamente';
+            div.querySelector("p").hidden = false;
+            div.querySelector("a[id=confirmarRes]").hidden = true;
+            div.querySelector("a[id=borrarCar]").hidden = true;
+            document.getElementById("PromosYServicios").hidden = true;
+            document.querySelector("div[class=CarritoVacio]").hidden = false;
+        }
+        console.log(this);
+    };
+    request.open("GET","/Tarea2/ServletCarrito?borrarCarrito=true",true );
     request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     request.send();
     

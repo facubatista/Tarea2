@@ -64,17 +64,17 @@ tbody tr{
     border-bottom: 2px white solid;
 }
 
-tbody > tr > td >img{
+tbody > tr > td.una.columnas >img{
     width:40%;
     vertical-align: central;
 }
 
-tbody > tr > td >img:hover{
+tbody > tr > td.una.columnas >img:hover{
     background: #B6DAE8;
     padding: 5px;
 }
 
-tbody > tr > td >img:active{
+tbody > tr > td.una.columnas >img:active{
     background: #9BBCC8;
 }
 
@@ -112,6 +112,16 @@ td.ocho.columnas>a{
     font-weight: bold;
     padding: 10px;
     margin-left: 15px;
+}
+
+/*Mensaje al confirmra la reserva*/
+#confirmarBorrarRes > p{
+    padding: 10px;
+    background: #9AF399;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
 }
 
 .principal > .CarritoVacio{

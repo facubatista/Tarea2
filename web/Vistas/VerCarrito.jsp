@@ -27,7 +27,7 @@
                 <p>Carrito de compras</p>
             </div>
             <%if(session.getAttribute("carrito")!=null){ %>
-            <div class="fila">
+            <div class="fila" id="PromosYServicios">
                 <%
                 carrito car = (carrito)session.getAttribute("carrito");
                 Iterator<DtResServ> it = car.getServicios().iterator();
@@ -75,7 +75,7 @@
                             <td class="una columnas">$<%= Math.round(s.getPrecio()) %></td>
                             <td class="una columnas"><%= rs.getCantidad() %></td>
                             <td class="una columnas">$<%= Math.round(s.getPrecio() * rs.getCantidad()) %></td>
-                            <td class="una columnas"><img src="/Tarea2/Imag/imagenCancelar.png" onclick="eliminarServicioCar(this.parentElement.parentElement)"></td>
+                            <td class="una columnas"><img class="imgCancelar" src="/Tarea2/Imag/imagenCancelar.png" onclick="eliminarServicioCar(this.parentElement.parentElement)"></td>
                         </tr>
                         <%}%>
                     </tbody>
@@ -114,25 +114,31 @@
                             <td class="una columnas">%<%= Math.round(p.getPorcentaje()) %></td>
                             <td class="una columnas"><%= rp.getCantidad()  %></td>
                             <td class="una columnas">$<%= Math.round(p.getTotal() * rp.getCantidad()) %></td>
-                            <td class="una columnas"><img src="/Tarea2/Imag/imagenCancelar.png" onclick="eliminarPromoCar(this.parentElement.parentElement)"></td>
+                            <td class="una columnas"><img class="imgCancelar" src="/Tarea2/Imag/imagenCancelar.png" onclick="eliminarPromoCar(this.parentElement.parentElement)"></td>
                         </tr>
                             <%  }%>
                     </tbody>
                 </table> 
-                            <%}%>
+                            <%}%>                            
+                    <%if(hayPromos || hayServicios){%>
+                <table class="doce columnas">
+                   <thead class="doce columnas">
+                       <tr class="doce columnas">
+                         <th id="totalReserva" class="doce columnas" style="text-align: left;">Total de reserva: $<%= Math.round(car.getTotal()) %></th>
+                       </tr>
+                   </thead>
+                </table>
+            </div>
+            
+            <!--Div usado cuando se borra el carrito-->
+            <div class="CarritoVacio" hidden="">
+                <p>No hay elementos en el carrito.</p>
             </div>
              
-                <%if(hayPromos || hayServicios){%>
-            <table class="doce columnas">
-                <thead class="doce columnas">
-                    <tr class="doce columnas">
-                      <th id="totalReserva" class="doce columnas" style="text-align: left;">Total de reserva: $<%= Math.round(car.getTotal()) %></th>
-                    </tr>
-                </thead>
-            </table>
             <div id="confirmarBorrarRes" class="fila">
-                <a class="botones" href="/Tarea2/ServletCarrito?borrarCarrito=true">Borrar Carrito</a>
-                <a class="botones" href="/Tarea2/ServletCarrito?confirmarReserva=true">Confirmar Reserva</a>                
+                <a id="borrarCar" class="botones" onclick="return borrarCarrito(this.parentElement)">Borrar Carrito</a>
+                <a id="confirmarRes" class="botones" onclick="return confirmarReserva(this.parentElement)">Confirmar Reserva</a>      
+                <p hidden="">La reserva se ha realizado corectamente</p>
             </div>
                 <%}else{%>
             <div class="CarritoVacio">

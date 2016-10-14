@@ -32,6 +32,7 @@ public class ServletCarrito extends HttpServlet {
         IcontClientes cont = Factory.getInstance().crearContCliente();
         HttpSession sesion = request.getSession();
         
+        //Confirmar Reserva
         if(request.getParameter("confirmarReserva")!=null && sesion.getAttribute("carrito")!=null){
             carrito car = (carrito) sesion.getAttribute("carrito");
             cont.crearReserva((String)sesion.getAttribute("nickUsuario"),car.getTotal());
@@ -51,18 +52,12 @@ public class ServletCarrito extends HttpServlet {
             }
             
             cont.limpiar();
-            sesion.removeAttribute("carrito");
-            
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.forward(request, response);
-            
+            sesion.removeAttribute("carrito");            
         }
         
+        //Borrar Carrito
         if(request.getParameter("borrarCarrito")!=null && sesion.getAttribute("carrito")!=null){
             sesion.removeAttribute("carrito");
-            
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.forward(request, response);
         }
         
         //Eliminar servicio del carrito
