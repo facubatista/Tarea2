@@ -27,39 +27,6 @@ function verificarUsuario(claveIngresada){
     
 }
 
-//function iniciarSesionUsr(form){
-//    var claveUsuario = form.querySelector("input[id=nomUsr]").value;
-//    var request = new XMLHttpRequest();
-//    request.onreadystatechange = function(){
-//        //Los status 200 y 4 indican que no hubo ningun problema
-//        if(this.status===200 && this.readyState ===4){
-//           //var json = JSON.parse(this.responseText);
-//           if(this.responseText === 'false' && claveUsuario.length!==0){
-//           //if(json.verificacion[0].respuesta === 'false'){
-//                document.getElementById("nickInvalido").hidden = false;
-//                document.getElementById("botonIngresar").hidden = true;
-//                document.getElementById("botonIngresarDis").hidden = false;
-//                return false;
-//           }else{
-//                //var claveUsuario = form.querySelector("input[id=nomUsr]").value;
-//                var request2 = new XMLHttpRequest();
-//                request2.open("POST","/Tarea2/ServUsuarios",true );
-//                request2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-//                request2.send("nomUsuario="+claveUsuario);
-//                request.onreadystatechange = function(){
-//                  console.log(this);  
-//                };
-//                return true;
-//            }
-//        }
-//        console.log(this);
-//    };
-//    request.open("POST","/Tarea2/ServUsuarios",true );
-//    request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-//    request.send("verificarUsuario="+claveUsuario);
-//}
-
-
 function verificarPassword(form){
     var password = form.querySelector("input[id=contra]").value;
     password = sha1(password);
@@ -148,7 +115,20 @@ function eliminarServicioCar(trServicio){
     request.onreadystatechange = function(){
         //Los status 200 y 4 indican que no hubo ningun problema
         if(this.status===200 && this.readyState ===4){
-           trServicio.parentNode.removeChild(trServicio);
+           var tBody = trServicio.parentNode;
+           tBody.removeChild(trServicio);
+            if( document.getElementsByClassName("trServ").length === 0){//Si no hay mas servicios se elimina la tabla
+                if(document.getElementsByClassName("trPromo").length === 0){//Si tampoco hay mas promo se elimina borra div que contiene las tablas
+                    var tablaServProm = document.getElementById("PromosYServicios");
+                    tablaServProm.parentNode.removeChild(tablaServProm);
+                    document.querySelector("div[class=CarritoVacio]").hidden = false;//Se div con el mensaje de que el carrito esta vacio
+                    document.querySelector("a[id=confirmarRes]").hidden = true;
+                    document.querySelector("a[id=borrarCar]").hidden = true;
+                }else{
+                    var tablaServicios = tBody.parentNode;
+                    tablaServicios.parentNode.removeChild(tablaServicios);
+                }
+           }
            document.getElementById("totalReserva").innerHTML = 'Total de reserva: $'+this.responseText;
         }
         console.log(this);
@@ -166,7 +146,20 @@ function eliminarPromoCar(trPromo){
     request.onreadystatechange = function(){
         //Los status 200 y 4 indican que no hubo ningun problema
         if(this.status===200 && this.readyState ===4){
-           trPromo.parentNode.removeChild(trPromo);
+           var tBody = trPromo.parentNode;
+           tBody.removeChild(trPromo);
+            if( document.getElementsByClassName("trPromo").length === 0){//Si no hay mas promos se elimina la tabla
+                if(document.getElementsByClassName("trServ").length === 0){//Si tampoco hay mas servicios se elimina borra div que contiene las tablas
+                    var tablaServProm = document.getElementById("PromosYServicios");
+                    tablaServProm.parentNode.removeChild(tablaServProm);
+                    document.querySelector("div[class=CarritoVacio]").hidden = false;//Se div con el mensaje de que el carrito esta vacio
+                    document.querySelector("a[id=confirmarRes]").hidden = true;
+                    document.querySelector("a[id=borrarCar]").hidden = true;
+                }else{
+                    var tablaPromos = tBody.parentNode;
+                    tablaPromos.parentNode.removeChild(tablaPromos);
+                }
+            } 
            document.getElementById("totalReserva").innerHTML = 'Total de reserva: $'+this.responseText;
         }
         console.log(this);

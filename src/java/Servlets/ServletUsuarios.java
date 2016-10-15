@@ -97,6 +97,7 @@ public class ServletUsuarios extends HttpServlet {
         if (request.getParameter("verificarPassword") != null && request.getParameter("passUser") != null) {
            response.setContentType("text/plain");
            String nickname = (String)request.getParameter("passUser");
+           nickname = cont.verificarUsuario(nickname);//Retorna el nickname, esto es por si el usuario ingresa su email para logearse
            String claveUsuario = (String)request.getParameter("verificarPassword");
             if (cont.userPassValido(nickname, claveUsuario)==true){
                 response.getWriter().write("passOK");

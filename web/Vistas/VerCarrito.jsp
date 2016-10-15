@@ -39,7 +39,7 @@
                     hayServicios=true;
                  %>
                 <table class="doce columnas">
-                <thead class="doce columnas">
+                    <thead class="doce columnas">
                         <tr class="doce columnas">
                           <th class="ocho columnas" style="text-align: left;">Servicios</th>
                           <th class="una columnas">Precio</th>
@@ -62,7 +62,7 @@
                                 imagenServBase64 = javax.xml.bind.DatatypeConverter.printBase64Binary(arrayBytes);
                             }
                         %>
-                        <tr class="doce columnas">
+                        <tr class="doce columnas trServ">
                             <td class="ocho columnas">
                                 <%if(imagenServBase64!=null){%>
                                 <img src="data:image/jpg;base64, <%=imagenServBase64%>" alt="foto de usuario" style="width:25%;">
@@ -106,7 +106,7 @@
                             DtResProm rp = itP.next();
                             DtPromocion p = rp.getPromocion();
                     %>
-                        <tr class="doce columnas">
+                        <tr class="doce columnas trPromo">
                             <td class="siete columnas">
                                 <a id="nomPromo" href="<%= request.getContextPath()%>/InfoPromocion?nombrePromocion=<%= p.getNombre() %>&nombreProveedor=<%= p.getProveedor() %>"><%= p.getNombre() %></a>
                             </td>
@@ -132,7 +132,7 @@
             
             <!--Div usado cuando se borra el carrito-->
             <div class="CarritoVacio" hidden="">
-                <p>No hay elementos en el carrito.</p>
+                <p>No hay elementos en el carrito</p>
             </div>
              
             <div id="confirmarBorrarRes" class="fila">
@@ -141,8 +141,9 @@
                 <p hidden="">La reserva se ha realizado corectamente</p>
             </div>
                 <%}else{%>
+            </div><!--Es para cerrar el div "PromosYServicios en caso de qeu no entre en el if anterior"-->
             <div class="CarritoVacio">
-                <p>No hay elementos en el carrito.</p>
+                <p>No hay elementos en el carrito</p>
             </div>
                 <%}%>
             <%}else{%>

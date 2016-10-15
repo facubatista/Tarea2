@@ -5,11 +5,11 @@
         <group>
             <file>file:/C:/Users/Kevin/Desktop/ProgApli/Tarea2/Tarea2%20-%20respaldo(12-10)/web/Vistas/AltaUsuario.jsp</file>
             <file>file:/C:/Users/Kevin/Desktop/ProgApli/Tarea2/Tarea2%20-%20respaldo(12-10)/web/CSS/VerCarrito.css</file>
-            <file>file:/C:/Users/Kevin/Desktop/ProgApli/Tarea2/Tarea2%20-%20respaldo(12-10)/web/JS/ServProm.js</file>
             <file>file:/C:/Users/Kevin/Desktop/ProgApli/Tarea2/Tarea2%20-%20respaldo(12-10)/web/JS/javaScript.js</file>
-            <file>file:/C:/Users/Kevin/Desktop/ProgApli/Tarea2/Tarea2%20-%20respaldo(12-10)/web/Vistas/Cabecera.jsp</file>
+            <file>file:/C:/Users/Kevin/Desktop/ProgApli/Tarea2/Tarea2%20-%20respaldo(12-10)/web/Vistas/VerCarrito.jsp</file>
             <file>file:/C:/Users/Kevin/Desktop/ProgApli/Tarea2/Tarea2%20-%20respaldo(12-10)/web/Vistas/IniciarSesion.jsp</file>
             <file>file:/C:/Users/Kevin/Desktop/ProgApli/Tarea2/Tarea2%20-%20respaldo(12-10)/src/java/Servlets/ServletUsuarios.java</file>
+            <file>file:/C:/Users/Kevin/Desktop/ProgApli/Tarea2/Tarea2%20-%20respaldo(12-10)/src/java/Servlets/ServletCarrito.java</file>
         </group>
     </open-files>
 </project-private>
