@@ -3,7 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Clases/DtResProm.java</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/Cabecera.jsp</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/verInfoPromocion.java</file>
@@ -26,13 +25,6 @@
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/IniciarSesion.jsp</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/JS/javaScript.js</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/nuevaBusquedaServProm.java</file>
-=======
-            <file>file:/media/pc/4d20b39e-fc85-404a-9328-c63c96e33ddd/Laboratorio/Tarea2/web/Vistas/AltaUsuario.jsp</file>
-            <file>file:/media/pc/4d20b39e-fc85-404a-9328-c63c96e33ddd/Laboratorio/Tarea2/src/java/Servlets/ServletUsuarios.java</file>
-            <file>file:/media/pc/4d20b39e-fc85-404a-9328-c63c96e33ddd/Laboratorio/Tarea2/web/JS/user.js</file>
-            <file>file:/media/pc/4d20b39e-fc85-404a-9328-c63c96e33ddd/Laboratorio/Tarea2/web/Vistas/Pie.jsp</file>
-            <file>file:/media/pc/4d20b39e-fc85-404a-9328-c63c96e33ddd/Laboratorio/Tarea2/web/Vistas/Cabecera.jsp</file>
->>>>>>> 6a662dc01a66cf390f33b83e179f340ad4e9b7ac
         </group>
     </open-files>
 </project-private>
