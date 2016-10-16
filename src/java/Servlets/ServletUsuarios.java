@@ -229,7 +229,16 @@ public class ServletUsuarios extends HttpServlet {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/VerPerfil.jsp");
                 dispatcher.forward(request, response);
             }
-
+            
+            //Cambair Estado de reserva
+            if (request.getParameter("cambiarEstadoRes") != null) {
+                String nickUsuario = (String) sesion.getAttribute("nickUsuario");
+                int numRes = Integer.valueOf(request.getParameter("cambiarEstadoRes"));
+                cont.seleccionarReserva(numRes, nickUsuario);//Se selecciona la reserva a cambiar, esto ya estaba implementado de la tarea 1
+                cont.cambiarEstado("Cancelada");//Siempre se cambia a este estado porque solo se puede cambiar a cancelada
+            }
+            
+            //Ver Reserva
             if (request.getParameter("VerReserva") != null) {
                 String nickUsuario = (String) sesion.getAttribute("nickUsuario");
                 int num = Integer.valueOf((String) request.getParameter("numero"));

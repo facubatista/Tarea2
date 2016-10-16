@@ -93,6 +93,7 @@ function iniciarSesion(form){
 //    document.getElementById("imgGrande").src = str;
 //}
 
+//Funciones usadas en Ver Perfil
 function cambiarPestania(pestania) {
     
     if(pestania.id==="mostrarRes"){
@@ -107,6 +108,24 @@ function cambiarPestania(pestania) {
     document.querySelector("a[class=selec]").className = "NOselec";
     pestania.className = "selec";
 }
+
+function cambiarEstadoRes(numReserva, trReserva){
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function(){
+        //Los status 200 y 4 indican que no hubo ningun problema
+        if(this.status===200 && this.readyState ===4){
+            trReserva.getElementsByClassName("estadoRes")[0].innerHTML = "Cancelada";
+            trReserva.querySelector("button").hidden = true;
+        }
+        console.log(this);
+    };
+    request.open("GET","/Tarea2/ServUsuarios?cambiarEstadoRes="+numReserva,true );
+    request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    request.send();
+    
+    return false;
+}
+//
 
 //funciones usadas en Ver Carrito
 function eliminarServicioCar(trServicio){

@@ -253,5 +253,6 @@ function pruebaServlet(){
     //x.setRequestHeader("responseType","json");
     
     x.send("Registrar=true&user=" + nickname + "&name=" + nombre + "&surname=" + apellido + "&email=" + email + "&pass=" + contrasena + "&day=" + dia + "&month=" + mes + "&year=" + anio);
+    
     return false;
 }

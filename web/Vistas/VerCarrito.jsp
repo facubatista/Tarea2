@@ -138,7 +138,7 @@
             <div id="confirmarBorrarRes" class="fila">
                 <a id="borrarCar" class="botones" onclick="return borrarCarrito(this.parentElement)">Borrar Carrito</a>
                 <a id="confirmarRes" class="botones" onclick="return confirmarReserva(this.parentElement)">Confirmar Reserva</a>      
-                <p hidden="">La reserva se ha realizado corectamente</p>
+                <p hidden="">La reserva se ha realizado correctamente</p>
             </div>
                 <%}else{%>
             </div><!--Es para cerrar el div "PromosYServicios en caso de qeu no entre en el if anterior"-->
