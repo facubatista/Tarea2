@@ -50,14 +50,15 @@ public class ServletUsuarios extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             
-            throws ServletException, IOException, SQLException, ParseException {
+            throws ServletException, IOException, SQLException, ParseException, InterruptedException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
         
         IcontClientes cont = Factory.getInstance().crearContCliente();
         HttpSession sesion = request.getSession();
-
+       
+        
         //Iniciar Sesión
         String nomUsuario = request.getParameter("nomUsuario");
         if (sesion.getAttribute("nickUsuario") == null && nomUsuario != null) {
@@ -75,8 +76,8 @@ public class ServletUsuarios extends HttpServlet {
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
-        }
-
+        }       
+         
         //Verificar que el nickname sea valido
         if (request.getParameter("verificarUsuario") != null) {
             //especifica que el tipo de respuesta va a ser texto
@@ -92,7 +93,6 @@ public class ServletUsuarios extends HttpServlet {
                 response.getWriter().write("true");
             }
         }
-
         //Alta de usuario
         if (request.getParameter("Registrar") != null) {
             response.setContentType("text/plain");
@@ -175,7 +175,8 @@ public class ServletUsuarios extends HttpServlet {
                     response.getWriter().write("false");
                 }
             }
-        //falta imagen
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -225,6 +226,8 @@ public class ServletUsuarios extends HttpServlet {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("./Vistas/VerReserva.jsp");
                 dispatcher.forward(request, response);
             }
+            
+            
 
         } catch (SQLException ex) {
             Logger.getLogger(ServletUsuarios.class.getName()).log(Level.SEVERE, null, ex);
@@ -245,10 +248,9 @@ public class ServletUsuarios extends HttpServlet {
         try {
             IcontClientes cont = Factory.getInstance().crearContCliente();
             HttpSession sesion = request.getSession();
+                  
             processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(ServletUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ParseException ex) {
+        } catch (SQLException | ParseException | InterruptedException ex) {
             Logger.getLogger(ServletUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
