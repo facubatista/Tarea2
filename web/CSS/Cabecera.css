@@ -100,6 +100,19 @@ header h4{
    margin-bottom: 15px;
 }
 
+#linkRegistrarse{
+    text-decoration: none;
+    color: black;
+}
+
+#linkRegistrarse:hover{
+    text-decoration: underline;
+}
+
+#linkRegistrarse:active{
+    font-weight: bold;
+}
+
 #BotonCarrito{
     background:url(/Tarea2/Imag/imagenCarrito.png) no-repeat;
     background-size: 14%;
@@ -143,4 +156,5 @@ header > .doce.columnas{
     box-sizing: border-box;
     color: white;  
     padding: 5px;
+    height: 30px;
 }

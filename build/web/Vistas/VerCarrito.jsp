@@ -27,7 +27,7 @@
                 <p>Carrito de compras</p>
             </div>
             <%if(session.getAttribute("carrito")!=null){ %>
-            <div class="fila">
+            <div class="fila" id="PromosYServicios">
                 <%
                 carrito car = (carrito)session.getAttribute("carrito");
                 Iterator<DtResServ> it = car.getServicios().iterator();
@@ -39,12 +39,13 @@
                     hayServicios=true;
                  %>
                 <table class="doce columnas">
-                <thead class="doce columnas">
+                    <thead class="doce columnas">
                         <tr class="doce columnas">
-                          <th class="nueve columnas" style="text-align: left;">Servicios</th>
+                          <th class="ocho columnas" style="text-align: left;">Servicios</th>
                           <th class="una columnas">Precio</th>
                           <th class="una columnas">Cantidad</th>
                           <th class="una columnas">Total</th>
+                          <th class="una columnas"></th>
                         </tr>
                     </thead>
                     <tbody class="doce columnas">
@@ -61,19 +62,20 @@
                                 imagenServBase64 = javax.xml.bind.DatatypeConverter.printBase64Binary(arrayBytes);
                             }
                         %>
-                        <tr class="doce columnas">
-                            <td class="nueve columnas">
+                        <tr class="doce columnas trServ">
+                            <td class="ocho columnas">
                                 <%if(imagenServBase64!=null){%>
                                 <img src="data:image/jpg;base64, <%=imagenServBase64%>" alt="foto de usuario" style="width:25%;">
                                 <%}else{%>
                                 <img src="/Tarea2/Imag/SinImagen.jpg" style="width:25%;">
                                 <%}%> 
-                                <a href="<%= request.getContextPath()%>/InfoServicio?nombreServicio=<%= s.getNombre() %>&nombreProveedor=<%= s.getProveedor() %>"><%= s.getNombre() %></a>
+                                <a id="nomServ" href="<%= request.getContextPath()%>/InfoServicio?nombreServicio=<%= s.getNombre() %>&nombreProveedor=<%= s.getProveedor() %>"><%= s.getNombre() %></a>
                                 <p><%= s.getDescripcion() %></p>
                             </td>
                             <td class="una columnas">$<%= Math.round(s.getPrecio()) %></td>
                             <td class="una columnas"><%= rs.getCantidad() %></td>
                             <td class="una columnas">$<%= Math.round(s.getPrecio() * rs.getCantidad()) %></td>
+                            <td class="una columnas"><img class="imgCancelar" src="/Tarea2/Imag/imagenCancelar.png" onclick="eliminarServicioCar(this.parentElement.parentElement)"></td>
                         </tr>
                         <%}%>
                     </tbody>
@@ -91,11 +93,12 @@
                 <table id="Promociones" class="doce columnas">
                     <thead class="doce columnas">
                         <tr class="doce columnas">
-                          <th class="ocho columnas" style="text-align: left">Promociones</th>
+                          <th class="siete columnas" style="text-align: left">Promociones</th>
                           <th class="una columnas">Precio</th>
                           <th class="una columnas">Descuento</th>
                           <th class="una columnas">Cantidad</th>
                           <th class="una columnas">Total</th>
+                          <th class="una columnas"></th>
                         </tr>
                     </thead>
                     <tbody class="doce columnas">
@@ -103,35 +106,51 @@
                             DtResProm rp = itP.next();
                             DtPromocion p = rp.getPromocion();
                     %>
-                        <tr class="doce columnas">
-                            <td class="ocho columnas">
-                                <a href="<%= request.getContextPath()%>/InfoPromocion?nombrePromocion=<%= p.getNombre() %>&nombreProveedor=<%= p.getProveedor() %>"><%= p.getNombre() %></a>
+                        <tr class="doce columnas trPromo">
+                            <td class="siete columnas">
+                                <a id="nomPromo" href="<%= request.getContextPath()%>/InfoPromocion?nombrePromocion=<%= p.getNombre() %>&nombreProveedor=<%= p.getProveedor() %>"><%= p.getNombre() %></a>
                             </td>
                             <td class="una columnas">$<%= Math.round(p.getTotal()) %></td>
                             <td class="una columnas">%<%= Math.round(p.getPorcentaje()) %></td>
                             <td class="una columnas"><%= rp.getCantidad()  %></td>
                             <td class="una columnas">$<%= Math.round(p.getTotal() * rp.getCantidad()) %></td>
+                            <td class="una columnas"><img class="imgCancelar" src="/Tarea2/Imag/imagenCancelar.png" onclick="eliminarPromoCar(this.parentElement.parentElement)"></td>
                         </tr>
                             <%  }%>
                     </tbody>
                 </table> 
-                            <%}%>
+                            <%}%>                            
+                    <%if(hayPromos || hayServicios){%>
+                <table class="doce columnas">
+                   <thead class="doce columnas">
+                       <tr class="doce columnas">
+                         <th id="totalReserva" class="doce columnas" style="text-align: left;">Total de reserva: $<%= Math.round(car.getTotal()) %></th>
+                       </tr>
+                   </thead>
+                </table>
+            </div>
+            
+            <!--Div usado cuando se borra el carrito-->
+            <div class="CarritoVacio" hidden="">
+                <p>No hay elementos en el carrito</p>
             </div>
              
-                <%if(hayPromos || hayServicios){%>
-            <table class="doce columnas">
-                <thead class="doce columnas">
-                    <tr class="doce columnas">
-                      <th class="doce columnas" style="text-align: left;">Total de reserva: $<%= Math.round(car.getTotal()) %></th>
-                    </tr>
-                </thead>
-            </table>
             <div id="confirmarBorrarRes" class="fila">
-                <a class="botones" href="/Tarea2/ServletCarrito?borrarCarrito=true">Borrar Carrito</a>
-                <a class="botones" href="/Tarea2/ServletCarrito?confirmarReserva=true">Confirmar Reserva</a>                
+                <a id="borrarCar" class="botones" onclick="return borrarCarrito(this.parentElement)">Borrar Carrito</a>
+                <a id="confirmarRes" class="botones" onclick="return confirmarReserva(this.parentElement)">Confirmar Reserva</a>      
+                <p hidden="">La reserva se ha realizado correctamente</p>
             </div>
-                <%}
-            }%>
+                <%}else{%>
+            </div><!--Es para cerrar el div "PromosYServicios en caso de qeu no entre en el if anterior"-->
+            <div class="CarritoVacio">
+                <p>No hay elementos en el carrito</p>
+            </div>
+                <%}%>
+            <%}else{%>
+            <div class="CarritoVacio">
+                <p>No hay elementos en el carrito</p>
+            </div>
+            <%}%>
             
         </div>
     </body>

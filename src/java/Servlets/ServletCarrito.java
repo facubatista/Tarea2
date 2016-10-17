@@ -32,6 +32,7 @@ public class ServletCarrito extends HttpServlet {
         IcontClientes cont = Factory.getInstance().crearContCliente();
         HttpSession sesion = request.getSession();
         
+        //Confirmar Reserva
         if(request.getParameter("confirmarReserva")!=null && sesion.getAttribute("carrito")!=null){
             carrito car = (carrito) sesion.getAttribute("carrito");
             cont.crearReserva((String)sesion.getAttribute("nickUsuario"),car.getTotal());
@@ -51,18 +52,30 @@ public class ServletCarrito extends HttpServlet {
             }
             
             cont.limpiar();
-            sesion.removeAttribute("carrito");
-            
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.forward(request, response);
-            
+            sesion.removeAttribute("carrito");            
         }
         
+        //Borrar Carrito
         if(request.getParameter("borrarCarrito")!=null && sesion.getAttribute("carrito")!=null){
             sesion.removeAttribute("carrito");
+        }
+        
+        //Eliminar servicio del carrito
+        if(request.getParameter("eliminarServicioCar")!=null){
+            carrito car = (carrito)sesion.getAttribute("carrito");
+            car.eliminarServ(request.getParameter("eliminarServicioCar"));
             
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.forward(request, response);
+            response.setContentType("text/plain");
+            response.getWriter().write(String.valueOf(Math.round(car.getTotal())));
+        }
+        
+        //Eliminar promocion del carrito
+        if(request.getParameter("eliminarPromoCar")!=null){
+            carrito car = (carrito)sesion.getAttribute("carrito");
+            car.eliminarPromo(request.getParameter("eliminarPromoCar"));
+            
+            response.setContentType("text/plain");
+            response.getWriter().write(String.valueOf(Math.round(car.getTotal())));
         }
         
     }

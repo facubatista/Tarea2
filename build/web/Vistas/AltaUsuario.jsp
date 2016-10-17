@@ -69,8 +69,7 @@
             </div>
             <br/>
             <div>
-                <input id="nomUsuario" name="nomUsuario" type="text" hidden=""/>
-                <input id="botonRegistrar" name="botonRegistrar" value="Registrarse" type="SUBMIT" />
+                <input id="botonRegistrar" name="botonRegistrar" value="Registrar" type="SUBMIT"/>
             </div>
         </form>
         <jsp:include page="Pie.jsp" /> 

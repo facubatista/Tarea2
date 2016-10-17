@@ -115,7 +115,7 @@ thead.doce.columnas{
     padding:5px;
 }
 
-tbody td.tres.columnas{
+tbody td.tres.columnas, tbody td.dos.columnas{
     text-align: left;
     font-size: 18px;
     font-weight: bold;

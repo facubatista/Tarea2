@@ -19,6 +19,7 @@ jQuery(document).ready(function () {
                     request.close();
                 }
             }
+            console.log(this);            
         };
         request.open("POST", "../ServUsuarios", true);
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -182,18 +183,27 @@ function pruebaServlet() {
     document.getElementById("contraseña").value = contrasena;
     document.getElementById("recontraseña").value = contrasena;
     document.getElementById("nomUsuario").value = nickname;
-
     var x = new XMLHttpRequest();
     x.onreadystatechange = function () {
         //Los status 200 y 4 indican que no hubo ningun problema
-        if (this.status === 200 && this.readyState === 4) {
-            //setTimeout ("return true;", 5000); 
-            return true;
+        if(this.status===200 && this.readyState ===4){
+            var request2 = new XMLHttpRequest();
+                request2.open("POST","/Tarea2/ServUsuarios",true );
+                request2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                request2.send("nomUsuario="+nickname);
+                request2.onreadystatechange = function(){
+                    if(this.status===200 && this.readyState ===4){
+                        window.location = "/Tarea2/index.jsp";
+                        return true;
+                    }
+                };
+            
+            console.log(this);
         }
     };
     x.open("POST", "/Tarea2/ServUsuarios", true);
     x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     x.send("Registrar=true&user=" + nickname + "&name=" + nombre + "&surname=" + apellido + "&email=" + email + "&pass=" + contrasena + "&day=" + dia + "&month=" + mes + "&year=" + anio);
-    //return true;
+    return false;
 }
 

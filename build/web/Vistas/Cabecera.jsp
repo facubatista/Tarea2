@@ -40,6 +40,7 @@
                 <%if(session.getAttribute("nomUsuario").equals("Anonimo")){%>
                 <h4><%=session.getAttribute("nomUsuario")%></h4>
                 <a id="IniC" class="botones" href="/Tarea2/Vistas/IniciarSesion.jsp">Iniciar Sesión</a>
+                <a id="linkRegistrarse" href="/Tarea2/Vistas/AltaUsuario.jsp">Registrarse</a>
                 <%}else{%>
                 <a id="VerPerfil" href="<%= request.getContextPath()%>/ServUsuarios?VerPerfil=true"><%=session.getAttribute("nomUsuario")%></a>
                 <a id="IniC" class="botones" href="<%= request.getContextPath()%>/ServUsuarios?Sesion=Cerrar">Cerrar Sesión</a>
@@ -47,6 +48,5 @@
             </div>                                  
         </div>  
        <div class="doce columnas">
-           <label id="categorias">Vuelos > Empresas > Iberia</label>
        </div>
    </header>

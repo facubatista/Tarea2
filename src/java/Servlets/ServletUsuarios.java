@@ -60,7 +60,7 @@ public class ServletUsuarios extends HttpServlet {
        
         
         //Iniciar Sesión
-        String nomUsuario = request.getParameter("nomUsuario");
+        String nomUsuario = request.getParameter("nomUsuario");//el nomUsuario que viene en el param puede ser el nickname o el email del cliente
         if (sesion.getAttribute("nickUsuario") == null && nomUsuario != null) {
             nomUsuario = cont.verificarUsuario(nomUsuario);//Retorna el nickname
             sesion.setAttribute("nickUsuario", nomUsuario);
@@ -93,6 +93,20 @@ public class ServletUsuarios extends HttpServlet {
                 response.getWriter().write("true");
             }
         }
+       
+        //Verificar password
+        if (request.getParameter("verificarPassword") != null && request.getParameter("passUser") != null) {
+           response.setContentType("text/plain");
+           String nickname = (String)request.getParameter("passUser");
+           nickname = cont.verificarUsuario(nickname);//Retorna el nickname, esto es por si el usuario ingresa su email para logearse
+           String claveUsuario = (String)request.getParameter("verificarPassword");
+            if (cont.userPassValido(nickname, claveUsuario)==true){
+                response.getWriter().write("passOK");
+            } else {
+                response.getWriter().write("passMAL");
+            }
+        }
+
         //Alta de usuario
         if (request.getParameter("Registrar") != null) {
             response.setContentType("text/plain");
@@ -217,7 +231,16 @@ public class ServletUsuarios extends HttpServlet {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/VerPerfil.jsp");
                 dispatcher.forward(request, response);
             }
-
+            
+            //Cambair Estado de reserva
+            if (request.getParameter("cambiarEstadoRes") != null) {
+                String nickUsuario = (String) sesion.getAttribute("nickUsuario");
+                int numRes = Integer.valueOf(request.getParameter("cambiarEstadoRes"));
+                cont.seleccionarReserva(numRes, nickUsuario);//Se selecciona la reserva a cambiar, esto ya estaba implementado de la tarea 1
+                cont.cambiarEstado("Cancelada");//Siempre se cambia a este estado porque solo se puede cambiar a cancelada
+            }
+            
+            //Ver Reserva
             if (request.getParameter("VerReserva") != null) {
                 String nickUsuario = (String) sesion.getAttribute("nickUsuario");
                 int num = Integer.valueOf((String) request.getParameter("numero"));

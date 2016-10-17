@@ -1,8 +1,38 @@
+/*#Pie{
+  background: #2EADD7;
+  position: absolute;
+  bottom: 0;
+  position: relative;
+}*/
 #Pie{
-    height: 20px;
-    margin-top: -20px;
-    width: 100%;
-    background: #2EADD7;
-    position: fixed;
-    bottom: 0;
+  width: 100%;
+  background: #2EADD7;
+  position: fixed;
+  bottom: 0;
+  padding: 3px;
+}
+
+#Pie >button{
+  box-shadow: 3px 3px 3px grey;
+    font-weight: bold;
+    box-sizing: border-box;
+    font-family: helvetica, tahoma, sans;
+    padding: 5px;
+    background: white;
+    color: #3FACD3;
+    border: none;
+    border-radius: 6px;
+    text-align: center;
+}
+
+#Pie >button:hover{
+    background: #F3F8FA;
+    box-shadow: 3px 3px 8px grey;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.5s;
+}
+#Pie >button:active{
+    background: #E3E6E7;
+    box-shadow:none;
 }
