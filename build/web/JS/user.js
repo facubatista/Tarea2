@@ -235,13 +235,22 @@ function pruebaServlet(){
     var anio = document.getElementById("anio").value;
     var mes = document.getElementById("mes").value;
     
-    alert(contrasena.length);
-    
     
     var x = new XMLHttpRequest();
     x.onreadystatechange = function(){
         //Los status 200 y 4 indican que no hubo ningun problema
         if(this.status===200 && this.readyState ===4){
+            var request2 = new XMLHttpRequest();
+                request2.open("POST","/Tarea2/ServUsuarios",true );
+                request2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                request2.send("nomUsuario="+nickname);
+                request2.onreadystatechange = function(){
+                    if(this.status===200 && this.readyState ===4){
+                        window.location = "/Tarea2/index.jsp";
+                        return true;
+                    }
+                };
+            
             console.log(this);
         }
     };

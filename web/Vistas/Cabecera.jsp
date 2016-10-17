@@ -48,6 +48,5 @@
             </div>                                  
         </div>  
        <div class="doce columnas">
-           <label id="categorias">Vuelos > Empresas > Iberia</label>
        </div>
    </header>
