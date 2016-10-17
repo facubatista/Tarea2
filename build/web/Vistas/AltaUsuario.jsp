@@ -72,7 +72,7 @@
                 <input id="imagen" name="imagen" type="file" accept="image/jpeg"/>
             </div>
             <br/>
-            <div> 
+            <div>
                 <input id="botonRegistrar" name="botonRegistrar" value="Registrar" type="SUBMIT"/>
             </div>
         </form>

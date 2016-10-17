@@ -9,7 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pie</title>
         <link rel ="stylesheet" href="CSS/Pie.css">
-        <script src="JS/javaScript.js"></script>
+        <script src="/Tares2/JS/javaScript.js"></script>
     </head>
     <body>
         <div class="fila">
