@@ -15,6 +15,7 @@ jQuery(document).ready(function () {
                     document.getElementById("botonRegistrar").style.display = 'block';
                 }
             }
+            console.log(this);            
         };
         request.open("POST", "/Tarea2/ServUsuarios", true);
         request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -252,5 +253,6 @@ function pruebaServlet(){
     //x.setRequestHeader("responseType","json");
     
     x.send("Registrar=true&user=" + nickname + "&name=" + nombre + "&surname=" + apellido + "&email=" + email + "&pass=" + contrasena + "&day=" + dia + "&month=" + mes + "&year=" + anio);
+    
     return false;
 }

@@ -67,25 +67,34 @@
                 <table class="doce columnas">
                     <thead class="doce columnas">
                             <tr class="doce columnas">
-                              <th class="tres columnas" style="text-align: left;">Número</th>
+                              <th class="dos columnas" style="text-align: left;">Número</th>
                               <th class="tres columnas">Estado</th>
                               <th class="tres columnas">Fecha de Creación</th>
-                              <th class="tres columnas">Total</th>
+                              <th class="dos columnas">Total</th>
+                              <th class="dos columnas"></th>
                             </tr>
                         </thead>
                         <tbody class="doce columnas">
                             <%
                                 List<DtReserva> listaReservas = (List)request.getAttribute("ReservasCli");
                                 Iterator<DtReserva> it = listaReservas.iterator();
-
+                                
+                                
                                 while(it.hasNext()){
                                     DtReserva r = it.next();
                             %>
                             <tr class="doce columnas">
-                                <td class="tres columnas"><a href="./ServUsuarios?VerReserva=true&numero=<%=r.getNumero() %>"><%= r.getNumero() %></a></td>
-                                <td class="tres columnas"><%= r.getEstado() %></td>
+                                <td class="dos columnas"><a href="./ServUsuarios?VerReserva=true&numero=<%=r.getNumero() %>"><%= r.getNumero() %></a></td>
+                                <td class="tres columnas estadoRes"><%= r.getEstado() %></td>
                                 <td class="tres columnas"><%= dateformat.format(r.getFechaCreacion()) %></td>
-                                <td class="tres columnas">$<%= r.getPrecioTotal() %></td>
+                                <td class="dos columnas">$<%= r.getPrecioTotal() %></td>
+                                <%if(r.getEstado().equals("Registrada")){%>
+                                <td class="dos columnas">
+                                    <button class="botones" onclick="return cambiarEstadoRes(<%= r.getNumero()%>,this.parentElement.parentElement)">Cancelar</button>
+                                </td>
+                                <%}else{%>
+                                <td class="dos columnas"></td>
+                                <%}%>
                             </tr>
                             <%  }%>
                         </tbody>

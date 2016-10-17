@@ -1,8 +1,12 @@
+/*#Pie{
+  background: #2EADD7;
+  position: absolute;
+  bottom: 0;
+  position: relative;
+}*/
 #Pie{
-    height: 20px;
-    margin-top: -20px;
-    width: 100%;
-    background: #2EADD7;
-    position: fixed;
-    bottom: 0;
+  width: 100%;
+  background: #2EADD7;
+  position: fixed;
+  bottom: 0;
 }
