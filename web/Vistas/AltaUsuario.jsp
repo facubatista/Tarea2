@@ -16,7 +16,7 @@
     </head>
     <body>
         <jsp:include page="Cabecera.jsp" /> 
-        <form id="RegistrarC" name="RegistrarC" onsubmit="return pruebaServlet()" action="../index.jsp" method="POST">
+        <form id="RegistrarC" name="RegistrarC" onsubmit="return pruebaServlet()" action="/Tarea2/ServUsuarios" method="post">
             <label class="Principal" >Registrar Usuario</label>
             <br/>
             <div>
@@ -67,12 +67,8 @@
                 <label class="label2" >/</label>
                 <input id="anio" name="anio" maxlength="4" placeholder="aaaa" type="text" required/>
             </div>
-            <div>
-                <label class="label" >Imagen(opcional) :</label>
-                <input id="imagen" name="imagen" type="file" accept="image/jpeg"/>
-            </div>
             <br/>
-            <div> 
+            <div>
                 <input id="botonRegistrar" name="botonRegistrar" value="Registrar" type="SUBMIT"/>
             </div>
         </form>

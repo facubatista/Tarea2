@@ -11,12 +11,13 @@
         <link rel="stylesheet" href="CSS/Layout.css">
         <link rel="stylesheet" href="CSS/Cabecera.css">
         <link type="image/x-icon" rel="shortcut icon"  href="Imag/IconoH4T.ico">
-        <jsp:include page="Vistas/Cabecera.jsp" />
     </head>
     <body>
+        <jsp:include page="Vistas/Cabecera.jsp" />
         <%
             IcontCatCiudad contCat = Factory.getInstance().crearContCatCiudad();
             List<DtCategoria> listaCat = contCat.listarCategorias();
         %>
+        <jsp:include page="Vistas/Pie.jsp" />
     </body>
 </html>

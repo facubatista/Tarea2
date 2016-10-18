@@ -1,136 +1,101 @@
-.principal{
-  width: 80%;
-  background: #477257;
-  box-sizing: border-box;
-  border: none;
-  border-radius: 6px;
-}
-.lblRes{
-  width: 80%;
-  display: block;
-  background: #F5AD50;
-  text-align: center;
-  border-radius: 6px;
-  margin-inline-start: 80px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  block-size: 22px;
-}
-.nro{
-  width: 30%;
-  display: inline-block;
-  background: #33E568;
-  text-align: center;
-  border-radius: 6px;
-  margin-inline-start: 5px;
-  margin-top: 5px;
-  block-size: 22px;
-}
-.nro1{
-  width: 10%;
-  display: inline-block;
-  background: #27A634;
-  text-align: center;
-  border-radius: 6px;
-  margin-inline-start: 5px;
-  block-size: 22px;
-}
-.fech{
-  width: 30%;
-  display: inline-block;
-  background: #33E568;
-  text-align: center;
-  border-radius: 6px;
-  margin-inline-start: 5px;
-  block-size: 22px;
-}
-.fech1{
-  width: 25%;
-  display: inline-block;
-  background: #27A634;
-  text-align: center;
-  border-radius: 6px;
-  margin-inline-start: 5px;
-  block-size: 22px;
+.principal > div > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
-.est{
-  width: 30%;
-  display: inline-block;
-  background: #33E568;
-  text-align: center;
-  border-radius: 6px;
-  margin-inline-start: 5px;
-  margin-top: 5px;
-  block-size: 22px;
+#divPestanias > ul > li {
+    box-sizing: border-box;
+    float: left;
 }
-.est1{
-  width: 30%;
-  display: inline-block;
-  background: #27A634;
-  text-align: center;
-  border-radius: 6px;
-  margin-inline-start: 5px;
-  margin-top: 5px;
-  block-size: 22px;
+
+#divPestanias > ul > li > a {
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: bold;
+    font-size: 15px;    
+    border: 1px solid #219CC4;
+    border-bottom: none;
 }
-.tot{
-  width: 30%;
-  display: inline-block;
-  background: #55D461;
-  text-align: center;
-  border-radius: 6px;
-  margin-inline-start: 55px;
-  margin-top: 5px;
-  block-size: 22px;
+
+/*Estilo de la pestaña seleccionada*/
+#divPestanias > ul li a.selec {        
+    background-color: #3FACD3;
+    color: white;
 }
-.lbln {
-  width: 50%;
-  display: inline-block;
-  background: #E9D25C;
-  text-align: center;
-  border-radius: 6px;
-  margin-inline-start: 5px;
-  margin-top: 5px;
-  block-size: 22px;
+
+/*Estilo de la pestaña NO seleccionada*/
+#divPestanias > ul a.NOselec{
+    background-color: #CBE2EA;
+    color: #219CC4;  
 }
-.nomP,.nomS{
-  width: 47%;
-  display: inline-block;
-  background: #F0EACC;
-  text-align: center;
-  border-radius: 6px;
-  margin-inline-start: 5px;
-  margin-top: 5px;
-  block-size: 22px;
+
+#divPestanias > ul a.NOselec:hover{
+    background: #DEEDF2;
 }
-.lblf{
-  width: 22%;
-  display: inline-block;
-  background: #33E568;
-  text-align: center;
-  border-radius: 6px;
-  margin-inline-start: 5px;
-  margin-top: 5px;
-  block-size: 22px;
+
+
+#divPestanias > ul li a.NOselec:active {
+    background-color: #BBD7E1;
 }
-.fechIniP, .fechFinP, .fechFinS, .fechIniS{
-  width: 15%;
-  display: inline-block;
-  background: #27A634;
-  text-align: center;
-  border-radius: 6px;
-  margin-inline-start: 4px;
-  margin-top: 5px;
-  block-size: 22px;
+
+#InfoRes, #ServRes, #PromosRes{
+    padding-top: 10px;
+    border: 1px solid #3FACD3;
+    padding-left: 10px;
 }
-.cantP, .cantS{
-  width: 20%;
-  display: inline-block;
-  background: #91BF28;
-  text-align: center;
-  border-radius: 6px;
-  margin-inline-start: 4px;
-  margin-top: 5px;
-  block-size: 22px;
+
+#InfoRes{
+    padding: 10px;
+    background: #C6EEFC;
+}
+
+table{
+    padding-right: 10px;
+    padding-bottom:8px;
+}
+
+table *{
+    box-sizing: border-box;
+}
+
+thead.doce.columnas{
+    margin-bottom: 2px;
+    background: #3FACD3;
+    color: white;
+     text-align: left;
+    padding:5px;
+}
+
+tbody td.tres.columnas, tbody td.dos.columnas, tbody td.una.columnas{
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+tbody tr{
+    background: #C6EEFC;
+    padding: 5px;
+    border-bottom: 2px white solid;
+}
+
+td > a{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 19px;
+    color: black;    
+    padding: 5px;
+}
+
+td > a:hover{
+    text-decoration: underline;
+}
+
+td > a:active{
+    background: #3FACD3;
+    color:white;
 }

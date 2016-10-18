@@ -156,4 +156,5 @@ header > .doce.columnas{
     box-sizing: border-box;
     color: white;  
     padding: 5px;
+    height: 30px;
 }

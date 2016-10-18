@@ -262,3 +262,26 @@ function cargarDatos(){
     
     return false;
 }
+
+function cambiarPestaniaEnVerRes(pestania) {
+    
+    if(pestania.id==="mostrarPromosRes"){
+        document.getElementById("PromosRes").hidden = false;
+        document.getElementById("InfoRes").hidden = true;   
+        document.getElementById("ServRes").hidden = true;    
+    }else{
+        if(pestania.id==="mostrarServRes"){   
+            document.getElementById("ServRes").hidden = false;   
+            document.getElementById("InfoRes").hidden = true;
+            document.getElementById("PromosRes").hidden = true;
+        }else{ 
+            document.getElementById("InfoRes").hidden = false;
+            document.getElementById("ServRes").hidden = true;
+            document.getElementById("PromosRes").hidden = true;
+        }
+    }
+    
+    /*Cambia el borde de la pestanña seleccionada y la otra*/
+    document.querySelector("a[class=selec]").className = "NOselec";
+    pestania.className = "selec";
+}
