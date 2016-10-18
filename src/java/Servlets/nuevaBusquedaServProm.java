@@ -119,7 +119,7 @@ public class nuevaBusquedaServProm extends HttpServlet {
                                         out.println("<label class=\"label2\" >/</label>");
                                         out.println("<input id=\"anioFin\" name=\"anioFin\" maxlength=\"4\" placeholder=\"aaaa\" type=\"text\"/>");
                                         out.println("</div>");
-                                            out.println("<form <%--action=\"agregarSCarrito--%> onsubmit=\"return agregarSACarrito(this.parentElement.parentElement)\" name=\"formAgregar\">");
+                                            out.println("<form onsubmit=\"return agregarSACarrito(this.parentElement.parentElement)\" name=\"formAgregar\">");
                                             out.println("<input type=\"hidden\" id =\"nombreServicio\" value="+ s.getNombre() +" name=\"nombreServicio\">");
                                             out.println("<input type=\"hidden\" id =\"nombreProveedor\" value="+ s.getProveedor() +" name=\"nombreProveedor\">");
                                             out.println("<label>Cantidad:</label><input type=\"text\" name=\"cantidad\" id=\"txtCantidad\" class=\"cantidad\" onkeyup=\"calcularPrecio(this.parentElement.parentElement, "+ Math.round(s.getPrecio()) +")\">");
@@ -151,26 +151,69 @@ public class nuevaBusquedaServProm extends HttpServlet {
                     out.println("<td class=\"TdProveedor\">"+ p.getProveedor() +"</td>");
                     if(session.getAttribute("nickUsuario") != null){
                         out.println("<td>");
-                            out.println("<div class=\"aOcultar\">\n" +
-"                                                <form onsubmit=\"return agregarPACarrito(this.parentElement.parentElement)\" name=\"formAgregar\">\n" +
-"                                                    <input type=\"hidden\" id =\"nombrePromocion\" value="+ p.getNombre() +" name=\"nombrePromocion\">\n" +
-"                                                    <input type=\"hidden\" id =\"nombreProveedor\" value="+ p.getProveedor() +" name=\"nombreProveedor\">\n" +
-"                                                    <input type=\"text\" name=\"cantidad\" id=\"txtCantidad\" class=\"cantidad\" onkeyup=\"calcularPrecio(this.parentElement.parentElement, "+ p.getTotal() +")\">\n" +
-"                                                    <input id =\"agregar\" type=\"submit\" value=\"agregar al carrito\" ><!-- cambiar esto!-->\n" +
-"                                                </form>\n" +
-"                                                    <label class=\"precio\">Precio: $"+ Math.round(p.getTotal()) +"</label>\n" +
-"                                            </div>\n" +
-"                                            <div class=\"aMostrar\" hidden=\"\">\n" +
-"                                                <img src=\"Imag/carrito.png\" alt=\"imagen de carrito\"> En carrito\n" +
-"                                            </div>");
+                        
+                            out.println("<div class=\"aOcultar\">\n");
+                            out.println("<label class=\"precio\">Precio: $"+ Math.round(p.getTotal()) +"</label>");
+                                        //<%--Fecha de inicio del servicio--%>
+                                        out.println("<div id=\"fechaIni\">");
+                                            out.println("<label class=\"labelIni\" >Inicio:</label>");
+                                            out.println("<input id=\"diaIni\" name=\"diaIni\" maxlength=\"2\" placeholder=\"dd\" type=\"text\"/>");
+                                            out.println("<label class=\"label2\" >/</label>");
+                                            out.println("<select id=\"mesIni\" name=\"mesIni\">");
+                                                out.println("<option name=\"01\">Enero</option>");
+                                                out.println("<option name=\"02\">Febrero</option>");
+                                                out.println("<option name=\"03\">Marzo</option>");
+                                                out.println("<option name=\"04\">Abril</option>");
+                                                out.println("<option name=\"05\">Mayo</option>");
+                                                out.println("<option name=\"06\">Junio</option>");
+                                                out.println("<option name=\"07\">Julio</option>");
+                                                out.println("<option name=\"08\">Agosto</option>");
+                                                out.println("<option name=\"09\">Setiembre</option>");
+                                                out.println("<option name=\"10\">Octubre</option>");
+                                                out.println("<option name=\"11\">Noviembre</option>");
+                                                out.println("<option name=\"12\">Diciembre</option>");
+                                            out.println("</select>");
+                                            out.println("<label class=\"label2\" >/</label>");
+                                            out.println("<input id=\"anioIni\" name=\"anioIni\" maxlength=\"4\" placeholder=\"aaaa\" type=\"text\"/>");
+                                        out.println("</div>");
+                                        //<%--Fecha de Fin del servicio--%>
+                                        out.println("<div id=\"fechaFin\">");
+                                        out.println("<label class=\"labelFin\" >Fin:</label>");
+                                        out.println("<input id=\"diaFin\" name=\"diaFin\" maxlength=\"2\" placeholder=\"dd\" type=\"text\"/>");
+                                        out.println("<label class=\"label2\" >/</label>");
+                                        out.println("<select id=\"mesFin\" name=\"mesFin\">");
+                                            out.println("<option name=\"01\">Enero</option>"
+                                                    + "<option name=\"02\">Febrero</option>\n" +
+"                                                        <option name=\"03\">Marzo</option>\n" +
+"                                                        <option name=\"04\">Abril</option>\n" +
+"                                                        <option name=\"05\">Mayo</option>\n" +
+"                                                        <option name=\"06\">Junio</option>\n" +
+"                                                        <option name=\"07\">Julio</option>\n" +
+"                                                        <option name=\"08\">Agosto</option>\n" +
+"                                                        <option name=\"09\">Setiembre</option>\n" +
+"                                                        <option name=\"10\">Octubre</option>\n" +
+"                                                        <option name=\"11\">Noviembre</option>\n" +
+"                                                        <option name=\"12\">Diciembre</option>");
+                                        out.println("</select>");
+                                        out.println("<label class=\"label2\" >/</label>");
+                                        out.println("<input id=\"anioFin\" name=\"anioFin\" maxlength=\"4\" placeholder=\"aaaa\" type=\"text\"/>");
+                                        out.println("</div>");
+                                            out.println("<form onsubmit=\"return agregarPACarrito(this.parentElement.parentElement)\" name=\"formAgregar\">");
+                                            out.println("<input type=\"hidden\" id =\"nombrePromocion\" value="+ p.getNombre() +" name=\"nombrePromocion\">");
+                                            out.println("<input type=\"hidden\" id =\"nombreProveedor\" value="+ p.getProveedor() +" name=\"nombreProveedor\">");
+                                            out.println("<label>Cantidad:</label><input type=\"text\" name=\"cantidad\" id=\"txtCantidad\" class=\"cantidad\" onkeyup=\"calcularPrecio(this.parentElement.parentElement, "+ Math.round(p.getTotal()) +")\">");
+                                            out.println("<input id =\"agregar\" type=\"submit\" value=\"agregar al carrito\" >");
+                                            out.println("</form>");
+                                    out.println("</div>\n");
+                            out.println("<div class=\"aMostrar\" hidden=\"\">\n"+
+"                                                <img src=\"Imag/carrito.png\" alt=\"imagen de carrito\"> En carrito\n");
+                            out.println("</div>");
                         out.println("</td>");
                     }
                     out.println("</tr>");
                 }
                 out.println("</body>");
             out.println("</table>");
-                                
-                                
                             
                         
             

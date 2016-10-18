@@ -182,7 +182,6 @@ function pruebaServlet() {
     var mes = document.getElementById("mes").value;
     document.getElementById("contraseña").value = contrasena;
     document.getElementById("recontraseña").value = contrasena;
-    document.getElementById("nomUsuario").value = nickname;
     var x = new XMLHttpRequest();
     x.onreadystatechange = function () {
         //Los status 200 y 4 indican que no hubo ningun problema

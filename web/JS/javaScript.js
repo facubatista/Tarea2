@@ -262,7 +262,6 @@ function cargarDatos(){
     
     return false;
 }
-
 function cambiarPestaniaEnVerRes(pestania) {
     
     if(pestania.id==="mostrarPromosRes"){
