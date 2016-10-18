@@ -5,8 +5,8 @@
             session.setAttribute("nomUsuario", "Anonimo");
         }
         
-        String imagenUsuarioB64=null;           
-        if(session.getAttribute("imagenUsuario")!=null){           
+        String imagenUsuarioB64=null;
+        if(session.getAttribute("imagenUsuario")!=null){
              byte[] imagenUsuario = (byte[])session.getAttribute("imagenUsuario");
              imagenUsuarioB64 = javax.xml.bind.DatatypeConverter.printBase64Binary(imagenUsuario);
         }

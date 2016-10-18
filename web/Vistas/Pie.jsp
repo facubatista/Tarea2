@@ -14,7 +14,8 @@
     <body>
         <div class="fila">
             <div id="Pie">
-                <button onclick="cargarDatos()">Cargar datos de prueba</button>
+                <button id="botonCargarDatos" onclick="cargarDatos()">Cargar datos de prueba</button>
+                <label id="cartelDeEspera" hidden>Aguarde un momento por favor</label>
             </div>
         </div>
     </body>

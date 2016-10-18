@@ -239,12 +239,19 @@ function borrarCarrito(div){
 
 function cargarDatos(){
     
+    document.getElementById("botonCargarDatos").hidden = true;
+    document.getElementById("cartelDeEspera").hidden = false;
     
     var x = new XMLHttpRequest();
     x.onreadystatechange = function(){
         //Los status 200 y 4 indican que no hubo ningun problema
         if(this.status === 200 && this.readyState === 4){
             console.log(this);
+            alert("Se han cargado los datos de prueba");
+            //document.getElementById("botonCargarDatos").hidden = false;
+            //location.reload(true);
+            location.href="/Tarea2/ServUsuarios?Sesion=Cerrar";
+            //window.location="index.jsp";
         }
     };
 
