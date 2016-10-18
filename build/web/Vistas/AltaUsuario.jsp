@@ -17,7 +17,7 @@
     </head>
     <body>
         <jsp:include page="Cabecera.jsp" /> 
-        <form id="RegistrarC" name="RegistrarC" onsubmit="return pruebaServlet()" action="../index.jsp" method="POST">
+        <form id="RegistrarC" name="RegistrarC" onsubmit="return pruebaServlet()" method="POST">
             <div class="fila">
                 <label class="label" >Nickname :</label>
                 <label class="labelerr" id="errNick" hidden="">Este nickname esta ocupado</label>
@@ -31,10 +31,10 @@
                 <label class="labelerr" id="errEmailFormato" hidden="">Formato de e-mail incorrecto</label>
                 <input id="email" name="email" type="text" required/>
                 <label class="label" >Contraseña :</label>
-                <input id="contraseña" name="contraseña" type="password" required/>
+                <input id="contrasenia" name="contraseña" type="password" required/>
                 <label class="label" >Verificar contraseña :</label>
                 <label class="labelerr" id="errContra" hidden="">Las contraseñas no coinciden</label>
-                <input id="recontraseña" name="recontraseña" type="password" required/>
+                <input id="recontrasenia" name="recontraseña" type="password" required/>
                 <div id="fecha">
                     <label class="labelFecha" >Fecha de nacimiento :</label>
                     <input id="dia" name="dia" maxlength="2" placeholder="dd" type="text" required/>
