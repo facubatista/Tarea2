@@ -1,4 +1,86 @@
 #RegistrarC{
+    width: 50%; 
+    margin:0 auto;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    padding: 10px;
+    border: 1px solid grey;
+    box-sizing: border-box;
+}
+
+#RegistrarC >  div > label{
+    display: inline-block;
+    float:left;
+    margin-right: 10px;
+    margin-bottom: 2px;
+}
+
+#RegistrarC > div > .labelerr{
+   display: none;
+   color:red;
+   font-style: italic; 
+}
+
+#RegistrarC >  div > input{
+    display:block;
+    width: 100%;
+}
+
+#RegistrarC input,#botonReg{
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+#RegistrarC input:focus{
+    border: 1px solid #56CAAD;
+}
+
+/*div fecha*/
+#RegistrarC > div > div > .labelBarra{
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+#RegistrarC > div > div > .labelFecha{
+    display:block;
+    width: 100%;
+    margin-left: 0px;
+}
+
+#botonRegistrar{
+    margin-bottom: 0px;
+    background: #56CAAD;
+    color: white;
+    border: none;
+    font-size: 15px;
+    text-align: center;
+    box-shadow: 3px 3px 3px grey;
+}
+
+#botonRegistrar:hover{
+    background: #81D9C3;
+    box-shadow: 3px 3px 8px grey;
+}
+
+#botonRegistrar:active{
+    background: #219CC4;
+    box-shadow:none;
+}
+
+#botonRegistrarDis{
+    background: #739F94;
+    display: none;
+}
+#botonRegistrarDis:hover{
+    background: #739F94;
+    box-shadow: 3px 3px 3px grey;
+    cursor: default;
+}
+
+/*#RegistrarC{
     width: 60%; 
     margin:0 auto;
     margin-top: 30px;
@@ -98,5 +180,5 @@
     margin-right: 30px;
     border-bottom-right-radius: 30px;
     border-bottom-left-radius: 30px;
-}
+}*/
 

@@ -4,6 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Iniciar Sesión</title>
+        <link type="image/x-icon" rel="shortcut icon"  href="/Tarea2/Imag/IconoH4T.ico">
         <link rel="stylesheet" type="text/css" href="/Tarea2/CSS/Layout.css"/>
         <link rel="stylesheet" type="text/css" href="/Tarea2/CSS/Cabecera.css"/>
         <link rel="stylesheet" type="text/css" href="/Tarea2/CSS/SesionCss.css"/>

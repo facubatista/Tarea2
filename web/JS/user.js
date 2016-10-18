@@ -1,30 +1,47 @@
 jQuery(document).ready(function () {
     jQuery("#email").blur(function () {
         var mail = jQuery("#email").val();
-        if (mail.indexOf("@") === -1 || mail.indexOf(".com") === -1)
-            document.getElementById("email").value = '';
-        var mail = jQuery("#email").val();
-        var request = new XMLHttpRequest();
-        request.onreadystatechange = function () {
-            if (this.status === 200 && this.readyState === 4) {
-                if (this.responseText === "true" && mail.length !== 0) {
-                    document.getElementById("errEmail").style.display = 'block';
-                    document.getElementById("botonRegistrar").style.display = 'none';
-                    request.close();
-                } else {
-                    document.getElementById("errEmail").style.display = 'none';
-                    if (document.getElementById("errNick").style.display !== 'block' && document.getElementById("errContra").style.display !== 'block') {
-                        document.getElementById("botonRegistrar").style.display = 'block';
-                    }
-                    request.close();
-                }
+        if (mail.indexOf("@") === -1 || mail.indexOf(".com") === -1){
+            document.getElementById("errEmailFormato").style.display = 'block';
+            document.getElementById("botonRegistrar").style.display = 'none';
+                    document.getElementById("botonRegistrarDis").style.display = 'block';
+        }else{
+            document.getElementById("errEmailFormato").style.display = 'none';
+            var displayErrorMail = document.getElementById("errEmail").style.display;
+            var displayErrorNick = document.getElementById("errNick").style.display;
+            var displayErrorPass = document.getElementById("errContra").style.display;
+            if(displayErrorMail === 'none' && displayErrorNick === 'none' && displayErrorPass === 'none'){
+                document.getElementById("botonRegistrar").style.display = 'block';
+                document.getElementById("botonRegistrarDis").style.display = 'none';
             }
-            console.log(this);            
-        };
-        request.open("POST", "../ServUsuarios", true);
-        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        request.send("verificarUsuario=" + mail);
-        return false;
+        }
+        //Si el formato es incorrecto no hace la consulta al servlet
+        if(document.getElementById("errEmailFormato").style.display === 'none'){
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function () {
+                if (this.status === 200 && this.readyState === 4) {
+                    if (this.responseText === 'true' && mail.length !== 0) {
+                        document.getElementById("errEmail").style.display = 'block';
+                        document.getElementById("botonRegistrar").style.display = 'none';
+                        document.getElementById("botonRegistrarDis").style.display = 'block';
+                    } else {
+                        document.getElementById("errEmail").style.display = 'none';
+                        var displayErrorFormato = document.getElementById("errEmailFormato").style.display;
+                        var displayErrorNick = document.getElementById("errNick").style.display;
+                        var displayErrorPass = document.getElementById("errContra").style.display;
+                        if(displayErrorFormato === 'none' && displayErrorNick === 'none' && displayErrorPass === 'none'){
+                            document.getElementById("botonRegistrar").style.display = 'block';
+                            document.getElementById("botonRegistrarDis").style.display = 'none';
+                        }
+                    }
+                }
+                console.log(this);            
+            };
+            request.open("POST", "/Tarea2/ServUsuarios", true);
+            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            request.send("verificarUsuario=" + mail);
+            return false;
+        }
     });
     jQuery("#nickname").blur(function () {
         var nick = jQuery("#nickname").val();
@@ -34,13 +51,17 @@ jQuery(document).ready(function () {
                 if (this.responseText === "true" && nick.length !== 0) {
                     document.getElementById("errNick").style.display = 'block';
                     document.getElementById("botonRegistrar").style.display = 'none';
-                    
+                    document.getElementById("botonRegistrarDis").style.display = 'block';
                 } else {
                     document.getElementById("errNick").style.display = 'none';
-                    if (document.getElementById("errEmail").style.display !== 'block' && document.getElementById("errContra").style.display !== 'block') {
+                    var displayErrorFormato = document.getElementById("errEmailFormato").style.display;
+                    var displayErrorMail = document.getElementById("errEmail").style.display;
+                    var displayErrorPass = document.getElementById("errContra").style.display;
+                    if(displayErrorFormato === 'none' && displayErrorMail === 'none' && displayErrorPass === 'none'){
                         document.getElementById("botonRegistrar").style.display = 'block';
+                        document.getElementById("botonRegistrarDis").style.display = 'none';
                     }
-                           }
+                }
             }
         };
         request.open("POST", "../ServUsuarios", true);
@@ -48,29 +69,53 @@ jQuery(document).ready(function () {
         request.send("verificarUsuario=" + nick);
         return false;
     });
-    jQuery("#recontraseña").blur(function () {
-        var recontra = jQuery("#recontraseña").val();
-        var contra = jQuery("#contraseña").val();
+    jQuery("#recontrasenia").blur(function () {
+        var recontra = jQuery("#recontrasenia").val();
+        var contra = jQuery("#contrasenia").val();
         if (contra !== recontra && contra.length !== 0) {
             document.getElementById("errContra").style.display = 'block';
             document.getElementById("botonRegistrar").style.display = 'none';
+            document.getElementById("botonRegistrarDis").style.display = 'block';
         } else {
             document.getElementById("errContra").style.display = 'none';
-            if (document.getElementById("errNick").style.display !== 'block' && document.getElementById("errEmail").style.display !== 'block') {
+            var displayErrorFormato = document.getElementById("errEmailFormato").style.display;
+            var displayErrorMail = document.getElementById("errEmail").style.display;
+            var displayErrorNick = document.getElementById("errNick").style.display;
+            if(displayErrorFormato === 'none' && displayErrorMail === 'none' && displayErrorNick === 'none'){
                 document.getElementById("botonRegistrar").style.display = 'block';
+                document.getElementById("botonRegistrarDis").style.display = 'none';
             }
         }
     });
-    jQuery("#contraseña").blur(function () {
-        var recontra = jQuery("#recontraseña").val();
-        var contra = jQuery("#contraseña").val();
+    jQuery("#contrasenia").blur(function () {
+        var recontra = jQuery("#recontrasenia").val();
+        var contra = jQuery("#contrasenia").val();
         if (contra !== recontra && recontra.length !== 0) {
             document.getElementById("errContra").style.display = 'block';
             document.getElementById("botonRegistrar").style.display = 'none';
+            document.getElementById("botonRegistrarDis").style.display = 'block';
         } else {
             document.getElementById("errContra").style.display = 'none';
-            if (document.getElementById("errNick").style.display === 'none' && document.getElementById("errMail").style.display === 'none') {
+            var displayErrorFormato = document.getElementById("errEmailFormato").style.display;
+            var displayErrorMail = document.getElementById("errEmail").style.display;
+            var displayErrorNick = document.getElementById("errNick").style.display;
+            if(displayErrorFormato === 'none' && displayErrorMail === 'none' && displayErrorNick === 'none'){
                 document.getElementById("botonRegistrar").style.display = 'block';
+                document.getElementById("botonRegistrarDis").style.display = 'none';
+            }
+        }
+    });
+    jQuery("#dia").blur(function () {
+        var dia = jQuery("#dia").val();
+        if (dia === '') {
+            jQuery("#dia").val('');
+        }
+        if (isNaN(parseInt(dia))) {
+            jQuery("#dia").val('');
+        } else {
+            var numero = parseInt(dia);
+            if (numero >= 32) {
+                document.getElementById("dia").value = "31";
             }
         }
     });
@@ -171,7 +216,7 @@ jQuery(document).ready(function () {
 
 function pruebaServlet() {
 
-    var contrasena = document.getElementById("contraseña").value;
+    var contrasena = document.getElementById("contrasenia").value;
     contrasena = sha1(contrasena);
     var nickname = document.getElementById("nickname").value;
     var nombre = document.getElementById("nombre").value;
@@ -203,6 +248,7 @@ function pruebaServlet() {
     x.open("POST", "/Tarea2/ServUsuarios", true);
     x.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     x.send("Registrar=true&user=" + nickname + "&name=" + nombre + "&surname=" + apellido + "&email=" + email + "&pass=" + contrasena + "&day=" + dia + "&month=" + mes + "&year=" + anio);
+    
     return false;
 }
 

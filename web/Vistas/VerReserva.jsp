@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Ver Reserva</title>
+        <link type="image/x-icon" rel="shortcut icon"  href="/Tarea2/Imag/IconoH4T.ico">
         <link rel="stylesheet" type="text/css" href="./CSS/Layout.css"/>
         <link rel="stylesheet" type="text/css" href="./CSS/Cabecera.css"/>
         <link rel="stylesheet" type="text/css" href="./CSS/Pie.css"/>
