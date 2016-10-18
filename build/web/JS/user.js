@@ -225,8 +225,10 @@ function pruebaServlet() {
     var dia = document.getElementById("dia").value;
     var anio = document.getElementById("anio").value;
     var mes = document.getElementById("mes").value;
-    document.getElementById("contraseña").value = contrasena;
-    document.getElementById("recontraseña").value = contrasena;
+    
+    document.getElementById("contrasenia").value = contrasena;
+    document.getElementById("recontrasenia").value = contrasena;
+    
     var x = new XMLHttpRequest();
     x.onreadystatechange = function () {
         //Los status 200 y 4 indican que no hubo ningun problema
