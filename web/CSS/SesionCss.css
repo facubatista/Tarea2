@@ -59,10 +59,10 @@ and open the template in the editor.
     box-shadow:none;
 }
     
-#IniciarC #botonIngresarDis{
+#botonIngresarDis{
     background: #739F94;
 }
-#IniciarC #botonIngresarDis:hover{
+#botonIngresarDis:hover{
     background: #739F94;
     box-shadow: 3px 3px 3px grey;
     cursor: default;
