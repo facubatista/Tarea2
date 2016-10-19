@@ -9,12 +9,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pie</title>
         <link rel ="stylesheet" href="/Tarea2/CSS/Pie.css">
-        <script src="/Tarea2/JS/javaScript.js"></script>
+        <script src="JS/javaScript.js"></script>
     </head>
     <body>
         <div class="fila">
             <div id="Pie">
-                <button onclick="cargarDatos()">Cargar datos de prueba</button>
+                <button id="botonCargarDatos" onclick="cargarDatos()">Cargar datos de prueba</button>
+                <label id="cartelDeEspera" hidden>Aguarde un momento por favor</label>
             </div>
         </div>
     </body>

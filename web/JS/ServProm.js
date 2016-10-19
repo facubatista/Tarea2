@@ -8,11 +8,9 @@ function agregarSACarrito(o){
     var mesIni = o.querySelector("select[name=mesIni]").value;
     var anioIni = o.querySelector("input[name=anioIni]").value;
     
-    
     var diaFin = o.querySelector("input[id=diaFin]").value;
     var mesFin = o.querySelector("select[name=mesFin]").value;
     var anioFin = o.querySelector("input[id=anioFin]").value;
-    
     
     switch(mesIni){
         case 'Enero': mesIni = 1; break;
@@ -86,7 +84,7 @@ function agregarSACarrito(o){
             console.log(this);
             o.querySelector(".aOcultar").hidden = true;
             o.querySelector(".aMostrar").hidden = false;
-            
+            return false;
             //if(this.responseText)
             //document.getElementById("aOcultar").hidden = true;
             ///document.getElementById("aMostrar").hidden = false;
