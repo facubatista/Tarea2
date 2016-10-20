@@ -1,0 +1,144 @@
+body{
+  color: #2E2E2E;
+  height: 100%;
+}
+.principal{
+  height: 100%;
+}
+#colUno{
+  background: #C6EEFC;
+  height: 285px;
+  padding-top: 30px;
+}
+#colDos{
+  background: #C6EEFC;
+  height: 315px;
+}
+#colTres{
+  background: #C6EEFC;
+  height: 180px;
+}
+#colCuatro{
+  background: #C6EEFC;
+  height: 180px;
+}
+#colCinco{
+  background: #C6EEFC;
+  height: 200px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+#colSeis{
+  background: #C6EEFC;
+  height: 200px;
+  margin-bottom: 10px;
+}
+#imgGrande{
+  max-width: 340px;
+  max-height: 255px;
+}
+#imgChicas{
+}
+.chica{
+  width: 60px;
+  max-height: 60px;
+  margin-right: 15px;
+}
+.chica:hover{
+  box-shadow: 3px 3px 3px #9AF399;
+}
+/*Agregar al carrito*/
+#colCuatro h2{
+  margin-left: 100px;
+}
+#fechaFin{
+  margin-left: 20px;
+  margin-top: 5px;
+}
+#fechaIni{
+  margin-top: 5px;
+}
+#diaIni, #diaFin, #anioFin, #anioIni{
+  width: 70px;
+}
+.agregarACarrito{
+  margin-top: 10px;
+  margin-left: 110px;
+}
+.precio{
+  margin-left: 140px;
+}
+.aMostrar{
+  margin-left: 130px;
+  margin-top: 30px;
+}
+
+/*tabla*/
+table{
+  margin-left: 40px;
+  margin-top: 30px;
+}
+thead{
+  float: left;
+}
+thead th{
+  display: block;
+  margin-bottom: 3px;
+  background: #2EADD7;
+  border-radius: 7px;
+  
+  padding: 5px;
+}
+tbody{
+  float: left;
+}
+td{
+  border-radius: 7px;
+  margin-bottom: 3px;
+  display: block;
+  background: #2EADD7;
+  text-align: center;
+  padding: 5px;
+}
+
+/*formulario*/
+#txtCantidad{
+  width: 30px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 7px;
+}
+#agregar{
+  /*background:rgba(0,0,0,0);*/
+  background: #2EADD7;
+  color: white;
+  border-radius: 7px
+}
+#agregar:hover{
+  color: white; 
+  background: #50C9F2;
+  box-shadow: 0 3px 3px #333;
+  cursor: pointer;
+}
+
+#agregar:active{
+  background: #219CC4;
+}
+
+
+/*Categorias*/
+#categorias{
+  padding-top: 10px;
+  max-width: 400px;
+}
+
+#categorias > center > label{
+  background: #2EADD7;
+  color:white;
+  border-radius: 7px;
+  padding: 3px 8px;
+  margin-right: 5px;
+}
+
+.fila{
+  clear: both;
+}

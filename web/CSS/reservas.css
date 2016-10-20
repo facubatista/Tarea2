@@ -1,0 +1,101 @@
+.principal > div > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#divPestanias > ul > li {
+    box-sizing: border-box;
+    float: left;
+}
+
+#divPestanias > ul > li > a {
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: bold;
+    font-size: 15px;    
+    border: 1px solid #219CC4;
+    border-bottom: none;
+}
+
+/*Estilo de la pestaña seleccionada*/
+#divPestanias > ul li a.selec {        
+    background-color: #3FACD3;
+    color: white;
+}
+
+/*Estilo de la pestaña NO seleccionada*/
+#divPestanias > ul a.NOselec{
+    background-color: #CBE2EA;
+    color: #219CC4;  
+}
+
+#divPestanias > ul a.NOselec:hover{
+    background: #DEEDF2;
+}
+
+
+#divPestanias > ul li a.NOselec:active {
+    background-color: #BBD7E1;
+}
+
+#InfoRes, #ServRes, #PromosRes{
+    padding-top: 10px;
+    border: 1px solid #3FACD3;
+    padding-left: 10px;
+}
+
+#InfoRes{
+    padding: 10px;
+    background: #C6EEFC;
+}
+
+table{
+    padding-right: 10px;
+    padding-bottom:8px;
+}
+
+table *{
+    box-sizing: border-box;
+}
+
+thead.doce.columnas{
+    margin-bottom: 2px;
+    background: #3FACD3;
+    color: white;
+     text-align: left;
+    padding:5px;
+}
+
+tbody td.tres.columnas, tbody td.dos.columnas, tbody td.una.columnas{
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+tbody tr{
+    background: #C6EEFC;
+    padding: 5px;
+    border-bottom: 2px white solid;
+}
+
+td > a{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 19px;
+    color: black;    
+    padding: 5px;
+}
+
+td > a:hover{
+    text-decoration: underline;
+}
+
+td > a:active{
+    background: #3FACD3;
+    color:white;
+}

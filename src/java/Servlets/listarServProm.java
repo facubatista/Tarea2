@@ -1,5 +1,6 @@
 package Servlets;
 
+import Logica.DtPromocion;
 import Logica.DtServicio;
 import Logica.Factory;
 import Logica.IcontProveedores;
@@ -25,9 +26,11 @@ public class listarServProm extends HttpServlet {
         
         IcontProveedores cont = Factory.getInstance().crearContProveedores();
         
-        ArrayList<DtServicio> lista = cont.listarServiciosBuscados(request.getParameter("busqueda"));
+        ArrayList<DtServicio> listaServicios = cont.listarServiciosBuscados(request.getParameter("busqueda"));
+        ArrayList<DtPromocion> listaPromociones = cont.listarPromocionesBuscadas(request.getParameter("busqueda"));
         
-        request.setAttribute("listaServicios", lista);
+        request.setAttribute("listaServicios", listaServicios);
+        request.setAttribute("listaPromociones", listaPromociones);
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/servProm.jsp");
         dispatcher.forward(request, response);

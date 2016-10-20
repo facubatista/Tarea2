@@ -1,0 +1,131 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21/09/2016, 12:23:21 PM
+    Author     : Kevin
+*/
+
+.principal > #CarritoyTitulo{
+    background: #9AF399;
+    padding: 10px;
+    color:white;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.principal > #CarritoyTitulo > *{
+    display: inline-block;
+}
+
+.principal > #CarritoyTitulo >img{
+    width:7%;
+    margin-left: 10%;
+}
+.principal > #CarritoyTitulo >p{
+    font-size: 45px;
+    margin:auto;
+    margin-left: 1%;
+}
+
+table{
+    border-bottom: 10px solid white;
+}
+
+table *{
+    box-sizing: border-box;
+}
+
+thead.doce.columnas{
+    margin-bottom: 2px;
+    background: #3FACD3;
+    color: white;
+    padding:5px;
+}
+
+tbody td.nueve.columnas>img{
+    display: inline-block;
+    float: left;
+    margin-right: 5px;
+}
+
+tbody td.una.columnas{
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 6%;
+}
+
+tbody tr{
+    background: #C6EEFC;
+    padding: 5px;
+    border-bottom: 2px white solid;
+}
+
+tbody > tr > td.una.columnas >img{
+    width:40%;
+    vertical-align: central;
+}
+
+tbody > tr > td.una.columnas >img:hover{
+    background: #B6DAE8;
+    padding: 5px;
+}
+
+tbody > tr > td.una.columnas >img:active{
+    background: #9BBCC8;
+}
+
+td > a{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;    
+    padding: 5px;
+}
+
+td > a:hover{
+    text-decoration: underline;
+}
+
+td > a:active{
+    background: #3FACD3;
+    color:white;
+}
+
+/*Tabla promociones*/
+td.ocho.columnas>a{
+    font-size: 25px;
+}
+
+#Promociones td.una.columnas{
+    padding-top: 1%;
+    display:block;
+}
+
+.principal > div >  a {
+    margin-top: 10px;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    margin-left: 15px;
+}
+
+/*Mensaje al confirmra la reserva*/
+#confirmarBorrarRes > p{
+    padding: 10px;
+    background: #9AF399;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.principal > .CarritoVacio{
+    background: #C6EEFC;
+    padding: 5px;
+    font-size: 20px;
+}

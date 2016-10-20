@@ -1,0 +1,76 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 15/09/2016, 04:28:55 PM
+    Author     : Kevin
+*/
+
+#IniciarC,#RegistrarC{
+    width: 30%; 
+    margin:0 auto;
+    margin-top: 30px;
+    padding: 10px;
+    border: 1px solid grey;
+    box-sizing: border-box;
+}
+
+#IniciarC label{
+    width: 100%;
+}
+
+#RegistrarC label{
+    display:block;
+    width: 100%;
+    text-align: center;
+}
+
+#IniciarC input,#botonReg{
+    width: 100%;
+    margin-bottom: 50px;
+    box-sizing: border-box;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+#IniciarC input:focus{
+    border: 1px solid #56CAAD;
+}
+
+#IniciarC input[type="submit"],#botonReg{
+    margin-bottom: 0px;
+    background: #56CAAD;
+    color: white;
+    border: none;
+    font-size: 15px;
+    text-align: center;
+    box-shadow: 3px 3px 3px grey;
+}
+
+#IniciarC input[type="submit"]:hover,#botonReg:hover{
+    background: #81D9C3;
+    box-shadow: 3px 3px 8px grey;
+}
+
+#IniciarC input[type="submit"]:active{
+    background: #219CC4;
+    box-shadow:none;
+}
+    
+#botonIngresarDis{
+    background: #739F94;
+}
+#botonIngresarDis:hover{
+    background: #739F94;
+    box-shadow: 3px 3px 3px grey;
+    cursor: default;
+}
+
+#nickInvalido, #passwordIncorrecta{
+    color:red;
+    font-style: italic;
+}
+
+

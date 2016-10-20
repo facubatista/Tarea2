@@ -1,0 +1,208 @@
+body{
+  background: white;
+}
+
+/*ul.clase{
+  background:#A4A4A4;
+  width: 100%;
+}
+
+li, a{
+  box-sizing: border-box;
+}
+li{
+  list-style: none;
+  display: inline-block;
+  /*width:100px;
+  text-align: center;*/
+  /*margin-right: 5px;
+}
+li > a{
+  /*modelo de caja*/
+ /* width:250px;
+  display: block;
+  text-align: center;
+  padding: 5px;
+  
+  /*Estilo del link*/
+ /* text-decoration: none;
+  background:rgba(0,0,0,0.5);
+  font-family: helvetica, tahoma, sans;
+  
+  /*otros estilos*/
+ /* border-radius: 7px;
+  
+}/*
+li > a:hover{
+  background: white;
+  box-shadow: 0 3px 3px #333;
+}*/
+
+/*Arbol*/
+li > a{
+  color: black;
+}
+li > a:hover{
+  color: #2EADD7;
+}
+li{
+  color: #2EADD7;
+}
+
+/*tabla*/
+table{
+  color: #2E2E2E;
+  width: 100%;
+  margin: auto;
+  background:#2EADD7/*#9AF399/*#A4A4A4*/;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+table th{
+  background: #2EADD7/*rgba(0,0,0,0.3)*/;
+  border-radius: 5px;
+}
+table td{
+  border-radius: 5px;
+  text-align: center;
+  background:#9AF399/*rgba(0,0,0,0.3);*/
+}
+.TdNombreS{
+  width: 300px;
+}
+table td > a{
+  color: #2E2E2E;
+  display: block;
+  text-decoration: none;
+  border-radius: 7px;
+  padding-top: 37px;
+  padding-bottom: 37px;
+}
+table td > a:hover{
+  box-shadow: 0 3px 3px #333;
+}
+#txtCantidad{
+  width: 30px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 7px;
+}
+#agregar{
+  /*background:rgba(0,0,0,0);*/
+  background:rgba(0,0,0,0);
+  color: #2E2E2E;
+  border-radius: 7px;
+  margin-top: 5px;
+}
+#agregar:hover{
+  color: black;
+  background: rgba(255,255,255,0.5);
+  box-shadow: 0 3px 3px #333;
+  cursor: pointer;
+}
+.izquierda{
+  text-align: left;
+}
+.TdAgregarACarrito{
+  width: 35%;
+}
+
+/*Imagenes en miniatura*/
+.imgMini{
+  width: 105px;
+  height: 70px;
+  float: left;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+/*fecha*/
+#diaIni, #diaFin{
+  width: 20px;
+  border-radius: 7px;
+}
+#mesIni, #mesFin{
+  width: 85px;
+  border-radius: 7px;
+}
+#anioIni, #anioFin{
+  width: 30px;
+  border-radius: 7px;
+}
+#diaFin, #mesFin, #anioFin, .labelFin{
+  margin-top: 5px;
+}
+.labelIni, .labelFin{
+  float: left;
+}
+
+
+/*layout*/
+#colDos{
+  border-bottom-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  background: #9AF399;
+  margin-bottom: 10px;
+}
+#colUno{
+  background: #9AF399;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  /*background:  #2EADD7;*/
+  margin-bottom: 10px;
+}
+
+.columna, .columnas{
+  display: inline-block;
+  float:left;
+  margin: 0;
+}
+
+
+/*dimensiones*/
+.una.columna, .una.columnas{
+  width: 8.33%;
+}
+.dos.columna, .dos.columnas{
+  width: 16.66%;
+}
+.tres.columna, .tres.columnas{
+  width: 24.99%;
+}
+.cuatro.columna, .cuatro.columnas{
+  width: 33.32%;
+}
+.cinco.columna, .cinco.columnas{
+  width: 41.65%;
+}
+.seis.columna, .seis.columnas {
+  width: 49.98%;
+}
+.siete.columna, .siete.columnas{
+  width: 58.31%;
+}
+.ocho.columna, ocho.columnas{
+  width: 66.64%;
+}
+.nueve.columna, nueve.columnas{
+  width: 74.97;
+}
+.diez.columna, diez.columnas{
+  width: 83.3;
+}
+.once.columna, once.columnas{
+  width: 91.63%;
+}
+.doce.columna, .doce.columnas{
+  width: 100%;
+}
+.principal{
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.fila{
+  clear: both;
+}
+

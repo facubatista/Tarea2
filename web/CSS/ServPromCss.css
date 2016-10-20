@@ -1,10 +1,12 @@
 body{
   background: white;
 }
-ul.clase{
+
+/*ul.clase{
   background:#A4A4A4;
   width: 100%;
 }
+
 li, a{
   box-sizing: border-box;
 }
@@ -13,29 +15,38 @@ li{
   display: inline-block;
   /*width:100px;
   text-align: center;*/
-  margin-right: 5px;
+  /*margin-right: 5px;
 }
 li > a{
   /*modelo de caja*/
-  width:250px;
+ /* width:250px;
   display: block;
   text-align: center;
   padding: 5px;
   
   /*Estilo del link*/
-  text-decoration: none;
-  color: rgb(255,255,255);
+ /* text-decoration: none;
   background:rgba(0,0,0,0.5);
   font-family: helvetica, tahoma, sans;
   
   /*otros estilos*/
-  border-radius: 7px;
+ /* border-radius: 7px;
   
-}
+}/*
 li > a:hover{
-  color: blueviolet;
   background: white;
   box-shadow: 0 3px 3px #333;
+}*/
+
+/*Arbol*/
+li > a{
+  color: black;
+}
+li > a:hover{
+  color: #2EADD7;
+}
+li{
+  color: #2EADD7;
 }
 
 /*tabla*/
@@ -44,26 +55,29 @@ table{
   width: 100%;
   margin: auto;
   background:#2EADD7/*#9AF399/*#A4A4A4*/;
-  border-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 table th{
-  background: aquamarine;
   background: #2EADD7/*rgba(0,0,0,0.3)*/;
   border-radius: 5px;
 }
 table td{
   border-radius: 5px;
-  min-width: 200px;
   text-align: center;
   background:#9AF399/*rgba(0,0,0,0.3);*/
+}
+.TdNombreS{
+  width: 300px;
 }
 table td > a{
   color: #2E2E2E;
   display: block;
   text-decoration: none;
   border-radius: 7px;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding-top: 37px;
+  padding-bottom: 37px;
 }
 table td > a:hover{
   box-shadow: 0 3px 3px #333;
@@ -77,7 +91,8 @@ table td > a:hover{
   /*background:rgba(0,0,0,0);*/
   background:rgba(0,0,0,0);
   color: #2E2E2E;
-  border-radius: 7px
+  border-radius: 7px;
+  margin-top: 5px;
 }
 #agregar:hover{
   color: black;
@@ -85,18 +100,56 @@ table td > a:hover{
   box-shadow: 0 3px 3px #333;
   cursor: pointer;
 }
+.izquierda{
+  text-align: left;
+}
+.TdAgregarACarrito{
+  width: 35%;
+}
+
+/*Imagenes en miniatura*/
+.imgMini{
+  width: 105px;
+  height: 70px;
+  float: left;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+/*fecha*/
+#diaIni, #diaFin{
+  width: 20px;
+  border-radius: 7px;
+}
+#mesIni, #mesFin{
+  width: 85px;
+  border-radius: 7px;
+}
+#anioIni, #anioFin{
+  width: 30px;
+  border-radius: 7px;
+}
+#diaFin, #mesFin, #anioFin, .labelFin{
+  margin-top: 5px;
+}
+.labelIni, .labelFin{
+  float: left;
+}
+
 
 /*layout*/
-#colUno{
-  background:#A4A4A4;
-  color: white;
-  border-radius: 10px;
-}
 #colDos{
-  background: blue;
+  border-bottom-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  background: #9AF399;
+  margin-bottom: 10px;
 }
-#colTres{
-  background: greenyellow;
+#colUno{
+  background: #9AF399;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  /*background:  #2EADD7;*/
+  margin-bottom: 10px;
 }
 
 .columna, .columnas{
