@@ -1,11 +1,7 @@
 package Servlets;
 
-import Logica.DtServicio;
-import Logica.Factory;
-import Logica.IcontProveedores;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;

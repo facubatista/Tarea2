@@ -2,11 +2,7 @@ package Servlets;
 
 import Clases.DtResProm;
 import Clases.carrito;
-import Logica.DtPromocion;
-import Logica.Factory;
-import Logica.IcontProveedores;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

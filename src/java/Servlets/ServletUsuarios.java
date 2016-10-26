@@ -5,23 +5,14 @@
  */
 package Servlets;
 
-import Logica.DtCliente;
-import Logica.DtReserva;
-import Logica.Factory;
-import Logica.IcontClientes;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,10 +20,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import sun.misc.BASE64Decoder;
 import webservices.DataCliente;
 import webservices.DataReserva;
-import webservices.DataReservas;
 import webservices.ParseException_Exception;
 import webservices.WSClientes;
 import webservices.WSClientesService;

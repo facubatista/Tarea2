@@ -1,6 +1,5 @@
 package Clases;
 
-import Logica.DtPromocion;
 import java.util.Date;
 import webservices.DataPromocion;
 

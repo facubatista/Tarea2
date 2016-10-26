@@ -2,9 +2,6 @@ package Servlets;
 
 import Clases.DtResServ;
 import Clases.carrito;
-import Logica.DtServicio;
-import Logica.Factory;
-import Logica.IcontProveedores;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
