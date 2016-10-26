@@ -1,10 +1,10 @@
+<%@page import="webservices.DataServicio"%>
+<%@page import="webservices.DataPromocion"%>
 <%@page import="javax.imageio.ImageIO"%>
 <%@page import="java.io.ByteArrayOutputStream"%>
 <%@page import="java.awt.image.BufferedImage"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Logica.DtServicio"%>
-<%@page import="Logica.DtPromocion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,7 +21,7 @@
     </head>
     <body>
         <%
-            DtPromocion p = (DtPromocion)request.getAttribute("promocion");
+            DataPromocion p = (DataPromocion)request.getAttribute("promocion");
         %>
         
         <div class="principal">
@@ -138,20 +138,16 @@
                                 <%
                                     if(request.getAttribute("listaServicios") != null){
                                         ArrayList lista = (ArrayList)request.getAttribute("listaServicios");
-                                        Iterator<DtServicio> it = lista.iterator();
+                                        Iterator<DataServicio> it = lista.iterator();
                                             
                                         while(it.hasNext()){
-                                            DtServicio s = it.next();
+                                            DataServicio s = it.next();
                                 %>
                                     <tr>
                                         <td id="TdNombre">
                                             <%
                                             if(!s.getImagenes().isEmpty()){
-                                                BufferedImage originalImage=(BufferedImage) s.getImagenes().get(0).getImage();
-                                                ByteArrayOutputStream baos=new ByteArrayOutputStream();
-                                                ImageIO.write(originalImage, "jpg", baos );
-                                                byte[] arrayBytes = baos.toByteArray();
-                                                String b64 = javax.xml.bind.DatatypeConverter.printBase64Binary(arrayBytes);
+                                                String b64 = javax.xml.bind.DatatypeConverter.printBase64Binary(s.getImagenes().get(0));
                                             %>
                                                 <img class="imgMini" src="data:image/jpg;base64, <%=b64%>">
                                             <%}%>

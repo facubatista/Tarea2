@@ -1,3 +1,4 @@
+<%@page import="webservices.DataCliente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
     <header>
         <%
@@ -6,9 +7,12 @@
         }
         
         String imagenUsuarioB64=null;
-        if(session.getAttribute("imagenUsuario")!=null){
-             byte[] imagenUsuario = (byte[])session.getAttribute("imagenUsuario");
-             imagenUsuarioB64 = javax.xml.bind.DatatypeConverter.printBase64Binary(imagenUsuario);
+        if(session.getAttribute("DataCliente")!=null){
+            DataCliente cli = (DataCliente)session.getAttribute("DataCliente");
+            if(cli.getImagen() != null){
+                byte[] imagenUsuario = cli.getImagen();
+                imagenUsuarioB64 = javax.xml.bind.DatatypeConverter.printBase64Binary(imagenUsuario);
+            }
         }
         %>
            

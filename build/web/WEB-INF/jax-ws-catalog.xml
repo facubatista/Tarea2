@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8085/webSproveedores?wsdl" uri="wsdl/localhost_8085/webSproveedores.wsdl"/>
+    <system systemId="http://localhost:8085/webSproveedores?xsd=1" uri="wsdl/localhost_8085/webSproveedores.xsd_1.xsd"/>
+    <system systemId="http://localhost:8086/webSclientes?wsdl" uri="wsdl/localhost_8086/webSclientes.wsdl"/>
+    <system systemId="http://localhost:8086/webSclientes?xsd=1" uri="wsdl/localhost_8086/webSclientes.xsd_1.xsd"/>
+</catalog>

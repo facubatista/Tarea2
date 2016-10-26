@@ -15,6 +15,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import webservices.DataPromociones;
+import webservices.DataServicios;
+import webservices.WSProveedores;
+import webservices.WSProveedoresService;
 
 
 @WebServlet(name = "listarServProm", urlPatterns = {"/ServProm"})
@@ -24,10 +28,14 @@ public class listarServProm extends HttpServlet {
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         
-        IcontProveedores cont = Factory.getInstance().crearContProveedores();
+        WSProveedoresService wsps = new WSProveedoresService();
+        WSProveedores wsp = wsps.getWSProveedoresPort();
         
-        ArrayList<DtServicio> listaServicios = cont.listarServiciosBuscados(request.getParameter("busqueda"));
-        ArrayList<DtPromocion> listaPromociones = cont.listarPromocionesBuscadas(request.getParameter("busqueda"));
+        
+        
+        DataServicios listaServicios = wsp.listarServiciosBuscados((String)request.getParameter("busqueda"));
+        
+        DataPromociones listaPromociones = wsp.listarPromocionesBuscadas((String)request.getParameter("busqueda"));
         
         request.setAttribute("listaServicios", listaServicios);
         request.setAttribute("listaPromociones", listaPromociones);

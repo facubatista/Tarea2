@@ -14,6 +14,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import webservices.DataServicio;
+import webservices.WSProveedores;
+import webservices.WSProveedoresService;
 
 @WebServlet(name = "verInfoServicio", urlPatterns = {"/InfoServicio"})
 public class verInfoServicio extends HttpServlet {
@@ -21,19 +24,20 @@ public class verInfoServicio extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         
-        IcontProveedores cont = Factory.getInstance().crearContProveedores();
+        
+        WSProveedoresService wsps = new WSProveedoresService();
+        WSProveedores wsp = wsps.getWSProveedoresPort();
         
         String nombre = request.getParameter("nombreServicio");
         String proveedor = request.getParameter("nombreProveedor");
         
         String nomServ = nombre.replace("+", " ");
         
-        ArrayList<byte[]> lista = cont.getBufferedImageServicio(proveedor, nomServ);
+        //ArrayList<byte[]> lista = cont.getBufferedImageServicio(proveedor, nomServ);
         
-        DtServicio s = cont.seleccionarServicioAListar(proveedor, nomServ);
+        DataServicio s = wsp.seleccionarServicioAListar(proveedor, nomServ);
         
         request.setAttribute("servicio", s);
-        request.setAttribute("listaImagenes", lista);
 //        
         RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/infoServicio.jsp");
         dispatcher.forward(request, response);

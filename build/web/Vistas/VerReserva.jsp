@@ -1,3 +1,6 @@
+<%@page import="webservices.DataRS"%>
+<%@page import="webservices.DataRP"%>
+<%@page import="webservices.DataReserva"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.util.ArrayList"%>
@@ -21,14 +24,14 @@
     </head>
     <body>
         <jsp:include page="Cabecera.jsp" />
-        <% DtReserva res = (DtReserva) request.getAttribute("Reserva");
+        <% DataReserva res = (DataReserva) request.getAttribute("Reserva");
             SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
             
-            ArrayList<DtRP> rp = res.getPromociones();
-            Iterator iteradorPromo = rp.iterator();
+            //ArrayList<DataRP> rp = (ArrayList)res.getPromociones();
+            Iterator iteradorPromo = res.getPromociones().iterator();
             
-            ArrayList<DtRS> rs = res.getServicios();
-            Iterator iteradorServ = rs.iterator();
+            //ArrayList<DataRS> rs = res.getServicios();
+            Iterator iteradorServ = res.getServicios().iterator();
         %>
         <form class="principal">
             <div id="divPestanias" class="fila">
@@ -44,12 +47,12 @@
             <div id="InfoRes" class="fila">
                 <div class="fila">
                     <h4>Número: <%= res.getNumero() %></h4>
-                    <h4>Fecha de creación: <%= dateformat.format(res.getFechaCreacion()) %></h4>
+                    <h4>Fecha de creación: <%= dateformat.format(res.getFechaCreacion().toGregorianCalendar().getTime()) %></h4>
                     <h4>Estado: <%= res.getEstado() %></h4>
                     <h4>Total: $<%= res.getPrecioTotal() %></h4>
                 </div>
             </div>
-            <div id="PromosRes" hidden="true" style="overflow: hidden">
+            <div id="PromosRes" hidden style="overflow: hidden">
                 <table class="doce columnas">
                     <thead class="doce columnas">
                         <tr class="doce columnas">
@@ -62,7 +65,7 @@
                     </thead>
                     <tbody class="doce columnas">
                     <%while(iteradorPromo.hasNext()){
-                        DtRP dtp = (DtRP)iteradorPromo.next();
+                        DataRP dtp = (DataRP)iteradorPromo.next();
                     %>
                         <tr class="doce columnas trPromo">
                             <td class="tres columnas">
@@ -77,7 +80,7 @@
                     </tbody>
                 </table>
             </div> 
-            <div id="ServRes" hidden="true" style="overflow: hidden">
+            <div id="ServRes" hidden style="overflow: hidden">
                 <table class="doce columnas">
                     <thead class="doce columnas">
                         <tr class="doce columnas">
@@ -90,15 +93,15 @@
                     </thead>
                     <tbody class="doce columnas">
                     <%while(iteradorServ.hasNext()){
-                        DtRS dts = (DtRS)iteradorServ.next();
+                        DataRS dts = (DataRS)iteradorServ.next();
                     %>
                         <tr class="doce columnas trPromo">
                             <td class="tres columnas">
                                 <a id="nomPromo" href="<%= request.getContextPath()%>/InfoServicio?nombreServicio=<%= dts.getServicio() %>&nombreProveedor=<%= dts.getProveedor() %>"><%= dts.getServicio() %></a>
                             </td>
                             <td class="dos columnas"><%= dts.getProveedor() %></td>
-                            <td class="tres columnas"><%= dateformat.format(dts.getFechaIni()) %></td>
-                            <td class="tres columnas"><%= dateformat.format(dts.getFechaFin())  %></td>
+                            <td class="tres columnas"><%= dateformat.format(dts.getFechaIni().toGregorianCalendar().getTime()) %></td>
+                            <td class="tres columnas"><%= dateformat.format(dts.getFechaFin().toGregorianCalendar().getTime())  %></td>
                             <td class="una columnas"><%= dts.getCantidad() %></td>
                         </tr>
                     <%}%>

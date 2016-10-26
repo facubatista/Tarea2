@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is JAX-WS RI 2.2.9-b130926.1035 svn-revision#5f6196f2b90e9460065a4c2f4e30e065b245e51e. --><xs:schema xmlns:tns="http://WebServices/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://WebServices/">
+
+<xs:element name="listarPromocionesBuscadas" type="tns:listarPromocionesBuscadas"></xs:element>
+
+<xs:element name="listarPromocionesBuscadasResponse" type="tns:listarPromocionesBuscadasResponse"></xs:element>
+
+<xs:element name="listarServiciosBuscados" type="tns:listarServiciosBuscados"></xs:element>
+
+<xs:element name="listarServiciosBuscadosResponse" type="tns:listarServiciosBuscadosResponse"></xs:element>
+
+<xs:element name="seleccionarPromocionAListar" type="tns:seleccionarPromocionAListar"></xs:element>
+
+<xs:element name="seleccionarPromocionAListarResponse" type="tns:seleccionarPromocionAListarResponse"></xs:element>
+
+<xs:element name="seleccionarServicioAListar" type="tns:seleccionarServicioAListar"></xs:element>
+
+<xs:element name="seleccionarServicioAListarResponse" type="tns:seleccionarServicioAListarResponse"></xs:element>
+
+<xs:complexType name="seleccionarServicioAListar">
+<xs:sequence>
+<xs:element name="a" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="b" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="seleccionarServicioAListarResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:dataServicio" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dataServicio">
+<xs:sequence>
+<xs:element name="nombre" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="proveedor" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="precio" type="xs:float"></xs:element>
+<xs:element name="imagenes" type="xs:base64Binary" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+<xs:element name="origen" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="destino" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="categorias" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarPromocionesBuscadas">
+<xs:sequence>
+<xs:element name="a" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarPromocionesBuscadasResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:dataPromociones" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dataPromociones">
+<xs:sequence>
+<xs:element name="promociones" type="tns:dataPromocion" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dataPromocion">
+<xs:sequence>
+<xs:element name="nombre" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="proveedor" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="porcentaje" type="xs:float"></xs:element>
+<xs:element name="total" type="xs:float"></xs:element>
+<xs:element name="servicios" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="seleccionarPromocionAListar">
+<xs:sequence>
+<xs:element name="a" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="b" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="seleccionarPromocionAListarResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:dataPromocion" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarServiciosBuscados">
+<xs:sequence>
+<xs:element name="a" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarServiciosBuscadosResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:dataServicios" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dataServicios">
+<xs:sequence>
+<xs:element name="servicios" type="tns:dataServicio" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
