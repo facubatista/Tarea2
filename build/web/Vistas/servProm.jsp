@@ -1,3 +1,7 @@
+<%@page import="webservices.DataPromocion"%>
+<%@page import="webservices.DataPromociones"%>
+<%@page import="webservices.DataServicio"%>
+<%@page import="webservices.DataServicios"%>
 <%@page import="java.util.Collections"%>
 <%@page import="java.util.List"%>
 <%@page import="Logica.DtCategoria"%>
@@ -74,22 +78,18 @@
                             </thead>
                             <tbody>
                                 <%
-                                ArrayList<DtServicio> listaServicios = (ArrayList)request.getAttribute("listaServicios");
-                                Iterator<DtServicio> it = listaServicios.iterator();
+                                DataServicios listaServicios = (DataServicios)request.getAttribute("listaServicios");
+                                Iterator<DataServicio> it = listaServicios.getServicios().iterator();
 
                                 while(it.hasNext()){
-                                    DtServicio s = it.next();
+                                    DataServicio s = it.next();
                                 %>
                                 <tr>
                                     <td class="TdTipo">Servicio</td>
                                     <td class="TdNombreS">
                                         <%
                                             if(!s.getImagenes().isEmpty()){
-                                            BufferedImage originalImage=(BufferedImage) s.getImagenes().get(0).getImage();
-                                            ByteArrayOutputStream baos=new ByteArrayOutputStream();
-                                            ImageIO.write(originalImage, "jpg", baos );
-                                            byte[] arrayBytes = baos.toByteArray();
-                                            String b64 = javax.xml.bind.DatatypeConverter.printBase64Binary(arrayBytes);
+                                            String b64 = javax.xml.bind.DatatypeConverter.printBase64Binary(s.getImagenes().get(0));
                                         %>
                                             <img class="imgMini" src="data:image/jpg;base64, <%=b64%>">
                                         <%}else{%>
@@ -166,11 +166,11 @@
                                 <%}%>
 
                                 <%
-                                    ArrayList<DtPromocion> listaPromociones = (ArrayList)request.getAttribute("listaPromociones");
-                                    Iterator<DtPromocion> iterador = listaPromociones.iterator();
+                                    DataPromociones listaPromociones = (DataPromociones)request.getAttribute("listaPromociones");
+                                    Iterator<DataPromocion> iterador = listaPromociones.getPromociones().iterator();
 
                                     while(iterador.hasNext()){
-                                        DtPromocion p = iterador.next();
+                                        DataPromocion p = iterador.next();
                                 %>
                                 <tr>
                                     <td class="TdTipo">Promocion</td>

@@ -1,25 +1,22 @@
 package Servlets;
 
-import Logica.DtPromocion;
-import Logica.DtServicio;
-import Logica.Factory;
-import Logica.IcontProveedores;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import webservices.DataPromocion;
+import webservices.DataPromociones;
+import webservices.DataServicio;
+import webservices.DataServicios;
+import webservices.WSProveedores;
+import webservices.WSProveedoresService;
 
 public class nuevaBusquedaServProm extends HttpServlet {
     
@@ -33,9 +30,11 @@ public class nuevaBusquedaServProm extends HttpServlet {
             
             String categoria = request.getParameter("categoria");
             
-            IcontProveedores cont = Factory.getInstance().crearContProveedores();
-            ArrayList<DtServicio> listaServicios = cont.listarServiciosBuscados(categoria);
-            Iterator<DtServicio> it = listaServicios.iterator();
+            WSProveedoresService wsps = new WSProveedoresService();
+            WSProveedores wsp = wsps.getWSProveedoresPort();
+            
+            DataServicios listaServicios = wsp.listarServiciosBuscados(categoria);
+            Iterator<DataServicio> it = listaServicios.getServicios().iterator();
             
             out.println("<table id=\"tabla\">");
                 out.println("<thead>");
@@ -50,16 +49,12 @@ public class nuevaBusquedaServProm extends HttpServlet {
                 out.println("</thead>");
                 out.println("<tbody>");
                     while(it.hasNext()){
-                        DtServicio s = it.next();
+                        DataServicio s = it.next();
                         out.println("<tr>");
                         out.println("<td class=\"TdTipo\">Servicio</td>");
                         out.println("<td class=\"TdNombreS\">");
                             if(!s.getImagenes().isEmpty()){
-                                BufferedImage originalImage=(BufferedImage) s.getImagenes().get(0).getImage();
-                                ByteArrayOutputStream baos=new ByteArrayOutputStream();
-                                ImageIO.write(originalImage, "jpg", baos );
-                                byte[] arrayBytes = baos.toByteArray();
-                                String b64 = javax.xml.bind.DatatypeConverter.printBase64Binary(arrayBytes);
+                                String b64 = javax.xml.bind.DatatypeConverter.printBase64Binary(s.getImagenes().get(0));
 
                                 out.println("<img class=\"imgMini\" src=\"data:image/jpg;base64,"+b64+"\">");
                             }else{
@@ -136,11 +131,11 @@ public class nuevaBusquedaServProm extends HttpServlet {
                     out.println("</tbody>");
                 out.println("</table>");
                 
-                ArrayList<DtPromocion> listaPromociones = cont.listarPromocionesBuscadas(categoria);
-                Iterator<DtPromocion> iterador = listaPromociones.iterator();
+                DataPromociones listaPromociones = wsp.listarPromocionesBuscadas(categoria);
+                Iterator<DataPromocion> iterador = listaPromociones.getPromociones().iterator();
 
                 while(iterador.hasNext()){
-                    DtPromocion p = iterador.next();
+                    DataPromocion p = iterador.next();
                     out.println("<tr>");
                         out.println("<td class=\"TdTipo\">Promocion</td>");
                         out.println("<td>");
@@ -214,21 +209,6 @@ public class nuevaBusquedaServProm extends HttpServlet {
                 }
                 out.println("</body>");
             out.println("</table>");
-                            
-                        
-            
-            
-            /*out.println("<table>");
-            out.println("<tr>");
-            out.println("<td>"+ categoria +"</td>");
-            out.println("<td>APELLIDO</td>");
-            out.println("<td>EDAD</td>");
-            out.println("</tr>");
-            out.println("<td>HOLA</td>");
-            out.println("<td>PIM PAM PUM</td>");
-            out.println("<td>COSO COLOR</td>");
-            out.println("</tr>");
-            out.println("</table>");*/
         }
     }
 

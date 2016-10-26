@@ -2,16 +2,17 @@ package Clases;
 
 import Logica.DtPromocion;
 import java.util.Date;
+import webservices.DataPromocion;
 
 
 public class DtResProm {
-    private DtPromocion promocion;
+    private DataPromocion promocion;
     private int cantidad;
     private String proveedor;
     private Date fechaIni;
     private Date fechaFin;
     
-    public DtResProm(DtPromocion promocion, int cantidad, Date fechaIni, Date fechaFin) {
+    public DtResProm(DataPromocion promocion, int cantidad, Date fechaIni, Date fechaFin) {
         this.promocion = promocion;
         this.cantidad = cantidad;
         this.fechaIni = fechaIni;
@@ -19,7 +20,7 @@ public class DtResProm {
         this.proveedor = promocion.getProveedor();
     }
 
-    public DtPromocion getPromocion() {return promocion;}
+    public DataPromocion getPromocion() {return promocion;}
     public int getCantidad() {return cantidad;}
     public String getProveedor(){ return proveedor;}
 

@@ -13,6 +13,7 @@
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/VerCarrito.jsp</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/infoServicio.jsp</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/JS/jQuery.js</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Clases/carrito.java</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/Pie.jsp</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/IniciarSesion.jsp</file>
@@ -23,9 +24,13 @@
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/JS/ServProm.js</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/JS/user.js</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/ServletUsuarios.java</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/VerPerfil.jsp</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/ServletCargarDatos.java</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/JS/jquerysession.js</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/servProm.jsp</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/listarServProm.java</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/ServletCarrito.java</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/JS/sha1.js</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/verInfoServicio.java</file>
             <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/JS/javaScript.js</file>
         </group>

@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="webservices.DataServicio"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.io.ByteArrayOutputStream"%>
 <%@page import="java.awt.Graphics"%>
@@ -29,25 +31,10 @@
     </head>
     <body>
         <%
-            DtServicio s = (DtServicio)request.getAttribute("servicio");
+            DataServicio s = (DataServicio)request.getAttribute("servicio");
             
-            ArrayList<byte[]> listaImagenes = (ArrayList)request.getAttribute("listaImagenes");
+            List<byte[]> listaImagenes = s.getImagenes();
             
-            /*BufferedImage bi = new BufferedImage ( s.getImagenes().get(0).getImage().getWidth ( null ), s.getImagenes().get(0).getImage().getHeight ( null ), BufferedImage.TYPE_INT_ARGB );
-            Graphics bg = bi.getGraphics ();
-            bg.drawImage ( s.getImagenes().get(0).getImage(), 0, 0, null );
-            bg.dispose ();
-            */
-            /*BufferedImage bi = (BufferedImage)s.getImagenes().get(0).getImage();
-            
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            
-            
-            
-            ImageIO.write( bi, "jpg", baos );
-            //baos.flush();
-            byte[] imageInByteArray = baos.toByteArray();
-            baos.close();*/
             Iterator<byte[]> iterador = listaImagenes.iterator();
             String b64 = null;
             String b64Chica1 = null;

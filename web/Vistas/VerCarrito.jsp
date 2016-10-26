@@ -1,3 +1,5 @@
+<%@page import="webservices.DataPromocion"%>
+<%@page import="webservices.DataServicio"%>
 <%@page import="javax.imageio.ImageIO"%>
 <%@page import="java.io.ByteArrayOutputStream"%>
 <%@page import="java.awt.image.BufferedImage"%>
@@ -52,16 +54,10 @@
                     <tbody class="doce columnas">
                         <%while(it.hasNext()){
                             DtResServ rs = it.next();
-                            DtServicio s = rs.getServicio();
+                            DataServicio s = rs.getServicio();
                             
-                            String imagenServBase64=null;                            
-                            if(s.getImagenes().isEmpty()==false){
-                                BufferedImage originalImage=(BufferedImage) s.getImagenes().get(0).getImage();
-                                ByteArrayOutputStream baos=new ByteArrayOutputStream();
-                                ImageIO.write(originalImage, "jpg", baos );
-                                byte[] arrayBytes = baos.toByteArray();
-                                imagenServBase64 = javax.xml.bind.DatatypeConverter.printBase64Binary(arrayBytes);
-                            }
+                            String imagenServBase64=null;
+                            imagenServBase64 = javax.xml.bind.DatatypeConverter.printBase64Binary(s.getImagenes().get(0));
                         %>
                         <tr class="doce columnas trServ">
                             <td class="ocho columnas">
@@ -105,7 +101,7 @@
                     <tbody class="doce columnas">
                         <%    while(itP.hasNext()){
                             DtResProm rp = itP.next();
-                            DtPromocion p = rp.getPromocion();
+                            DataPromocion p = rp.getPromocion();
                     %>
                         <tr class="doce columnas trPromo">
                             <td class="siete columnas">

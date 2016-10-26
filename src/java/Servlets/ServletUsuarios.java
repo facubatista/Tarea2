@@ -5,7 +5,6 @@
  */
 package Servlets;
 
-import Clases.carrito;
 import Logica.DtCliente;
 import Logica.DtReserva;
 import Logica.Factory;
@@ -18,6 +17,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,8 +29,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.ImageIcon;
 import sun.misc.BASE64Decoder;
+import webservices.DataCliente;
+import webservices.DataReserva;
+import webservices.DataReservas;
+import webservices.ParseException_Exception;
+import webservices.WSClientes;
+import webservices.WSClientesService;
 
 /**
  *
@@ -50,24 +55,25 @@ public class ServletUsuarios extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             
-            throws ServletException, IOException, SQLException, ParseException, InterruptedException {
+            throws ServletException, IOException, SQLException, ParseException, InterruptedException, ParseException_Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
+        WSClientesService wscs = new WSClientesService();
+        WSClientes wsc = wscs.getWSClientesPort();
         
-        IcontClientes cont = Factory.getInstance().crearContCliente();
+        //IcontClientes cont = Factory.getInstance().crearContCliente();
         HttpSession sesion = request.getSession();
        
         
         //Iniciar Sesión
         String nomUsuario = request.getParameter("nomUsuario");//el nomUsuario que viene en el param puede ser el nickname o el email del cliente
         if (sesion.getAttribute("nickUsuario") == null && nomUsuario != null) {
-            nomUsuario = cont.verificarUsuario(nomUsuario);//Retorna el nickname
+            nomUsuario = wsc.verificarUsuario(nomUsuario);//Retorna el nickname
             sesion.setAttribute("nickUsuario", nomUsuario);
-            sesion.setAttribute("DtCliente", cont.seleccionarClienteAListar(nomUsuario));//DtCliente para Ver Perfil
-            sesion.setAttribute("imagenUsuario", cont.getImagenUsuarioEnArrayBytes(nomUsuario));
+            sesion.setAttribute("DataCliente", wsc.getDataCliente(nomUsuario));//DtCliente para Ver Perfil
 
-            DtCliente cliente = cont.seleccionarClienteAListar(nomUsuario);
+            DataCliente cliente = wsc.getDataCliente(nomUsuario);
 
             //Se toman el nombre y el apellido del usuario para mostrarlo en la cabecera
             nomUsuario = cliente.getNombre() + " " + cliente.getApellido();
@@ -83,7 +89,7 @@ public class ServletUsuarios extends HttpServlet {
             //especifica que el tipo de respuesta va a ser texto
             response.setContentType("text/plain");
             String claveUsuario = request.getParameter("verificarUsuario");
-            if (cont.verificarUsuario(claveUsuario).equals("false")) {
+            if (wsc.verificarUsuario(claveUsuario).equals("false")) {
                 response.getWriter().write("false");
                 /*response.getWriter().write("{\"verificacion\" : [" +
                         "{ \"respuesta\":\"false\"}]}");*/
@@ -98,9 +104,9 @@ public class ServletUsuarios extends HttpServlet {
         if (request.getParameter("verificarPassword") != null && request.getParameter("passUser") != null) {
            response.setContentType("text/plain");
            String nickname = (String)request.getParameter("passUser");
-           nickname = cont.verificarUsuario(nickname);//Retorna el nickname, esto es por si el usuario ingresa su email para logearse
+           nickname = wsc.verificarUsuario(nickname);//Retorna el nickname, esto es por si el usuario ingresa su email para logearse
            String claveUsuario = (String)request.getParameter("verificarPassword");
-            if (cont.userPassValido(nickname, claveUsuario)==true){
+            if (wsc.userPassValido(nickname, claveUsuario)==true){
                 response.getWriter().write("passOK");
             } else {
                 response.getWriter().write("passMAL");
@@ -157,8 +163,8 @@ public class ServletUsuarios extends HttpServlet {
             }
             DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
             String day = dia + "/" + String.valueOf(numMes) + "/" + anio;
-            Date fecha = format.parse(day);
-            if (cont.crearUserWeb(nick, pass, nombre, apellido, email, fecha, null)) {
+            //Date fecha = format.parse(day);
+            if (wsc.crearUserWeb(nick, pass, nombre, apellido, email, day, null)) {
                 response.getWriter().write("true");
             } else {
                 response.getWriter().write("false");
@@ -166,29 +172,29 @@ public class ServletUsuarios extends HttpServlet {
 
         }
 
-        if (request.getParameter("RImagen") != null) {
-            response.setContentType("text/plain");
-                String base64 = (String) request.getParameter("archivo");
-                base64=base64.substring(base64.indexOf(",")+1);
-                BufferedImage image = null;
-                String nickname = (String) request.getParameter("nickname");
-                byte[] imageByte;
-                try {
-                    BASE64Decoder decoder = new BASE64Decoder();
-                    imageByte = decoder.decodeBuffer(base64);
-                    ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
-                    image = ImageIO.read(bis);
-                    bis.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                if (cont.agregarImagen(nickname, image)) {
-                    response.getWriter().write(base64);
-                } else {
-                   
-                    response.getWriter().write("false");
-                }
-            }
+//        if (request.getParameter("RImagen") != null) {
+//            response.setContentType("text/plain");
+//                String base64 = (String) request.getParameter("archivo");
+//                base64=base64.substring(base64.indexOf(",")+1);
+//                BufferedImage image = null;
+//                String nickname = (String) request.getParameter("nickname");
+//                byte[] imageByte;
+//                try {
+//                    BASE64Decoder decoder = new BASE64Decoder();
+//                    imageByte = decoder.decodeBuffer(base64);
+//                    ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+//                    image = ImageIO.read(bis);
+//                    bis.close();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//                if (cont.agregarImagen(nickname, image)) {
+//                    response.getWriter().write(base64);
+//                } else {
+//                   
+//                    response.getWriter().write("false");
+//                }
+//            }
         
         
     }
@@ -206,54 +212,43 @@ public class ServletUsuarios extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        try {
-            IcontClientes cont = Factory.getInstance().crearContCliente();
-            HttpSession sesion = request.getSession();
-
-            //Cerrar Sesión
-            if (request.getParameter("Sesion") != null) {
-                sesion.setAttribute("nomUsuario", "Anonimo");
-                sesion.removeAttribute("nickUsuario");
-                sesion.removeAttribute("imagenUsuario");
-                sesion.removeAttribute("carrito");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-                dispatcher.forward(request, response); 
-                
-            }
-
-            //Ver Perfil
-            if (request.getParameter("VerPerfil") != null) {
-
-                String nickUsuario = (String) sesion.getAttribute("nickUsuario");
-                DtCliente cliente = cont.seleccionarClienteAListar(nickUsuario);
-                request.setAttribute("ReservasCli", cont.listarResDeCli(nickUsuario));
-
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/VerPerfil.jsp");
-                dispatcher.forward(request, response);
-            }
+        HttpSession sesion = request.getSession();
+        WSClientesService wscs = new WSClientesService();
+        WSClientes wsc = wscs.getWSClientesPort();
+        
+        if (request.getParameter("Sesion") != null) {
+            sesion.setAttribute("nomUsuario", "Anonimo");
+            sesion.removeAttribute("nickUsuario");
+            sesion.removeAttribute("DataCliente");
+            //sesion.removeAttribute("imagenUsuario");
+            sesion.removeAttribute("carrito");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            dispatcher.forward(request, response);
             
-            //Cambair Estado de reserva
-            if (request.getParameter("cambiarEstadoRes") != null) {
-                String nickUsuario = (String) sesion.getAttribute("nickUsuario");
-                int numRes = Integer.valueOf(request.getParameter("cambiarEstadoRes"));
-                cont.seleccionarReserva(numRes, nickUsuario);//Se selecciona la reserva a cambiar, esto ya estaba implementado de la tarea 1
-                cont.cambiarEstado("Cancelada");//Siempre se cambia a este estado porque solo se puede cambiar a cancelada
-            }
+        }
+        
+        if (request.getParameter("VerPerfil") != null) {
             
-            //Ver Reserva
-            if (request.getParameter("VerReserva") != null) {
-                String nickUsuario = (String) sesion.getAttribute("nickUsuario");
-                int num = Integer.valueOf((String) request.getParameter("numero"));
-                DtReserva res = cont.mostrarReserva(num, nickUsuario);
-                request.setAttribute("Reserva", res);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("./Vistas/VerReserva.jsp");
-                dispatcher.forward(request, response);
-            }
+            String nickUsuario = (String) sesion.getAttribute("nickUsuario");
+            //DataCliente cliente = wsc.getDataCliente(nickUsuario);
+            request.setAttribute("ReservasCli", wsc.listarResDeCli(nickUsuario));
             
-            
-
-        } catch (SQLException ex) {
-            Logger.getLogger(ServletUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/VerPerfil.jsp");
+            dispatcher.forward(request, response);
+        }
+        if (request.getParameter("cambiarEstadoRes") != null) {
+            String nickUsuario = (String) sesion.getAttribute("nickUsuario");
+            int numRes = Integer.valueOf(request.getParameter("cambiarEstadoRes"));
+            wsc.seleccionarReserva(numRes, nickUsuario);//Se selecciona la reserva a cambiar, esto ya estaba implementado de la tarea 1
+            wsc.cambiarEstado("Cancelada");//Siempre se cambia a este estado porque solo se puede cambiar a cancelada
+        }
+        if (request.getParameter("VerReserva") != null) {
+            String nickUsuario = (String) sesion.getAttribute("nickUsuario");
+            int num = Integer.valueOf((String) request.getParameter("numero"));
+            DataReserva res = wsc.mostrarReserva(num, nickUsuario);
+            request.setAttribute("Reserva", res);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("./Vistas/VerReserva.jsp");
+            dispatcher.forward(request, response);
         }
     }
 
@@ -269,11 +264,10 @@ public class ServletUsuarios extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            IcontClientes cont = Factory.getInstance().crearContCliente();
-            HttpSession sesion = request.getSession();
-                  
             processRequest(request, response);
         } catch (SQLException | ParseException | InterruptedException ex) {
+            Logger.getLogger(ServletUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException_Exception ex) {
             Logger.getLogger(ServletUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -16,6 +16,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import webservices.DataPromocion;
+import webservices.DataServicio;
+import webservices.WSProveedores;
+import webservices.WSProveedoresService;
 
 @WebServlet(name = "verInfoPromocion", urlPatterns = {"/InfoPromocion"})
 public class verInfoPromocion extends HttpServlet {
@@ -23,20 +27,21 @@ public class verInfoPromocion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         
-        IcontProveedores cont = Factory.getInstance().crearContProveedores();
+        WSProveedoresService wsps = new WSProveedoresService();
+        WSProveedores wsp = wsps.getWSProveedoresPort();
         
         String nombre = request.getParameter("nombrePromocion");
         String proveedor = request.getParameter("nombreProveedor");
         
         String nomProm = nombre.replace("+", " ");
         
-        DtPromocion p = cont.seleccionarPromocionAListar(proveedor, nomProm);
+        DataPromocion p = wsp.seleccionarPromocionAListar(proveedor, nomProm);
         
         Iterator<String> it = p.getServicios().iterator();
         
-        ArrayList<DtServicio> listaServ = new ArrayList<>();
+        ArrayList<DataServicio> listaServ = new ArrayList<>();
         while(it.hasNext()){
-            listaServ.add(cont.seleccionarServicioAListar(proveedor, it.next()));
+            listaServ.add(wsp.seleccionarServicioAListar(proveedor, it.next()));
         }
         
         if(!listaServ.isEmpty())

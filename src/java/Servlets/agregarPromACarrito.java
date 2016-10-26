@@ -17,6 +17,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import webservices.DataPromocion;
+import webservices.WSProveedores;
+import webservices.WSProveedoresService;
 
 public class agregarPromACarrito extends HttpServlet {
 
@@ -25,7 +28,6 @@ public class agregarPromACarrito extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ParseException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
             
             String nombre = request.getParameter("nombrePromocion");
             String proveedor = request.getParameter("nombreProveedor");
@@ -41,7 +43,8 @@ public class agregarPromACarrito extends HttpServlet {
             Integer anioFin = Integer.parseInt(request.getParameter("anioFin"));
             String fechaFin = diaFin.toString() + "/" + mesFin.toString() + "/" + anioFin.toString();
             
-            IcontProveedores cont = Factory.getInstance().crearContProveedores();
+            WSProveedoresService wsps = new WSProveedoresService();
+            WSProveedores wsp = wsps.getWSProveedoresPort();
             
             HttpSession sesion = request.getSession();
             
@@ -53,7 +56,7 @@ public class agregarPromACarrito extends HttpServlet {
             }else
                 car = (carrito) sesion.getAttribute("carrito");
             
-            DtPromocion p = cont.seleccionarPromocionAListar(proveedor, nombre);
+            DataPromocion p = wsp.seleccionarPromocionAListar(proveedor, nombre);
             DtResProm dt = new DtResProm(p, cantidad, dateformat.parse(fechaIni), dateformat.parse(fechaFin));
             
             float total = p.getTotal() * cantidad;
@@ -61,8 +64,8 @@ public class agregarPromACarrito extends HttpServlet {
             car.setTotal(total);
             
             sesion.setAttribute("carrito", car);
-            response.getWriter().println("{respuesta:'ok', facu:'hola'}");
-        }
+            response.getWriter().println("{respuesta:'ok'}");
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
