@@ -39,8 +39,10 @@ and open the template in the editor.
     border: 1px solid #56CAAD;
 }
 
-#IniciarC input[type="submit"],#botonReg{
+#IniciarC input[type="submit"],#botonReg,#botonIngresarDis{
+    width: 100%;
     margin-bottom: 0px;
+    margin-top:0px;
     background: #56CAAD;
     color: white;
     border: none;
@@ -61,6 +63,8 @@ and open the template in the editor.
     
 #botonIngresarDis{
     background: #739F94;
+    margin-bottom: 0px;
+    border: none;
 }
 #botonIngresarDis:hover{
     background: #739F94;

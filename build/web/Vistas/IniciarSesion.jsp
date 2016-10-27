@@ -21,7 +21,7 @@
             <label id="passwordIncorrecta" hidden="">Contraseña incorrecta</label>
             <input onfocus="return ocultarMsjPassInc(this.parentElement,this)" id="contra" name="contra" placeholder="Escriba su contraseña" required="" type="password">
             <input id="botonIngresar" class="botones" hidden="" value="Ingresar" type="submit" onclick="return iniciarSesion(this.parentElement);">
-            <input id="botonIngresarDis" class="botones"  disabled="" value="Ingresar" type="submit">
+            <button id="botonIngresarDis" class="botones"  disabled="true" value="Ingresar" type="submit">Ingresar</button>
         </div>
         <form id="RegistrarC" name="Registrarse" action="/Tarea2/Vistas/AltaUsuario.jsp" method="get">
             <label for="botonReg" >¿No tienes cuenta?</label> 
