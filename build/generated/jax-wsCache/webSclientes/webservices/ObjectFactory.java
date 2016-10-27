@@ -26,6 +26,7 @@ public class ObjectFactory {
 
     private final static QName _GetDataCliente_QNAME = new QName("http://WebServices/", "getDataCliente");
     private final static QName _CrearReserva_QNAME = new QName("http://WebServices/", "crearReserva");
+    private final static QName _TraerRsRpResponse_QNAME = new QName("http://WebServices/", "traerRsRpResponse");
     private final static QName _ListarResDeCli_QNAME = new QName("http://WebServices/", "listarResDeCli");
     private final static QName _CambiarEstado_QNAME = new QName("http://WebServices/", "cambiarEstado");
     private final static QName _MostrarReservaResponse_QNAME = new QName("http://WebServices/", "mostrarReservaResponse");
@@ -44,6 +45,7 @@ public class ObjectFactory {
     private final static QName _AgregarServicioAreservaResponse_QNAME = new QName("http://WebServices/", "agregarServicioAreservaResponse");
     private final static QName _SeleccionarProveedorResponse_QNAME = new QName("http://WebServices/", "seleccionarProveedorResponse");
     private final static QName _SeleccionarReservaResponse_QNAME = new QName("http://WebServices/", "seleccionarReservaResponse");
+    private final static QName _TraerRsRp_QNAME = new QName("http://WebServices/", "traerRsRp");
     private final static QName _VerificarUsuarioResponse_QNAME = new QName("http://WebServices/", "verificarUsuarioResponse");
     private final static QName _CrearReservaResponse_QNAME = new QName("http://WebServices/", "crearReservaResponse");
     private final static QName _CambiarEstadoResponse_QNAME = new QName("http://WebServices/", "cambiarEstadoResponse");
@@ -58,6 +60,14 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link TraerRsRp }
+     * 
+     */
+    public TraerRsRp createTraerRsRp() {
+        return new TraerRsRp();
     }
 
     /**
@@ -138,6 +148,14 @@ public class ObjectFactory {
      */
     public CrearReserva createCrearReserva() {
         return new CrearReserva();
+    }
+
+    /**
+     * Create an instance of {@link TraerRsRpResponse }
+     * 
+     */
+    public TraerRsRpResponse createTraerRsRpResponse() {
+        return new TraerRsRpResponse();
     }
 
     /**
@@ -277,19 +295,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataRP }
+     * Create an instance of {@link DataRsRp }
      * 
      */
-    public DataRP createDataRP() {
-        return new DataRP();
+    public DataRsRp createDataRsRp() {
+        return new DataRsRp();
     }
 
     /**
-     * Create an instance of {@link DataRS }
+     * Create an instance of {@link DtRP }
      * 
      */
-    public DataRS createDataRS() {
-        return new DataRS();
+    public DtRP createDtRP() {
+        return new DtRP();
     }
 
     /**
@@ -317,6 +335,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DtRS }
+     * 
+     */
+    public DtRS createDtRS() {
+        return new DtRS();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetDataCliente }{@code >}}
      * 
      */
@@ -332,6 +358,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://WebServices/", name = "crearReserva")
     public JAXBElement<CrearReserva> createCrearReserva(CrearReserva value) {
         return new JAXBElement<CrearReserva>(_CrearReserva_QNAME, CrearReserva.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TraerRsRpResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://WebServices/", name = "traerRsRpResponse")
+    public JAXBElement<TraerRsRpResponse> createTraerRsRpResponse(TraerRsRpResponse value) {
+        return new JAXBElement<TraerRsRpResponse>(_TraerRsRpResponse_QNAME, TraerRsRpResponse.class, null, value);
     }
 
     /**
@@ -494,6 +529,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://WebServices/", name = "seleccionarReservaResponse")
     public JAXBElement<SeleccionarReservaResponse> createSeleccionarReservaResponse(SeleccionarReservaResponse value) {
         return new JAXBElement<SeleccionarReservaResponse>(_SeleccionarReservaResponse_QNAME, SeleccionarReservaResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link TraerRsRp }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://WebServices/", name = "traerRsRp")
+    public JAXBElement<TraerRsRp> createTraerRsRp(TraerRsRp value) {
+        return new JAXBElement<TraerRsRp>(_TraerRsRp_QNAME, TraerRsRp.class, null, value);
     }
 
     /**

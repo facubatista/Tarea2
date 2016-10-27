@@ -1,7 +1,4 @@
-<%@page import="Logica.DtCategoria"%>
 <%@page import="java.util.List"%>
-<%@page import="Logica.Factory"%>
-<%@page import="Logica.IcontCatCiudad"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,10 +11,6 @@
     </head>
     <body>
         <jsp:include page="Vistas/Cabecera.jsp" />
-        <%
-            IcontCatCiudad contCat = Factory.getInstance().crearContCatCiudad();
-            List<DtCategoria> listaCat = contCat.listarCategorias();
-        %>
         <jsp:include page="Vistas/Pie.jsp" />
     </body>
 </html>

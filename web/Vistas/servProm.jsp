@@ -1,19 +1,17 @@
+<%@page import="webservices.DtCategoria"%>
+<%@page import="webservices.DataCategorias"%>
 <%@page import="webservices.DataPromocion"%>
 <%@page import="webservices.DataPromociones"%>
 <%@page import="webservices.DataServicio"%>
 <%@page import="webservices.DataServicios"%>
 <%@page import="java.util.Collections"%>
 <%@page import="java.util.List"%>
-<%@page import="Logica.DtCategoria"%>
-<%@page import="Logica.Factory"%>
 <%@page import="javax.imageio.ImageIO"%>
 <%@page import="java.io.ByteArrayOutputStream"%>
 <%@page import="java.awt.image.DataBufferByte"%>
 <%@page import="java.awt.image.WritableRaster"%>
 <%@page import="java.awt.image.BufferedImage"%>
-<%@page import="Logica.DtPromocion"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Logica.DtServicio"%>
 <%@page import="java.util.Iterator"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -42,8 +40,9 @@
             <div class="fila">
                 <div class="tres columnas" id="colUno">
                     <%
-                        List<DtCategoria> listaCategorias = Factory.getInstance().crearContCatCiudad().listarCategorias();
-                        Iterator itCat = listaCategorias.iterator();
+                        //List<DtCategoria> listaCategorias = Factory.getInstance().crearContCatCiudad().listarCategorias();
+                        DataCategorias listaCategorias = (DataCategorias)request.getAttribute("listaCategorias");
+                        Iterator itCat = listaCategorias.getCategorias().iterator();
                         ArrayList<String> list = new ArrayList<>();
                         while(itCat.hasNext()){ 
                             DtCategoria aux = (DtCategoria)itCat.next();

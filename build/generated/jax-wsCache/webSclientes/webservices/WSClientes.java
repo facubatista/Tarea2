@@ -48,7 +48,7 @@ public interface WSClientes {
 
     /**
      * 
-     * @param arg0
+     * @param a
      * @return
      *     returns webservices.DataReservas
      */
@@ -58,8 +58,8 @@ public interface WSClientes {
     @ResponseWrapper(localName = "listarResDeCliResponse", targetNamespace = "http://WebServices/", className = "webservices.ListarResDeCliResponse")
     @Action(input = "http://WebServices/WSClientes/listarResDeCliRequest", output = "http://WebServices/WSClientes/listarResDeCliResponse")
     public DataReservas listarResDeCli(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
+        @WebParam(name = "a", targetNamespace = "")
+        String a);
 
     /**
      * 
@@ -75,18 +75,6 @@ public interface WSClientes {
         int arg0,
         @WebParam(name = "arg1", targetNamespace = "")
         String arg1);
-
-    /**
-     * 
-     * @param a
-     */
-    @WebMethod
-    @RequestWrapper(localName = "seleccionarProveedor", targetNamespace = "http://WebServices/", className = "webservices.SeleccionarProveedor")
-    @ResponseWrapper(localName = "seleccionarProveedorResponse", targetNamespace = "http://WebServices/", className = "webservices.SeleccionarProveedorResponse")
-    @Action(input = "http://WebServices/WSClientes/seleccionarProveedorRequest", output = "http://WebServices/WSClientes/seleccionarProveedorResponse")
-    public void seleccionarProveedor(
-        @WebParam(name = "a", targetNamespace = "")
-        String a);
 
     /**
      * 
@@ -142,21 +130,30 @@ public interface WSClientes {
 
     /**
      * 
-     * @param arg1
+     * @param a
+     */
+    @WebMethod
+    @RequestWrapper(localName = "seleccionarProveedor", targetNamespace = "http://WebServices/", className = "webservices.SeleccionarProveedor")
+    @ResponseWrapper(localName = "seleccionarProveedorResponse", targetNamespace = "http://WebServices/", className = "webservices.SeleccionarProveedorResponse")
+    @Action(input = "http://WebServices/WSClientes/seleccionarProveedorRequest", output = "http://WebServices/WSClientes/seleccionarProveedorResponse")
+    public void seleccionarProveedor(
+        @WebParam(name = "a", targetNamespace = "")
+        String a);
+
+    /**
+     * 
      * @param arg0
      * @return
-     *     returns boolean
+     *     returns java.lang.String
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "userPassValido", targetNamespace = "http://WebServices/", className = "webservices.UserPassValido")
-    @ResponseWrapper(localName = "userPassValidoResponse", targetNamespace = "http://WebServices/", className = "webservices.UserPassValidoResponse")
-    @Action(input = "http://WebServices/WSClientes/userPassValidoRequest", output = "http://WebServices/WSClientes/userPassValidoResponse")
-    public boolean userPassValido(
+    @RequestWrapper(localName = "verificarUsuario", targetNamespace = "http://WebServices/", className = "webservices.VerificarUsuario")
+    @ResponseWrapper(localName = "verificarUsuarioResponse", targetNamespace = "http://WebServices/", className = "webservices.VerificarUsuarioResponse")
+    @Action(input = "http://WebServices/WSClientes/verificarUsuarioRequest", output = "http://WebServices/WSClientes/verificarUsuarioResponse")
+    public String verificarUsuario(
         @WebParam(name = "arg0", targetNamespace = "")
-        String arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        String arg1);
+        String arg0);
 
     /**
      * 
@@ -175,33 +172,21 @@ public interface WSClientes {
 
     /**
      * 
+     * @param arg1
      * @param arg0
      * @return
-     *     returns webservices.DataCliente
+     *     returns webservices.DataReserva
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getDataCliente", targetNamespace = "http://WebServices/", className = "webservices.GetDataCliente")
-    @ResponseWrapper(localName = "getDataClienteResponse", targetNamespace = "http://WebServices/", className = "webservices.GetDataClienteResponse")
-    @Action(input = "http://WebServices/WSClientes/getDataClienteRequest", output = "http://WebServices/WSClientes/getDataClienteResponse")
-    public DataCliente getDataCliente(
+    @RequestWrapper(localName = "mostrarReserva", targetNamespace = "http://WebServices/", className = "webservices.MostrarReserva")
+    @ResponseWrapper(localName = "mostrarReservaResponse", targetNamespace = "http://WebServices/", className = "webservices.MostrarReservaResponse")
+    @Action(input = "http://WebServices/WSClientes/mostrarReservaRequest", output = "http://WebServices/WSClientes/mostrarReservaResponse")
+    public DataReserva mostrarReserva(
         @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "verificarUsuario", targetNamespace = "http://WebServices/", className = "webservices.VerificarUsuario")
-    @ResponseWrapper(localName = "verificarUsuarioResponse", targetNamespace = "http://WebServices/", className = "webservices.VerificarUsuarioResponse")
-    @Action(input = "http://WebServices/WSClientes/verificarUsuarioRequest", output = "http://WebServices/WSClientes/verificarUsuarioResponse")
-    public String verificarUsuario(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
+        int arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1);
 
     /**
      * 
@@ -243,19 +228,52 @@ public interface WSClientes {
 
     /**
      * 
-     * @param arg1
      * @param arg0
      * @return
-     *     returns webservices.DataReserva
+     *     returns webservices.DataCliente
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "mostrarReserva", targetNamespace = "http://WebServices/", className = "webservices.MostrarReserva")
-    @ResponseWrapper(localName = "mostrarReservaResponse", targetNamespace = "http://WebServices/", className = "webservices.MostrarReservaResponse")
-    @Action(input = "http://WebServices/WSClientes/mostrarReservaRequest", output = "http://WebServices/WSClientes/mostrarReservaResponse")
-    public DataReserva mostrarReserva(
+    @RequestWrapper(localName = "getDataCliente", targetNamespace = "http://WebServices/", className = "webservices.GetDataCliente")
+    @ResponseWrapper(localName = "getDataClienteResponse", targetNamespace = "http://WebServices/", className = "webservices.GetDataClienteResponse")
+    @Action(input = "http://WebServices/WSClientes/getDataClienteRequest", output = "http://WebServices/WSClientes/getDataClienteResponse")
+    public DataCliente getDataCliente(
         @WebParam(name = "arg0", targetNamespace = "")
-        int arg0,
+        String arg0);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "userPassValido", targetNamespace = "http://WebServices/", className = "webservices.UserPassValido")
+    @ResponseWrapper(localName = "userPassValidoResponse", targetNamespace = "http://WebServices/", className = "webservices.UserPassValidoResponse")
+    @Action(input = "http://WebServices/WSClientes/userPassValidoRequest", output = "http://WebServices/WSClientes/userPassValidoResponse")
+    public boolean userPassValido(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns webservices.DataRsRp
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "traerRsRp", targetNamespace = "http://WebServices/", className = "webservices.TraerRsRp")
+    @ResponseWrapper(localName = "traerRsRpResponse", targetNamespace = "http://WebServices/", className = "webservices.TraerRsRpResponse")
+    @Action(input = "http://WebServices/WSClientes/traerRsRpRequest", output = "http://WebServices/WSClientes/traerRsRpResponse")
+    public DataRsRp traerRsRp(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Integer arg0,
         @WebParam(name = "arg1", targetNamespace = "")
         String arg1);
 

@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Servlets;
 
-import Logica.Factory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
@@ -41,8 +36,8 @@ public class ServletCargarDatos extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            Factory.getInstance().cargarDatosDePruebaWeb();
-            response.getWriter().println("{respuesta:'ok'}");
+            /*Factory.getInstance().cargarDatosDePruebaWeb();
+            response.getWriter().println("{respuesta:'ok'}");*/
         }
     }
 

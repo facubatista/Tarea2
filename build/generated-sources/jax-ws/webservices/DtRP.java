@@ -9,19 +9,19 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Clase Java para dataRS complex type.
+ * <p>Clase Java para dtRP complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="dataRS">
+ * &lt;complexType name="dtRP">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="fechaIni" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="fechaFin" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="cantidad" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="servicio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="promocion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="proveedor" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -32,21 +32,21 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "dataRS", propOrder = {
+@XmlType(name = "dtRP", propOrder = {
     "fechaIni",
     "fechaFin",
     "cantidad",
-    "servicio",
+    "promocion",
     "proveedor"
 })
-public class DataRS {
+public class DtRP {
 
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar fechaIni;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar fechaFin;
     protected int cantidad;
-    protected String servicio;
+    protected String promocion;
     protected String proveedor;
 
     /**
@@ -114,27 +114,27 @@ public class DataRS {
     }
 
     /**
-     * Obtiene el valor de la propiedad servicio.
+     * Obtiene el valor de la propiedad promocion.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getServicio() {
-        return servicio;
+    public String getPromocion() {
+        return promocion;
     }
 
     /**
-     * Define el valor de la propiedad servicio.
+     * Define el valor de la propiedad promocion.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setServicio(String value) {
-        this.servicio = value;
+    public void setPromocion(String value) {
+        this.promocion = value;
     }
 
     /**

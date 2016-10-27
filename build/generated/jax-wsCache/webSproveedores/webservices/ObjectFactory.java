@@ -24,12 +24,18 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _ListarPromocionesBuscadasResponse_QNAME = new QName("http://WebServices/", "listarPromocionesBuscadasResponse");
+    private final static QName _ValidarPasswordProvResponse_QNAME = new QName("http://WebServices/", "validarPasswordProvResponse");
     private final static QName _ListarServiciosBuscados_QNAME = new QName("http://WebServices/", "listarServiciosBuscados");
+    private final static QName _VerificarProveedor_QNAME = new QName("http://WebServices/", "verificarProveedor");
+    private final static QName _ValidarPasswordProv_QNAME = new QName("http://WebServices/", "validarPasswordProv");
+    private final static QName _SeleccionarServicioAListarResponse_QNAME = new QName("http://WebServices/", "seleccionarServicioAListarResponse");
+    private final static QName _ListarPromocionesBuscadasResponse_QNAME = new QName("http://WebServices/", "listarPromocionesBuscadasResponse");
+    private final static QName _GetNombreProveedorResponse_QNAME = new QName("http://WebServices/", "getNombreProveedorResponse");
     private final static QName _SeleccionarPromocionAListar_QNAME = new QName("http://WebServices/", "seleccionarPromocionAListar");
+    private final static QName _VerificarProveedorResponse_QNAME = new QName("http://WebServices/", "verificarProveedorResponse");
+    private final static QName _GetNombreProveedor_QNAME = new QName("http://WebServices/", "getNombreProveedor");
     private final static QName _ListarPromocionesBuscadas_QNAME = new QName("http://WebServices/", "listarPromocionesBuscadas");
     private final static QName _ListarServiciosBuscadosResponse_QNAME = new QName("http://WebServices/", "listarServiciosBuscadosResponse");
-    private final static QName _SeleccionarServicioAListarResponse_QNAME = new QName("http://WebServices/", "seleccionarServicioAListarResponse");
     private final static QName _SeleccionarPromocionAListarResponse_QNAME = new QName("http://WebServices/", "seleccionarPromocionAListarResponse");
     private final static QName _SeleccionarServicioAListar_QNAME = new QName("http://WebServices/", "seleccionarServicioAListar");
 
@@ -38,6 +44,46 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link ValidarPasswordProvResponse }
+     * 
+     */
+    public ValidarPasswordProvResponse createValidarPasswordProvResponse() {
+        return new ValidarPasswordProvResponse();
+    }
+
+    /**
+     * Create an instance of {@link ListarServiciosBuscados }
+     * 
+     */
+    public ListarServiciosBuscados createListarServiciosBuscados() {
+        return new ListarServiciosBuscados();
+    }
+
+    /**
+     * Create an instance of {@link ValidarPasswordProv }
+     * 
+     */
+    public ValidarPasswordProv createValidarPasswordProv() {
+        return new ValidarPasswordProv();
+    }
+
+    /**
+     * Create an instance of {@link VerificarProveedor }
+     * 
+     */
+    public VerificarProveedor createVerificarProveedor() {
+        return new VerificarProveedor();
+    }
+
+    /**
+     * Create an instance of {@link SeleccionarServicioAListarResponse }
+     * 
+     */
+    public SeleccionarServicioAListarResponse createSeleccionarServicioAListarResponse() {
+        return new SeleccionarServicioAListarResponse();
     }
 
     /**
@@ -57,11 +103,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ListarServiciosBuscados }
+     * Create an instance of {@link GetNombreProveedorResponse }
      * 
      */
-    public ListarServiciosBuscados createListarServiciosBuscados() {
-        return new ListarServiciosBuscados();
+    public GetNombreProveedorResponse createGetNombreProveedorResponse() {
+        return new GetNombreProveedorResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetNombreProveedor }
+     * 
+     */
+    public GetNombreProveedor createGetNombreProveedor() {
+        return new GetNombreProveedor();
+    }
+
+    /**
+     * Create an instance of {@link VerificarProveedorResponse }
+     * 
+     */
+    public VerificarProveedorResponse createVerificarProveedorResponse() {
+        return new VerificarProveedorResponse();
     }
 
     /**
@@ -89,19 +151,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SeleccionarServicioAListarResponse }
-     * 
-     */
-    public SeleccionarServicioAListarResponse createSeleccionarServicioAListarResponse() {
-        return new SeleccionarServicioAListarResponse();
-    }
-
-    /**
      * Create an instance of {@link SeleccionarServicioAListar }
      * 
      */
     public SeleccionarServicioAListar createSeleccionarServicioAListar() {
         return new SeleccionarServicioAListar();
+    }
+
+    /**
+     * Create an instance of {@link DataServicios }
+     * 
+     */
+    public DataServicios createDataServicios() {
+        return new DataServicios();
     }
 
     /**
@@ -121,14 +183,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataServicios }
-     * 
-     */
-    public DataServicios createDataServicios() {
-        return new DataServicios();
-    }
-
-    /**
      * Create an instance of {@link DataPromociones }
      * 
      */
@@ -137,12 +191,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ListarPromocionesBuscadasResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ValidarPasswordProvResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://WebServices/", name = "listarPromocionesBuscadasResponse")
-    public JAXBElement<ListarPromocionesBuscadasResponse> createListarPromocionesBuscadasResponse(ListarPromocionesBuscadasResponse value) {
-        return new JAXBElement<ListarPromocionesBuscadasResponse>(_ListarPromocionesBuscadasResponse_QNAME, ListarPromocionesBuscadasResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://WebServices/", name = "validarPasswordProvResponse")
+    public JAXBElement<ValidarPasswordProvResponse> createValidarPasswordProvResponse(ValidarPasswordProvResponse value) {
+        return new JAXBElement<ValidarPasswordProvResponse>(_ValidarPasswordProvResponse_QNAME, ValidarPasswordProvResponse.class, null, value);
     }
 
     /**
@@ -155,12 +209,75 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link VerificarProveedor }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://WebServices/", name = "verificarProveedor")
+    public JAXBElement<VerificarProveedor> createVerificarProveedor(VerificarProveedor value) {
+        return new JAXBElement<VerificarProveedor>(_VerificarProveedor_QNAME, VerificarProveedor.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ValidarPasswordProv }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://WebServices/", name = "validarPasswordProv")
+    public JAXBElement<ValidarPasswordProv> createValidarPasswordProv(ValidarPasswordProv value) {
+        return new JAXBElement<ValidarPasswordProv>(_ValidarPasswordProv_QNAME, ValidarPasswordProv.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SeleccionarServicioAListarResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://WebServices/", name = "seleccionarServicioAListarResponse")
+    public JAXBElement<SeleccionarServicioAListarResponse> createSeleccionarServicioAListarResponse(SeleccionarServicioAListarResponse value) {
+        return new JAXBElement<SeleccionarServicioAListarResponse>(_SeleccionarServicioAListarResponse_QNAME, SeleccionarServicioAListarResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ListarPromocionesBuscadasResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://WebServices/", name = "listarPromocionesBuscadasResponse")
+    public JAXBElement<ListarPromocionesBuscadasResponse> createListarPromocionesBuscadasResponse(ListarPromocionesBuscadasResponse value) {
+        return new JAXBElement<ListarPromocionesBuscadasResponse>(_ListarPromocionesBuscadasResponse_QNAME, ListarPromocionesBuscadasResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetNombreProveedorResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://WebServices/", name = "getNombreProveedorResponse")
+    public JAXBElement<GetNombreProveedorResponse> createGetNombreProveedorResponse(GetNombreProveedorResponse value) {
+        return new JAXBElement<GetNombreProveedorResponse>(_GetNombreProveedorResponse_QNAME, GetNombreProveedorResponse.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SeleccionarPromocionAListar }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://WebServices/", name = "seleccionarPromocionAListar")
     public JAXBElement<SeleccionarPromocionAListar> createSeleccionarPromocionAListar(SeleccionarPromocionAListar value) {
         return new JAXBElement<SeleccionarPromocionAListar>(_SeleccionarPromocionAListar_QNAME, SeleccionarPromocionAListar.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link VerificarProveedorResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://WebServices/", name = "verificarProveedorResponse")
+    public JAXBElement<VerificarProveedorResponse> createVerificarProveedorResponse(VerificarProveedorResponse value) {
+        return new JAXBElement<VerificarProveedorResponse>(_VerificarProveedorResponse_QNAME, VerificarProveedorResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetNombreProveedor }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://WebServices/", name = "getNombreProveedor")
+    public JAXBElement<GetNombreProveedor> createGetNombreProveedor(GetNombreProveedor value) {
+        return new JAXBElement<GetNombreProveedor>(_GetNombreProveedor_QNAME, GetNombreProveedor.class, null, value);
     }
 
     /**
@@ -179,15 +296,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://WebServices/", name = "listarServiciosBuscadosResponse")
     public JAXBElement<ListarServiciosBuscadosResponse> createListarServiciosBuscadosResponse(ListarServiciosBuscadosResponse value) {
         return new JAXBElement<ListarServiciosBuscadosResponse>(_ListarServiciosBuscadosResponse_QNAME, ListarServiciosBuscadosResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SeleccionarServicioAListarResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://WebServices/", name = "seleccionarServicioAListarResponse")
-    public JAXBElement<SeleccionarServicioAListarResponse> createSeleccionarServicioAListarResponse(SeleccionarServicioAListarResponse value) {
-        return new JAXBElement<SeleccionarServicioAListarResponse>(_SeleccionarServicioAListarResponse_QNAME, SeleccionarServicioAListarResponse.class, null, value);
     }
 
     /**

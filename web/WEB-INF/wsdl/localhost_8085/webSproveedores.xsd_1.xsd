@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is JAX-WS RI 2.2.9-b130926.1035 svn-revision#5f6196f2b90e9460065a4c2f4e30e065b245e51e. --><xs:schema xmlns:tns="http://WebServices/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://WebServices/">
 
+<xs:element name="getNombreProveedor" type="tns:getNombreProveedor"></xs:element>
+
+<xs:element name="getNombreProveedorResponse" type="tns:getNombreProveedorResponse"></xs:element>
+
 <xs:element name="listarPromocionesBuscadas" type="tns:listarPromocionesBuscadas"></xs:element>
 
 <xs:element name="listarPromocionesBuscadasResponse" type="tns:listarPromocionesBuscadasResponse"></xs:element>
@@ -15,6 +19,14 @@
 <xs:element name="seleccionarServicioAListar" type="tns:seleccionarServicioAListar"></xs:element>
 
 <xs:element name="seleccionarServicioAListarResponse" type="tns:seleccionarServicioAListarResponse"></xs:element>
+
+<xs:element name="validarPasswordProv" type="tns:validarPasswordProv"></xs:element>
+
+<xs:element name="validarPasswordProvResponse" type="tns:validarPasswordProvResponse"></xs:element>
+
+<xs:element name="verificarProveedor" type="tns:verificarProveedor"></xs:element>
+
+<xs:element name="verificarProveedorResponse" type="tns:verificarProveedorResponse"></xs:element>
 
 <xs:complexType name="seleccionarServicioAListar">
 <xs:sequence>
@@ -39,6 +51,31 @@
 <xs:element name="origen" type="xs:string" minOccurs="0"></xs:element>
 <xs:element name="destino" type="xs:string" minOccurs="0"></xs:element>
 <xs:element name="categorias" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getNombreProveedor">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getNombreProveedorResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="validarPasswordProv">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="arg1" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="validarPasswordProvResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"></xs:element>
 </xs:sequence>
 </xs:complexType>
 
@@ -67,6 +104,18 @@
 <xs:element name="porcentaje" type="xs:float"></xs:element>
 <xs:element name="total" type="xs:float"></xs:element>
 <xs:element name="servicios" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verificarProveedor">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verificarProveedorResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"></xs:element>
 </xs:sequence>
 </xs:complexType>
 

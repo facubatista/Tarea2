@@ -3,9 +3,7 @@ package webservices;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -23,7 +21,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="nombre" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="apellido" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="mail" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="fechaNac" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="fechaNac" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="imagen" type="{http://www.w3.org/2001/XMLSchema}base64Binary" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -50,8 +48,7 @@ public class DataCliente {
     protected String nombre;
     protected String apellido;
     protected String mail;
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar fechaNac;
+    protected String fechaNac;
     protected byte[] imagen;
 
     /**
@@ -179,10 +176,10 @@ public class DataCliente {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    public XMLGregorianCalendar getFechaNac() {
+    public String getFechaNac() {
         return fechaNac;
     }
 
@@ -191,10 +188,10 @@ public class DataCliente {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    public void setFechaNac(XMLGregorianCalendar value) {
+    public void setFechaNac(String value) {
         this.fechaNac = value;
     }
 

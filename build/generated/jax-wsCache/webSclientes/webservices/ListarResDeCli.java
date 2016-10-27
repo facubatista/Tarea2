@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="a" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,34 +27,34 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "listarResDeCli", propOrder = {
-    "arg0"
+    "a"
 })
 public class ListarResDeCli {
 
-    protected String arg0;
+    protected String a;
 
     /**
-     * Obtiene el valor de la propiedad arg0.
+     * Obtiene el valor de la propiedad a.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getArg0() {
-        return arg0;
+    public String getA() {
+        return a;
     }
 
     /**
-     * Define el valor de la propiedad arg0.
+     * Define el valor de la propiedad a.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setArg0(String value) {
-        this.arg0 = value;
+    public void setA(String value) {
+        this.a = value;
     }
 
 }

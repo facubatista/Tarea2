@@ -12,10 +12,8 @@
 <%@page import="java.util.Base64"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.Url"%>
 <%@page import="java.net.URL"%>
-<%@page import="Logica.DtPromocion"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="Clases.carrito"%>
-<%@page import="Logica.DtServicio"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

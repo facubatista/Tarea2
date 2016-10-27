@@ -1,12 +1,10 @@
-<%@page import="webservices.DataRS"%>
-<%@page import="webservices.DataRP"%>
+<%@page import="webservices.DtRP"%>
+<%@page import="webservices.DtRS"%>
+<%@page import="webservices.DataRsRp"%>
 <%@page import="webservices.DataReserva"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Logica.DtReserva"%>
-<%@page import="Logica.DtRS"%>
-<%@page import="Logica.DtRP"%>
 <%@page import="java.util.Iterator"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,14 +22,16 @@
     </head>
     <body>
         <jsp:include page="Cabecera.jsp" />
-        <% DataReserva res = (DataReserva) request.getAttribute("Reserva");
+        <%  DataRsRp RsRp = (DataRsRp) request.getAttribute("RSRP");
+            DataReserva res = (DataReserva)request.getAttribute("Reserva");
+            
             SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
             
             //ArrayList<DataRP> rp = (ArrayList)res.getPromociones();
-            Iterator iteradorPromo = res.getPromociones().iterator();
+            Iterator iteradorPromo = RsRp.getPromociones().iterator();
             
             //ArrayList<DataRS> rs = res.getServicios();
-            Iterator iteradorServ = res.getServicios().iterator();
+            Iterator iteradorServ = RsRp.getServicios().iterator();
         %>
         <form class="principal">
             <div id="divPestanias" class="fila">
@@ -47,7 +47,7 @@
             <div id="InfoRes" class="fila">
                 <div class="fila">
                     <h4>Número: <%= res.getNumero() %></h4>
-                    <h4>Fecha de creación: <%= dateformat.format(res.getFechaCreacion().toGregorianCalendar().getTime()) %></h4>
+                    <h4>Fecha de creación: <%= res.getFechaCreacion() %></h4>
                     <h4>Estado: <%= res.getEstado() %></h4>
                     <h4>Total: $<%= res.getPrecioTotal() %></h4>
                 </div>
@@ -65,15 +65,15 @@
                     </thead>
                     <tbody class="doce columnas">
                     <%while(iteradorPromo.hasNext()){
-                        DataRP dtp = (DataRP)iteradorPromo.next();
+                        DtRP dtp = (DtRP)iteradorPromo.next();
                     %>
                         <tr class="doce columnas trPromo">
                             <td class="tres columnas">
                                 <a id="nomPromo" href="<%= request.getContextPath()%>/InfoPromocion?nombrePromocion=<%= dtp.getPromocion() %>&nombreProveedor=<%= dtp.getProveedor()%>"><%= dtp.getPromocion() %></a>
                             </td>
                             <td class="dos columnas"><%= dtp.getProveedor() %></td>
-                            <td class="tres columnas"><%= dateformat.format(dtp.getFechaIni()) %></td>
-                            <td class="tres columnas"><%= dateformat.format(dtp.getFechaFin())  %></td>
+                            <td class="tres columnas"><%= dateformat.format(dtp.getFechaIni().toGregorianCalendar().getTime()) %></td>
+                            <td class="tres columnas"><%= dateformat.format(dtp.getFechaFin().toGregorianCalendar().getTime()) %></td>
                             <td class="una columnas"><%= dtp.getCantidad() %></td>
                         </tr>
                     <%}%>
@@ -93,7 +93,7 @@
                     </thead>
                     <tbody class="doce columnas">
                     <%while(iteradorServ.hasNext()){
-                        DataRS dts = (DataRS)iteradorServ.next();
+                        DtRS dts = (DtRS)iteradorServ.next();
                     %>
                         <tr class="doce columnas trPromo">
                             <td class="tres columnas">

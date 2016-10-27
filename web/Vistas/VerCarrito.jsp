@@ -6,8 +6,6 @@
 <%@page import="java.util.Base64"%>
 <%@page import="Clases.DtResProm"%>
 <%@page import="Clases.DtResServ"%>
-<%@page import="Logica.DtPromocion"%>
-<%@page import="Logica.DtServicio"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="Clases.carrito"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -13,7 +13,7 @@
     </head>
     <body>
         <jsp:include page="Cabecera.jsp" /> 
-        <div id="IniciarC" name="IniciarC">
+        <div id="IniciarC">
             <label id="nomUsuario" for="nom"> Usuario: </label>
             <label id="nickInvalido" hidden="">Nickname o email inválido</label>
             <input onblur="verificarUsuario(this)" onfocus="return ocultarMsjPassInc(this.parentElement,this)" id="nomUsr" name="nomUsuario" placeholder="Escriba su nickname o email" required="" type="text"> 

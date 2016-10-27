@@ -1,14 +1,9 @@
 
 package webservices;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
@@ -25,9 +20,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="cliente" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="estado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="precioTotal" type="{http://www.w3.org/2001/XMLSchema}float"/>
- *         &lt;element name="fechaCreacion" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="servicios" type="{http://WebServices/}dataRS" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="promociones" type="{http://WebServices/}dataRP" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="fechaCreacion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -42,9 +35,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "cliente",
     "estado",
     "precioTotal",
-    "fechaCreacion",
-    "servicios",
-    "promociones"
+    "fechaCreacion"
 })
 public class DataReserva {
 
@@ -52,12 +43,7 @@ public class DataReserva {
     protected String cliente;
     protected String estado;
     protected float precioTotal;
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar fechaCreacion;
-    @XmlElement(nillable = true)
-    protected List<DataRS> servicios;
-    @XmlElement(nillable = true)
-    protected List<DataRP> promociones;
+    protected String fechaCreacion;
 
     /**
      * Obtiene el valor de la propiedad numero.
@@ -144,10 +130,10 @@ public class DataReserva {
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    public XMLGregorianCalendar getFechaCreacion() {
+    public String getFechaCreacion() {
         return fechaCreacion;
     }
 
@@ -156,69 +142,11 @@ public class DataReserva {
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link String }
      *     
      */
-    public void setFechaCreacion(XMLGregorianCalendar value) {
+    public void setFechaCreacion(String value) {
         this.fechaCreacion = value;
-    }
-
-    /**
-     * Gets the value of the servicios property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the servicios property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getServicios().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link DataRS }
-     * 
-     * 
-     */
-    public List<DataRS> getServicios() {
-        if (servicios == null) {
-            servicios = new ArrayList<DataRS>();
-        }
-        return this.servicios;
-    }
-
-    /**
-     * Gets the value of the promociones property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the promociones property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getPromociones().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link DataRP }
-     * 
-     * 
-     */
-    public List<DataRP> getPromociones() {
-        if (promociones == null) {
-            promociones = new ArrayList<DataRP>();
-        }
-        return this.promociones;
     }
 
 }

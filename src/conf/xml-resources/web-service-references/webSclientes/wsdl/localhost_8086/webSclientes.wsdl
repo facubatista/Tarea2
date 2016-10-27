@@ -28,12 +28,6 @@
 <message name="seleccionarReservaResponse">
 <part name="parameters" element="tns:seleccionarReservaResponse"></part>
 </message>
-<message name="seleccionarProveedor">
-<part name="parameters" element="tns:seleccionarProveedor"></part>
-</message>
-<message name="seleccionarProveedorResponse">
-<part name="parameters" element="tns:seleccionarProveedorResponse"></part>
-</message>
 <message name="agregarServicioAreserva">
 <part name="parameters" element="tns:agregarServicioAreserva"></part>
 </message>
@@ -49,23 +43,11 @@
 <message name="agregarPromoAreservaResponse">
 <part name="parameters" element="tns:agregarPromoAreservaResponse"></part>
 </message>
-<message name="userPassValido">
-<part name="parameters" element="tns:userPassValido"></part>
+<message name="seleccionarProveedor">
+<part name="parameters" element="tns:seleccionarProveedor"></part>
 </message>
-<message name="userPassValidoResponse">
-<part name="parameters" element="tns:userPassValidoResponse"></part>
-</message>
-<message name="crearReserva">
-<part name="parameters" element="tns:crearReserva"></part>
-</message>
-<message name="crearReservaResponse">
-<part name="parameters" element="tns:crearReservaResponse"></part>
-</message>
-<message name="getDataCliente">
-<part name="parameters" element="tns:getDataCliente"></part>
-</message>
-<message name="getDataClienteResponse">
-<part name="parameters" element="tns:getDataClienteResponse"></part>
+<message name="seleccionarProveedorResponse">
+<part name="parameters" element="tns:seleccionarProveedorResponse"></part>
 </message>
 <message name="verificarUsuario">
 <part name="parameters" element="tns:verificarUsuario"></part>
@@ -73,17 +55,41 @@
 <message name="verificarUsuarioResponse">
 <part name="parameters" element="tns:verificarUsuarioResponse"></part>
 </message>
-<message name="crearUserWeb">
-<part name="parameters" element="tns:crearUserWeb"></part>
+<message name="crearReserva">
+<part name="parameters" element="tns:crearReserva"></part>
 </message>
-<message name="crearUserWebResponse">
-<part name="parameters" element="tns:crearUserWebResponse"></part>
+<message name="crearReservaResponse">
+<part name="parameters" element="tns:crearReservaResponse"></part>
 </message>
 <message name="mostrarReserva">
 <part name="parameters" element="tns:mostrarReserva"></part>
 </message>
 <message name="mostrarReservaResponse">
 <part name="parameters" element="tns:mostrarReservaResponse"></part>
+</message>
+<message name="crearUserWeb">
+<part name="parameters" element="tns:crearUserWeb"></part>
+</message>
+<message name="crearUserWebResponse">
+<part name="parameters" element="tns:crearUserWebResponse"></part>
+</message>
+<message name="getDataCliente">
+<part name="parameters" element="tns:getDataCliente"></part>
+</message>
+<message name="getDataClienteResponse">
+<part name="parameters" element="tns:getDataClienteResponse"></part>
+</message>
+<message name="userPassValido">
+<part name="parameters" element="tns:userPassValido"></part>
+</message>
+<message name="userPassValidoResponse">
+<part name="parameters" element="tns:userPassValidoResponse"></part>
+</message>
+<message name="traerRsRp">
+<part name="parameters" element="tns:traerRsRp"></part>
+</message>
+<message name="traerRsRpResponse">
+<part name="parameters" element="tns:traerRsRpResponse"></part>
 </message>
 <portType name="WSClientes">
 <operation name="limpiar">
@@ -102,10 +108,6 @@
 <input wsam:Action="http://WebServices/WSClientes/seleccionarReservaRequest" message="tns:seleccionarReserva"></input>
 <output wsam:Action="http://WebServices/WSClientes/seleccionarReservaResponse" message="tns:seleccionarReservaResponse"></output>
 </operation>
-<operation name="seleccionarProveedor">
-<input wsam:Action="http://WebServices/WSClientes/seleccionarProveedorRequest" message="tns:seleccionarProveedor"></input>
-<output wsam:Action="http://WebServices/WSClientes/seleccionarProveedorResponse" message="tns:seleccionarProveedorResponse"></output>
-</operation>
 <operation name="agregarServicioAreserva">
 <input wsam:Action="http://WebServices/WSClientes/agregarServicioAreservaRequest" message="tns:agregarServicioAreserva"></input>
 <output wsam:Action="http://WebServices/WSClientes/agregarServicioAreservaResponse" message="tns:agregarServicioAreservaResponse"></output>
@@ -116,30 +118,38 @@
 <output wsam:Action="http://WebServices/WSClientes/agregarPromoAreservaResponse" message="tns:agregarPromoAreservaResponse"></output>
 <fault message="tns:ParseException" name="ParseException" wsam:Action="http://WebServices/WSClientes/agregarPromoAreserva/Fault/ParseException"></fault>
 </operation>
-<operation name="userPassValido">
-<input wsam:Action="http://WebServices/WSClientes/userPassValidoRequest" message="tns:userPassValido"></input>
-<output wsam:Action="http://WebServices/WSClientes/userPassValidoResponse" message="tns:userPassValidoResponse"></output>
+<operation name="seleccionarProveedor">
+<input wsam:Action="http://WebServices/WSClientes/seleccionarProveedorRequest" message="tns:seleccionarProveedor"></input>
+<output wsam:Action="http://WebServices/WSClientes/seleccionarProveedorResponse" message="tns:seleccionarProveedorResponse"></output>
+</operation>
+<operation name="verificarUsuario">
+<input wsam:Action="http://WebServices/WSClientes/verificarUsuarioRequest" message="tns:verificarUsuario"></input>
+<output wsam:Action="http://WebServices/WSClientes/verificarUsuarioResponse" message="tns:verificarUsuarioResponse"></output>
 </operation>
 <operation name="crearReserva">
 <input wsam:Action="http://WebServices/WSClientes/crearReservaRequest" message="tns:crearReserva"></input>
 <output wsam:Action="http://WebServices/WSClientes/crearReservaResponse" message="tns:crearReservaResponse"></output>
 </operation>
-<operation name="getDataCliente">
-<input wsam:Action="http://WebServices/WSClientes/getDataClienteRequest" message="tns:getDataCliente"></input>
-<output wsam:Action="http://WebServices/WSClientes/getDataClienteResponse" message="tns:getDataClienteResponse"></output>
-</operation>
-<operation name="verificarUsuario">
-<input wsam:Action="http://WebServices/WSClientes/verificarUsuarioRequest" message="tns:verificarUsuario"></input>
-<output wsam:Action="http://WebServices/WSClientes/verificarUsuarioResponse" message="tns:verificarUsuarioResponse"></output>
+<operation name="mostrarReserva">
+<input wsam:Action="http://WebServices/WSClientes/mostrarReservaRequest" message="tns:mostrarReserva"></input>
+<output wsam:Action="http://WebServices/WSClientes/mostrarReservaResponse" message="tns:mostrarReservaResponse"></output>
 </operation>
 <operation name="crearUserWeb">
 <input wsam:Action="http://WebServices/WSClientes/crearUserWebRequest" message="tns:crearUserWeb"></input>
 <output wsam:Action="http://WebServices/WSClientes/crearUserWebResponse" message="tns:crearUserWebResponse"></output>
 <fault message="tns:ParseException" name="ParseException" wsam:Action="http://WebServices/WSClientes/crearUserWeb/Fault/ParseException"></fault>
 </operation>
-<operation name="mostrarReserva">
-<input wsam:Action="http://WebServices/WSClientes/mostrarReservaRequest" message="tns:mostrarReserva"></input>
-<output wsam:Action="http://WebServices/WSClientes/mostrarReservaResponse" message="tns:mostrarReservaResponse"></output>
+<operation name="getDataCliente">
+<input wsam:Action="http://WebServices/WSClientes/getDataClienteRequest" message="tns:getDataCliente"></input>
+<output wsam:Action="http://WebServices/WSClientes/getDataClienteResponse" message="tns:getDataClienteResponse"></output>
+</operation>
+<operation name="userPassValido">
+<input wsam:Action="http://WebServices/WSClientes/userPassValidoRequest" message="tns:userPassValido"></input>
+<output wsam:Action="http://WebServices/WSClientes/userPassValidoResponse" message="tns:userPassValidoResponse"></output>
+</operation>
+<operation name="traerRsRp">
+<input wsam:Action="http://WebServices/WSClientes/traerRsRpRequest" message="tns:traerRsRp"></input>
+<output wsam:Action="http://WebServices/WSClientes/traerRsRpResponse" message="tns:traerRsRpResponse"></output>
 </operation>
 </portType>
 <binding name="WSClientesPortBinding" type="tns:WSClientes">
@@ -180,15 +190,6 @@
 <soap:body use="literal"></soap:body>
 </output>
 </operation>
-<operation name="seleccionarProveedor">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal"></soap:body>
-</input>
-<output>
-<soap:body use="literal"></soap:body>
-</output>
-</operation>
 <operation name="agregarServicioAreserva">
 <soap:operation soapAction=""></soap:operation>
 <input>
@@ -213,7 +214,16 @@
 <soap:fault name="ParseException" use="literal"></soap:fault>
 </fault>
 </operation>
-<operation name="userPassValido">
+<operation name="seleccionarProveedor">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
+<operation name="verificarUsuario">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal"></soap:body>
@@ -231,16 +241,7 @@
 <soap:body use="literal"></soap:body>
 </output>
 </operation>
-<operation name="getDataCliente">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal"></soap:body>
-</input>
-<output>
-<soap:body use="literal"></soap:body>
-</output>
-</operation>
-<operation name="verificarUsuario">
+<operation name="mostrarReserva">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal"></soap:body>
@@ -261,7 +262,25 @@
 <soap:fault name="ParseException" use="literal"></soap:fault>
 </fault>
 </operation>
-<operation name="mostrarReserva">
+<operation name="getDataCliente">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
+<operation name="userPassValido">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
+<operation name="traerRsRp">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal"></soap:body>

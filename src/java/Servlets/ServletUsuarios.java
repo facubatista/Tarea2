@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import webservices.DataCliente;
 import webservices.DataReserva;
+import webservices.DataRsRp;
 import webservices.ParseException_Exception;
 import webservices.WSClientes;
 import webservices.WSClientesService;
@@ -56,16 +57,17 @@ public class ServletUsuarios extends HttpServlet {
        
         
         //Iniciar Sesión
-        String nomUsuario = request.getParameter("nomUsuario");//el nomUsuario que viene en el param puede ser el nickname o el email del cliente
-        if (sesion.getAttribute("nickUsuario") == null && nomUsuario != null) {
-            nomUsuario = wsc.verificarUsuario(nomUsuario);//Retorna el nickname
-            sesion.setAttribute("nickUsuario", nomUsuario);
-            sesion.setAttribute("DataCliente", wsc.getDataCliente(nomUsuario));//DtCliente para Ver Perfil
+        String claveUsuario = (String) request.getParameter("nomUsuario");//la clave puede ser el nickname o el email del cliente
+        if (sesion.getAttribute("nickUsuario") == null && claveUsuario != null) {
+            String nickname = wsc.verificarUsuario(claveUsuario);//Retorna el nickname
+            sesion.setAttribute("nickUsuario", nickname);
 
-            DataCliente cliente = wsc.getDataCliente(nomUsuario);
-
+            //DtCliente para Ver Perfil
+            DataCliente cliente = (DataCliente) wsc.getDataCliente(nickname);
+            sesion.setAttribute("DataCliente", cliente);
+           
             //Se toman el nombre y el apellido del usuario para mostrarlo en la cabecera
-            nomUsuario = cliente.getNombre() + " " + cliente.getApellido();
+            String nomUsuario = cliente.getNombre() + " " + cliente.getApellido();
             //Se setea el nombre de usuario en la sesion
             sesion.setAttribute("nomUsuario", nomUsuario);//Es el nombre para mostrar en el header 
 
@@ -77,7 +79,7 @@ public class ServletUsuarios extends HttpServlet {
         if (request.getParameter("verificarUsuario") != null) {
             //especifica que el tipo de respuesta va a ser texto
             response.setContentType("text/plain");
-            String claveUsuario = request.getParameter("verificarUsuario");
+            claveUsuario = request.getParameter("verificarUsuario");
             if (wsc.verificarUsuario(claveUsuario).equals("false")) {
                 response.getWriter().write("false");
                 /*response.getWriter().write("{\"verificacion\" : [" +
@@ -94,8 +96,8 @@ public class ServletUsuarios extends HttpServlet {
            response.setContentType("text/plain");
            String nickname = (String)request.getParameter("passUser");
            nickname = wsc.verificarUsuario(nickname);//Retorna el nickname, esto es por si el usuario ingresa su email para logearse
-           String claveUsuario = (String)request.getParameter("verificarPassword");
-            if (wsc.userPassValido(nickname, claveUsuario)==true){
+           String passUsuario = (String)request.getParameter("verificarPassword");
+            if (wsc.userPassValido(nickname, passUsuario)==true){
                 response.getWriter().write("passOK");
             } else {
                 response.getWriter().write("passMAL");
@@ -218,9 +220,13 @@ public class ServletUsuarios extends HttpServlet {
         
         if (request.getParameter("VerPerfil") != null) {
             
-            String nickUsuario = (String) sesion.getAttribute("nickUsuario");
+            String nickUsuario = (String)sesion.getAttribute("nickUsuario");
             //DataCliente cliente = wsc.getDataCliente(nickUsuario);
+
+            
             request.setAttribute("ReservasCli", wsc.listarResDeCli(nickUsuario));
+            
+            //response.getWriter().println("{respuesta:'ok'}");
             
             RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/VerPerfil.jsp");
             dispatcher.forward(request, response);
@@ -234,7 +240,9 @@ public class ServletUsuarios extends HttpServlet {
         if (request.getParameter("VerReserva") != null) {
             String nickUsuario = (String) sesion.getAttribute("nickUsuario");
             int num = Integer.valueOf((String) request.getParameter("numero"));
+            DataRsRp RSRP = wsc.traerRsRp(num, nickUsuario);
             DataReserva res = wsc.mostrarReserva(num, nickUsuario);
+            request.setAttribute("RSRP", RSRP);
             request.setAttribute("Reserva", res);
             RequestDispatcher dispatcher = request.getRequestDispatcher("./Vistas/VerReserva.jsp");
             dispatcher.forward(request, response);

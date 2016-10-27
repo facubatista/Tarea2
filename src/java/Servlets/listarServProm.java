@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import webservices.DataPromociones;
 import webservices.DataServicios;
+import webservices.WSCatCiudad;
+import webservices.WSCatCiudadService;
 import webservices.WSProveedores;
 import webservices.WSProveedoresService;
 
@@ -26,6 +28,9 @@ public class listarServProm extends HttpServlet {
         WSProveedoresService wsps = new WSProveedoresService();
         WSProveedores wsp = wsps.getWSProveedoresPort();
         
+        WSCatCiudadService wsccs = new WSCatCiudadService();
+        WSCatCiudad wscc = wsccs.getWSCatCiudadPort();
+        
         
         
         DataServicios listaServicios = wsp.listarServiciosBuscados((String)request.getParameter("busqueda"));
@@ -34,6 +39,7 @@ public class listarServProm extends HttpServlet {
         
         request.setAttribute("listaServicios", listaServicios);
         request.setAttribute("listaPromociones", listaPromociones);
+        request.setAttribute("listaCategorias", wscc.traerCategorias());
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/servProm.jsp");
         dispatcher.forward(request, response);

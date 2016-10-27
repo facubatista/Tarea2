@@ -4,4 +4,9 @@
     <system systemId="http://localhost:8085/webSproveedores?xsd=1" uri="wsdl/localhost_8085/webSproveedores.xsd_1.xsd"/>
     <system systemId="http://localhost:8086/webSclientes?wsdl" uri="wsdl/localhost_8086/webSclientes.wsdl"/>
     <system systemId="http://localhost:8086/webSclientes?xsd=1" uri="wsdl/localhost_8086/webSclientes.xsd_1.xsd"/>
+    <system systemId="http://localhost:8086/webSclientes?xsd=2" uri="wsdl/localhost_8086/webSclientes.xsd_2.xsd"/>
+    <system systemId="http://localhost:8087/webSCatCiudad?wsdl" uri="wsdl/localhost_8087/webSCatCiudad.wsdl"/>
+    <system systemId="http://localhost:8087/webSCatCiudad?xsd=1" uri="wsdl/localhost_8087/webSCatCiudad.xsd_1.xsd"/>
+    <system systemId="http://localhost:8088/webSDatos?wsdl" uri="wsdl/localhost_8088/webSDatos.wsdl"/>
+    <system systemId="http://localhost:8088/webSDatos?xsd=1" uri="wsdl/localhost_8088/webSDatos.xsd_1.xsd"/>
 </catalog>
