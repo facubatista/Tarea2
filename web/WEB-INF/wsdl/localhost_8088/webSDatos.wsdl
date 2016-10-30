@@ -10,22 +10,26 @@
 <message name="cargarDatosDePruebaResponse">
 <part name="parameters" element="tns:cargarDatosDePruebaResponse"></part>
 </message>
+<message name="SQLException">
+<part name="fault" element="tns:SQLException"></part>
+</message>
 <message name="ParseException">
 <part name="fault" element="tns:ParseException"></part>
 </message>
+<message name="IOException">
+<part name="fault" element="tns:IOException"></part>
+</message>
 <message name="NoSuchAlgorithmException">
 <part name="fault" element="tns:NoSuchAlgorithmException"></part>
-</message>
-<message name="SQLException">
-<part name="fault" element="tns:SQLException"></part>
 </message>
 <portType name="WSCargarDatos">
 <operation name="cargarDatosDePrueba">
 <input wsam:Action="http://WebServices/WSCargarDatos/cargarDatosDePruebaRequest" message="tns:cargarDatosDePrueba"></input>
 <output wsam:Action="http://WebServices/WSCargarDatos/cargarDatosDePruebaResponse" message="tns:cargarDatosDePruebaResponse"></output>
-<fault message="tns:ParseException" name="ParseException" wsam:Action="http://WebServices/WSCargarDatos/cargarDatosDePrueba/Fault/ParseException"></fault>
-<fault message="tns:NoSuchAlgorithmException" name="NoSuchAlgorithmException" wsam:Action="http://WebServices/WSCargarDatos/cargarDatosDePrueba/Fault/NoSuchAlgorithmException"></fault>
 <fault message="tns:SQLException" name="SQLException" wsam:Action="http://WebServices/WSCargarDatos/cargarDatosDePrueba/Fault/SQLException"></fault>
+<fault message="tns:ParseException" name="ParseException" wsam:Action="http://WebServices/WSCargarDatos/cargarDatosDePrueba/Fault/ParseException"></fault>
+<fault message="tns:IOException" name="IOException" wsam:Action="http://WebServices/WSCargarDatos/cargarDatosDePrueba/Fault/IOException"></fault>
+<fault message="tns:NoSuchAlgorithmException" name="NoSuchAlgorithmException" wsam:Action="http://WebServices/WSCargarDatos/cargarDatosDePrueba/Fault/NoSuchAlgorithmException"></fault>
 </operation>
 </portType>
 <binding name="WSCargarDatosPortBinding" type="tns:WSCargarDatos">
@@ -38,14 +42,17 @@
 <output>
 <soap:body use="literal"></soap:body>
 </output>
+<fault name="SQLException">
+<soap:fault name="SQLException" use="literal"></soap:fault>
+</fault>
 <fault name="ParseException">
 <soap:fault name="ParseException" use="literal"></soap:fault>
 </fault>
+<fault name="IOException">
+<soap:fault name="IOException" use="literal"></soap:fault>
+</fault>
 <fault name="NoSuchAlgorithmException">
 <soap:fault name="NoSuchAlgorithmException" use="literal"></soap:fault>
-</fault>
-<fault name="SQLException">
-<soap:fault name="SQLException" use="literal"></soap:fault>
 </fault>
 </operation>
 </binding>
