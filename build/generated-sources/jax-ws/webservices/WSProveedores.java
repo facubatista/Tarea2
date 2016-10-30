@@ -27,24 +27,6 @@ public interface WSProveedores {
     /**
      * 
      * @param a
-     * @param b
-     * @return
-     *     returns webservices.DataServicio
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "seleccionarServicioAListar", targetNamespace = "http://WebServices/", className = "webservices.SeleccionarServicioAListar")
-    @ResponseWrapper(localName = "seleccionarServicioAListarResponse", targetNamespace = "http://WebServices/", className = "webservices.SeleccionarServicioAListarResponse")
-    @Action(input = "http://WebServices/WSProveedores/seleccionarServicioAListarRequest", output = "http://WebServices/WSProveedores/seleccionarServicioAListarResponse")
-    public DataServicio seleccionarServicioAListar(
-        @WebParam(name = "a", targetNamespace = "")
-        String a,
-        @WebParam(name = "b", targetNamespace = "")
-        String b);
-
-    /**
-     * 
-     * @param a
      * @return
      *     returns webservices.DataServicios
      */
@@ -56,24 +38,6 @@ public interface WSProveedores {
     public DataServicios listarServiciosBuscados(
         @WebParam(name = "a", targetNamespace = "")
         String a);
-
-    /**
-     * 
-     * @param a
-     * @param b
-     * @return
-     *     returns webservices.DataPromocion
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "seleccionarPromocionAListar", targetNamespace = "http://WebServices/", className = "webservices.SeleccionarPromocionAListar")
-    @ResponseWrapper(localName = "seleccionarPromocionAListarResponse", targetNamespace = "http://WebServices/", className = "webservices.SeleccionarPromocionAListarResponse")
-    @Action(input = "http://WebServices/WSProveedores/seleccionarPromocionAListarRequest", output = "http://WebServices/WSProveedores/seleccionarPromocionAListarResponse")
-    public DataPromocion seleccionarPromocionAListar(
-        @WebParam(name = "a", targetNamespace = "")
-        String a,
-        @WebParam(name = "b", targetNamespace = "")
-        String b);
 
     /**
      * 
@@ -122,6 +86,42 @@ public interface WSProveedores {
         String arg0,
         @WebParam(name = "arg1", targetNamespace = "")
         String arg1);
+
+    /**
+     * 
+     * @param a
+     * @param b
+     * @return
+     *     returns webservices.DataServicio
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "seleccionarServicioAListar", targetNamespace = "http://WebServices/", className = "webservices.SeleccionarServicioAListar")
+    @ResponseWrapper(localName = "seleccionarServicioAListarResponse", targetNamespace = "http://WebServices/", className = "webservices.SeleccionarServicioAListarResponse")
+    @Action(input = "http://WebServices/WSProveedores/seleccionarServicioAListarRequest", output = "http://WebServices/WSProveedores/seleccionarServicioAListarResponse")
+    public DataServicio seleccionarServicioAListar(
+        @WebParam(name = "a", targetNamespace = "")
+        String a,
+        @WebParam(name = "b", targetNamespace = "")
+        String b);
+
+    /**
+     * 
+     * @param a
+     * @param b
+     * @return
+     *     returns webservices.DataPromocion
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "seleccionarPromocionAListar", targetNamespace = "http://WebServices/", className = "webservices.SeleccionarPromocionAListar")
+    @ResponseWrapper(localName = "seleccionarPromocionAListarResponse", targetNamespace = "http://WebServices/", className = "webservices.SeleccionarPromocionAListarResponse")
+    @Action(input = "http://WebServices/WSProveedores/seleccionarPromocionAListarRequest", output = "http://WebServices/WSProveedores/seleccionarPromocionAListarResponse")
+    public DataPromocion seleccionarPromocionAListar(
+        @WebParam(name = "a", targetNamespace = "")
+        String a,
+        @WebParam(name = "b", targetNamespace = "")
+        String b);
 
     /**
      * 

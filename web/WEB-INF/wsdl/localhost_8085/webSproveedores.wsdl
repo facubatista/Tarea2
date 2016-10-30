@@ -4,23 +4,11 @@
 <xsd:import namespace="http://WebServices/" schemaLocation="http://localhost:8085/webSproveedores?xsd=1"></xsd:import>
 </xsd:schema>
 </types>
-<message name="seleccionarServicioAListar">
-<part name="parameters" element="tns:seleccionarServicioAListar"></part>
-</message>
-<message name="seleccionarServicioAListarResponse">
-<part name="parameters" element="tns:seleccionarServicioAListarResponse"></part>
-</message>
 <message name="listarServiciosBuscados">
 <part name="parameters" element="tns:listarServiciosBuscados"></part>
 </message>
 <message name="listarServiciosBuscadosResponse">
 <part name="parameters" element="tns:listarServiciosBuscadosResponse"></part>
-</message>
-<message name="seleccionarPromocionAListar">
-<part name="parameters" element="tns:seleccionarPromocionAListar"></part>
-</message>
-<message name="seleccionarPromocionAListarResponse">
-<part name="parameters" element="tns:seleccionarPromocionAListarResponse"></part>
 </message>
 <message name="listarPromocionesBuscadas">
 <part name="parameters" element="tns:listarPromocionesBuscadas"></part>
@@ -40,6 +28,18 @@
 <message name="validarPasswordProvResponse">
 <part name="parameters" element="tns:validarPasswordProvResponse"></part>
 </message>
+<message name="seleccionarServicioAListar">
+<part name="parameters" element="tns:seleccionarServicioAListar"></part>
+</message>
+<message name="seleccionarServicioAListarResponse">
+<part name="parameters" element="tns:seleccionarServicioAListarResponse"></part>
+</message>
+<message name="seleccionarPromocionAListar">
+<part name="parameters" element="tns:seleccionarPromocionAListar"></part>
+</message>
+<message name="seleccionarPromocionAListarResponse">
+<part name="parameters" element="tns:seleccionarPromocionAListarResponse"></part>
+</message>
 <message name="getNombreProveedor">
 <part name="parameters" element="tns:getNombreProveedor"></part>
 </message>
@@ -47,17 +47,9 @@
 <part name="parameters" element="tns:getNombreProveedorResponse"></part>
 </message>
 <portType name="WSProveedores">
-<operation name="seleccionarServicioAListar">
-<input wsam:Action="http://WebServices/WSProveedores/seleccionarServicioAListarRequest" message="tns:seleccionarServicioAListar"></input>
-<output wsam:Action="http://WebServices/WSProveedores/seleccionarServicioAListarResponse" message="tns:seleccionarServicioAListarResponse"></output>
-</operation>
 <operation name="listarServiciosBuscados">
 <input wsam:Action="http://WebServices/WSProveedores/listarServiciosBuscadosRequest" message="tns:listarServiciosBuscados"></input>
 <output wsam:Action="http://WebServices/WSProveedores/listarServiciosBuscadosResponse" message="tns:listarServiciosBuscadosResponse"></output>
-</operation>
-<operation name="seleccionarPromocionAListar">
-<input wsam:Action="http://WebServices/WSProveedores/seleccionarPromocionAListarRequest" message="tns:seleccionarPromocionAListar"></input>
-<output wsam:Action="http://WebServices/WSProveedores/seleccionarPromocionAListarResponse" message="tns:seleccionarPromocionAListarResponse"></output>
 </operation>
 <operation name="listarPromocionesBuscadas">
 <input wsam:Action="http://WebServices/WSProveedores/listarPromocionesBuscadasRequest" message="tns:listarPromocionesBuscadas"></input>
@@ -71,6 +63,14 @@
 <input wsam:Action="http://WebServices/WSProveedores/validarPasswordProvRequest" message="tns:validarPasswordProv"></input>
 <output wsam:Action="http://WebServices/WSProveedores/validarPasswordProvResponse" message="tns:validarPasswordProvResponse"></output>
 </operation>
+<operation name="seleccionarServicioAListar">
+<input wsam:Action="http://WebServices/WSProveedores/seleccionarServicioAListarRequest" message="tns:seleccionarServicioAListar"></input>
+<output wsam:Action="http://WebServices/WSProveedores/seleccionarServicioAListarResponse" message="tns:seleccionarServicioAListarResponse"></output>
+</operation>
+<operation name="seleccionarPromocionAListar">
+<input wsam:Action="http://WebServices/WSProveedores/seleccionarPromocionAListarRequest" message="tns:seleccionarPromocionAListar"></input>
+<output wsam:Action="http://WebServices/WSProveedores/seleccionarPromocionAListarResponse" message="tns:seleccionarPromocionAListarResponse"></output>
+</operation>
 <operation name="getNombreProveedor">
 <input wsam:Action="http://WebServices/WSProveedores/getNombreProveedorRequest" message="tns:getNombreProveedor"></input>
 <output wsam:Action="http://WebServices/WSProveedores/getNombreProveedorResponse" message="tns:getNombreProveedorResponse"></output>
@@ -78,25 +78,7 @@
 </portType>
 <binding name="WSProveedoresPortBinding" type="tns:WSProveedores">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap:binding>
-<operation name="seleccionarServicioAListar">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal"></soap:body>
-</input>
-<output>
-<soap:body use="literal"></soap:body>
-</output>
-</operation>
 <operation name="listarServiciosBuscados">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal"></soap:body>
-</input>
-<output>
-<soap:body use="literal"></soap:body>
-</output>
-</operation>
-<operation name="seleccionarPromocionAListar">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal"></soap:body>
@@ -124,6 +106,24 @@
 </output>
 </operation>
 <operation name="validarPasswordProv">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
+<operation name="seleccionarServicioAListar">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
+<operation name="seleccionarPromocionAListar">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal"></soap:body>

@@ -36,18 +36,6 @@ public interface WSClientes {
 
     /**
      * 
-     * @param arg0
-     */
-    @WebMethod
-    @RequestWrapper(localName = "cambiarEstado", targetNamespace = "http://WebServices/", className = "webservices.CambiarEstado")
-    @ResponseWrapper(localName = "cambiarEstadoResponse", targetNamespace = "http://WebServices/", className = "webservices.CambiarEstadoResponse")
-    @Action(input = "http://WebServices/WSClientes/cambiarEstadoRequest", output = "http://WebServices/WSClientes/cambiarEstadoResponse")
-    public void cambiarEstado(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
-
-    /**
-     * 
      * @param a
      * @return
      *     returns webservices.DataReservas
@@ -60,6 +48,18 @@ public interface WSClientes {
     public DataReservas listarResDeCli(
         @WebParam(name = "a", targetNamespace = "")
         String a);
+
+    /**
+     * 
+     * @param arg0
+     */
+    @WebMethod
+    @RequestWrapper(localName = "cambiarEstado", targetNamespace = "http://WebServices/", className = "webservices.CambiarEstado")
+    @ResponseWrapper(localName = "cambiarEstadoResponse", targetNamespace = "http://WebServices/", className = "webservices.CambiarEstadoResponse")
+    @Action(input = "http://WebServices/WSClientes/cambiarEstadoRequest", output = "http://WebServices/WSClientes/cambiarEstadoResponse")
+    public void cambiarEstado(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
 
     /**
      * 
@@ -78,29 +78,15 @@ public interface WSClientes {
 
     /**
      * 
-     * @param arg3
-     * @param arg2
-     * @param arg1
-     * @param arg0
-     * @throws ParseException_Exception
+     * @param a
      */
     @WebMethod
-    @RequestWrapper(localName = "agregarServicioAreserva", targetNamespace = "http://WebServices/", className = "webservices.AgregarServicioAreserva")
-    @ResponseWrapper(localName = "agregarServicioAreservaResponse", targetNamespace = "http://WebServices/", className = "webservices.AgregarServicioAreservaResponse")
-    @Action(input = "http://WebServices/WSClientes/agregarServicioAreservaRequest", output = "http://WebServices/WSClientes/agregarServicioAreservaResponse", fault = {
-        @FaultAction(className = ParseException_Exception.class, value = "http://WebServices/WSClientes/agregarServicioAreserva/Fault/ParseException")
-    })
-    public void agregarServicioAreserva(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        int arg1,
-        @WebParam(name = "arg2", targetNamespace = "")
-        String arg2,
-        @WebParam(name = "arg3", targetNamespace = "")
-        String arg3)
-        throws ParseException_Exception
-    ;
+    @RequestWrapper(localName = "seleccionarProveedor", targetNamespace = "http://WebServices/", className = "webservices.SeleccionarProveedor")
+    @ResponseWrapper(localName = "seleccionarProveedorResponse", targetNamespace = "http://WebServices/", className = "webservices.SeleccionarProveedorResponse")
+    @Action(input = "http://WebServices/WSClientes/seleccionarProveedorRequest", output = "http://WebServices/WSClientes/seleccionarProveedorResponse")
+    public void seleccionarProveedor(
+        @WebParam(name = "a", targetNamespace = "")
+        String a);
 
     /**
      * 
@@ -130,15 +116,29 @@ public interface WSClientes {
 
     /**
      * 
-     * @param a
+     * @param arg3
+     * @param arg2
+     * @param arg1
+     * @param arg0
+     * @throws ParseException_Exception
      */
     @WebMethod
-    @RequestWrapper(localName = "seleccionarProveedor", targetNamespace = "http://WebServices/", className = "webservices.SeleccionarProveedor")
-    @ResponseWrapper(localName = "seleccionarProveedorResponse", targetNamespace = "http://WebServices/", className = "webservices.SeleccionarProveedorResponse")
-    @Action(input = "http://WebServices/WSClientes/seleccionarProveedorRequest", output = "http://WebServices/WSClientes/seleccionarProveedorResponse")
-    public void seleccionarProveedor(
-        @WebParam(name = "a", targetNamespace = "")
-        String a);
+    @RequestWrapper(localName = "agregarServicioAreserva", targetNamespace = "http://WebServices/", className = "webservices.AgregarServicioAreserva")
+    @ResponseWrapper(localName = "agregarServicioAreservaResponse", targetNamespace = "http://WebServices/", className = "webservices.AgregarServicioAreservaResponse")
+    @Action(input = "http://WebServices/WSClientes/agregarServicioAreservaRequest", output = "http://WebServices/WSClientes/agregarServicioAreservaResponse", fault = {
+        @FaultAction(className = ParseException_Exception.class, value = "http://WebServices/WSClientes/agregarServicioAreserva/Fault/ParseException")
+    })
+    public void agregarServicioAreserva(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        int arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        String arg2,
+        @WebParam(name = "arg3", targetNamespace = "")
+        String arg3)
+        throws ParseException_Exception
+    ;
 
     /**
      * 
@@ -169,6 +169,39 @@ public interface WSClientes {
         String a,
         @WebParam(name = "b", targetNamespace = "")
         float b);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "userPassValido", targetNamespace = "http://WebServices/", className = "webservices.UserPassValido")
+    @ResponseWrapper(localName = "userPassValidoResponse", targetNamespace = "http://WebServices/", className = "webservices.UserPassValidoResponse")
+    @Action(input = "http://WebServices/WSClientes/userPassValidoRequest", output = "http://WebServices/WSClientes/userPassValidoResponse")
+    public boolean userPassValido(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns webservices.DataCliente
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getDataCliente", targetNamespace = "http://WebServices/", className = "webservices.GetDataCliente")
+    @ResponseWrapper(localName = "getDataClienteResponse", targetNamespace = "http://WebServices/", className = "webservices.GetDataClienteResponse")
+    @Action(input = "http://WebServices/WSClientes/getDataClienteRequest", output = "http://WebServices/WSClientes/getDataClienteResponse")
+    public DataCliente getDataCliente(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
 
     /**
      * 
@@ -225,39 +258,6 @@ public interface WSClientes {
         byte[] arg6)
         throws ParseException_Exception
     ;
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns webservices.DataCliente
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getDataCliente", targetNamespace = "http://WebServices/", className = "webservices.GetDataCliente")
-    @ResponseWrapper(localName = "getDataClienteResponse", targetNamespace = "http://WebServices/", className = "webservices.GetDataClienteResponse")
-    @Action(input = "http://WebServices/WSClientes/getDataClienteRequest", output = "http://WebServices/WSClientes/getDataClienteResponse")
-    public DataCliente getDataCliente(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "userPassValido", targetNamespace = "http://WebServices/", className = "webservices.UserPassValido")
-    @ResponseWrapper(localName = "userPassValidoResponse", targetNamespace = "http://WebServices/", className = "webservices.UserPassValidoResponse")
-    @Action(input = "http://WebServices/WSClientes/userPassValidoRequest", output = "http://WebServices/WSClientes/userPassValidoResponse")
-    public boolean userPassValido(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        String arg1);
 
     /**
      * 

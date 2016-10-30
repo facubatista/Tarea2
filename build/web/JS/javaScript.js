@@ -109,7 +109,14 @@ function cambiarPestania(pestania) {
     pestania.className = "selec";
 }
 
-function cambiarEstadoRes(numReserva, trReserva){
+function cambiarEstadoRes(numReserva, trReserva, estado){
+    
+    if(estado === 'Cancelada')
+        alert(estado);
+    
+    if(estado === 'Pagada')
+        alert(estado);
+    /*
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         //Los status 200 y 4 indican que no hubo ningun problema
@@ -122,7 +129,7 @@ function cambiarEstadoRes(numReserva, trReserva){
     request.open("GET","/Tarea2/ServUsuarios?cambiarEstadoRes="+numReserva,true );
     request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     request.send();
-    
+    */
     return false;
 }
 //

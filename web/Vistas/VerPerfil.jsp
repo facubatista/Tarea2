@@ -59,7 +59,7 @@
                     <h4>Apellido: <%= cliente.getApellido() %></h4>
                     <h4>e-mail: <%= cliente.getMail() %></h4>
                     
-                    <h4>Fecha de Nacimiento: <%= cliente.getFechaNac() %></h4>       
+                    <h4>Fecha de Nacimiento: <%= cliente.getFechaNac() %></h4>
                 </div>
             </div>
             
@@ -90,7 +90,8 @@
                                 <td class="dos columnas">$<%= r.getPrecioTotal() %></td>
                                 <%if(r.getEstado().equals("Registrada")){%>
                                 <td class="dos columnas">
-                                    <button class="botones" onclick="return cambiarEstadoRes(<%= r.getNumero()%>,this.parentElement.parentElement)">Cancelar</button>
+                                    <button class="botones" onclick="return cambiarEstadoRes(<%= r.getNumero()%>,this.parentElement.parentElement, 'Cancelada')">Cancelar</button>
+                                    <button class="botones" onclick="return cambiarEstadoRes(<%= r.getNumero()%>,this.parentElement.parentElement, 'Pagada')">Pagar</button>
                                 </td>
                                 <%}else{%>
                                 <td class="dos columnas"></td>

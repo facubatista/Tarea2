@@ -42,22 +42,6 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/webservices"/>
         <delete dir="${build.generated.dir}/jax-wsCache/webSproveedores"/>
     </target>
-    <target name="wsimport-client-webSclientes" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/webSclientes"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/webSclientes" destdir="${build.generated.dir}/jax-wsCache/webSclientes" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/webSclientes/wsdl/localhost_8086/webSclientes.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8086/webSclientes?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/webSclientes/wsdl/localhost_8086/webSclientes.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/webSclientes"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/webSclientes">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-webSclientes" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/webservices"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/webSclientes"/>
-    </target>
     <target name="wsimport-client-webSCatCiudad" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/webSCatCiudad"/>
         <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/webSCatCiudad" destdir="${build.generated.dir}/jax-wsCache/webSCatCiudad" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/webSCatCiudad/wsdl/localhost_8087/webSCatCiudad.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8087/webSCatCiudad?wsdl" xnocompile="true" xendorsed="true">
@@ -73,6 +57,22 @@
     <target name="wsimport-client-clean-webSCatCiudad" depends="-init-project">
         <delete dir="${build.generated.sources.dir}/jax-ws/webservices"/>
         <delete dir="${build.generated.dir}/jax-wsCache/webSCatCiudad"/>
+    </target>
+    <target name="wsimport-client-webSclientes" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/webSclientes"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/webSclientes" destdir="${build.generated.dir}/jax-wsCache/webSclientes" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/webSclientes/wsdl/localhost_8086/webSclientes.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8086/webSclientes?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/webSclientes/wsdl/localhost_8086/webSclientes.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/webSclientes"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/webSclientes">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-webSclientes" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/webservices"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/webSclientes"/>
     </target>
     <target name="wsimport-client-webSDatos" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/webSDatos"/>
@@ -90,53 +90,5 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/webservices"/>
         <delete dir="${build.generated.dir}/jax-wsCache/webSDatos"/>
     </target>
-    <target name="wsimport-client-webSDatos_1" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/webSDatos_1"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/webSDatos_1" destdir="${build.generated.dir}/jax-wsCache/webSDatos_1" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/webSDatos_1/wsdl/localhost_8088/webSDatos.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8088/webSDatos?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/webSDatos_1/wsdl/localhost_8088/webSDatos.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/webSDatos_1"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/webSDatos_1">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-webSDatos_1" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/webservices"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/webSDatos_1"/>
-    </target>
-    <target name="wsimport-client-webSDatos_2" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/webSDatos_2"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/webSDatos_2" destdir="${build.generated.dir}/jax-wsCache/webSDatos_2" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/webSDatos_2/wsdl/localhost_8088/webSDatos.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8088/webSDatos?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/webSDatos_2/wsdl/localhost_8088/webSDatos.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/webSDatos_2"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/webSDatos_2">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-webSDatos_2" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/webservices"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/webSDatos_2"/>
-    </target>
-    <target name="wsimport-client-webSDatos_3" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/webSDatos_3"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/webSDatos_3" destdir="${build.generated.dir}/jax-wsCache/webSDatos_3" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/webSDatos_3/wsdl/localhost_8088/webSDatos.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8088/webSDatos?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/webSDatos_3/wsdl/localhost_8088/webSDatos.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/webSDatos_3"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/webSDatos_3">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-webSDatos_3" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/webservices"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/webSDatos_3"/>
-    </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-webSproveedores, wsimport-client-webSclientes, wsimport-client-webSCatCiudad, wsimport-client-webSDatos, wsimport-client-webSDatos_1, wsimport-client-webSDatos_2, wsimport-client-webSDatos_3"/>
+    <target name="wsimport-client-generate" depends="wsimport-client-webSproveedores, wsimport-client-webSCatCiudad, wsimport-client-webSclientes, wsimport-client-webSDatos"/>
 </project>

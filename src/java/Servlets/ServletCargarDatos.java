@@ -14,6 +14,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import webservices.WSCargarDatos;
+import webservices.WSCargarDatosService;
 
 /**
  *
@@ -36,8 +38,10 @@ public class ServletCargarDatos extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            /*Factory.getInstance().cargarDatosDePruebaWeb();
-            response.getWriter().println("{respuesta:'ok'}");*/
+            WSCargarDatosService wscds = new WSCargarDatosService();
+            WSCargarDatos wscd = wscds.getWSCargarDatosPort();
+            
+            wscd.cargarDatosDePrueba();
         }
     }
 
