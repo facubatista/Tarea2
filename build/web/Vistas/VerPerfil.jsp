@@ -18,6 +18,7 @@
         <link rel="stylesheet" type="text/css" href="/Tarea2/CSS/Cabecera.css"/>
         <link rel="stylesheet" type="text/css" href="/Tarea2/CSS/VerPerfil.css"/>
         <script src="/Tarea2/JS/javaScript.js"></script>
+        <script src="/Tarea2/JS/Reservas.js"></script>
     </head>
     <body>
         <%
@@ -90,8 +91,19 @@
                                 <td class="dos columnas">$<%= r.getPrecioTotal() %></td>
                                 <%if(r.getEstado().equals("Registrada")){%>
                                 <td class="dos columnas">
-                                    <button class="botones" onclick="return cambiarEstadoRes(<%= r.getNumero()%>,this.parentElement.parentElement, 'Cancelada')">Cancelar</button>
-                                    <button class="botones" onclick="return cambiarEstadoRes(<%= r.getNumero()%>,this.parentElement.parentElement, 'Pagada')">Pagar</button>
+                                    <form onsubmit="return cambiarEstRes(this, this.parentElement.parentElement)" name="formCancelar">
+                                        <input type="hidden" id="accion" value="cambiarEstado">
+                                        <input type="hidden" id="nroRes" value="<%= r.getNumero() %>">
+                                        <input type="hidden" id="estado" value="Cancelada">
+                                        <input id="botonCancelar" name="boton" class="botones" type="submit" value="Cancelar">
+                                    </form>
+                                    <form onsubmit="return cambiarEstRes(this, this.parentElement.parentElement)" name="formPagar">
+                                        <input type="hidden" id="accion" value="cambiarEstado">
+                                        <input type="hidden" id="nroRes" value="<%= r.getNumero() %>">
+                                        <input type="hidden" id="estado" value="Pagada">
+                                        <input id="botonPagar" name="boton" class="botones" type="submit" value="Pagar">
+                                    </form>
+                                        <%--<button id="botonPagar" class="botones" onclick="return cambiarEstadoRes(<%= r.getNumero()%>,this.parentElement.parentElement, 'Pagada')">Pagar</button>--%>
                                 </td>
                                 <%}else{%>
                                 <td class="dos columnas"></td>

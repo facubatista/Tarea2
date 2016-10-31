@@ -28,6 +28,10 @@
         <servlet-name>busquedaSP</servlet-name>
         <servlet-class>Servlets.nuevaBusquedaServProm</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletReservas</servlet-name>
+        <servlet-class>Servlets.ServletReservas</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>verInfoServProm</servlet-name>
         <url-pattern>/infoSerProm</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>busquedaSP</servlet-name>
         <url-pattern>/busquedaSP</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletReservas</servlet-name>
+        <url-pattern>/ServletReservas</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

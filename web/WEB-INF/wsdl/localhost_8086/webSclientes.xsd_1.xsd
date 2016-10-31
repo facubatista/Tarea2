@@ -130,19 +130,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="userPassValido">
-<xs:sequence>
-<xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
-<xs:element name="arg1" type="xs:string" minOccurs="0"></xs:element>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="userPassValidoResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:boolean"></xs:element>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="crearUserWeb">
 <xs:sequence>
 <xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
@@ -156,6 +143,19 @@
 </xs:complexType>
 
 <xs:complexType name="crearUserWebResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="userPassValido">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="arg1" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="userPassValidoResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"></xs:element>
 </xs:sequence>
