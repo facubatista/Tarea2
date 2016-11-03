@@ -86,7 +86,8 @@ public class ServletUsuarios extends HttpServlet {
             String nomUsuario = cliente.getNombre() + " " + cliente.getApellido();
             //Se setea el nombre de usuario en la sesion
             sesion.setAttribute("nomUsuario", nomUsuario);//Es el nombre para mostrar en el header 
-
+            sesion.setMaxInactiveInterval(60*60*24);
+            
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
         }       
@@ -242,12 +243,12 @@ public class ServletUsuarios extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/VerPerfil.jsp");
             dispatcher.forward(request, response);
         }
-        if (request.getParameter("cambiarEstadoRes") != null) {
-            String nickUsuario = (String) sesion.getAttribute("nickUsuario");
-            int numRes = Integer.valueOf(request.getParameter("cambiarEstadoRes"));
-            wsc.seleccionarReserva(numRes, nickUsuario);//Se selecciona la reserva a cambiar, esto ya estaba implementado de la tarea 1
-            wsc.cambiarEstado("Cancelada");//Siempre se cambia a este estado porque solo se puede cambiar a cancelada
-        }
+//        if (request.getParameter("cambiarEstadoRes") != null) {
+//            String nickUsuario = (String) sesion.getAttribute("nickUsuario");
+//            int numRes = Integer.valueOf(request.getParameter("cambiarEstadoRes"));
+//            wsc.seleccionarReserva(numRes, nickUsuario);//Se selecciona la reserva a cambiar, esto ya estaba implementado de la tarea 1
+//            wsc.cambiarEstado("Cancelada");//Siempre se cambia a este estado porque solo se puede cambiar a cancelada
+//        }
         if (request.getParameter("VerReserva") != null) {
             String nickUsuario = (String) sesion.getAttribute("nickUsuario");
             int num = Integer.valueOf((String) request.getParameter("numero"));

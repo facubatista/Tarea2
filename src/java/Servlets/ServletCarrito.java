@@ -48,16 +48,15 @@ public class ServletCarrito extends HttpServlet {
                     wsc.agregarPromoAreserva(rp.getPromocion().getNombre(), rp.getCantidad(), df.format(rp.getFechaIni()), df.format(rp.getFechaFin()));
                 }
             }
-            if(car.getServicios()!=null){
-                for(int i=0;i<car.getServicios().size();i++){
-                    DtResServ rs = car.getServicios().get(i);
+            if(car.getServicios().size()>0){
+                for(DtResServ rs: car.getServicios()){
                     wsc.seleccionarProveedor(rs.getServicio().getProveedor());//selecciona el proveedor para buscar el servicio en la logica
                     wsc.agregarServicioAreserva(rs.getServicio().getNombre(), rs.getCantidad(), df.format(rs.getFechaIni()), df.format(rs.getFechaFin()));
                 }
             }
-            
             wsc.limpiar();
-            sesion.removeAttribute("carrito");            
+            sesion.removeAttribute("carrito");      
+            response.getWriter().write("reserva confirmada");
         }
         
         //Borrar Carrito
@@ -65,6 +64,7 @@ public class ServletCarrito extends HttpServlet {
             sesion.removeAttribute("carrito");
         }
         
+        //response.getWriter().write(request.getParameter("eliminarServicioCar")+sesion.getAttribute("carrito"));
         //Eliminar servicio del carrito
         if(request.getParameter("eliminarServicioCar")!=null && sesion.getAttribute("carrito")!=null){
             carrito car = (carrito)sesion.getAttribute("carrito");
@@ -84,7 +84,7 @@ public class ServletCarrito extends HttpServlet {
         }
         
         //Si no entra a ningun if redirecciona al index
-        response.sendRedirect("/Tarea2/index.jsp");
+        /*response.sendRedirect("/Tarea2/index.jsp");*/
         
     }
 

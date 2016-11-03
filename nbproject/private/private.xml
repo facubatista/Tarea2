@@ -3,7 +3,43 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Kevin/Desktop/ProgApli/Tarea2/Tarea2WS/web/Vistas/VerCarrito.jsp</file>
+=======
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/verInfoPromocion.java</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/ServletReservas.java</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/infoPromocion.jsp</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/agregarPromACarrito.java</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/AltaUsuario.jsp</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Clases/DtResServ.java</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/agregarServACarrito.java</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/index.jsp</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/VerCarrito.jsp</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/infoServicio.jsp</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/JS/jQuery.js</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Clases/carrito.java</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/Pie.jsp</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/IniciarSesion.jsp</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/nuevaBusquedaServProm.java</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Clases/DtResProm.java</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/Cabecera.jsp</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/VerReserva.jsp</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/JS/ServProm.js</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/JS/user.js</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/ServletUsuarios.java</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/VerPerfil.jsp</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/ServletCargarDatos.java</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/JS/jquerysession.js</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/Vistas/servProm.jsp</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/listarServProm.java</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/conf/xml-resources/web-service-references/webSclientes/wsdl/localhost_8086/webSclientes.wsdl</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/ServletCarrito.java</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/JS/Reservas.js</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/JS/sha1.js</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/src/java/Servlets/verInfoServicio.java</file>
+            <file>file:/C:/Users/Facu/Documents/NetBeansProjects/ProyectoDefinitivo/web/JS/javaScript.js</file>
+>>>>>>> b387406bd7d224b9415c542bf947bf2304920cb7
         </group>
     </open-files>
 </project-private>

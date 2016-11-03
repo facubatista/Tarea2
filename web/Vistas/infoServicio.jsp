@@ -86,7 +86,7 @@
                     <%if(session.getAttribute("nickUsuario") != null){%>
                     <div class="aOcultar">
                         <h2> Agregar a Carrito</h2>
-                        <label class="precio">Precio: <%= s.getPrecio() %></label>
+                        <label class="precio">Precio: $<%= s.getPrecio() %></label>
                         <%--Fecha de inicio del servicio--%>
                         <div id="fechaIni">
                             <label class="labelIni" >Fecha inicio:</label>
@@ -168,7 +168,7 @@
                                         <td><%= s.getDestino() %></td>
                                     <%}%>
                                     
-                                    <td><%= s.getPrecio() %></td>
+                                    <td>$<%= s.getPrecio() %></td>
                                 </tr>
                             </tbody>
                         </table>

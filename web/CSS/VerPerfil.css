@@ -143,3 +143,9 @@ td > a:active{
     background: #3FACD3;
     color:white;
 }
+
+td  input[type=submit]{
+    display:inline-block;
+    float:left;
+    margin-left: 5px;
+}

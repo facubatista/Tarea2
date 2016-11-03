@@ -23,6 +23,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="cantidad" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="promocion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="proveedor" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="prom" type="{http://WebServices/}dtPromocion" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,7 +38,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "fechaFin",
     "cantidad",
     "promocion",
-    "proveedor"
+    "proveedor",
+    "prom"
 })
 public class DtRP {
 
@@ -48,6 +50,7 @@ public class DtRP {
     protected int cantidad;
     protected String promocion;
     protected String proveedor;
+    protected DtPromocion prom;
 
     /**
      * Obtiene el valor de la propiedad fechaIni.
@@ -159,6 +162,30 @@ public class DtRP {
      */
     public void setProveedor(String value) {
         this.proveedor = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad prom.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DtPromocion }
+     *     
+     */
+    public DtPromocion getProm() {
+        return prom;
+    }
+
+    /**
+     * Define el valor de la propiedad prom.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DtPromocion }
+     *     
+     */
+    public void setProm(DtPromocion value) {
+        this.prom = value;
     }
 
 }

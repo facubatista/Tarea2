@@ -78,18 +78,6 @@ public interface WSClientes {
 
     /**
      * 
-     * @param a
-     */
-    @WebMethod
-    @RequestWrapper(localName = "seleccionarProveedor", targetNamespace = "http://WebServices/", className = "webservices.SeleccionarProveedor")
-    @ResponseWrapper(localName = "seleccionarProveedorResponse", targetNamespace = "http://WebServices/", className = "webservices.SeleccionarProveedorResponse")
-    @Action(input = "http://WebServices/WSClientes/seleccionarProveedorRequest", output = "http://WebServices/WSClientes/seleccionarProveedorResponse")
-    public void seleccionarProveedor(
-        @WebParam(name = "a", targetNamespace = "")
-        String a);
-
-    /**
-     * 
      * @param arg3
      * @param arg2
      * @param arg1
@@ -143,6 +131,18 @@ public interface WSClientes {
     /**
      * 
      * @param a
+     */
+    @WebMethod
+    @RequestWrapper(localName = "seleccionarProveedor", targetNamespace = "http://WebServices/", className = "webservices.SeleccionarProveedor")
+    @ResponseWrapper(localName = "seleccionarProveedorResponse", targetNamespace = "http://WebServices/", className = "webservices.SeleccionarProveedorResponse")
+    @Action(input = "http://WebServices/WSClientes/seleccionarProveedorRequest", output = "http://WebServices/WSClientes/seleccionarProveedorResponse")
+    public void seleccionarProveedor(
+        @WebParam(name = "a", targetNamespace = "")
+        String a);
+
+    /**
+     * 
+     * @param a
      * @param b
      */
     @WebMethod
@@ -154,6 +154,39 @@ public interface WSClientes {
         String a,
         @WebParam(name = "b", targetNamespace = "")
         float b);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "userPassValido", targetNamespace = "http://WebServices/", className = "webservices.UserPassValido")
+    @ResponseWrapper(localName = "userPassValidoResponse", targetNamespace = "http://WebServices/", className = "webservices.UserPassValidoResponse")
+    @Action(input = "http://WebServices/WSClientes/userPassValidoRequest", output = "http://WebServices/WSClientes/userPassValidoResponse")
+    public boolean userPassValido(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "verificarUsuario", targetNamespace = "http://WebServices/", className = "webservices.VerificarUsuario")
+    @ResponseWrapper(localName = "verificarUsuarioResponse", targetNamespace = "http://WebServices/", className = "webservices.VerificarUsuarioResponse")
+    @Action(input = "http://WebServices/WSClientes/verificarUsuarioRequest", output = "http://WebServices/WSClientes/verificarUsuarioResponse")
+    public String verificarUsuario(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
 
     /**
      * 
@@ -192,39 +225,6 @@ public interface WSClientes {
         byte[] arg6)
         throws ParseException_Exception
     ;
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "verificarUsuario", targetNamespace = "http://WebServices/", className = "webservices.VerificarUsuario")
-    @ResponseWrapper(localName = "verificarUsuarioResponse", targetNamespace = "http://WebServices/", className = "webservices.VerificarUsuarioResponse")
-    @Action(input = "http://WebServices/WSClientes/verificarUsuarioRequest", output = "http://WebServices/WSClientes/verificarUsuarioResponse")
-    public String verificarUsuario(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "userPassValido", targetNamespace = "http://WebServices/", className = "webservices.UserPassValido")
-    @ResponseWrapper(localName = "userPassValidoResponse", targetNamespace = "http://WebServices/", className = "webservices.UserPassValidoResponse")
-    @Action(input = "http://WebServices/WSClientes/userPassValidoRequest", output = "http://WebServices/WSClientes/userPassValidoResponse")
-    public boolean userPassValido(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        String arg1);
 
     /**
      * 

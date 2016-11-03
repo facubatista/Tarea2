@@ -130,6 +130,19 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="userPassValido">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="arg1" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="userPassValidoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="crearUserWeb">
 <xs:sequence>
 <xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
@@ -143,19 +156,6 @@
 </xs:complexType>
 
 <xs:complexType name="crearUserWebResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:boolean"></xs:element>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="userPassValido">
-<xs:sequence>
-<xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
-<xs:element name="arg1" type="xs:string" minOccurs="0"></xs:element>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="userPassValidoResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"></xs:element>
 </xs:sequence>
@@ -265,7 +265,12 @@
 <xs:element name="cantidad" type="xs:int"></xs:element>
 <xs:element name="servicio" type="xs:string" minOccurs="0"></xs:element>
 <xs:element name="proveedor" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="serv" type="tns:dtServicio" minOccurs="0"></xs:element>
 </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dtServicio">
+<xs:sequence></xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="dtRP">
@@ -275,7 +280,12 @@
 <xs:element name="cantidad" type="xs:int"></xs:element>
 <xs:element name="promocion" type="xs:string" minOccurs="0"></xs:element>
 <xs:element name="proveedor" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="prom" type="tns:dtPromocion" minOccurs="0"></xs:element>
 </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dtPromocion">
+<xs:sequence></xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="crearReserva">

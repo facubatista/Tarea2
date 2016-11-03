@@ -109,29 +109,34 @@ function cambiarPestania(pestania) {
     pestania.className = "selec";
 }
 
-function cambiarEstadoRes(numReserva, trReserva, estado){
-    
-    if(estado === 'Cancelada')
-        alert(estado);
-    
-    if(estado === 'Pagada')
-        alert(estado);
-    /*
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function(){
-        //Los status 200 y 4 indican que no hubo ningun problema
-        if(this.status===200 && this.readyState ===4){
-            trReserva.getElementsByClassName("estadoRes")[0].innerHTML = "Cancelada";
-            trReserva.querySelector("button").hidden = true;
-        }
-        console.log(this);
-    };
-    request.open("GET","/Tarea2/ServUsuarios?cambiarEstadoRes="+numReserva,true );
-    request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    request.send();
-    */
-    return false;
-}
+//function cambiarEstadoRes(numReserva, trReserva, estado){
+//    
+////    if(estado === 'Cancelada')
+////        alert(estado);
+////    
+////    if(estado === 'Pagada')
+////        alert(estado);
+//    
+//    var request = new XMLHttpRequest();
+//    request.onreadystatechange = function(){
+//        //Los status 200 y 4 indican que no hubo ningun problema
+//        if(this.status===200 && this.readyState ===4){
+////            trReserva.getElementsByClassName("estadoRes")[0].innerHTML = "Cancelada";
+////            trReserva.querySelector("button").hidden = true;
+////            trReserva.querySelector("button[id=botonPagar]").hidden = true;
+//        }
+//        //console.log(this);
+//    };
+//    
+//    //x.open("POST","agregarSCarrito",true );
+//    /*?cambiarEstadoRes="+numReserva*/
+//    
+//    request.open("POST","ServletReservas",true );
+//    request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+//    request.send("cambiarEstadoRes="+numReserva+"&estado="+estado);
+//    
+//    //return false;
+//}
 //
 
 //funciones usadas en Ver Carrito

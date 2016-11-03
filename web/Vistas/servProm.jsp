@@ -1,3 +1,6 @@
+<%@page import="Clases.DtResProm"%>
+<%@page import="Clases.DtResServ"%>
+<%@page import="Clases.carrito"%>
 <%@page import="webservices.DtCategoria"%>
 <%@page import="webservices.DataCategorias"%>
 <%@page import="webservices.DataPromocion"%>
@@ -49,7 +52,19 @@
                             list.add(aux.getNombre());
                         }
                         Collections.sort(list);
+                        
                         itCat = list.iterator();
+                        
+                        //Para controlar si el servicio o promocion esta en el carrito
+                        carrito car = null;
+                        List<DtResServ> serviciosC = null;
+                        List<DtResProm> promosC = null;
+                        
+                        if(session.getAttribute("carrito")!=null){
+                            car = (carrito)session.getAttribute("carrito");
+                            serviciosC = car.getServicios();
+                            promosC = car.getPromociones();
+                        }
                     %>
                     <ul id="menu_arbol">
                         <li id="Raiz" title="Todos"><a onclick="busqueda('');" href="#">Todos</a></li>
@@ -81,7 +96,16 @@
                                 Iterator<DataServicio> it = listaServicios.getServicios().iterator();
 
                                 while(it.hasNext()){
+                                    boolean enCarrito = false;
                                     DataServicio s = it.next();
+                                    if(serviciosC!=null){
+                                        for(DtResServ servEnCar: serviciosC){
+                                            if(s.getNombre().equals(servEnCar.getServicio().getNombre())&&s.getProveedor().equals(servEnCar.getServicio().getProveedor())){
+                                                enCarrito=true;
+                                                //serviciosC.remove(servEnCar);
+                                            }                                            
+                                        }
+                                    }
                                 %>
                                 <tr>
                                     <td class="TdTipo">Servicio</td>
@@ -102,6 +126,7 @@
                                     <td class="TdProveedor"><%= s.getProveedor() %></td>
                                     <%if(session.getAttribute("nickUsuario") != null){  %>
                                         <td class="TdAgregarACarrito">
+                                            <%if(enCarrito==false){%>
                                             <div class="aOcultar">
                                                 <label class="precio">Precio: $<%= Math.round(s.getPrecio()) %></label>
                                                 <%--Fecha de inicio del servicio--%>
@@ -159,10 +184,15 @@
                                             <div class="aMostrar" hidden="">
                                                 <img src="Imag/carrito.png" alt="imagen de carrito"> En carrito
                                             </div>
+                                            <%}else{%>
+                                            <div class="aMostrar">
+                                                <img src="Imag/carrito.png" alt="imagen de carrito"> En carrito
+                                            </div>
+                                            <%}%>
                                         </td>
                                     <%}%>
                                 </tr>
-                                <%}%>
+                                <%}//termina while%>
 
                                 <%
                                     DataPromociones listaPromociones = (DataPromociones)request.getAttribute("listaPromociones");
@@ -170,6 +200,15 @@
 
                                     while(iterador.hasNext()){
                                         DataPromocion p = iterador.next();
+                                        
+                                        boolean enCarrito = false;
+                                        if(promosC!=null){
+                                            for(DtResProm promoEnCar: promosC){
+                                                if(p.getNombre().equals(promoEnCar.getPromocion().getNombre())&&p.getProveedor().equals(promoEnCar.getPromocion().getProveedor())){
+                                                    enCarrito=true;
+                                                }                                            
+                                            }
+                                        }
                                 %>
                                 <tr>
                                     <td class="TdTipo">Promocion</td>
@@ -182,6 +221,7 @@
                                     <td class="TdProveedor"><%= p.getProveedor() %></td>
                                     <%if(session.getAttribute("nickUsuario") != null){%>
                                         <td>
+                                            <%if(enCarrito==false){%>
                                             <div class="aOcultar">
                                                 <label class="precio">Precio: $<%= Math.round(p.getTotal()) %></label>
                                                 <%--Fecha de inicio del Promocion--%>
@@ -239,6 +279,11 @@
                                             <div class="aMostrar" hidden="">
                                                 <img src="Imag/carrito.png" alt="imagen de carrito"> En carrito
                                             </div>
+                                            <%}else{%>
+                                            <div class="aMostrar">
+                                                <img src="Imag/carrito.png" alt="imagen de carrito"> En carrito
+                                            </div>
+                                            <%}%>
                                         </td>
                                     <%}%>
                                 </tr>

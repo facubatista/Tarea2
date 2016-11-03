@@ -295,6 +295,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DtPromocion }
+     * 
+     */
+    public DtPromocion createDtPromocion() {
+        return new DtPromocion();
+    }
+
+    /**
+     * Create an instance of {@link DtServicio }
+     * 
+     */
+    public DtServicio createDtServicio() {
+        return new DtServicio();
+    }
+
+    /**
      * Create an instance of {@link DataRsRp }
      * 
      */
