@@ -142,21 +142,6 @@ public interface WSClientes {
 
     /**
      * 
-     * @param arg0
-     * @return
-     *     returns java.lang.String
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "verificarUsuario", targetNamespace = "http://WebServices/", className = "webservices.VerificarUsuario")
-    @ResponseWrapper(localName = "verificarUsuarioResponse", targetNamespace = "http://WebServices/", className = "webservices.VerificarUsuarioResponse")
-    @Action(input = "http://WebServices/WSClientes/verificarUsuarioRequest", output = "http://WebServices/WSClientes/verificarUsuarioResponse")
-    public String verificarUsuario(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
-
-    /**
-     * 
      * @param a
      * @param b
      */
@@ -169,6 +154,59 @@ public interface WSClientes {
         String a,
         @WebParam(name = "b", targetNamespace = "")
         float b);
+
+    /**
+     * 
+     * @param arg3
+     * @param arg2
+     * @param arg5
+     * @param arg4
+     * @param arg1
+     * @param arg0
+     * @param arg6
+     * @return
+     *     returns boolean
+     * @throws ParseException_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "crearUserWeb", targetNamespace = "http://WebServices/", className = "webservices.CrearUserWeb")
+    @ResponseWrapper(localName = "crearUserWebResponse", targetNamespace = "http://WebServices/", className = "webservices.CrearUserWebResponse")
+    @Action(input = "http://WebServices/WSClientes/crearUserWebRequest", output = "http://WebServices/WSClientes/crearUserWebResponse", fault = {
+        @FaultAction(className = ParseException_Exception.class, value = "http://WebServices/WSClientes/crearUserWeb/Fault/ParseException")
+    })
+    public boolean crearUserWeb(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        String arg2,
+        @WebParam(name = "arg3", targetNamespace = "")
+        String arg3,
+        @WebParam(name = "arg4", targetNamespace = "")
+        String arg4,
+        @WebParam(name = "arg5", targetNamespace = "")
+        String arg5,
+        @WebParam(name = "arg6", targetNamespace = "")
+        byte[] arg6)
+        throws ParseException_Exception
+    ;
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "verificarUsuario", targetNamespace = "http://WebServices/", className = "webservices.VerificarUsuario")
+    @ResponseWrapper(localName = "verificarUsuarioResponse", targetNamespace = "http://WebServices/", className = "webservices.VerificarUsuarioResponse")
+    @Action(input = "http://WebServices/WSClientes/verificarUsuarioRequest", output = "http://WebServices/WSClientes/verificarUsuarioResponse")
+    public String verificarUsuario(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
 
     /**
      * 
@@ -220,44 +258,6 @@ public interface WSClientes {
         int arg0,
         @WebParam(name = "arg1", targetNamespace = "")
         String arg1);
-
-    /**
-     * 
-     * @param arg3
-     * @param arg2
-     * @param arg5
-     * @param arg4
-     * @param arg1
-     * @param arg0
-     * @param arg6
-     * @return
-     *     returns boolean
-     * @throws ParseException_Exception
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "crearUserWeb", targetNamespace = "http://WebServices/", className = "webservices.CrearUserWeb")
-    @ResponseWrapper(localName = "crearUserWebResponse", targetNamespace = "http://WebServices/", className = "webservices.CrearUserWebResponse")
-    @Action(input = "http://WebServices/WSClientes/crearUserWebRequest", output = "http://WebServices/WSClientes/crearUserWebResponse", fault = {
-        @FaultAction(className = ParseException_Exception.class, value = "http://WebServices/WSClientes/crearUserWeb/Fault/ParseException")
-    })
-    public boolean crearUserWeb(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        String arg1,
-        @WebParam(name = "arg2", targetNamespace = "")
-        String arg2,
-        @WebParam(name = "arg3", targetNamespace = "")
-        String arg3,
-        @WebParam(name = "arg4", targetNamespace = "")
-        String arg4,
-        @WebParam(name = "arg5", targetNamespace = "")
-        String arg5,
-        @WebParam(name = "arg6", targetNamespace = "")
-        byte[] arg6)
-        throws ParseException_Exception
-    ;
 
     /**
      * 

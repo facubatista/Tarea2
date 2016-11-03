@@ -1,4 +1,6 @@
-
+<%if(session.getAttribute("nomUsuario").equals("Anonimo")){
+    response.sendRedirect("/Tarea2/index.jsp");
+}else{%>
 <%@page import="webservices.DataReserva"%>
 <%@page import="webservices.DataReservas"%>
 <%@page import="webservices.DataCliente"%>
@@ -94,7 +96,9 @@
                                     <button class="botones" onclick="return cambiarEstadoRes(<%= r.getNumero()%>,this.parentElement.parentElement, 'Pagada')">Pagar</button>
                                 </td>
                                 <%}else{%>
-                                <td class="dos columnas"></td>
+                                <td class="dos columnas">
+                                    <a href="ServUsuarios?pdf=HolaMundo" download>Factura</a>
+                                </td>
                                 <%}%>
                             </tr>
                             <%  }%>
@@ -105,3 +109,4 @@
         </div>
     </body>
 </html>
+<%}%>

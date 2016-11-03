@@ -71,7 +71,8 @@ tbody > tr > td.una.columnas >img{
 
 tbody > tr > td.una.columnas >img:hover{
     background: #B6DAE8;
-    padding: 5px;
+    padding: 3px;
+    cursor: pointer;
 }
 
 tbody > tr > td.una.columnas >img:active{

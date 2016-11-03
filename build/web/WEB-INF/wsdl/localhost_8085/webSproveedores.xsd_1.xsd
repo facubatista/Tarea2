@@ -8,6 +8,10 @@
 
 <xs:element name="listarPromocionesBuscadasResponse" type="tns:listarPromocionesBuscadasResponse"></xs:element>
 
+<xs:element name="listarResDeProv" type="tns:listarResDeProv"></xs:element>
+
+<xs:element name="listarResDeProvResponse" type="tns:listarResDeProvResponse"></xs:element>
+
 <xs:element name="listarServiciosBuscados" type="tns:listarServiciosBuscados"></xs:element>
 
 <xs:element name="listarServiciosBuscadosResponse" type="tns:listarServiciosBuscadosResponse"></xs:element>
@@ -19,6 +23,10 @@
 <xs:element name="seleccionarServicioAListar" type="tns:seleccionarServicioAListar"></xs:element>
 
 <xs:element name="seleccionarServicioAListarResponse" type="tns:seleccionarServicioAListarResponse"></xs:element>
+
+<xs:element name="traerRsRp" type="tns:traerRsRp"></xs:element>
+
+<xs:element name="traerRsRpResponse" type="tns:traerRsRpResponse"></xs:element>
 
 <xs:element name="validarPasswordProv" type="tns:validarPasswordProv"></xs:element>
 
@@ -119,6 +127,46 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="traerRsRp">
+<xs:sequence>
+<xs:element name="arg0" type="xs:int" minOccurs="0"></xs:element>
+<xs:element name="arg1" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="traerRsRpResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:dataRsRp" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dataRsRp">
+<xs:sequence>
+<xs:element name="servicios" type="tns:dtRS" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+<xs:element name="promociones" type="tns:dtRP" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dtRS">
+<xs:sequence>
+<xs:element name="fechaIni" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaFin" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="cantidad" type="xs:int"></xs:element>
+<xs:element name="servicio" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="proveedor" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dtRP">
+<xs:sequence>
+<xs:element name="fechaIni" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="fechaFin" type="xs:dateTime" minOccurs="0"></xs:element>
+<xs:element name="cantidad" type="xs:int"></xs:element>
+<xs:element name="promocion" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="proveedor" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="seleccionarPromocionAListar">
 <xs:sequence>
 <xs:element name="a" type="xs:string" minOccurs="0"></xs:element>
@@ -129,6 +177,34 @@
 <xs:complexType name="seleccionarPromocionAListarResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:dataPromocion" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarResDeProv">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listarResDeProvResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:dataReservas" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dataReservas">
+<xs:sequence>
+<xs:element name="reservas" type="tns:dataReserva" nillable="true" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dataReserva">
+<xs:sequence>
+<xs:element name="numero" type="xs:int"></xs:element>
+<xs:element name="cliente" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="estado" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="precioTotal" type="xs:float"></xs:element>
+<xs:element name="fechaCreacion" type="xs:string" minOccurs="0"></xs:element>
 </xs:sequence>
 </xs:complexType>
 

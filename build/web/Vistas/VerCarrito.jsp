@@ -1,3 +1,6 @@
+<%if(session.getAttribute("nomUsuario").equals("Anonimo")){
+    response.sendRedirect("/Tarea2/index.jsp");
+}else{%>
 <%@page import="webservices.DataPromocion"%>
 <%@page import="webservices.DataServicio"%>
 <%@page import="javax.imageio.ImageIO"%>
@@ -150,3 +153,4 @@
         </div>
     </body>
 </html>
+<%}%>

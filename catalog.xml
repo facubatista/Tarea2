@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://localhost:8086/webSclientes?xsd=2" uri="src/conf/xml-resources/web-service-references/webSclientes/wsdl/localhost_8086/webSclientes.xsd_2.xsd"/>
-    <system systemId="http://localhost:8085/webSproveedores?wsdl" uri="src/conf/xml-resources/web-service-references/webSproveedores/wsdl/localhost_8085/webSproveedores.wsdl"/>
-    <system systemId="http://localhost:8085/webSproveedores?xsd=1" uri="src/conf/xml-resources/web-service-references/webSproveedores/wsdl/localhost_8085/webSproveedores.xsd_1.xsd"/>
     <system systemId="http://localhost:8087/webSCatCiudad?wsdl" uri="src/conf/xml-resources/web-service-references/webSCatCiudad/wsdl/localhost_8087/webSCatCiudad.wsdl"/>
     <system systemId="http://localhost:8087/webSCatCiudad?xsd=1" uri="src/conf/xml-resources/web-service-references/webSCatCiudad/wsdl/localhost_8087/webSCatCiudad.xsd_1.xsd"/>
     <system systemId="http://localhost:8088/webSDatos?wsdl" uri="src/conf/xml-resources/web-service-references/webSDatos/wsdl/localhost_8088/webSDatos.wsdl"/>
     <system systemId="http://localhost:8088/webSDatos?xsd=1" uri="src/conf/xml-resources/web-service-references/webSDatos/wsdl/localhost_8088/webSDatos.xsd_1.xsd"/>
+    <system systemId="http://localhost:8085/webSproveedores?wsdl" uri="src/conf/xml-resources/web-service-references/webSproveedores/wsdl/localhost_8085/webSproveedores.wsdl"/>
+    <system systemId="http://localhost:8085/webSproveedores?xsd=1" uri="src/conf/xml-resources/web-service-references/webSproveedores/wsdl/localhost_8085/webSproveedores.xsd_1.xsd"/>
     <system systemId="http://localhost:8086/webSclientes?wsdl" uri="src/conf/xml-resources/web-service-references/webSclientes/wsdl/localhost_8086/webSclientes.wsdl"/>
     <system systemId="http://localhost:8086/webSclientes?xsd=1" uri="src/conf/xml-resources/web-service-references/webSclientes/wsdl/localhost_8086/webSclientes.xsd_1.xsd"/>
 </catalog>

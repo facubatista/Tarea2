@@ -66,7 +66,7 @@ public class ServletCarrito extends HttpServlet {
         }
         
         //Eliminar servicio del carrito
-        if(request.getParameter("eliminarServicioCar")!=null){
+        if(request.getParameter("eliminarServicioCar")!=null && sesion.getAttribute("carrito")!=null){
             carrito car = (carrito)sesion.getAttribute("carrito");
             car.eliminarServ(request.getParameter("eliminarServicioCar"));
             
@@ -75,13 +75,16 @@ public class ServletCarrito extends HttpServlet {
         }
         
         //Eliminar promocion del carrito
-        if(request.getParameter("eliminarPromoCar")!=null){
+        if(request.getParameter("eliminarPromoCar")!=null && sesion.getAttribute("carrito")!=null){
             carrito car = (carrito)sesion.getAttribute("carrito");
             car.eliminarPromo(request.getParameter("eliminarPromoCar"));
             
             response.setContentType("text/plain");
             response.getWriter().write(String.valueOf(Math.round(car.getTotal())));
         }
+        
+        //Si no entra a ningun if redirecciona al index
+        response.sendRedirect("/Tarea2/index.jsp");
         
     }
 

@@ -5,7 +5,23 @@
  */
 package Servlets;
 
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Desktop;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -187,7 +203,6 @@ public class ServletUsuarios extends HttpServlet {
 //                }
 //            }
         
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -218,15 +233,11 @@ public class ServletUsuarios extends HttpServlet {
             
         }
         
-        if (request.getParameter("VerPerfil") != null) {
+        if (request.getParameter("VerPerfil") != null && sesion.getAttribute("nickUsuario")!=null) {
             
             String nickUsuario = (String)sesion.getAttribute("nickUsuario");
-            //DataCliente cliente = wsc.getDataCliente(nickUsuario);
-
             
             request.setAttribute("ReservasCli", wsc.listarResDeCli(nickUsuario));
-            
-            //response.getWriter().println("{respuesta:'ok'}");
             
             RequestDispatcher dispatcher = request.getRequestDispatcher("/Vistas/VerPerfil.jsp");
             dispatcher.forward(request, response);
@@ -247,6 +258,117 @@ public class ServletUsuarios extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("./Vistas/VerReserva.jsp");
             dispatcher.forward(request, response);
         }
+        
+        if(request.getParameter("pdf")!=null){     
+            try {
+                //Se crea el documento
+                Document documento = new Document();
+                
+                // Array bde bytes para el pdf
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                PdfWriter.getInstance(documento, baos);
+                
+                //Abrir el documento para editarlo
+                documento.open();                
+                
+                //No se para que sirve, no es el titulo que aparece en el pdf
+                documento.addTitle("Factura");
+        
+                //Es el titulo que aparece en el pdf
+                Paragraph p = new Paragraph("Factura",
+                                                        FontFactory.getFont("arial",   // fuente
+                                                        20,                            // tamaño
+                                                        Font.BOLD/*,                   // estilo
+                                                        BaseColor.CYAN*/));            //color
+                p.setAlignment(Element.ALIGN_CENTER);//centrar
+                documento.add(p);//Se agrega el párrafo al pdf
+
+                //Agrega espacio
+                documento.add(new Chunk("\n"));
+
+                //Fuente en negrita
+                Font font = FontFactory.getFont("arial", 12, Font.BOLD);
+
+                //Palabras en negrta
+                Chunk nroFactura = new Chunk("\nN° de factura: ", font);
+                Chunk fecha = new Chunk("\nFecha de entrega: ", font);
+                Chunk nroReserva = new Chunk("\nN° de reserva: ", font);
+                Chunk clienteRes = new Chunk("\nCliente: ", font);
+                Chunk infoReserva = new Chunk("\nInformación de reserva: \n", font);
+
+                //En la derecha hay que poner los valores de la factura(factura.get...)
+                documento.add(nroFactura); documento.add(new Chunk("1"));
+                documento.add(fecha);      documento.add(new Chunk("22/10/2016"));
+                documento.add(nroReserva); documento.add(new Chunk("10"));
+                documento.add(clienteRes); documento.add(new Chunk("ClienteEjemplo"));
+                documento.add(infoReserva);
+
+                //Tabla de 6 columnas
+                PdfPTable tabla = new PdfPTable(6);
+                tabla.setWidthPercentage(100);//Ancho de la tabla, 100%
+                
+                //Primera fila ed la tabla, titulos en negrita con fuente "font"
+                tabla.addCell(new Paragraph("Tipo", font));
+                tabla.addCell(new Paragraph("Proveedor", font));
+                tabla.addCell(new Paragraph("Nombre", font));
+                tabla.addCell(new Paragraph("Precio", font));
+                tabla.addCell(new Paragraph("Cantidad", font));
+                tabla.addCell(new Paragraph("Total", font));
+
+                //Otra fila
+                tabla.addCell("Servicio");
+                tabla.addCell("moody");
+                tabla.addCell("Euro-Vuelo-S");
+                tabla.addCell("$200");
+                tabla.addCell("3");
+                tabla.addCell("$600");
+
+                //Otra fila
+                tabla.addCell("Promoción");
+                tabla.addCell("moody");
+                tabla.addCell("Promo1");
+                tabla.addCell("$400");
+                tabla.addCell("1");
+                tabla.addCell("$400");
+
+                PdfPCell c = new PdfPCell();
+                c.setBorder(0);
+
+                //Otra fila, las c ocupan espacio en blanco
+                tabla.addCell(c);
+                tabla.addCell(c);
+                tabla.addCell(c);
+                tabla.addCell(c);
+                tabla.addCell(c);
+                tabla.addCell(new Paragraph("$1000", font));//Es el Total, ultima columna de la ultima fila
+
+                documento.add(tabla);//Se agrega la tabla al pdf
+                
+                documento.close();//Se cierra el pdf
+
+                //Setear la cabecera del response para poder enviar el pdf
+                response.setHeader("Expires", "0");
+                response.setHeader("Cache-Control", "must-revalidate, post-check=0, pre-check=0");
+                response.setHeader("Pragma", "public");
+                //Con "attachment indicamos que va a ser descargado, con "filename" el nombre
+                response.setHeader("Content-disposition", "attachment;filename=" + "factura.pdf");
+                
+                //Indica que se va a enviar un archivo tipo pdf
+                response.setContentType("application/pdf");
+                //Tamaño del contenido, pdf
+                response.setContentLength(baos.size());
+                //Escribir el baos(ByteArrayOutputStream) en el response
+                OutputStream os = response.getOutputStream();
+                baos.writeTo(os);
+                os.flush();
+                os.close();
+            }catch(DocumentException e) {
+                throw new IOException(e.getMessage());
+            }
+        }
+        
+        //Si no entra a ningun if redirecciona al index
+        response.sendRedirect("/Tarea2/index.jsp");
     }
 
     /**
