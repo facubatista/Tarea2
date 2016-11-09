@@ -110,7 +110,7 @@
                                 <%}else{
                                     if(r.getEstado().equals("Facturada")){%>
                                 <td class="dos columnas">
-                                    <a href="ServUsuarios?pdf=HolaMundo" download >Ver Factura</a>
+                                    <a href="ServUsuarios?pdf=<%=r.getNumero()%>" download >Ver Factura</a>
                                 </td>
                                 <%  }
                                 }%>

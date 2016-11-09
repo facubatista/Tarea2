@@ -4,6 +4,12 @@
 <xsd:import namespace="http://WebServices/" schemaLocation="http://localhost:8086/webSclientes?xsd=1"></xsd:import>
 </xsd:schema>
 </types>
+<message name="seleccionarReserva">
+<part name="parameters" element="tns:seleccionarReserva"></part>
+</message>
+<message name="seleccionarReservaResponse">
+<part name="parameters" element="tns:seleccionarReservaResponse"></part>
+</message>
 <message name="limpiar">
 <part name="parameters" element="tns:limpiar"></part>
 </message>
@@ -22,20 +28,11 @@
 <message name="cambiarEstadoResponse">
 <part name="parameters" element="tns:cambiarEstadoResponse"></part>
 </message>
-<message name="seleccionarReserva">
-<part name="parameters" element="tns:seleccionarReserva"></part>
+<message name="seleccionarProveedor">
+<part name="parameters" element="tns:seleccionarProveedor"></part>
 </message>
-<message name="seleccionarReservaResponse">
-<part name="parameters" element="tns:seleccionarReservaResponse"></part>
-</message>
-<message name="agregarPromoAreserva">
-<part name="parameters" element="tns:agregarPromoAreserva"></part>
-</message>
-<message name="agregarPromoAreservaResponse">
-<part name="parameters" element="tns:agregarPromoAreservaResponse"></part>
-</message>
-<message name="ParseException">
-<part name="fault" element="tns:ParseException"></part>
+<message name="seleccionarProveedorResponse">
+<part name="parameters" element="tns:seleccionarProveedorResponse"></part>
 </message>
 <message name="agregarServicioAreserva">
 <part name="parameters" element="tns:agregarServicioAreserva"></part>
@@ -43,11 +40,26 @@
 <message name="agregarServicioAreservaResponse">
 <part name="parameters" element="tns:agregarServicioAreservaResponse"></part>
 </message>
-<message name="seleccionarProveedor">
-<part name="parameters" element="tns:seleccionarProveedor"></part>
+<message name="ParseException">
+<part name="fault" element="tns:ParseException"></part>
 </message>
-<message name="seleccionarProveedorResponse">
-<part name="parameters" element="tns:seleccionarProveedorResponse"></part>
+<message name="agregarPromoAreserva">
+<part name="parameters" element="tns:agregarPromoAreserva"></part>
+</message>
+<message name="agregarPromoAreservaResponse">
+<part name="parameters" element="tns:agregarPromoAreservaResponse"></part>
+</message>
+<message name="getFactura">
+<part name="parameters" element="tns:getFactura"></part>
+</message>
+<message name="getFacturaResponse">
+<part name="parameters" element="tns:getFacturaResponse"></part>
+</message>
+<message name="getDataCliente">
+<part name="parameters" element="tns:getDataCliente"></part>
+</message>
+<message name="getDataClienteResponse">
+<part name="parameters" element="tns:getDataClienteResponse"></part>
 </message>
 <message name="crearReserva">
 <part name="parameters" element="tns:crearReserva"></part>
@@ -73,12 +85,6 @@
 <message name="crearUserWebResponse">
 <part name="parameters" element="tns:crearUserWebResponse"></part>
 </message>
-<message name="getDataCliente">
-<part name="parameters" element="tns:getDataCliente"></part>
-</message>
-<message name="getDataClienteResponse">
-<part name="parameters" element="tns:getDataClienteResponse"></part>
-</message>
 <message name="mostrarReserva">
 <part name="parameters" element="tns:mostrarReserva"></part>
 </message>
@@ -92,6 +98,10 @@
 <part name="parameters" element="tns:traerRsRpResponse"></part>
 </message>
 <portType name="WSClientes">
+<operation name="seleccionarReserva">
+<input wsam:Action="http://WebServices/WSClientes/seleccionarReservaRequest" message="tns:seleccionarReserva"></input>
+<output wsam:Action="http://WebServices/WSClientes/seleccionarReservaResponse" message="tns:seleccionarReservaResponse"></output>
+</operation>
 <operation name="limpiar">
 <input wsam:Action="http://WebServices/WSClientes/limpiarRequest" message="tns:limpiar"></input>
 <output wsam:Action="http://WebServices/WSClientes/limpiarResponse" message="tns:limpiarResponse"></output>
@@ -104,23 +114,27 @@
 <input wsam:Action="http://WebServices/WSClientes/cambiarEstadoRequest" message="tns:cambiarEstado"></input>
 <output wsam:Action="http://WebServices/WSClientes/cambiarEstadoResponse" message="tns:cambiarEstadoResponse"></output>
 </operation>
-<operation name="seleccionarReserva">
-<input wsam:Action="http://WebServices/WSClientes/seleccionarReservaRequest" message="tns:seleccionarReserva"></input>
-<output wsam:Action="http://WebServices/WSClientes/seleccionarReservaResponse" message="tns:seleccionarReservaResponse"></output>
-</operation>
-<operation name="agregarPromoAreserva">
-<input wsam:Action="http://WebServices/WSClientes/agregarPromoAreservaRequest" message="tns:agregarPromoAreserva"></input>
-<output wsam:Action="http://WebServices/WSClientes/agregarPromoAreservaResponse" message="tns:agregarPromoAreservaResponse"></output>
-<fault message="tns:ParseException" name="ParseException" wsam:Action="http://WebServices/WSClientes/agregarPromoAreserva/Fault/ParseException"></fault>
+<operation name="seleccionarProveedor">
+<input wsam:Action="http://WebServices/WSClientes/seleccionarProveedorRequest" message="tns:seleccionarProveedor"></input>
+<output wsam:Action="http://WebServices/WSClientes/seleccionarProveedorResponse" message="tns:seleccionarProveedorResponse"></output>
 </operation>
 <operation name="agregarServicioAreserva">
 <input wsam:Action="http://WebServices/WSClientes/agregarServicioAreservaRequest" message="tns:agregarServicioAreserva"></input>
 <output wsam:Action="http://WebServices/WSClientes/agregarServicioAreservaResponse" message="tns:agregarServicioAreservaResponse"></output>
 <fault message="tns:ParseException" name="ParseException" wsam:Action="http://WebServices/WSClientes/agregarServicioAreserva/Fault/ParseException"></fault>
 </operation>
-<operation name="seleccionarProveedor">
-<input wsam:Action="http://WebServices/WSClientes/seleccionarProveedorRequest" message="tns:seleccionarProveedor"></input>
-<output wsam:Action="http://WebServices/WSClientes/seleccionarProveedorResponse" message="tns:seleccionarProveedorResponse"></output>
+<operation name="agregarPromoAreserva">
+<input wsam:Action="http://WebServices/WSClientes/agregarPromoAreservaRequest" message="tns:agregarPromoAreserva"></input>
+<output wsam:Action="http://WebServices/WSClientes/agregarPromoAreservaResponse" message="tns:agregarPromoAreservaResponse"></output>
+<fault message="tns:ParseException" name="ParseException" wsam:Action="http://WebServices/WSClientes/agregarPromoAreserva/Fault/ParseException"></fault>
+</operation>
+<operation name="getFactura">
+<input wsam:Action="http://WebServices/WSClientes/getFacturaRequest" message="tns:getFactura"></input>
+<output wsam:Action="http://WebServices/WSClientes/getFacturaResponse" message="tns:getFacturaResponse"></output>
+</operation>
+<operation name="getDataCliente">
+<input wsam:Action="http://WebServices/WSClientes/getDataClienteRequest" message="tns:getDataCliente"></input>
+<output wsam:Action="http://WebServices/WSClientes/getDataClienteResponse" message="tns:getDataClienteResponse"></output>
 </operation>
 <operation name="crearReserva">
 <input wsam:Action="http://WebServices/WSClientes/crearReservaRequest" message="tns:crearReserva"></input>
@@ -139,10 +153,6 @@
 <output wsam:Action="http://WebServices/WSClientes/crearUserWebResponse" message="tns:crearUserWebResponse"></output>
 <fault message="tns:ParseException" name="ParseException" wsam:Action="http://WebServices/WSClientes/crearUserWeb/Fault/ParseException"></fault>
 </operation>
-<operation name="getDataCliente">
-<input wsam:Action="http://WebServices/WSClientes/getDataClienteRequest" message="tns:getDataCliente"></input>
-<output wsam:Action="http://WebServices/WSClientes/getDataClienteResponse" message="tns:getDataClienteResponse"></output>
-</operation>
 <operation name="mostrarReserva">
 <input wsam:Action="http://WebServices/WSClientes/mostrarReservaRequest" message="tns:mostrarReserva"></input>
 <output wsam:Action="http://WebServices/WSClientes/mostrarReservaResponse" message="tns:mostrarReservaResponse"></output>
@@ -154,6 +164,15 @@
 </portType>
 <binding name="WSClientesPortBinding" type="tns:WSClientes">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"></soap:binding>
+<operation name="seleccionarReserva">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
 <operation name="limpiar">
 <soap:operation soapAction=""></soap:operation>
 <input>
@@ -181,7 +200,7 @@
 <soap:body use="literal"></soap:body>
 </output>
 </operation>
-<operation name="seleccionarReserva">
+<operation name="seleccionarProveedor">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal"></soap:body>
@@ -189,18 +208,6 @@
 <output>
 <soap:body use="literal"></soap:body>
 </output>
-</operation>
-<operation name="agregarPromoAreserva">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal"></soap:body>
-</input>
-<output>
-<soap:body use="literal"></soap:body>
-</output>
-<fault name="ParseException">
-<soap:fault name="ParseException" use="literal"></soap:fault>
-</fault>
 </operation>
 <operation name="agregarServicioAreserva">
 <soap:operation soapAction=""></soap:operation>
@@ -214,7 +221,28 @@
 <soap:fault name="ParseException" use="literal"></soap:fault>
 </fault>
 </operation>
-<operation name="seleccionarProveedor">
+<operation name="agregarPromoAreserva">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+<fault name="ParseException">
+<soap:fault name="ParseException" use="literal"></soap:fault>
+</fault>
+</operation>
+<operation name="getFactura">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
+<operation name="getDataCliente">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal"></soap:body>
@@ -261,15 +289,6 @@
 <fault name="ParseException">
 <soap:fault name="ParseException" use="literal"></soap:fault>
 </fault>
-</operation>
-<operation name="getDataCliente">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal"></soap:body>
-</input>
-<output>
-<soap:body use="literal"></soap:body>
-</output>
 </operation>
 <operation name="mostrarReserva">
 <soap:operation soapAction=""></soap:operation>

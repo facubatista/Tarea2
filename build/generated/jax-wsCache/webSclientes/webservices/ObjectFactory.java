@@ -43,6 +43,7 @@ public class ObjectFactory {
     private final static QName _Limpiar_QNAME = new QName("http://WebServices/", "limpiar");
     private final static QName _ParseException_QNAME = new QName("http://WebServices/", "ParseException");
     private final static QName _AgregarServicioAreservaResponse_QNAME = new QName("http://WebServices/", "agregarServicioAreservaResponse");
+    private final static QName _GetFactura_QNAME = new QName("http://WebServices/", "getFactura");
     private final static QName _SeleccionarProveedorResponse_QNAME = new QName("http://WebServices/", "seleccionarProveedorResponse");
     private final static QName _SeleccionarReservaResponse_QNAME = new QName("http://WebServices/", "seleccionarReservaResponse");
     private final static QName _TraerRsRp_QNAME = new QName("http://WebServices/", "traerRsRp");
@@ -50,6 +51,7 @@ public class ObjectFactory {
     private final static QName _CrearReservaResponse_QNAME = new QName("http://WebServices/", "crearReservaResponse");
     private final static QName _CambiarEstadoResponse_QNAME = new QName("http://WebServices/", "cambiarEstadoResponse");
     private final static QName _SeleccionarReserva_QNAME = new QName("http://WebServices/", "seleccionarReserva");
+    private final static QName _GetFacturaResponse_QNAME = new QName("http://WebServices/", "getFacturaResponse");
     private final static QName _AgregarServicioAreserva_QNAME = new QName("http://WebServices/", "agregarServicioAreserva");
     private final static QName _UserPassValidoResponse_QNAME = new QName("http://WebServices/", "userPassValidoResponse");
     private final static QName _SeleccionarProveedor_QNAME = new QName("http://WebServices/", "seleccionarProveedor");
@@ -100,6 +102,14 @@ public class ObjectFactory {
      */
     public SeleccionarReserva createSeleccionarReserva() {
         return new SeleccionarReserva();
+    }
+
+    /**
+     * Create an instance of {@link GetFacturaResponse }
+     * 
+     */
+    public GetFacturaResponse createGetFacturaResponse() {
+        return new GetFacturaResponse();
     }
 
     /**
@@ -263,6 +273,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetFactura }
+     * 
+     */
+    public GetFactura createGetFactura() {
+        return new GetFactura();
+    }
+
+    /**
      * Create an instance of {@link ParseException }
      * 
      */
@@ -324,6 +342,22 @@ public class ObjectFactory {
      */
     public DtRP createDtRP() {
         return new DtRP();
+    }
+
+    /**
+     * Create an instance of {@link DtFactura }
+     * 
+     */
+    public DtFactura createDtFactura() {
+        return new DtFactura();
+    }
+
+    /**
+     * Create an instance of {@link DataServicio }
+     * 
+     */
+    public DataServicio createDataServicio() {
+        return new DataServicio();
     }
 
     /**
@@ -530,6 +564,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetFactura }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://WebServices/", name = "getFactura")
+    public JAXBElement<GetFactura> createGetFactura(GetFactura value) {
+        return new JAXBElement<GetFactura>(_GetFactura_QNAME, GetFactura.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link SeleccionarProveedorResponse }{@code >}}
      * 
      */
@@ -590,6 +633,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://WebServices/", name = "seleccionarReserva")
     public JAXBElement<SeleccionarReserva> createSeleccionarReserva(SeleccionarReserva value) {
         return new JAXBElement<SeleccionarReserva>(_SeleccionarReserva_QNAME, SeleccionarReserva.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetFacturaResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://WebServices/", name = "getFacturaResponse")
+    public JAXBElement<GetFacturaResponse> createGetFacturaResponse(GetFacturaResponse value) {
+        return new JAXBElement<GetFacturaResponse>(_GetFacturaResponse_QNAME, GetFacturaResponse.class, null, value);
     }
 
     /**

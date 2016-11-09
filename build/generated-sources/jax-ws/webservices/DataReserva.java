@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="estado" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="precioTotal" type="{http://www.w3.org/2001/XMLSchema}float"/>
  *         &lt;element name="fechaCreacion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="servProm" type="{http://WebServices/}dataRsRp" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,7 +36,8 @@ import javax.xml.bind.annotation.XmlType;
     "cliente",
     "estado",
     "precioTotal",
-    "fechaCreacion"
+    "fechaCreacion",
+    "servProm"
 })
 public class DataReserva {
 
@@ -44,6 +46,7 @@ public class DataReserva {
     protected String estado;
     protected float precioTotal;
     protected String fechaCreacion;
+    protected DataRsRp servProm;
 
     /**
      * Obtiene el valor de la propiedad numero.
@@ -147,6 +150,30 @@ public class DataReserva {
      */
     public void setFechaCreacion(String value) {
         this.fechaCreacion = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad servProm.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DataRsRp }
+     *     
+     */
+    public DataRsRp getServProm() {
+        return servProm;
+    }
+
+    /**
+     * Define el valor de la propiedad servProm.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DataRsRp }
+     *     
+     */
+    public void setServProm(DataRsRp value) {
+        this.servProm = value;
     }
 
 }

@@ -1,20 +1,33 @@
 jQuery(document).ready(function () {
     jQuery("#email").blur(function () {
         var mail = jQuery("#email").val();
-        if (mail.indexOf("@") === -1 || mail.indexOf(".com") === -1){
-            document.getElementById("errEmailFormato").style.display = 'block';
-            document.getElementById("botonRegistrar").style.display = 'none';
-                    document.getElementById("botonRegistrarDis").style.display = 'block';
+        if(mail !== ""){
+            if (mail.indexOf("@") === -1 || mail.indexOf(".com") === -1){
+                document.getElementById("errEmail").style.display ='none';
+                document.getElementById("errEmailFormato").style.display = 'block';
+                document.getElementById("botonRegistrar").style.display = 'none';
+                document.getElementById("botonRegistrarDis").style.display = 'block';
+            }else{
+                document.getElementById("errEmailFormato").style.display = 'none';
+                var displayErrorMail = document.getElementById("errEmail").style.display;
+                var displayErrorNick = document.getElementById("errNick").style.display;
+                var displayErrorPass = document.getElementById("errContra").style.display;
+                if(displayErrorMail === 'none' && displayErrorNick === 'none' && displayErrorPass === 'none'){
+                    document.getElementById("botonRegistrar").style.display = 'block';
+                    document.getElementById("botonRegistrarDis").style.display = 'none';
+                }
+            }
         }else{
             document.getElementById("errEmailFormato").style.display = 'none';
-            var displayErrorMail = document.getElementById("errEmail").style.display;
-            var displayErrorNick = document.getElementById("errNick").style.display;
-            var displayErrorPass = document.getElementById("errContra").style.display;
-            if(displayErrorMail === 'none' && displayErrorNick === 'none' && displayErrorPass === 'none'){
-                document.getElementById("botonRegistrar").style.display = 'block';
-                document.getElementById("botonRegistrarDis").style.display = 'none';
-            }
+                var displayErrorMail = document.getElementById("errEmail").style.display;
+                var displayErrorNick = document.getElementById("errNick").style.display;
+                var displayErrorPass = document.getElementById("errContra").style.display;
+                if(displayErrorMail === 'none' && displayErrorNick === 'none' && displayErrorPass === 'none'){
+                    document.getElementById("botonRegistrar").style.display = 'block';
+                    document.getElementById("botonRegistrarDis").style.display = 'none';
+                }
         }
+        
         //Si el formato es incorrecto no hace la consulta al servlet
         if(document.getElementById("errEmailFormato").style.display === 'none'){
             var request = new XMLHttpRequest();

@@ -27,6 +27,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -39,6 +40,9 @@ import javax.servlet.http.HttpSession;
 import webservices.DataCliente;
 import webservices.DataReserva;
 import webservices.DataRsRp;
+import webservices.DtFactura;
+import webservices.DtRP;
+import webservices.DtRS;
 import webservices.ParseException_Exception;
 import webservices.WSClientes;
 import webservices.WSClientesService;
@@ -260,8 +264,10 @@ public class ServletUsuarios extends HttpServlet {
             dispatcher.forward(request, response);
         }
         
-        if(request.getParameter("pdf")!=null){     
+        if(request.getParameter("pdf")!=null && sesion.getAttribute("nickUsuario")!=null){     
             try {
+                
+                DtFactura factura = wsc.getFactura(Integer.valueOf(request.getParameter("pdf")), (String)sesion.getAttribute("nickUsuario"));
                 //Se crea el documento
                 Document documento = new Document();
                 
@@ -297,11 +303,18 @@ public class ServletUsuarios extends HttpServlet {
                 Chunk clienteRes = new Chunk("\nCliente: ", font);
                 Chunk infoReserva = new Chunk("\nInformación de reserva: \n", font);
 
-                //En la derecha hay que poner los valores de la factura(factura.get...)
-                documento.add(nroFactura); documento.add(new Chunk("1"));
-                documento.add(fecha);      documento.add(new Chunk("22/10/2016"));
-                documento.add(nroReserva); documento.add(new Chunk("10"));
-                documento.add(clienteRes); documento.add(new Chunk("ClienteEjemplo"));
+//                //En la derecha hay que poner los valores de la factura(factura.get...)
+//                documento.add(nroFactura); documento.add(new Chunk("1"));
+//                documento.add(fecha);      documento.add(new Chunk("22/10/2016"));
+//                documento.add(nroReserva); documento.add(new Chunk("10"));
+//                documento.add(clienteRes); documento.add(new Chunk("Cliente Prueba"));
+//                documento.add(infoReserva);
+                
+                //Tomar los datos de la factura, da error...
+                documento.add(nroFactura); documento.add(new Chunk(String.valueOf(factura.getId())));
+                documento.add(fecha);     documento.add(new Chunk(factura.getReserva().getFechaCreacion()));//documento.add(new Chunk("22/10/2016"));
+                documento.add(nroReserva); documento.add(new Chunk(String.valueOf(factura.getNroReserva())));
+                documento.add(clienteRes); documento.add(new Chunk((String)sesion.getAttribute("nomUsuario")));
                 documento.add(infoReserva);
 
                 //Tabla de 6 columnas
@@ -316,21 +329,36 @@ public class ServletUsuarios extends HttpServlet {
                 tabla.addCell(new Paragraph("Cantidad", font));
                 tabla.addCell(new Paragraph("Total", font));
 
-                //Otra fila
-                tabla.addCell("Servicio");
-                tabla.addCell("moody");
-                tabla.addCell("Euro-Vuelo-S");
-                tabla.addCell("$200");
-                tabla.addCell("3");
-                tabla.addCell("$600");
-
-                //Otra fila
-                tabla.addCell("Promoción");
-                tabla.addCell("moody");
-                tabla.addCell("Promo1");
-                tabla.addCell("$400");
-                tabla.addCell("1");
-                tabla.addCell("$400");
+                DataReserva r = factura.getReserva();
+                
+                for(DtRS rs : r.getServProm().getServicios()) {
+                    tabla.addCell("Servicio");
+                    tabla.addCell(rs.getDataServ().getProveedor());
+                    tabla.addCell(rs.getDataServ().getNombre());
+                    
+                    int precioS = Math.round(rs.getDataServ().getPrecio());
+                    tabla.addCell("$"+precioS);
+                    
+                    tabla.addCell(String.valueOf(rs.getCantidad()));
+                    
+                    int totalS = Math.round(rs.getCantidad()*rs.getDataServ().getPrecio());
+                    tabla.addCell("$"+totalS);
+                }
+                
+                for(DtRP rp: r.getServProm().getPromociones()){
+                    tabla.addCell("Promoción");
+                    tabla.addCell(rp.getProm().getNombre());
+                    tabla.addCell(rp.getProm().getNombre());
+                    
+                    int precioP = Math.round(rp.getProm().getTotal());
+                    tabla.addCell("$"+precioP);
+                    
+                    tabla.addCell(String.valueOf(rp.getCantidad()));
+                    
+                    int totalP = Math.round(rp.getCantidad()*rp.getProm().getTotal());
+                    tabla.addCell("$"+totalP);
+                }
+                
 
                 PdfPCell c = new PdfPCell();
                 c.setBorder(0);
@@ -341,7 +369,7 @@ public class ServletUsuarios extends HttpServlet {
                 tabla.addCell(c);
                 tabla.addCell(c);
                 tabla.addCell(c);
-                tabla.addCell(new Paragraph("$1000", font));//Es el Total, ultima columna de la ultima fila
+                tabla.addCell(new Paragraph("$"+Math.round(r.getPrecioTotal()), font));//Es el Total, ultima columna de la ultima fila
 
                 documento.add(tabla);//Se agrega la tabla al pdf
                 
